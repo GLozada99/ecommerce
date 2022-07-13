@@ -8,6 +8,10 @@ build:
 run-dev:
 	python manage.py runserver
 
+.PHONY: run-prod
+run-prod:
+	docker-compose --env-file ./.env up web -d
+
 .PHONY: db-start
 db-start:
 	docker-compose --env-file ./.env up db -d
