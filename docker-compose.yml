@@ -9,3 +9,14 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+  web:
+    build: .
+    command: gunicorn ecommerce.wsgi --bind 0.0.0.0:${PORT}
+    volumes:
+      - .:/code
+    environment:
+      - DB_HOST=${HOST_FROM_DOCKER}
+    ports:
+      - 8000:${PORT}
+    depends_on:
+      - db
