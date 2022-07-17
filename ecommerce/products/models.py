@@ -17,6 +17,7 @@ class Category(BaseModel):
 class Product(SafeModel):
     name = models.CharField(max_length=80)
     description = models.TextField(blank=True)
+    categories = models.ManyToManyField(Category)
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
 
