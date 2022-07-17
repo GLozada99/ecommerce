@@ -21,5 +21,9 @@ class Product(SafeModel):
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name}, {self.current_price}'
+
+    @property
+    def category_list(self) -> str:
+        return ', '.join(map(lambda cat: str(cat), self.categories.all()))
