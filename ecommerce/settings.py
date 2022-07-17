@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'ecommerce.core'
+    'ecommerce.core',
+    'ecommerce.products',
 ]
 
 MIDDLEWARE = [
