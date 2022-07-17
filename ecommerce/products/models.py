@@ -3,7 +3,7 @@ from django.db import models
 from ecommerce.utils.models import BaseModel, SafeModel
 
 
-class Type(BaseModel):
+class Category(BaseModel):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
 

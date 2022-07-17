@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from ecommerce.products.models import Product, Type
+from ecommerce.products.models import Category, Product
 
 
-@admin.register(Type)
-class TypeAdmin(admin.ModelAdmin):
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_display = ('name', 'slug')
 
