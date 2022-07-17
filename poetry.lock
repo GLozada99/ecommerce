@@ -35,6 +35,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-safedelete"
+version = "1.2.2"
+description = "Mask your objects instead of deleting them from your database."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = "*"
+
+[[package]]
 name = "flake8"
 version = "4.0.1"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -131,7 +142,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "fabd82aeb5f5ac2c54a30e98d9a71d9a38ae69ae9034c4aab9fe6853c6f04b35"
+content-hash = "aa828862d0d77834ac1fb24e7c2bd074ed1314d577f93e447c1f439d841cd3e0"
 
 [metadata.files]
 asgiref = [
@@ -145,6 +156,10 @@ dj-database-url = [
 django = [
     {file = "Django-4.0.6-py3-none-any.whl", hash = "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"},
     {file = "Django-4.0.6.tar.gz", hash = "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae"},
+]
+django-safedelete = [
+    {file = "django-safedelete-1.2.2.tar.gz", hash = "sha256:8faab05e3126a27c901638dcb2f6f769cf46bb1b33052714659eb93efe81ffce"},
+    {file = "django_safedelete-1.2.2-py3-none-any.whl", hash = "sha256:2f535b6d72f4517083f6902cd2140c727a9d8d9f9b0feda171318421bbf31704"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},

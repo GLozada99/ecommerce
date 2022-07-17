@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'safedelete',
+
     'ecommerce.core',
     'ecommerce.products',
 ]
