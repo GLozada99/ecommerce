@@ -9,6 +9,7 @@ class Category(BaseModel):
 
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
@@ -27,3 +28,9 @@ class Product(SafeModel):
     @property
     def category_list(self) -> str:
         return ', '.join(map(lambda cat: str(cat), self.categories.all()))
+
+
+class ImageProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.PROTECT,
+                                related_name='pictures')
+    image = models.ImageField(upload_to='products/')
