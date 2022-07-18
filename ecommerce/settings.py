@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'safedelete',
+    'thumbnails',
 
     'ecommerce.core',
     'ecommerce.products',
@@ -98,3 +99,46 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+THUMBNAILS = {
+    'METADATA': {
+        'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
+    },
+    'STORAGE': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        # You can also use Amazon S3 or any other Django storage backends
+    },
+    'SIZES': {
+        'small': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 50,
+                 'height': 50},
+                {'PATH': 'thumbnails.processors.crop', 'width': 80,
+                 'height': 80}
+            ],
+            'POST_PROCESSORS': [
+                {
+                    'PATH': 'thumbnails.post_processors.optimize',
+                    'png_command': 'optipng -force -o7 "%(filename)s"',
+                    'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
+                },
+            ],
+        },
+        'large': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 200,
+                 'height': 200},
+                {'PATH': 'thumbnails.processors.flip',
+                 'direction': 'horizontal'}
+            ],
+        },
+        'watermarked': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 20,
+                 'height': 20},
+                {'PATH': 'thumbnails.processors.add_watermark',
+                 'watermark_path': 'watermark.png'}
+            ],
+        }
+    }
+}

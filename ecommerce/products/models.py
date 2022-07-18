@@ -1,4 +1,5 @@
 from django.db import models
+from thumbnails.fields import ImageField
 
 from ecommerce.utils.models import BaseModel, SafeModel
 
@@ -33,4 +34,4 @@ class Product(SafeModel):
 class ImageProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
-    image = models.ImageField(upload_to='products/')
+    image = ImageField(upload_to='products/')
