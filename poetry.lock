@@ -10,6 +10,14 @@ python-versions = ">=3.7"
 tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
 
 [[package]]
+name = "da-vinci"
+version = "0.3.0"
+description = "A simple image manipulation library aiming to make common image tasks easy."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "dj-database-url"
 version = "0.5.0"
 description = "Use Database URLs in your Django Application."
@@ -44,6 +52,23 @@ python-versions = "*"
 
 [package.dependencies]
 Django = "*"
+
+[[package]]
+name = "django-thumbnails"
+version = "0.7.0"
+description = "A simple Django app to manage image/photo thumbnails. Supports remote/cloud storage systems like Amazon S3."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+da-vinci = "*"
+django = ">=2.0"
+pillow = "*"
+shortuuid = "*"
+
+[package.extras]
+redis = ["redis"]
 
 [[package]]
 name = "flake8"
@@ -125,6 +150,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "shortuuid"
+version = "1.0.9"
+description = "A generator library for concise, unambiguous and URL-safe UUIDs."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.2"
 description = "A non-validating SQL parser."
@@ -154,12 +187,16 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "375c8ae1865b1e96185bb28bb2c527d362f47f20402127808d73aba220f5d6c2"
+content-hash = "1b8111ffc326699882efe7d16131ac48ff45a4a25ab4b4a366951db925f6dffb"
 
 [metadata.files]
 asgiref = [
     {file = "asgiref-3.5.2-py3-none-any.whl", hash = "sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4"},
     {file = "asgiref-3.5.2.tar.gz", hash = "sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424"},
+]
+da-vinci = [
+    {file = "da-vinci-0.3.0.tar.gz", hash = "sha256:294f2aed5b41fe92d313b575f8221d2c457ed8007ef84b5960f5f74b45cdba8c"},
+    {file = "da_vinci-0.3.0-py3-none-any.whl", hash = "sha256:aded66359f49a39ea4d62986988072a2e97ef09d0a27a55369f7ebc40d088e46"},
 ]
 dj-database-url = [
     {file = "dj-database-url-0.5.0.tar.gz", hash = "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163"},
@@ -172,6 +209,10 @@ django = [
 django-safedelete = [
     {file = "django-safedelete-1.2.2.tar.gz", hash = "sha256:8faab05e3126a27c901638dcb2f6f769cf46bb1b33052714659eb93efe81ffce"},
     {file = "django_safedelete-1.2.2-py3-none-any.whl", hash = "sha256:2f535b6d72f4517083f6902cd2140c727a9d8d9f9b0feda171318421bbf31704"},
+]
+django-thumbnails = [
+    {file = "django-thumbnails-0.7.0.tar.gz", hash = "sha256:0c26ff03762beb7b6bec01edc6f012eba05085bc235cdc598d388487c3542e61"},
+    {file = "django_thumbnails-0.7.0-py3-none-any.whl", hash = "sha256:ffcc1223da4c0d4eb764ca28cd79f702dff62936ab583d8f59b5ec07e0ce2365"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
@@ -269,6 +310,10 @@ pyflakes = [
 python-decouple = [
     {file = "python-decouple-3.6.tar.gz", hash = "sha256:2838cdf77a5cf127d7e8b339ce14c25bceb3af3e674e039d4901ba16359968c7"},
     {file = "python_decouple-3.6-py3-none-any.whl", hash = "sha256:6cf502dc963a5c642ea5ead069847df3d916a6420cad5599185de6bab11d8c2e"},
+]
+shortuuid = [
+    {file = "shortuuid-1.0.9-py3-none-any.whl", hash = "sha256:b2bb9eb7773170e253bb7ba25971023acb473517a8b76803d9618668cb1dd46f"},
+    {file = "shortuuid-1.0.9.tar.gz", hash = "sha256:459f12fa1acc34ff213b1371467c0325169645a31ed989e268872339af7563d5"},
 ]
 sqlparse = [
     {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
