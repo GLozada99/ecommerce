@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     'safedelete',
     'thumbnails',
+    'django_extensions',
 
     'ecommerce.core',
     'ecommerce.products',
@@ -126,8 +127,8 @@ THUMBNAILS = {
         },
         'large': {
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 200,
-                 'height': 200},
+                {'PATH': 'thumbnails.processors.resize', 'width': 350,
+                 'height': 350},
                 {'PATH': 'thumbnails.processors.flip',
                  'direction': 'horizontal'}
             ],
