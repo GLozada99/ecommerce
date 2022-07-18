@@ -6,6 +6,7 @@ from ecommerce.utils.models import BaseModel, SafeModel
 
 class Category(BaseModel):
     name = models.CharField(max_length=255)
+    image = ImageField(upload_to='category/')
     slug = models.SlugField()
 
     class Meta:
