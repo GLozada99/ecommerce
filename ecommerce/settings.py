@@ -112,8 +112,8 @@ THUMBNAILS = {
     'SIZES': {
         'small': {
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 50,
-                 'height': 50},
+                {'PATH': 'thumbnails.processors.resize', 'width': 100,
+                 'height': 100},
                 {'PATH': 'thumbnails.processors.crop', 'width': 80,
                  'height': 80}
             ],
@@ -123,6 +123,14 @@ THUMBNAILS = {
                     'png_command': 'optipng -force -o7 "%(filename)s"',
                     'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
                 },
+            ],
+        },
+        'medium': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 180,
+                 'height': 180},
+                {'PATH': 'thumbnails.processors.flip',
+                 'direction': 'horizontal'}
             ],
         },
         'large': {
