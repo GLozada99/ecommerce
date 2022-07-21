@@ -35,6 +35,10 @@ class Product(SafeModel):
     def category_list(self) -> str:
         return ', '.join(map(lambda cat: str(cat), self.categories.all()))
 
+    @property
+    def principal_image_url(self) -> str:
+        return self.pictures.first().image.thumbnails.medium.url
+
 
 class ImageProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
