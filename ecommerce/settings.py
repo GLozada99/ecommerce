@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'safedelete',
     'thumbnails',
     'django_extensions',
+    'rest_framework',
 
     'ecommerce.core',
     'ecommerce.products',
