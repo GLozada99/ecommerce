@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from thumbnails.fields import ImageField
 
@@ -6,7 +7,10 @@ from ecommerce.utils.models import BaseModel, SafeModel
 
 class Category(BaseModel):
     name = models.CharField(max_length=255)
-    image = ImageField(upload_to='category/')
+    icon = models.FileField(upload_to='category/',
+                            validators=[
+                               FileExtensionValidator(['svg'])
+                            ])
     slug = models.SlugField()
 
     class Meta:
