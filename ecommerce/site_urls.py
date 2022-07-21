@@ -7,7 +7,7 @@ urlpatterns = [
                  )
          ),
     path('products/',
-         include('ecommerce.products.urls.products',
+         include('ecommerce.products.urls.product',
                  namespace='products'
                  )
          ),
