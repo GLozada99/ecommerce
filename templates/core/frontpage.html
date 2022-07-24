@@ -6,15 +6,15 @@
         <div class="md:col-span-3">
           <article class="bg-blue-500 h-96 p-10 lg:p-16 rounded">
             <h1 class="text-3xl md:text-4xl text-white font-semibold">
-              Best products &amp; <br>brands in our store
+              Text Here <br>Or maybe pictures
             </h1>
             <p class="text-lg text-white font-normal mt-4 mb-6">
-              Trendy Products, Factory Prices, Excellent Service
+              Something
             </p>
             <div>
               <a class="px-4 py-2 inline-block font-semibold bg-yellow-500 text-white border border-transparent rounded-md hover:bg-yellow-600"
                  href="#">
-                Discover
+                Discover our products
               </a>
               <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
                  href="#">
@@ -24,25 +24,38 @@
           </article>
         </div>
         <div class="col-span-1">
-          <article class="bg-yellow-500 rounded h-96"></article>
+          <article class="bg-yellow-500 rounded h-96 p-6 lg:p-10">
+            <h1 class="text-3xl md:text-4xl text-white font-semibold">
+              Text Here <br>Or maybe pictures
+            </h1>
+            <p class="text-lg text-white font-normal mt-4 mb-6">
+              Something
+            </p>
+            <div>
+              <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
+                 href="#">
+                Learn more
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
   <section class="pt-10">
     <div class="container max-w-screen-xl mx-auto px-4 pb-8">
-      <h2 class="text-3xl font-bold mb-8">Categories</h2>
+      <h2 class="text-4xl font-bold mb-8">Categories</h2>
 
-      <nav class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-1 gap-y-6">
+      <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">
         {% for category in categories %}
           <a href="#" class="group">
             <div
-                class="flex items-center justify-center w-24 h-24 mx-auto mb-2 rounded-full bg-blue-100 group-hover:bg-blue-200">
-              <img class="h-16 w-16 scale-75 group-hover:scale-110 group-hover:-rotate-12 ease-in duration-200"
+                class="flex items-center justify-center scale-110 w-36 h-36 mx-auto mb-2 rounded-3xl bg-blue-100 group-hover:bg-blue-200">
+              <img class="h-20 w-20 scale-125 group-hover:scale-150 group-hover:-rotate-12 ease-in duration-200"
                    src="{{ category.icon }}"
                    alt="">
             </div>
-            <p class="text-center text-1xl text-gray-600 group-hover:text-blue-600"> {{ category.name }} </p>
+            <p class="text-center text-2xl text-gray-600 group-hover:text-blue-600"> {{ category.name }} </p>
           </a>
         {% endfor %}
       </nav>
