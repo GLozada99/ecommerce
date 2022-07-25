@@ -1,3 +1,5 @@
+import os
+
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.template.defaultfilters import slugify
@@ -16,18 +18,15 @@ class Command(BaseCommand):
         if Category.objects.exists():
             self.stdout.write(self.style.SUCCESS('Categories already exist.'))
         else:
-            names = ['Ropa', 'Zapatos', 'Libros', 'Electrodomesticos',
-                     'Juguetes', 'Cuidado Personal', 'Artículos de Bebé',
-                     'Artículos del Hogar']
-            categories = []
-
-            for name in names:
+            path = './pics/categories'
+            for filename in os.listdir(path):
+                f = os.path.join(path, filename)
+                name = filename.split('.')[0]
                 category = Category(
                     name=name,
                     slug=slugify(name),
                 )
-                with open(f'./pics/{name}.svg') as f:
-                    category.icon.save(f'{name.replace(" ", "_")}.svg', f)
+                with open(f) as fil:
+                    category.icon.save(f, fil)
 
-            Category.objects.bulk_create(categories)
             self.stdout.write(self.style.SUCCESS('OK'))
