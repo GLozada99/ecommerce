@@ -16,5 +16,5 @@ class ImageProductInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('name', 'current_price', 'category_list', 'slug')
+    list_display = ('name', 'current_price', 'category', 'slug')
     inlines = [ImageProductInline]

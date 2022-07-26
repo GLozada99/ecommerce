@@ -24,16 +24,14 @@ class Category(BaseModel):
 class Product(SafeModel):
     name = models.CharField(max_length=80)
     description = models.TextField(blank=True)
-    categories = models.ManyToManyField(Category)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True
+    )
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
 
     def __str__(self) -> str:
         return f'{self.name}, {self.current_price}'
-
-    @property
-    def category_list(self) -> str:
-        return ', '.join(map(lambda cat: str(cat), self.categories.all()))
 
     @property
     def principal_image_url(self) -> str:
