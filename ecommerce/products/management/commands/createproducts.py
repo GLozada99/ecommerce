@@ -16,7 +16,7 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **kwargs):
-        self.stdout.write('Creating Roles.')
+        self.stdout.write('Creating Products.')
         if Product.objects.exists():
             self.stdout.write(self.style.SUCCESS('Categories already exist.'))
         else:
@@ -36,10 +36,9 @@ class Command(BaseCommand):
                                                   right_digits=2,
                                                   min_value=100),
                     slug=slugify(name),
+                    category_id=categories.get(name.split('_')[0])
                 )
                 product.save()
-                if category := categories.get(name.split('_')[0]):
-                    product.categories.add(category)
                 with open(f, 'rb') as fil:
                     ip = ImageProduct(product=product)
                     ip.image.save(f, File(fil))

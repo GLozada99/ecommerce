@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **kwargs):
-        self.stdout.write('Creating Roles.')
+        self.stdout.write('Creating Categories.')
         if Category.objects.exists():
             self.stdout.write(self.style.SUCCESS('Categories already exist.'))
         else:
