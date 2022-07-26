@@ -128,10 +128,10 @@ THUMBNAILS = {
         },
         'medium': {
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 180,
-                 'height': 180},
-                {'PATH': 'thumbnails.processors.flip',
-                 'direction': 'horizontal'}
+                {'PATH': 'thumbnails.processors.resize', 'width': 240,
+                 'height': 240},
+                # {'PATH': 'thumbnails.processors.flip',
+                #  'direction': 'horizontal'}
             ],
         },
         'large': {
