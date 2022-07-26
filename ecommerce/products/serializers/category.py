@@ -13,3 +13,12 @@ class CategorySerializer(serializers.ModelSerializer):
             'icon',
             'slug',
         )
+
+
+class ShortCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'name',
+            'slug',
+        )
