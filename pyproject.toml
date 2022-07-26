@@ -18,9 +18,11 @@ django-thumbnails = "^0.7.0"
 django-extensions = "^3.2.0"
 django-rest-framework = "^0.1.0"
 Faker = "^13.15.1"
+mypy = "^0.971"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
+mypy = "^0.971"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
