@@ -1,22 +1,18 @@
 from ecommerce.products.models import Product
-from ecommerce.products.serializers.product import ProductSerializer
+
+
+# type: ignore
 
 
 class ProductService:
-
     @staticmethod
-    def get_products(
-            current_category: str,
-            order_by: str
-    ) -> list[dict | None]:
-        """Returns product list of dicts representation based on
-        current_category."""
+    def get_products(current_category: str, order_by: str):
         products = Product.objects.all()
         if current_category:
             products = products.filter(category__slug=current_category)
         if order_by:
             products = products.order_by(order_by)
-        return ProductSerializer(products, many=True).data
+        return products
 
     @staticmethod
     def get_order_by_options():
