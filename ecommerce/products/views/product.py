@@ -1,30 +1,28 @@
-from django.views.generic import TemplateView  # type: ignore
+from django.views.generic import ListView, TemplateView  # type: ignore
 
+from ecommerce.products.models import Product
 from ecommerce.products.services.category import CategoryService
 from ecommerce.products.services.product import ProductService
 
 
-class ProductListView(TemplateView):
+class ProductListView(ListView):
+    queryset = Product.objects.all()
+    context_object_name = 'products'
+    paginate_by = 2
     template_name = 'products/list.html'
 
-    def get(self, request, **kwargs):
-        current_order_by = request.GET.get('order_by', '')
-        order_by_options = ProductService.get_order_by_options()
+    def get_queryset(self):
+        return ProductService.get_products(
+            self.request.GET.get('category'),
+            self.request.GET.get('order_by', ''),
+        )
 
-        current_category = CategoryService.get_current_category(
-            request.GET.get('category')
+    def get_context_data(self, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['current_category'] = CategoryService.get_current_category(
+            self.request.GET.get('category'),
         )
-        products = ProductService.get_products(
-            request.GET.get('category'), current_order_by
-        )
-        categories = CategoryService.get_short_categories()
-
-        return self.render_to_response(
-            {
-                'products': products,
-                'categories': categories,
-                'current_category': current_category,
-                'current_order_by': current_order_by,
-                'order_by_options': order_by_options,
-            }
-        )
+        context['categories'] = CategoryService.get_categories()
+        context['order_by_options'] = ProductService.get_order_by_options()
+        context['current_order_by'] = self.request.GET.get('order_by', '')
+        return context

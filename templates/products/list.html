@@ -12,7 +12,9 @@
         </li>
         <li class="inline-flex items-center" aria-current="page">
           <a class="text-gray-600 hover:text-blue-600"
-             href="{{ request.path }}?category={{ current_category.slug }}">{{ current_category.name }}</a>
+             href="{{ request.path }}?category={{ current_category.slug }}?category={{ current_category.slug }}&page=1">
+            {{ current_category.name }}
+          </a>
         </li>
       </ol>
       <!-- breadcrumbs end -->
@@ -39,7 +41,7 @@
                 <li>
                   <a class="hover:text-blue-600 hover:underline
                     {% if category.name == current_category.name %}text-blue-900 font-bold{% else %}{% endif %}"
-                     href="{{ request.path }}?category={{ category.slug }}&order_by={{ current_order_by }}">
+                     href="{{ request.path }}?category={{ category.slug }}&order_by={{ current_order_by }}&page=1">
                     {{ category.name }}
                   </a>
                 </li>
@@ -74,7 +76,8 @@
                   <!-- COMPONENT: PRODUCT CARD -->
                   <article class="shadow-sm rounded bg-white border border-gray-200">
                     <a href="#" class="block relative p-1">
-                      <img src="{{ product.picture }}" class="mx-auto w-auto" height="240" alt="Product title here">
+                      <img src="{{ product.principal_image_url }}" class="mx-auto w-auto" height="240"
+                           alt="Product title here">
                     </a>
                     <div class="p-4 border-t border-t-gray-200">
                       <p class="font-semibold">${{ product.current_price }}</p>
@@ -100,25 +103,6 @@
               {% include 'core/not-found.html' %}
               {% block not_found %}
               {% endblock %}
-              {#              <div class="grid grid-cols-1">#}
-              {#                <!-- COMPONENT: PRODUCT CARD -->#}
-              {#                <section class="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">#}
-              {#                  <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">#}
-              {#                    <div class="max-w-md text-center">#}
-              {#                      <h2 class="mb-8 font-extrabold text-9xl dark:text-gray-600">#}
-              {#                        <span class="sr-only">Error</span>404#}
-              {#                      </h2>#}
-              {#                      <p class="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>#}
-              {#                      <p class="mt-4 mb-8 dark:text-gray-400">But dont worry, you can find plenty of other things on our#}
-              {#                        homepage.</p>#}
-              {#                      <a rel="noopener noreferrer" href="#"#}
-              {#                         class="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Back to#}
-              {#                        homepage</a>#}
-              {#                    </div>#}
-              {#                  </div>#}
-              {#                </section>#}
-              {#                <!-- COMPONENT: PRODUCT CARD //END -->#}
-              {#              </div>#}
 
             </div> <!-- grid .// -->
           {% endif %}
