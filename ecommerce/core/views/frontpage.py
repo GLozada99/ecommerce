@@ -1,12 +1,12 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView  # type: ignore
 
-from ecommerce.products.models import Category
-from ecommerce.products.serializers.category import CategorySerializer
+from ecommerce.products.services.category import CategoryService
 
 
 class FrontPageView(TemplateView):
     template_name = 'core/frontpage.html'
 
-    def get(self, request, **kwargs):
-        categories = CategorySerializer(Category.objects.all(), many=True).data
-        return self.render_to_response({'categories': categories})
+    def get_context_data(self, **kwargs):
+        context = super(FrontPageView, self).get_context_data(**kwargs)
+        context['categories'] = CategoryService.get_categories()
+        return context
