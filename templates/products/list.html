@@ -12,7 +12,7 @@
         </li>
         <li class="inline-flex items-center" aria-current="page">
           <a class="text-gray-600 hover:text-blue-600"
-             href="{{ request.path }}?category={{ current_category.slug }}?category={{ current_category.slug }}&page=1">
+             href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by }}&page=1">
             {{ current_category.name }}
           </a>
         </li>
@@ -56,7 +56,7 @@
                 <li>
                   <a class="hover:text-blue-600 hover:underline
                     {% if option.field_name == current_order_by %}text-blue-900 font-bold{% else %}{% endif %}"
-                     href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ option.field_name }}">
+                     href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ option.field_name }}&page={{ page_obj.number }}">
                     {{ option.show_name }}
                   </a>
                 </li>
@@ -67,48 +67,84 @@
           <!-- filter wrap -->
 
         </aside> <!-- col.// -->
-        <main class="md:w-2/3 lg:w-3/4 px-4">
-          {% if products %}
-            <div
-                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 {% if products %}grid-cols-1{% endif %} gap-4">
-              {% for product in products %}
-                <div>
-                  <!-- COMPONENT: PRODUCT CARD -->
-                  <article class="shadow-sm rounded bg-white border border-gray-200">
-                    <a href="#" class="block relative p-1">
-                      <img src="{{ product.principal_image_url }}" class="mx-auto w-auto" height="240"
-                           alt="Product title here">
-                    </a>
-                    <div class="p-4 border-t border-t-gray-200">
-                      <p class="font-semibold">${{ product.current_price }}</p>
-                      <a href="#" class="block text-gray-600 mb-3 hover:text-blue-500">
-                        {{ product.name }}
+        <section class="md:w-2/3 lg:w-3/4 px-4">
+          <main class="">
+            {% if products %}
+              <div
+                  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 {% if products %}grid-cols-1{% endif %} gap-8">
+                {% for product in products %}
+                  <div>
+                    <!-- COMPONENT: PRODUCT CARD -->
+                    <article class="shadow-sm rounded bg-white border border-gray-200">
+                      <a href="#" class="block relative p-1">
+                        <img src="{{ product.principal_image_url }}" class="h-auto w-auto"
+                             alt="Product title here">
                       </a>
-                      <div>
-                        <a class="px-4 py-2 inline-block text-white text-center bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
-                           href="#">
-                          Add to cart
+                      <div class="p-4 border-t border-t-gray-400">
+
+                        <a href="#" class="block text-gray-600 mb-3 hover:text-blue-500">
+                          {{ product.name }}
                         </a>
-                        <a class="px-3 py-2 inline-block text-blue-600 border border-gray-300 rounded-md hover:bg-gray-100"
-                           href="#">
-                          <i class="fa fa-heart"></i>
-                        </a>
+                        <p class="font-semibold">${{ product.current_price }}</p>
+                        <div>
+                          <a class="px-4 py-2 inline-block text-white text-center bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
+                             href="#">
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                  <!-- COMPONENT: PRODUCT CARD //END -->
-                </div>
-              {% endfor %}
-              {% else %}
-              {% include 'core/not-found.html' %}
-              {% block not_found %}
-              {% endblock %}
+                    </article>
+                    <!-- COMPONENT: PRODUCT CARD //END -->
+                  </div>
+                {% endfor %}
+                {% else %}
+                {% include 'core/not-found.html' %}
+                {% block not_found %}
+                {% endblock %}
 
-            </div> <!-- grid .// -->
-          {% endif %}
-        </main>  <!-- col.// -->
+              </div> <!-- grid .// -->
+            {% endif %}
+          </main>  <!-- col.// -->
+          <nav class="pt-6 flex flex-col items-center">
+            <ul class="pagination-blue pagination pagination-gradient">
+              {% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" aria-label="First"
+                     href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by.field_name }}&page=1">
+                    <span class="material-icons"><<</span>
+                  </a>
+                </li>
+
+                <li class="page-item">
+                  <a class="page-link" aria-label="Previous"
+                     href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by.field_name }}&page={{ page_obj.previous_page_number }}">
+                    <span class="material-icons"><</span>
+                  </a>
+                </li>
+              {% endif %}
+              <li class="page-item active"><a class="page-link">{{ page_obj.number }}</a></li>
+              {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a class="page-link" aria-label="Next"
+                     href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by.field_name }}&page={{ page_obj.next_page_number }}">
+                    <span class="material-icons">></span>
+                  </a>
+                </li>
+                <li class="page-item">
+                <a class="page-link" aria-label="Last"
+                   href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by.field_name }}&page={{ page_obj.paginator.num_pages }}">
+                <span class="material-icons">>></span>
+              {% endif %}
+              </a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+
       </div> <!-- grid.// -->
+      <section class="">
 
+      </section>
     </div> <!-- container .// -->
   </section>
 
