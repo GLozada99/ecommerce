@@ -8,7 +8,7 @@ from ecommerce.products.services.product import ProductService
 class ProductListView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 6
     template_name = 'products/list.html'
 
     def get_queryset(self):
