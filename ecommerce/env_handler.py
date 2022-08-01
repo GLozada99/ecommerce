@@ -1,4 +1,4 @@
-from decouple import UndefinedValueError, config, Csv
+from decouple import Csv, UndefinedValueError, config
 
 
 class EnvHandler:
@@ -10,7 +10,7 @@ class EnvHandler:
     ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS',
                            default='127.0.0.1', cast=Csv())
 
-    def __init__(self):
+    def __init__(self) -> None:
         try:
             db_name = config('DB_NAME')
             db_user = config('DB_USER')
