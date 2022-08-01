@@ -1,3 +1,5 @@
+from typing import Mapping, Sequence
+
 from django.views.generic import ListView, TemplateView  # type: ignore
 
 from ecommerce.products.models import Product
@@ -11,13 +13,13 @@ class ProductListView(ListView):
     paginate_by = 6
     template_name = 'products/list.html'
 
-    def get_queryset(self):
+    def get_queryset(self) -> Sequence[Product]:
         return ProductService.get_products(
             self.request.GET.get('category'),
             self.request.GET.get('order_by', ''),
         )
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(ProductListView, self).get_context_data(**kwargs)
         context['current_category'] = CategoryService.get_current_category(
             self.request.GET.get('category'),

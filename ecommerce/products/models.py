@@ -17,7 +17,7 @@ class Category(BaseModel):
         ordering = ('name',)
         verbose_name_plural = 'Categories'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -35,7 +35,8 @@ class Product(SafeModel):
 
     @property
     def principal_image_url(self) -> str:
-        return self.pictures.first().image.thumbnails.medium.url
+        first_image = self.pictures.first().image.thumbnails.medium
+        return str(first_image.url)
 
 
 class ImageProduct(models.Model):
