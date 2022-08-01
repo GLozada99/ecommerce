@@ -23,8 +23,10 @@ INSTALLED_APPS = [
     'safedelete',
     'thumbnails',
     'django_extensions',
+
     'ecommerce.core',
     'ecommerce.products',
+    'ecommerce.clients'
 ]
 
 MIDDLEWARE = [
