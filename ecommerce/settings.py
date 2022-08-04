@@ -26,7 +26,8 @@ INSTALLED_APPS = [
 
     'ecommerce.core',
     'ecommerce.products',
-    'ecommerce.clients'
+    'ecommerce.clients',
+    'ecommerce.social_auth',
 ]
 
 MIDDLEWARE = [
