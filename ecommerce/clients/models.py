@@ -1,14 +1,14 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.db.models import Model
 
+from ecommerce.core.models import User
 from ecommerce.utils.models import SafeModel
 
 
 class Client(SafeModel):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.EmailField(_('email address'), blank=True, unique=True)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    phone = models.CharField(max_length=30)
     authentication_provider = models.TextField()
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}, {self.email}'
+        return f'{self.user}\n{self.authentication_provider}'
