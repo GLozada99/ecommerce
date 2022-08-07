@@ -104,6 +104,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
     'st'
 ]
+
 # Media files
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
@@ -172,5 +173,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# Allauth settings
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/site/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/site/'
+ACCOUNT_SESSION_REMEMBER = False
