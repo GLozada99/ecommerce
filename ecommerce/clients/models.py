@@ -6,8 +6,9 @@ from ecommerce.utils.models import SafeModel
 
 
 class Client(SafeModel):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
-    phone = models.CharField(max_length=30)
+    user = models.OneToOneField(User, on_delete=models.PROTECT,
+                                related_name='client_profile')
+    phone = models.CharField(max_length=30, null=True, blank=True)
     authentication_provider = models.TextField()
 
     def __str__(self) -> str:
