@@ -33,6 +33,13 @@
                     required
                 />
               </div>
+              <div class="mb-6">
+                <ul class="errorlist">
+                  {% for key, value in form.errors.items %}
+                    <li class="text-red-600">{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
 
               <div class="flex justify-end items-center mb-6">
                 <a
