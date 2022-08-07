@@ -34,11 +34,27 @@
           </div>
 
           <div class="flex items-center space-x-2 ml-auto">
-            <a class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
-               href="#">
-              <i class="text-gray-400 w-5 fa fa-user"></i>
-              <span class="hidden lg:inline ml-1">Sign in</span>
-            </a>
+            {% if user.is_authenticated %}
+              {% if user.get_full_name %}
+                <span class="hidden lg:inline mr-1">Hello {{ user.get_full_name }}</span>
+              {% endif %}
+
+              <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button type="submit"
+                        class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <i class="text-gray-400 w-5 fa fa-user"></i>
+                  <span class="hidden lg:inline ml-1">Log out</span>
+                </button>
+              </form>
+            {% else %}
+              <a class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                 href="{% url 'account_login' %}">
+                <i class="text-gray-400 w-5 fa fa-user"></i>
+                <span class="hidden lg:inline ml-1">Log in</span>
+              </a>
+            {% endif %}
 
             <a class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
                href="#">
@@ -46,7 +62,6 @@
               <span class="hidden lg:inline ml-1">My cart</span>
             </a>
           </div>
-
 
         </div>
         <nav class="bg-white border-gray-200 py-2.5 rounded dark:bg-gray-900">
