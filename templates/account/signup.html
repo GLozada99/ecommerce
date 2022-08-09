@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,33 +67,37 @@
                     Sign up
                   </button>
                 </div>
+              </form>
 
-                <div class="flex mt-7 items-center text-center">
-                  <hr class="border-gray-300 border-1 w-full rounded-md">
-                  <label class="block font-medium text-sm text-gray-600 w-full">
-                    Sign up with
-                  </label>
-                  <hr class="border-gray-300 border-1 w-full rounded-md">
-                </div>
+              <div class="flex mt-7 items-center text-center">
+                <hr class="border-gray-300 border-1 w-full rounded-md">
+                <label class="block font-medium text-sm text-gray-600 w-full">
+                  Sign up with
+                </label>
+                <hr class="border-gray-300 border-1 w-full rounded-md">
+              </div>
 
-                <div class="flex mt-7 justify-center w-full">
-                  <button
-                      class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+              <div class="flex mt-7 justify-center w-full">
+                <form action="{% provider_login_url 'google' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit"
+                          class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                     <i class="fa fa-google pr-2" aria-hidden="true"></i>
                     Google
                   </button>
-                </div>
+                </form>
 
-                <div class="mt-7">
-                  <div class="flex justify-center items-center">
-                    <label class="mr-2">Already have an account?</label>
-                    <a href="{{ login_url }}"
-                       class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                      Sign in!
-                    </a>
-                  </div>
+              </div>
+
+              <div class="mt-7">
+                <div class="flex justify-center items-center">
+                  <label class="mr-2">Already have an account?</label>
+                  <a href="{{ login_url }}"
+                     class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                    Sign in!
+                  </a>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
