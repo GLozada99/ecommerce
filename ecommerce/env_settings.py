@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     DB_NAME: str
 
     EMAIL_HOST: str
-    EMAIL_USE_TLS: str
+    EMAIL_USE_TLS: bool
     EMAIL_PORT: int
     EMAIL_HOST_USER: str
     EMAIL_HOST_PASSWORD: str
