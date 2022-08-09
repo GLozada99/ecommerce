@@ -1,16 +1,14 @@
 import os
 from pathlib import Path
 
-import dj_database_url
-
-from ecommerce.env_handler import EnvHandler
+from ecommerce.env_settings import Settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-handler = EnvHandler()
+env_settings = Settings()
 
-SECRET_KEY = handler.SECRET_KEY
-DEBUG = handler.DEBUG
-ALLOWED_HOSTS = handler.ALLOWED_HOSTS
+SECRET_KEY = env_settings.DJANGO_SECRET_KEY
+DEBUG = env_settings.DJANGO_DEBUG
+ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -70,7 +68,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default=handler.DB_URL)
+    'default': {
+        'ENGINE': f'django.db.backends.{env_settings.DB_ENGINE}',
+        'NAME': f'{env_settings.DB_NAME}',
+        'USER': f'{env_settings.DB_USER}',
+        'PASSWORD': f'{env_settings.DB_PASSWORD}',
+        'HOST': f'{env_settings.DB_HOST}',
+        'PORT': f'{env_settings.DB_PORT}',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
