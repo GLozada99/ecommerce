@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     DB_PORT: int
     DB_NAME: str
 
+    EMAIL_HOST: str
+    EMAIL_USE_TLS: str
+    EMAIL_PORT: int
+    EMAIL_HOST_USER: str
+    EMAIL_HOST_PASSWORD: str
+
     class Config:
         case_sensitive = True
         env_file = '.env'
