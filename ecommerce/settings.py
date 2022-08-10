@@ -1,16 +1,14 @@
 import os
 from pathlib import Path
 
-import dj_database_url
-
-from ecommerce.env_handler import EnvHandler
+from ecommerce.env_settings import Settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-handler = EnvHandler()
+env_settings = Settings()
 
-SECRET_KEY = handler.SECRET_KEY
-DEBUG = handler.DEBUG
-ALLOWED_HOSTS = handler.ALLOWED_HOSTS
+SECRET_KEY = env_settings.DJANGO_SECRET_KEY
+DEBUG = env_settings.DJANGO_DEBUG
+ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,12 +17,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     'safedelete',
     'thumbnails',
     'django_extensions',
+
     'ecommerce.core',
     'ecommerce.products',
+    'ecommerce.clients',
+    'ecommerce.social_auth',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +68,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default=handler.DB_URL)
+    'default': {
+        'ENGINE': f'django.db.backends.{env_settings.DB_ENGINE}',
+        'NAME': f'{env_settings.DB_NAME}',
+        'USER': f'{env_settings.DB_USER}',
+        'PASSWORD': f'{env_settings.DB_PASSWORD}',
+        'HOST': f'{env_settings.DB_HOST}',
+        'PORT': f'{env_settings.DB_PORT}',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -95,6 +109,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
     'st'
 ]
+
 # Media files
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
@@ -152,3 +167,26 @@ THUMBNAILS = {
         }
     }
 }
+
+AUTH_USER_MODEL = 'core.User'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# Allauth settings
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/site/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/site/'
+ACCOUNT_SESSION_REMEMBER = False
+
+EMAIL_HOST = env_settings.EMAIL_HOST
+EMAIL_USE_TLS = env_settings.EMAIL_USE_TLS
+EMAIL_PORT = env_settings.EMAIL_PORT
+EMAIL_HOST_USER = env_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = env_settings.EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = env_settings.EMAIL_HOST_USER

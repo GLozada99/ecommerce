@@ -1,6 +1,6 @@
 from typing import Mapping, Sequence
 
-from django.views.generic import ListView, TemplateView  # type: ignore
+from django.views.generic import ListView
 
 from ecommerce.products.models import Product
 from ecommerce.products.services.category import CategoryService
