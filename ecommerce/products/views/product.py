@@ -11,7 +11,7 @@ class ProductListView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
     paginate_by = 6
-    template_name = 'products/list.html'
+    template_name = 'list.html'
 
     def get_queryset(self) -> Sequence[Product]:
         return ProductService.get_products(
