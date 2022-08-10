@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 23:37-0400\n"
+"POT-Creation-Date: 2022-08-09 23:52-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,3 +61,15 @@ msgstr "Sobre Nosotros"
 #: templates/base.html:105
 msgid "Contact Us"
 msgstr "Contactanos"
+
+#: templates/frontpage.html:48
+msgid "Categories"
+msgstr "Categories"
+
+#: templates/not-found.html:10
+msgid "Sorry, we couldn't find this page."
+msgstr "Disculpa, esta página no se encuentra disponible"
+
+#: templates/not-found.html:13
+msgid "Back to homepage"
+msgstr "Volver al inicio"
