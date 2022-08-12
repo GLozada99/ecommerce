@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 23:59-0400\n"
+"POT-Creation-Date: 2022-08-12 23:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/list.html:9
+#: ecommerce/products/templates/list.html:9
 msgid "All items"
 msgstr "Todos los productos"
 
-#: templates/list.html:34
+#: ecommerce/products/templates/list.html:34
 msgid "Filter by"
 msgstr "Filtrar por"
 
-#: templates/list.html:38
+#: ecommerce/products/templates/list.html:38
 msgid "Categories"
 msgstr "Categorías"
 
-#: templates/list.html:54
+#: ecommerce/products/templates/list.html:54
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: templates/list.html:93
+#: ecommerce/products/templates/list.html:93
 msgid "Add to cart"
 msgstr "Añadir al carrito"

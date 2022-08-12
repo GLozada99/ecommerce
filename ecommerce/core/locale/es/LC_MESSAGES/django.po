@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 23:52-0400\n"
+"POT-Creation-Date: 2022-08-12 23:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,58 +18,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/base.html:6
+#: ecommerce/core/templates/base.html:6
 msgid "Title"
 msgstr "Título"
 
-#: templates/base.html:30 templates/base.html:33
+#: ecommerce/core/templates/base.html:30 ecommerce/core/templates/base.html:33
 msgid "Search"
 msgstr "Buscar"
 
-#: templates/base.html:40
+#: ecommerce/core/templates/base.html:40
 msgid "Hello"
 msgstr "Hola"
 
-#: templates/base.html:49
+#: ecommerce/core/templates/base.html:49
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:56
+#: ecommerce/core/templates/base.html:56
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:63
+#: ecommerce/core/templates/base.html:63
 msgid "My cart"
 msgstr "Mi carrito"
 
-#: templates/base.html:73
+#: ecommerce/core/templates/base.html:73
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
-#: templates/base.html:87
+#: ecommerce/core/templates/base.html:87
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:93
+#: ecommerce/core/templates/base.html:93
 msgid "Products"
 msgstr "Productos"
 
-#: templates/base.html:99
+#: ecommerce/core/templates/base.html:99
 msgid "About Us"
 msgstr "Sobre Nosotros"
 
-#: templates/base.html:105
+#: ecommerce/core/templates/base.html:105
 msgid "Contact Us"
 msgstr "Contactanos"
 
-#: templates/frontpage.html:48
+#: ecommerce/core/templates/frontpage.html:48
 msgid "Categories"
 msgstr "Categories"
 
-#: templates/not-found.html:10
+#: ecommerce/core/templates/not-found.html:10
 msgid "Sorry, we couldn't find this page."
 msgstr "Disculpa, esta página no se encuentra disponible"
 
-#: templates/not-found.html:13
+#: ecommerce/core/templates/not-found.html:13
 msgid "Back to homepage"
 msgstr "Volver al inicio"

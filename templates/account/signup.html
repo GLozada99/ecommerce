@@ -4,8 +4,9 @@
 {% extends 'account/base.html' %}
 {% load socialaccount %}
 {% block content %}
+  {% load i18n %}
   <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
-    Registration
+    {% trans "Registration" %}
   </label>
   <form class="signup mt-10" method="POST" action="{% url 'account_signup' %}">
     {% csrf_token %}
@@ -20,7 +21,7 @@
       <input
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder="{% trans "Username" %}"
           required
           class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
     </div>
@@ -37,7 +38,7 @@
       <input
           type="password"
           name="password1"
-          placeholder="Password"
+          placeholder="{% trans "Password" %}"
           required
           class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
     </div>
@@ -45,7 +46,7 @@
       <input
           type="password"
           name="password2"
-          placeholder="Confirm Password"
+          placeholder="{% trans "Confirm Password" %}"
           required
           class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
     </div>
@@ -53,7 +54,7 @@
     <div class="mt-7">
       <button
           class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-        Sign up
+        {% trans "Sign Up" %}
       </button>
     </div>
   </form>
@@ -61,7 +62,7 @@
   <div class="flex mt-7 items-center text-center">
     <hr class="border-gray-300 border-1 w-full rounded-md">
     <label class="block font-medium text-sm text-gray-600 w-full">
-      Sign up with
+      {% trans "Sign Up with" %}
     </label>
     <hr class="border-gray-300 border-1 w-full rounded-md">
   </div>
@@ -80,10 +81,10 @@
 
   <div class="mt-7">
     <div class="flex justify-center items-center">
-      <label class="mr-2">Already have an account?</label>
+      <label class="mr-2">{% trans "Already have an account?" %}</label>
       <a href="{{ login_url }}"
          class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-        Sign in!
+        {% trans "Sign In!" %}
       </a>
     </div>
   </div>
