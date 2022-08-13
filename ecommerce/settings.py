@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.utils.translation import gettext_lazy
+
 from ecommerce.env_settings import Settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +40,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -97,12 +100,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
+
+LANGUAGES = [
+    ('en-us', gettext_lazy('English')),
+    ('es', gettext_lazy('Spanish')),
+]
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "staticfiles/"
