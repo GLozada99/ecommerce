@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'safedelete',
     'thumbnails',
     'django_extensions',
+    'modeltranslation',
 
     'ecommerce.core',
     'ecommerce.products',
@@ -110,6 +111,7 @@ LANGUAGES = [
     ('en-us', gettext_lazy('English')),
     ('es', gettext_lazy('Spanish')),
 ]
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('en-us', 'es')
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "staticfiles/"
