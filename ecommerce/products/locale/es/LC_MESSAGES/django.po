@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-12 23:21+0000\n"
+"POT-Creation-Date: 2022-08-13 16:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,13 @@ msgid "Filter by"
 msgstr "Filtrar por"
 
 #: ecommerce/products/templates/list.html:38
-msgid "Categories"
+msgid "Product Categories"
 msgstr "Categorías"
 
-#: ecommerce/products/templates/list.html:54
+#: ecommerce/products/templates/list.html:53
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: ecommerce/products/templates/list.html:93
+#: ecommerce/products/templates/list.html:92
 msgid "Add to cart"
 msgstr "Añadir al carrito"
