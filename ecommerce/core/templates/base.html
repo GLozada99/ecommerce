@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% trans "Title" %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/88b5da25f6.js" crossorigin="anonymous"></script>
@@ -26,17 +27,17 @@
           <div class="flex flex-nowrap items-center w-full order-last md:order-none mt-5 md:mt-0 md:w-2/4 lg:w-2/4">
             <input
                 class="flex-grow appearance-none border border-gray-200 bg-gray-100 rounded-md mr-2 py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400"
-                type="text" placeholder="Search">
+                type="text" placeholder="{% trans "Search" %}">
             <button type="button"
                     class="px-4 py-2 inline-block text-white border border-transparent bg-blue-600 text-white rounded-md hover:bg-blue-700">
-              Search
+              {% trans "Search" %}
             </button>
           </div>
 
           <div class="flex items-center space-x-2 ml-auto">
             {% if user.is_authenticated %}
               {% if user.get_full_name %}
-                <span class="hidden lg:inline mr-1">Hello {{ user.get_full_name }}</span>
+                <span class="hidden lg:inline mr-1">{% trans "Hello" %} {{ user.get_full_name }}</span>
               {% endif %}
 
               <form method="post" action="{% url 'account_logout' %}">
@@ -45,21 +46,21 @@
                         class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
                 >
                   <i class="text-gray-400 w-5 fa fa-user"></i>
-                  <span class="hidden lg:inline ml-1">Log out</span>
+                  <span class="hidden lg:inline ml-1">{% trans "Log out" %}</span>
                 </button>
               </form>
             {% else %}
               <a class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
                  href="{% url 'account_login' %}">
                 <i class="text-gray-400 w-5 fa fa-user"></i>
-                <span class="hidden lg:inline ml-1">Log in</span>
+                <span class="hidden lg:inline ml-1">{% trans "Log in" %}</span>
               </a>
             {% endif %}
 
             <a class="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
                href="#">
               <i class="text-gray-400 w-5 fa fa-shopping-cart"></i>
-              <span class="hidden lg:inline ml-1">My cart</span>
+              <span class="hidden lg:inline ml-1">{% trans "My cart" %}</span>
             </a>
           </div>
 
@@ -69,7 +70,7 @@
             <button data-collapse-toggle="navbar-default" type="button"
                     class="inline-flex items-center text-sm text-gray-500 w-full justify-center rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                     aria-controls="navbar-default" aria-expanded="true">
-              <span class="sr-only">Open main menu</span>
+              <span class="sr-only">{% trans "Open main menu" %}</span>
               <svg class="w-18 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                    xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -83,25 +84,25 @@
                   <a href="{% url 'site:frontpage:frontpage' %}"
                      class="block text-2xl py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
                      aria-current="page">
-                    Home
+                    {% trans "Home" %}
                   </a>
                 </li>
                 <li>
                   <a href="{% url 'site:products:products-list' %}"
                      class="block text-2xl py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">
-                    Products
+                    {% trans "Products" %}
                   </a>
                 </li>
                 <li>
                   <a href="#"
                      class="block text-2xl py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">
-                    About
+                    {% trans "About Us" %}
                   </a>
                 </li>
                 <li>
                   <a href="#"
                      class="block text-2xl py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">
-                    Contact
+                    {% trans "Contact Us" %}
                   </a>
                 </li>
               </ul>
@@ -182,7 +183,26 @@
               <span class="inline">Facebook</span>
             </div>
           </a>
-
+          <div class="py-5">
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}">
+              <select name="language" onchange="this.form.submit();"
+                      class="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none
+                      focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 inline-flex
+                      items-center"
+                      type="button">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                          selected {% endif %}>
+                    {{ language.name_local.capitalize }} ({{ language.code }})
+                  </option>
+                {% endfor %}
+              </select>
+            </form>
+          </div>
         </div>
       </div>
     </footer>

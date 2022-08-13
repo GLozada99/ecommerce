@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-13 16:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ecommerce/settings.py:111
+msgid "English"
+msgstr ""
+
+#: ecommerce/settings.py:112
+msgid "Spanish"
+msgstr ""
+
+#: templates/account/email_confirm.html:6
+#: templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr "Confirma dirección de correo electrónico"
+
+#: templates/account/email_confirm.html:17
+#, python-format
+msgid ""
+"Please confirm that\n"
+"        <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for "
+"user %(user_display)s\n"
+"        ."
+msgstr ""
+"Por favor confirma que\n"
+"        <a href=\"mailto:%(email)s\">%(email)s</a> es un email para usuario "
+"%(user_display)s\n"
+"        ."
+
+#: templates/account/email_confirm.html:26
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/account/email_confirm.html:33
+#, python-format
+msgid ""
+"This e-mail confirmation link\n"
+"      expired or is invalid. Please\n"
+"      <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"Este enlace de confirmación\n"
+"      ha expirado o es inválido. Por favor\n"
+"      <a href=\"%(email_url)s\">realiza otra petición de confirmación.</a>."
+
+#: templates/account/login.html:9 templates/account/login.html:50
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: templates/account/login.html:24 templates/account/signup.html:24
+msgid "Username"
+msgstr "Nombre de Usuario"
+
+#: templates/account/login.html:33
+#: templates/account/password_reset_from_key.html:24
+#: templates/account/signup.html:41
+msgid "Password"
+msgstr "Contraseña"
+
+#: templates/account/login.html:42
+msgid "Forgot Password?"
+msgstr "¿Olvidó su Contraseña?"
+
+#: templates/account/login.html:58
+msgid "Sign in with"
+msgstr "Iniciar sesión con"
+
+#: templates/account/login.html:78
+msgid "New?"
+msgstr "Eres nuevo?"
+
+#: templates/account/login.html:81
+msgid "Sign Up!"
+msgstr "¡Regístrate!"
+
+#: templates/account/password_reset.html:9
+#: templates/account/password_reset_from_key.html:8
+msgid "Password Reset"
+msgstr "Restablecer Contraseña"
+
+#: templates/account/password_reset.html:23
+msgid "Please, provide your email in order to reset your password."
+msgstr "Por favor, introduce tu email para restablecer tu contraseña."
+
+#: templates/account/password_reset.html:38
+#: templates/account/password_reset_from_key.html:40
+msgid "Reset Password"
+msgstr "Restablecer Contraseña"
+
+#: templates/account/password_reset_from_key.html:32
+#: templates/account/signup.html:49
+msgid "Confirm Password"
+msgstr "Confirmar Contraseña"
+
+#: templates/account/signup.html:9
+msgid "Registration"
+msgstr "Registro"
+
+#: templates/account/signup.html:57
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: templates/account/signup.html:65
+msgid "Sign Up with"
+msgstr "Regístrate con"
+
+#: templates/account/signup.html:84
+msgid "Already have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: templates/account/signup.html:87
+msgid "Sign In!"
+msgstr "¡Inicia Sesión!"

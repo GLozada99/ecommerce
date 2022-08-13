@@ -1,4 +1,5 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
   <section class="pt-5">
     <div class="container max-w-screen-xl mx-auto px-4">
@@ -44,7 +45,7 @@
   </section>
   <section class="pt-10">
     <div class="container max-w-screen-xl mx-auto px-4 pb-8">
-      <h2 class="text-4xl font-bold mb-8">Categories</h2>
+      <h2 class="text-4xl font-bold mb-8">{% translate "Categories" %}</h2>
 
       <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">
         {% for category in categories %}

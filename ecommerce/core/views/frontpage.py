@@ -6,7 +6,7 @@ from ecommerce.products.services.category import CategoryService
 
 
 class FrontPageView(TemplateView):
-    template_name = 'core/frontpage.html'
+    template_name = 'frontpage.html'
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(FrontPageView, self).get_context_data(**kwargs)
