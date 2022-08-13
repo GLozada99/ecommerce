@@ -188,15 +188,16 @@
               <input name="next" type="hidden" value="{{ redirect_to }}">
               <select name="language" onchange="this.form.submit();"
                       class="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none
-                      focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex
+                      focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 inline-flex
                       items-center"
                       type="button">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}
                 {% for language in languages %}
-                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                    {{ language.name_local }} ({{ language.code }})
+                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                          selected {% endif %}>
+                    {{ language.name_local.capitalize }} ({{ language.code }})
                   </option>
                 {% endfor %}
               </select>
