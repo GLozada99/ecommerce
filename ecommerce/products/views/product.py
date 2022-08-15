@@ -1,6 +1,6 @@
 from typing import Mapping, Sequence
 
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 
 from ecommerce.products.models import Product
 from ecommerce.products.services.category import CategoryService
@@ -28,3 +28,9 @@ class ProductListView(ListView):
         context['order_by_options'] = ProductService.get_order_by_options()
         context['current_order_by'] = self.request.GET.get('order_by', '')
         return context
+
+
+class ProductDetailView(DetailView):
+    queryset = Product.objects.all()
+    context_object_name = 'product'
+    template_name = 'detail.html'
