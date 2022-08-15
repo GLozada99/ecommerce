@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from ecommerce.products.models import Category, ImageProduct, Product
+from ecommerce.products.models import (Category, ExtraDataProduct,
+                                       ImageProduct,
+                                       Product, )
 
 
 @admin.register(Category)
@@ -13,8 +15,12 @@ class ImageProductInline(admin.TabularInline):
     model = ImageProduct
 
 
+class ExtraDataInline(admin.TabularInline):
+    model = ExtraDataProduct
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_display = ('name', 'current_price', 'category', 'slug')
-    inlines = [ImageProductInline]
+    inlines = [ImageProductInline, ExtraDataInline]

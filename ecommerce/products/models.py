@@ -36,6 +36,10 @@ class Product(SafeModel):
         return f'{self.name}, {self.current_price}'
 
     @property
+    def long_description_paragraphs(self) -> list[str]:
+        return self.long_description.split('\r\n\r\n')
+
+    @property
     def principal_image_list_url(self) -> str:
         return self.pictures.first().list_url
 
@@ -70,3 +74,10 @@ class ImageProduct(models.Model):
     @property
     def list_url(self) -> str:
         return self.image.thumbnails.medium.url
+
+
+class ExtraDataProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                related_name='extra_data')
+    name = models.CharField(max_length=30)
+    value = models.CharField(max_length=50)
