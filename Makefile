@@ -44,3 +44,8 @@ set-data:
 	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
 	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
 	python manage.py createsuperuser --no-input
+
+.PHONY: reset-db
+reset-db:
+	python manage.py reset_db --noinput
+	$(MAKE) set-data
