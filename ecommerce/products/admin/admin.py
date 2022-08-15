@@ -1,22 +1,13 @@
 from django.contrib import admin
 
-from ecommerce.products.models import (Category, ExtraDataProduct,
-                                       ImageProduct,
-                                       Product, )
+from ecommerce.products.admin.inline import ExtraDataInline, ImageProductInline
+from ecommerce.products.models import (Category, Product, )
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_display = ('name', 'slug')
-
-
-class ImageProductInline(admin.TabularInline):
-    model = ImageProduct
-
-
-class ExtraDataInline(admin.TabularInline):
-    model = ExtraDataProduct
 
 
 @admin.register(Product)
