@@ -34,3 +34,15 @@ class ProductDetailView(DetailView):
     queryset = Product.objects.all()
     context_object_name = 'product'
     template_name = 'detail.html'
+
+    def get_context_data(self, **kwargs: dict) -> Mapping:
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+
+        if detail_image_id := int(self.request.GET.get('image_id', 0)):
+            context['detail_image_url'] = (ProductService.
+                                           get_detail_picture(detail_image_id))
+        else:
+            context['detail_image_url'] = (self.get_object().
+                                           principal_image_detail_url)
+
+        return context
