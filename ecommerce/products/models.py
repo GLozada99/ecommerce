@@ -25,6 +25,7 @@ class Category(BaseModel):
 class Product(SafeModel):
     name = models.CharField(max_length=80)
     description = models.TextField(blank=True)
+    long_description = models.TextField(blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True
     )
@@ -53,6 +54,7 @@ class Product(SafeModel):
             }
             for image_data in images_product
         ]
+        print(urls)
         return urls
 
 
