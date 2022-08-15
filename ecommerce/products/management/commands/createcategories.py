@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.template.defaultfilters import slugify
 
-from ecommerce.products.models import Category
+from ecommerce.products.models.models import Category
 
 
 class Command(BaseCommand):
@@ -12,8 +12,8 @@ class Command(BaseCommand):
     help = ('A command to populate the category table.\n'
             'This command does not need parameters')
 
-    @transaction.atomic
-    def handle(self, *args, **kwargs):
+    @transaction.atomic  # type: ignore
+    def handle(self, *args: tuple, **kwargs: dict) -> None:
         self.stdout.write('Creating Categories.')
         if Category.objects.exists():
             self.stdout.write(self.style.SUCCESS('Categories already exist.'))
