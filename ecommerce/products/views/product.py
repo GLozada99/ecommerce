@@ -2,7 +2,7 @@ from typing import Mapping, Sequence
 
 from django.views.generic import DetailView, ListView
 
-from ecommerce.products.models import Product
+from ecommerce.products.models.models import Product
 from ecommerce.products.services.category import CategoryService
 from ecommerce.products.services.product import ProductService
 

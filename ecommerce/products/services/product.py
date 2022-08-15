@@ -2,7 +2,8 @@ from typing import Sequence
 
 from django.utils.translation import gettext_lazy as _
 
-from ecommerce.products.models import ImageProduct, Product
+from ecommerce.products.models.composite_models import ImageProduct
+from ecommerce.products.models.models import Product
 
 
 class ProductService:

@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from ecommerce.products.models import Category
+from ecommerce.products.models.models import Category
 
 
 class CategoryService:
