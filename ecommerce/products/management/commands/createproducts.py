@@ -14,8 +14,8 @@ class Command(BaseCommand):
     help = ('A command to populate the product table.\n'
             'This command does not need parameters')
 
-    @transaction.atomic
-    def handle(self, *args, **kwargs):
+    @transaction.atomic  # type: ignore
+    def handle(self, *args: tuple, **kwargs: dict) -> None:
         self.stdout.write('Creating Products.')
         if Product.objects.exists():
             self.stdout.write(self.style.SUCCESS('Categories already exist.'))
@@ -31,7 +31,8 @@ class Command(BaseCommand):
                 name = filename.split('.')[0]
                 product = Product(
                     name=name,
-                    description=faker.text(10),
+                    description='\n\r\n\r'.join(faker.paragraphs(5)),
+                    long_description='\n\r\n\r'.join(faker.paragraphs(20)),
                     current_price=faker.pydecimal(left_digits=5,
                                                   right_digits=2,
                                                   min_value=100),
