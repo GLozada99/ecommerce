@@ -2,6 +2,7 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from thumbnails.fields import ImageField
 
+from ecommerce import settings
 from ecommerce.utils.models import BaseModel, SafeModel
 
 
@@ -37,6 +38,19 @@ class Product(SafeModel):
     def principal_image_url(self) -> str:
         first_image = self.pictures.first().image.thumbnails.medium
         return str(first_image.url)
+
+    @property
+    def n_small_thumbnails_data(self) -> list[dict[str, str]]:
+        images_product = self.pictures.all()[
+                         :settings.env_settings.SMALL_THUMBNAIL_NUMBER]
+        urls = [
+            {
+                'url': str(image_data.image.thumbnails.small.url),
+                'id': str(image_data.id),
+            }
+            for image_data in images_product
+        ]
+        return urls
 
 
 class ImageProduct(models.Model):

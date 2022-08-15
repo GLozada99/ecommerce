@@ -141,8 +141,6 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 100,
                  'height': 100},
-                {'PATH': 'thumbnails.processors.crop', 'width': 80,
-                 'height': 80}
             ],
             'POST_PROCESSORS': [
                 {
@@ -164,8 +162,6 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 350,
                  'height': 350},
-                {'PATH': 'thumbnails.processors.flip',
-                 'direction': 'horizontal'}
             ],
         },
         'watermarked': {
