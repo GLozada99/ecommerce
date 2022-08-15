@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
@@ -30,6 +32,10 @@ class Product(SafeModel):
 
     def __str__(self) -> str:
         return f'{self.name}, {self.category}'
+
+    @property
+    def current_price(self) -> Decimal:
+        return self.types.first().current_price
 
     @property
     def general_description_paragraphs(self) -> list[str]:
