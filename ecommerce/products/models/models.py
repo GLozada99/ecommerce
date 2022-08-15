@@ -58,7 +58,6 @@ class Product(SafeModel):
             }
             for image_data in images_product
         ]
-        print(urls)
         return urls
 
 
