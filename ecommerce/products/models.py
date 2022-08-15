@@ -35,9 +35,12 @@ class Product(SafeModel):
         return f'{self.name}, {self.current_price}'
 
     @property
-    def principal_image_url(self) -> str:
-        first_image = self.pictures.first().image.thumbnails.medium
-        return str(first_image.url)
+    def principal_image_list_url(self) -> str:
+        return self.pictures.first().list_url
+
+    @property
+    def principal_image_detail_url(self) -> str:
+        return self.pictures.first().detail_url
 
     @property
     def n_small_thumbnails_data(self) -> list[dict[str, str]]:
@@ -57,3 +60,11 @@ class ImageProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
     image = ImageField(upload_to='products/')
+
+    @property
+    def detail_url(self) -> str:
+        return self.image.thumbnails.large.url
+
+    @property
+    def list_url(self) -> str:
+        return self.image.thumbnails.medium.url
