@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from thumbnails.fields import ImageField
 
 from ecommerce.utils.models import BaseModel, SafeModel
 
@@ -25,6 +26,7 @@ class Category(BaseModel):
 class Product(SafeModel):
     name = models.CharField(max_length=80)
     general_description = models.TextField(blank=True)
+    general_image = ImageField(upload_to='products/general/')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True
     )
@@ -42,9 +44,9 @@ class Product(SafeModel):
         return self.general_description.split('\r\n\r\n')
 
     @property
-    def principal_image_list_url(self) -> str:
-        return self.types.first().pictures.first().list_url
+    def general_image_list_url(self) -> str:
+        return self.general_picture.thumbnails.medium.url
 
     @property
-    def principal_image_detail_url(self) -> str:
-        return self.types.first().pictures.first().list_url
+    def general_image_detail_url(self) -> str:
+        return self.general_picture.thumbnails.large.url
