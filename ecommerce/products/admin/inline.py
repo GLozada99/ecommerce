@@ -2,12 +2,13 @@ from django.contrib import admin
 
 from ecommerce.products.models.composite_models import (ProductConfiguration,
                                                         ProductExtraData,
-                                                        ProductImage, )
+                                                        ProductPicture, )
 
 
 class ImageInline(admin.TabularInline):
-    model = ProductImage
+    model = ProductPicture
     extra = 0
+    min = 1
 
 
 class ExtraDataInline(admin.TabularInline):
@@ -18,3 +19,4 @@ class ExtraDataInline(admin.TabularInline):
 class ConfigurationInline(admin.StackedInline):
     model = ProductConfiguration
     extra = 0
+    min = 1

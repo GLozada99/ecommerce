@@ -16,10 +16,10 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_display = ('name', 'category', 'slug')
-    inlines = [ConfigurationInline]
+    inlines = [ImageInline, ConfigurationInline]
 
 
 @admin.register(ProductConfiguration)
 class TypeProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'product', 'current_price')
-    inlines = [ImageInline, ExtraDataInline]
+    inlines = [ExtraDataInline]

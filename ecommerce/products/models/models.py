@@ -2,8 +2,8 @@ from decimal import Decimal
 
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from thumbnails.fields import ImageField
 
+from ecommerce import settings
 from ecommerce.utils.models import BaseModel, SafeModel
 
 
@@ -24,9 +24,8 @@ class Category(BaseModel):
 
 
 class Product(SafeModel):
-    name = models.CharField(max_length=80)
+    name = models.TextField()
     general_description = models.TextField(blank=True)
-    general_image = ImageField(upload_to='products/general/')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True
     )
@@ -37,16 +36,34 @@ class Product(SafeModel):
 
     @property
     def current_price(self) -> Decimal:
-        return self.types.first().current_price
+        return self.configurations.first().current_price
 
     @property
     def general_description_paragraphs(self) -> list[str]:
         return self.general_description.split('\r\n\r\n')
 
     @property
-    def general_image_list_url(self) -> str:
-        return self.general_picture.thumbnails.medium.url
+    def principal_image_list_url(self) -> str:
+        return self.configurations.first().picture_list_url
 
-    @property
-    def general_image_detail_url(self) -> str:
-        return self.general_picture.thumbnails.large.url
+    def n_small_thumbnails_data(self) -> list[dict[str, str]]:
+        images_product = self.pictures.all()[
+                         :settings.env_settings.SMALL_THUMBNAIL_NUMBER]
+        urls = [
+            {
+                'url': str(image_data.image.thumbnails.small.url),
+                'id': str(image_data.id),
+            }
+            for image_data in images_product
+        ]
+        return urls
+
+    def configuration_data(self) -> list[dict[str, str | int | Decimal]]:
+        return [
+            {
+                'id': data.id,
+                'name': data.name,
+                'current_price': data.current_price,
+                'url': data.picture.thumbnails.small.url,
+            } for data in self.configurations.all()
+        ]

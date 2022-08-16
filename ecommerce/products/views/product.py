@@ -37,12 +37,8 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(ProductDetailView, self).get_context_data(**kwargs)
-
-        if detail_image_id := int(self.request.GET.get('image_id', 0)):
-            context['detail_image_url'] = (ProductService.
-                                           get_detail_picture(detail_image_id))
-        else:
-            context['detail_image_url'] = (self.get_object().
-                                           general_image_detail_url)
-
-        return context
+        extra = ProductService.get_detail_extra_context(
+            self.get_object(),
+            self.request.GET,
+        )
+        return context | extra

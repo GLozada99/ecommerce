@@ -2,7 +2,6 @@ from typing import Sequence
 
 from django.utils.translation import gettext_lazy as _
 
-from ecommerce.products.models.composite_models import ProductImage
 from ecommerce.products.models.models import Product
 
 
@@ -25,5 +24,14 @@ class ProductService:
         ]
 
     @classmethod
-    def get_detail_picture(cls, detail_image_id: int) -> str:
-        return ProductImage.objects.get(id=detail_image_id).detail_url
+    def get_detail_extra_context(cls, instance: Product, data: dict) -> dict:
+        context = {}
+
+        if configuration := data.get('configuration', ''):
+            context['current_configuration'] = instance.configurations.filter(
+                slug=configuration
+            ).first()
+        else:
+            context['current_configuration'] = instance.configurations.first()
+
+        return context
