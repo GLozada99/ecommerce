@@ -82,7 +82,8 @@
                       </a>
                       <div class="p-4 border-t border-t-gray-400">
 
-                        <a href="#" class="block text-gray-600 mb-3 hover:text-blue-500 truncate">
+                        <a href="{{ request.path }}{{ product.slug }}"
+                           class="block text-gray-600 mb-3 hover:text-blue-500 truncate">
                           {{ product.name }}
                         </a>
                         <p class="font-semibold">${{ product.current_price }}</p>
