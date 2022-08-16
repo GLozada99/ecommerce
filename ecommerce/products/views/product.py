@@ -43,6 +43,6 @@ class ProductDetailView(DetailView):
                                            get_detail_picture(detail_image_id))
         else:
             context['detail_image_url'] = (self.get_object().
-                                           principal_image_detail_url)
+                                           general_image_detail_url)
 
         return context

@@ -2,7 +2,7 @@ from typing import Sequence
 
 from django.utils.translation import gettext_lazy as _
 
-from ecommerce.products.models.composite_models import ImageProduct
+from ecommerce.products.models.composite_models import ProductImage
 from ecommerce.products.models.models import Product
 
 
@@ -26,4 +26,4 @@ class ProductService:
 
     @classmethod
     def get_detail_picture(cls, detail_image_id: int) -> str:
-        return ImageProduct.objects.get(id=detail_image_id).detail_url
+        return ProductImage.objects.get(id=detail_image_id).detail_url

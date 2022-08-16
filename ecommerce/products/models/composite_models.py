@@ -5,7 +5,7 @@ from ecommerce import settings
 from ecommerce.products.models.models import Product
 
 
-class TypeProduct(models.Model):
+class ProductConfiguration(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='types')
     name = models.CharField(max_length=80)
@@ -29,10 +29,10 @@ class TypeProduct(models.Model):
         return urls
 
 
-class ImageProduct(models.Model):
-    product = models.ForeignKey(TypeProduct, on_delete=models.PROTECT,
+class ProductImage(models.Model):
+    product = models.ForeignKey(ProductConfiguration, on_delete=models.PROTECT,
                                 related_name='pictures')
-    image = ImageField(upload_to='products/')
+    image = ImageField(upload_to='products/configurations/')
 
     @property
     def detail_url(self) -> str:
@@ -43,8 +43,8 @@ class ImageProduct(models.Model):
         return self.image.thumbnails.medium.url
 
 
-class ExtraDataProduct(models.Model):
-    product = models.ForeignKey(TypeProduct, on_delete=models.CASCADE,
+class ProductExtraData(models.Model):
+    product = models.ForeignKey(ProductConfiguration, on_delete=models.CASCADE,
                                 related_name='extra_data')
     name = models.CharField(max_length=30)
     value = models.CharField(max_length=50)
