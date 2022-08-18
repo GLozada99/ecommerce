@@ -12,7 +12,7 @@ from ecommerce.products.models.models import Category, Product
 class ProductListView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
-    paginate_by = 1
+    paginate_by = 6
     ordering = 'name'
 
     def get_queryset(self) -> QuerySet:
