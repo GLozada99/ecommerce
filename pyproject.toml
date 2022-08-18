@@ -23,6 +23,7 @@ types-PyYAML = "^6.0.11"
 django-allauth = "^0.51.0"
 pydantic = {extras = ["dotenv"], version = "^1.9.1"}
 django-modeltranslation = "^0.18.4"
+django-htmx = "^1.12.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
