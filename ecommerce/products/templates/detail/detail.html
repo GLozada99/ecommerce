@@ -7,12 +7,12 @@
       <ol class="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-3 items-center">
         <li class="inline-flex items-center">
           <a class="text-gray-600 hover:text-blue-600"
-             href="{% url 'site:products:products-list' %}">{% trans "All items" %}</a>
+             href="{% url 'site:products:list' %}">{% trans "All items" %}</a>
           <i class="ml-3 text-gray-400 fa fa-chevron-right"></i>
         </li>
         <li class="inline-flex items-center" aria-current="page">
           <a class="text-gray-600 hover:text-blue-600"
-             href="{% url 'site:products:products-list' %}?category={{ product.category.slug }}&page=1">
+             href="{% url 'site:products:list' %}?category={{ product.category.slug }}&page=1">
             {{ product.category.name }}
           </a>
           <i class="ml-3 text-gray-400 fa fa-chevron-right"></i>
