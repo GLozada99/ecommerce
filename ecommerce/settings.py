@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'thumbnails',
     'django_extensions',
     'modeltranslation',
+    'django_htmx',
 
     'ecommerce.core',
     'ecommerce.products',
@@ -41,6 +42,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_htmx.middleware.HtmxMiddleware'
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
