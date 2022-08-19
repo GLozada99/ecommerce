@@ -1,5 +1,6 @@
 import os
 
+from django.core.files import File
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.template.defaultfilters import slugify
@@ -26,7 +27,7 @@ class Command(BaseCommand):
                     name=name,
                     slug=slugify(name),
                 )
-                with open(f) as fil:
-                    category.icon.save(f, fil)
+                with open(f, 'rb') as fil:
+                    category.icon.save(name, File(fil))
 
             self.stdout.write(self.style.SUCCESS('OK'))
