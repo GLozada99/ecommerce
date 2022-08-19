@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="mobile-nav-wrapper" role="navigation">
+  <div class="closemobileMenu"><i class="icon an an-times-l pull-right"></i> Close Menu</div>
+  <ul id="MobileNav" class="mobile-nav">
+    <li class="lvl1 bottom-link"><a href="{% url 'site:frontpage:frontpage' %}">{% trans "Home" %}</a></li>
+    <li class="lvl1 bottom-link"><a href="{% url 'site:products:list' %}">{% trans "Products" %}</a></li>
+    <li class="lvl1 bottom-link"><a href="#">{% trans "About Us" %}</a></li>
+    <li class="lvl1 bottom-link"><a href="#">{% trans "Contact Us" %}</a></li>
+    <li class="acLink"></li>
+    <li class="lvl1 bottom-link"><a href="#">{% trans "Login" %}</a></li>
+    <li class="lvl1 bottom-link"><a href="#">{% trans "Cart" %}</a></li>
+  </ul>
+</div>
