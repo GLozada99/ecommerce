@@ -1,7 +1,7 @@
 from decimal import Decimal
 
-from django.core.validators import FileExtensionValidator
 from django.db import models
+from thumbnails.fields import ImageField
 
 from ecommerce import settings
 from ecommerce.utils.models import BaseModel, SafeModel
@@ -9,10 +9,7 @@ from ecommerce.utils.models import BaseModel, SafeModel
 
 class Category(BaseModel):
     name = models.CharField(max_length=255)
-    icon = models.FileField(upload_to='category/',
-                            validators=[
-                               FileExtensionValidator(['svg'])
-                            ])
+    icon = ImageField(upload_to='category/')
     slug = models.SlugField()
 
     class Meta:
@@ -21,6 +18,9 @@ class Category(BaseModel):
 
     def __str__(self) -> str:
         return self.name
+
+    def picture_url(self) -> str:
+        return self.icon.thumbnails.small.url
 
 
 class Product(SafeModel):
