@@ -17,6 +17,14 @@ class ProductConfiguration(models.Model):
         return f'{self.product}\n{self.name}'
 
     @property
+    def general_name(self) -> str:
+        return self.product.name
+
+    @property
+    def picture_thumbnail_url(self) -> str:
+        return self.picture.thumbnails.small.url
+
+    @property
     def picture_detail_url(self) -> str:
         return self.picture.thumbnails.large.url
 
