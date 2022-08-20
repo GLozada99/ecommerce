@@ -28,16 +28,16 @@
 
   <body class="template-index index-demo2 modal-popup-style">
     <div class="page-wrapper">
-      {% include 'desktop-menu.html' %}
-      {% include 'mobile-menu.html' %}
+      {% include 'base/desktop-menu.html' %}
+      {% include 'base/mobile-menu.html' %}
     </div>
     <main>
       {% block content %}
       {% endblock %}
     </main>
 
-    {% include "footer.html" %}
-    {% include "minicart.html" %}
+    {% include "base/footer.html" %}
+    {% include "base/minicart.html" %}
 
     <script src="{% static 'assets/js/vendor/jquery-min.js' %}"></script>
     <script src="{% static 'assets/js/vendor/js.cookie.js' %}"></script>
