@@ -1,66 +1,90 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 {% block content %}
-  <section class="pt-5">
-    <div class="container max-w-screen-xl mx-auto px-4">
-      <div class="grid md:grid-cols-4 gap-5">
-        <div class="md:col-span-3">
-          <article class="bg-blue-500 h-96 p-10 lg:p-16 rounded">
-            <h1 class="text-3xl md:text-4xl text-white font-semibold">
-              Text Here <br>Or maybe pictures
-            </h1>
-            <p class="text-lg text-white font-normal mt-4 mb-6">
-              Something
-            </p>
-            <div>
-              <a class="px-4 py-2 inline-block font-semibold bg-yellow-500 text-white border border-transparent rounded-md hover:bg-yellow-600"
-                 href="#">
-                Discover our products
-              </a>
-              <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
-                 href="#">
-                Learn more
-              </a>
+  <div id="page-content">
+    <!--Home slider-->
+    <section class="slideshow slideshow-wrapper">
+      <div class="home-slideshow">
+        <div class="slide">
+          <div class="blur-up lazyload">
+            <img class="blur-up lazyload desktop-hide"
+                 data-src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
+                 src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
+                 alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
+            <img class="blur-up lazyload mobile-hide"
+                 data-src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
+                 src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
+                 alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
+            <div class="container">
+              <div
+                  class="slideshow-content slideshow-overlay top-middle d-flex justify-content-center
+                  align-items-center">
+                <div class="slideshow-content-in text-center">
+                  <div class="wrap-caption animation style1 px-2">
+                    <h1 class="h1 mega-title ss-mega-title fs-1 text-capitalize">Some Text Goes Here</h1>
+                    <div class="ss-btnWrap mt-3 mt-md-0">
+                      <a class="btn btn-lg border-0 btn-primary" href="#">A button</a>
+                      <a class="btn btn-lg border-0 btn-primary" href="#">Another button</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
-        <div class="col-span-1">
-          <article class="bg-yellow-500 rounded h-96 p-6 lg:p-10">
-            <h1 class="text-3xl md:text-4xl text-white font-semibold">
-              Text Here <br>Or maybe pictures
-            </h1>
-            <p class="text-lg text-white font-normal mt-4 mb-6">
-              Something
-            </p>
-            <div>
-              <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
-                 href="#">
-                Learn more
-              </a>
+        <div class="slide">
+          <div class="blur-up lazyload">
+            <img class="blur-up lazyload desktop-hide"
+                 data-src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
+                 src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
+                 alt="MAKING BRAND VISIBLE"
+                 title="MAKING BRAND VISIBLE"/>
+            <img class="blur-up lazyload mobile-hide"
+                 data-src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
+                 src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
+                 alt="MAKING BRAND VISIBLE"
+                 title="MAKING BRAND VISIBLE"/>
+            <div
+                class="slideshow-content slideshow-overlay bottom-middle container d-flex justify-content-center align-items-center">
+              <div class="slideshow-content-in text-center">
+                <div class="wrap-caption animation style1 whiteText px-2">
+                  <h2 class="mega-title ss-mega-title fs-1 text-capitalize">More Text</h2>
+                  <div class="ss-btnWrap mt-3 mt-md-0">
+                    <a class="btn btn-lg border-0 btn-primary" href="#">Button</a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="pt-10">
-    <div class="container max-w-screen-xl mx-auto px-4 pb-8">
-      <h2 class="text-4xl font-bold mb-8">{% translate "Categories" %}</h2>
+    </section>
+    <!--End Home slider-->
 
-      <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">
-        {% for category in categories %}
-          <a href="{% url 'site:products:list' %}?category={{ category.slug }}" class="group">
-            <div
-                class="flex items-center justify-center scale-110 w-36 h-36 mx-auto mb-2 rounded-3xl bg-blue-100 group-hover:bg-blue-200">
-              <img class="h-20 w-20 scale-125 group-hover:scale-150 group-hover:-rotate-12 ease-in duration-200"
-                   src="{{ category.icon.url }}"
-                   alt="">
+    <!--Collection Slider Section-->
+    <section class="section collection-slider-full">
+      <div class="container">
+        <div class="section-header">
+          <h2>{% trans "Product Categories" %}</h2>
+        </div>
+
+        <div class="collection-grid-slider">
+          {% for category in categories %}
+            <div class="collection-item">
+              <a href="{% url 'site:products:list' %}?category={{ category.slug }}" class="collection-grid-link">
+                <div class="img">
+                  <img class="blur-up lazyload"
+                       src="{{ category.picture_url }}" alt="{{ category.name }}"/>
+                </div>
+                <div class="details">
+                  <h3 class="collection-item-title">{{ category.name }}</h3>
+                </div>
+              </a>
             </div>
-            <p class="text-center text-2xl text-gray-600 group-hover:text-blue-600"> {{ category.name }} </p>
-          </a>
-        {% endfor %}
-      </nav>
-
-    </div>
-  </section>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
 {% endblock %}
