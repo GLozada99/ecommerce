@@ -29,10 +29,9 @@
           </div>
         {% endfor %}
         {% else %}
-        {% include 'not-found.html' with message="" %}
+        {% include '../ecommerce/core/templates/not-found.html' with message="" %}
         {% block not_found %}
         {% endblock %}
-
       </div> <!-- grid .// -->
     {% endif %}
   </main>  <!-- col.// -->
