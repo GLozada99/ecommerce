@@ -7,7 +7,7 @@
       <div id="cartEmpty"
            class="cartEmpty d-flex-justify-center flex-column text-center p-3 text-muted shadow d-none">
         <div class="minicart-header d-flex-center justify-content-between w-100">
-          <h4 class="fs-6 text-transform-none text-black">{% trans "Your cart" %}(0 Items)</h4>
+          <h4 class="fs-6 text-transform-none text-black">{% trans "My cart" %}(0 Items)</h4>
         </div>
         <div class="cartEmpty-content my-4">
           <i class="icon an an-sq-bag fs-1 text-muted"></i>
@@ -21,18 +21,18 @@
       <!--MiniCart Content-->
       <div id="cart-drawer" class="block block-cart">
         <div class="minicart-header">
-          <h4 class="fs-6 text-transform-none text-black">{% trans "Your cart" %} (2 Items)</h4>
+          <h4 class="fs-6 text-transform-none text-black">{% trans "My cart" %} (2 Items)</h4>
         </div>
         <div class="minicart-content">
           <ul class="m-0 clearfix">
             {% for product in cart_products %}
               <li class="item d-flex justify-content-center align-items-center">
-                <a class="product-image" href="product-layout1.html">
+                <a class="product-image" href="#">
                   <img class="blur-up lazyload" src="{{ product.picture_thumbnail_url }}"
                        data-src="assets/images/products/cart-product-img1.jpg" alt="image" title="">
                 </a>
                 <div class="product-details">
-                  <a class="product-title" href="product-layout1.html">{{ product.general_name }}</a>
+                  <a class="product-title" href="#">{{ product.general_name }}</a>
                   <div class="variant-cart">{{ product.name }}</div>
                   <div class="priceRow">
                     <div class="product-price">
