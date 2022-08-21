@@ -6,7 +6,7 @@
       <div class="row justify-items-center">
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 footer-about mb-4 mb-lg-0">
           <h2 class="text-white mb-4 text-lg">{% trans "Information" %}</h2>
-          <p class="mb-1">{{ contact_info.short_description }}</p>
+          <p class="mb-1">{{ contact_info.short_description | truncatewords:25 }}</p>
         </div>
         <div class="col-12 col-sm-12 col-md-8 col-lg-4 ">
         </div>
