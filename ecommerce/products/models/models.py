@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from django.db import models
 from thumbnails.fields import ImageField
 
@@ -35,16 +33,12 @@ class Product(SafeModel):
         return f'{self.name}, {self.category}'
 
     @property
-    def current_price(self) -> Decimal:
-        return self.configurations.first().current_price
+    def first_config(self) -> BaseModel:
+        return self.configurations.first()
 
     @property
     def general_description_paragraphs(self) -> list[str]:
         return self.general_description.split('\r\n\r\n')
-
-    @property
-    def principal_image_list_url(self) -> str:
-        return self.configurations.first().picture_list_url
 
     def n_small_thumbnails_data(self) -> list[dict[str, str]]:
         images_product = self.pictures.all()[
@@ -58,12 +52,12 @@ class Product(SafeModel):
         ]
         return urls
 
-    def configuration_data(self) -> list[dict[str, str | int | Decimal]]:
+    def configuration_data(self) -> list[dict[str, str | int]]:
         return [
             {
                 'id': data.id,
                 'name': data.name,
-                'current_price': data.current_price,
+                'current_price': str(data.current_price),
                 'url': data.picture.thumbnails.small.url,
             } for data in self.configurations.all()
         ]
