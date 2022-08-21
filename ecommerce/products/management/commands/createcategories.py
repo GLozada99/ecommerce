@@ -23,7 +23,7 @@ class Command(BaseCommand):
             for filename in os.listdir(path):
                 f = os.path.join(path, filename)
                 name = filename.split('.')[0]
-                category = Category(
+                category = Category.objects.populate(True).create(
                     name=name,
                     slug=slugify(name),
                 )

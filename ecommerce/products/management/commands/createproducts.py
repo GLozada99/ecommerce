@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 full_directory = os.path.join(path, directory)
                 for sub_dir in os.listdir(full_directory):
                     full_subdirectory = os.path.join(full_directory, sub_dir)
-                    product = Product.objects.create(
+                    product = Product.objects.populate(True).create(
                         name=sub_dir,
                         general_description='\n\r\n\r'.join(
                             faker.paragraphs(20)
