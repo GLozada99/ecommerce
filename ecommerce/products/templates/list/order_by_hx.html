@@ -21,10 +21,10 @@
               {% if current_order_by == "-name" %}selected{% endif %}>{% trans "Alphabetically," %} Z-A
       </option>
       <option value="current_price"
-              {% if current_order_by == "current_price" %}selected{% endif %}>{% trans "Price," %}
+              {% if current_order_by == "current_price" %}selected{% endif %}>{% trans "Price" %},
         {% trans "low to high" %} </option>
       <option value="-current_price"
-              {% if current_order_by == "-current_price" %}selected{% endif %}>{% trans "Price," %}
+              {% if current_order_by == "-current_price" %}selected{% endif %}>{% trans "Price" %},
         {% trans "high to low" %}</option>
     </select>
   </div>
