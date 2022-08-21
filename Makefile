@@ -1,5 +1,7 @@
 override SHELL := /bin/bash
 
+include .env
+
 .PHONY: build
 build:
 	docker-compose build
@@ -32,3 +34,18 @@ db-stop:
 .PHONY: stop
 stop:
 	docker-compose stop
+
+.PHONY: set-data
+set-data:
+	$(MAKE) migrate
+	python manage.py createcategories
+	python manage.py createproducts
+	DJANGO_SUPERUSER_PASSWORD=$(DJANGO_SUPERUSER_PASSWORD) \
+	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
+	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
+	python manage.py createsuperuser --no-input
+
+.PHONY: reset-db
+reset-db:
+	python manage.py reset_db --noinput
+	$(MAKE) set-data

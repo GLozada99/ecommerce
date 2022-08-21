@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     EMAIL_HOST_USER: str
     EMAIL_HOST_PASSWORD: str
 
+    SMALL_THUMBNAIL_NUMBER: int
+
     class Config:
         case_sensitive = True
         env_file = '.env'

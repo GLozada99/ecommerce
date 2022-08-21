@@ -1,0 +1,31 @@
+{% load i18n %}
+<li class="filters-sort ms-auto ms-sm-0"
+    id="order_by_hx"
+    hx-get="{% url 'site:products:order_by' %}"
+    hx-trigger="get_items from:window" hx-swap="outerHTML"
+    hx-target="#order_by_hx">
+  <div class="filters-toolbar__item">
+    <label for="SortBy" class="hidden">{% trans "Sort by" %} </label>
+    <select name="order_by" id="SortBy"
+            hx-trigger="change"
+            hx-get="{% url 'site:products:search' %}"
+            hx-target="#items"
+            hx-swap="outerHTML"
+            hx-vals='{"category": "{{ current_category }}", "page": "1"}'
+            class="filters-toolbar__input filters-toolbar__input--sort">
+      <option value="" {% if not current_order_by %}selected{% endif %}>Order by</option>
+      <option value="name"
+              {% if current_order_by == "name" %}selected{% endif %}>{% trans "Alphabetically," %} A-Z
+      </option>
+      <option value="-name"
+              {% if current_order_by == "-name" %}selected{% endif %}>{% trans "Alphabetically," %} Z-A
+      </option>
+      <option value="current_price"
+              {% if current_order_by == "current_price" %}selected{% endif %}>{% trans "Price," %}
+        {% trans "low to high" %} </option>
+      <option value="-current_price"
+              {% if current_order_by == "-current_price" %}selected{% endif %}>{% trans "Price," %}
+        {% trans "high to low" %}</option>
+    </select>
+  </div>
+</li>

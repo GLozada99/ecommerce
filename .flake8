@@ -3,3 +3,4 @@ exclude =
     __pycache__,
     */migrations/*.py,
     build,
+per-file-ignores = __init__.py:F401

@@ -1,0 +1,24 @@
+{% load i18n %}
+<section class="section collection-slider-full">
+  <div class="container">
+    <div class="section-header">
+      <h2>{% trans "Product Categories" %}</h2>
+    </div>
+
+    <div class="collection-grid-slider">
+      {% for category in categories %}
+        <div class="collection-item">
+          <a href="{% url 'site:products:list' %}?category={{ category.slug }}" class="collection-grid-link">
+            <div class="img">
+              <img class="blur-up lazyload"
+                   src="{{ category.picture_url }}" alt="{{ category.name }}"/>
+            </div>
+            <div class="details">
+              <h3 class="collection-item-title">{{ category.name }}</h3>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

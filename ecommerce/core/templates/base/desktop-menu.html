@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+<header id="header" class="header header-main d-flex align-items-center header-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center justify-content-start d-flex">
+        <button type="button"
+                class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open me-3 d-lg-none"><i
+            class="icon an an-times-l"></i><i class="icon an an-bars-l"></i></button>
+        <!--End Mobile Toggle-->
+        <!--Logo-->
+        <div class="logo">
+          <a href="{% url 'site:frontpage:frontpage' %}">
+            <img class="logo-img mh-100"
+                 src="{% static 'brand.png' %}"
+                 alt="Optimal Multipurpose eCommerce Bootstrap 5 Html Template"
+                 title="Optimal Multipurpose eCommerce Bootstrap 5 Html Template"
+                 width="100"/>
+            <span class="logo-txt d-none">Optimal</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-1 col-sm-1 col-md-1 col-lg-6 align-self-center d-menu-col">
+        <div class="row">
+          <div class="col-1 col-sm-12 col-md-12 col-lg-12 align-self-center d-menu-col">
+            <nav class="grid__item" id="AccessibleNav">
+              <ul id="siteNav" class="site-nav medium center hidearrow">
+                <li class="lvl1 parent bottom-link"><a href="{% url 'site:frontpage:frontpage' %}">
+                  {% trans "Home" %}</a></li>
+                <li class="lvl1 parent bottom-link"><a href="{% url 'site:products:list' %}">{% trans "Products" %}</a>
+                </li>
+                <li class="lvl1 parent bottom-link"><a href="#">{% trans "About Us" %}</a></li>
+                <li class="lvl1 parent bottom-link"><a href="#">{% trans "Contact Us" %}</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div
+          class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center icons-col text-right d-flex justify-content-end">
+        <!--Search-->
+        <div class="site-search iconset"><i class="icon an an-search-l"></i><span
+            class="tooltip-label">{% trans "Search" %}</span></div>
+        <!--End Search-->
+        <!--Setting Dropdown-->
+        <div class="user-link iconset"><i class="icon an an-user-2"></i><span class="tooltip-label">
+          {% trans "Account" %}</span>
+        </div>
+        <div id="userLinks">
+          <ul class="user-links">
+            {% if user.is_authenticated %}
+              <li><a href="#">{% trans "Profile" %}</a></li>
+              <li>
+                <form method="post" action="{% url 'account_logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary shadow-none">
+                    {% trans "Log out" %}
+                  </button>
+                </form>
+              </li>
+            {% else %}
+              <li><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
+              <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <!--End Setting Dropdown-->
+        <!--Minicart Drawer-->
+        <div class="header-cart iconset">
+          <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal"
+             data-bs-target="#minicart-drawer">
+            <i class="icon an an-cart-l"></i><span
+              class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span
+              class="tooltip-label">Cart</span>
+          </a>
+        </div>
+        <!--End Minicart Drawer-->
+        <div class="setting-link iconset pe-0"><i class="icon an an-right-bar-s"></i><span class="tooltip-label">Settings</span>
+        </div>
+        <div id="settingsBox">
+          <div class="language-picker">
+            <label class="ttl" for="language">SELECT LANGUAGE</label>
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}">
+              <select name="language" id="language" onchange="this.form.submit();">
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  <option class="text-black" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                          selected {% endif %}>
+                    {{ language.name_local.capitalize }} ({{ language.code }})
+                  </option>
+                {% endfor %}
+              </select>
+            </form>
+          </div>
+        </div>
+        <!--End Setting Dropdown-->
+      </div>
+      <!--End Right Action-->
+    </div>
+  </div>
+  <!--Search Popup-->
+  <div id="search-popup" class="search-drawer">
+    <div class="container">
+      <span class="closeSearch an an-times-l"></span>
+      <form class="form minisearch" id="header-search" action="#" method="get">
+        <label class="label"><span>{% trans "Search" %}</span></label>
+        <div class="control">
+          <div class="searchField">
+            <div class="search-category">
+              <select id="rgsearch-category" name="rgsearch[category]" data-default="All Categories">
+                <option value="00" label="All Categories" selected="selected">{% trans "All Categories" %}</option>
+                <optgroup id="rgsearch-shop" label="Shop">
+                  {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                  {% endfor %}
+                </optgroup>
+              </select>
+            </div>
+            <div class="input-box">
+              <button type="submit" title="Search" class="action search" disabled=""><i
+                  class="icon an an-search-l"></i></button>
+              <input type="text" name="q" value="" placeholder="{% trans 'Input name or product category' %}"
+                     class="input-text">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--End Search Popup-->
+</header>

@@ -1,66 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 {% block content %}
-  <section class="pt-5">
-    <div class="container max-w-screen-xl mx-auto px-4">
-      <div class="grid md:grid-cols-4 gap-5">
-        <div class="md:col-span-3">
-          <article class="bg-blue-500 h-96 p-10 lg:p-16 rounded">
-            <h1 class="text-3xl md:text-4xl text-white font-semibold">
-              Text Here <br>Or maybe pictures
-            </h1>
-            <p class="text-lg text-white font-normal mt-4 mb-6">
-              Something
-            </p>
-            <div>
-              <a class="px-4 py-2 inline-block font-semibold bg-yellow-500 text-white border border-transparent rounded-md hover:bg-yellow-600"
-                 href="#">
-                Discover our products
-              </a>
-              <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
-                 href="#">
-                Learn more
-              </a>
-            </div>
-          </article>
-        </div>
-        <div class="col-span-1">
-          <article class="bg-yellow-500 rounded h-96 p-6 lg:p-10">
-            <h1 class="text-3xl md:text-4xl text-white font-semibold">
-              Text Here <br>Or maybe pictures
-            </h1>
-            <p class="text-lg text-white font-normal mt-4 mb-6">
-              Something
-            </p>
-            <div>
-              <a class="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
-                 href="#">
-                Learn more
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="pt-10">
-    <div class="container max-w-screen-xl mx-auto px-4 pb-8">
-      <h2 class="text-4xl font-bold mb-8">{% translate "Categories" %}</h2>
-
-      <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">
-        {% for category in categories %}
-          <a href="{% url 'site:products:products-list' %}?category={{ category.slug }}" class="group">
-            <div
-                class="flex items-center justify-center scale-110 w-36 h-36 mx-auto mb-2 rounded-3xl bg-blue-100 group-hover:bg-blue-200">
-              <img class="h-20 w-20 scale-125 group-hover:scale-150 group-hover:-rotate-12 ease-in duration-200"
-                   src="{{ category.icon.url }}"
-                   alt="">
-            </div>
-            <p class="text-center text-2xl text-gray-600 group-hover:text-blue-600"> {{ category.name }} </p>
-          </a>
-        {% endfor %}
-      </nav>
-
-    </div>
-  </section>
+  <div id="page-content">
+    {% include "frontpage/slideshow.html" %}
+    {% include "frontpage/categories.html" %}
+  </div>
 {% endblock %}

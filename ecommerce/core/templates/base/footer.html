@@ -1,0 +1,43 @@
+{% load i18n %}
+{% load static %}
+<footer class="footer footer-2 ">
+  <div class="footer-top clearfix">
+    <div class="container">
+      <div class="row justify-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 footer-about mb-4 mb-lg-0">
+          <h2 class="text-white mb-4 text-lg">{% trans "Information" %}</h2>
+          <p class="mb-1">{{ contact_info.short_description | truncatewords:25 }}</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-4 ">
+        </div>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 footer-contact mb-4 mb-lg-0">
+          <h4 class="h4"><a href="#">{% trans "Contact Us" %}</a></h4>
+          <p class="address d-flex"><i class="an an-map-marker-al"></i>{{ contact_info.address }}</p>
+          <p class="phone d-flex "><i class="an an-phone-l"></i> <b class="me-1">{% trans "Phone" %}:</b>
+            {{ contact_info.phone }}</p>
+          <p class="email d-flex "><i class="an an-envelope-l"></i> <b class="me-1">Email:</b>
+            {{ contact_info.mail }}</p>
+          <ul class="list-inline social-icons mt-3">
+            <li class="list-inline-item"><a href="{{ contact_info.facebook }}" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Facebook"><i class="an an-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li class="list-inline-item"><a href="{{ contact_info.instagram }}" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Instagram"><i class="an an-instagram" aria-hidden="true"></i></a>
+            </li>
+            <li class="list-inline-item"><a href="{{ contact_info.whatsapp }}" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Whatsapp"><i class="an an-whatsapp" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 copyright-col mt-3 mt-md-4 mt-lg-5">
+          <div class="copytext mb-2 pb-1">&copy;{{ contact_info.rights }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
 
     'allauth',
     'allauth.account',
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'thumbnails',
     'django_extensions',
     'modeltranslation',
+    'django_htmx',
 
     'ecommerce.core',
     'ecommerce.products',
@@ -41,6 +43,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -141,8 +144,6 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 100,
                  'height': 100},
-                {'PATH': 'thumbnails.processors.crop', 'width': 80,
-                 'height': 80}
             ],
             'POST_PROCESSORS': [
                 {
@@ -164,8 +165,6 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 350,
                  'height': 350},
-                {'PATH': 'thumbnails.processors.flip',
-                 'direction': 'horizontal'}
             ],
         },
         'watermarked': {
