@@ -2,9 +2,10 @@ from django.db import models
 from thumbnails.fields import ImageField
 
 from ecommerce.products.models.models import Product
+from ecommerce.utils.models import BaseModel
 
 
-class ProductConfiguration(models.Model):
+class ProductConfiguration(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='configurations')
     name = models.TextField()
@@ -33,7 +34,7 @@ class ProductConfiguration(models.Model):
         return self.picture.thumbnails.medium.url
 
 
-class ProductPicture(models.Model):
+class ProductPicture(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
     picture = ImageField(upload_to='products/general/')
