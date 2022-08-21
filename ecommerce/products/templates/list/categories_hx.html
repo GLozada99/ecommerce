@@ -1,20 +1,25 @@
-<ul id="category_list_hx" class="text-gray-500 space-y-1"
-    hx-get="{% url 'site:products:current-category' %}"
-    hx-trigger="get_items from:window" hx-swap="outerHTML"
-    hx-target="#category_list_hx"
->
-  {% for category in categories %}
-    <li>
-      <a class="hover:text-blue-600 hover:underline
-                {% if category.slug == request.session.current_category %}text-blue-900 font-bold{% else %}{% endif %}"
-         href="#"
-         hx-get="{% url 'site:products:search' %}"
-         hx-vals='{"category": "{{ category.slug }}", "order_by": "{{ current_order_by }}", "page": "1"}'
-         hx-target="#items"
-         hx-swap="outerHTML"
-      >
-        {{ category.name }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{% load i18n %}
+<div class="sidebar_widget categories filterBox filter-widget"
+     id="categories_hx"
+     hx-get="{% url 'site:products:current-category' %}"
+     hx-trigger="get_items from:window"
+     hx-swap="outerHTML"
+     hx-target="#categories_hx">
+  <div class="widget-title"><h2 class="mb-0">{% trans "Categories" %}</h2></div>
+  <div class="widget-content filterDD">
+    <ul class="clearfix sidebar_categories mb-0">
+      {% for category in categories %}
+        <li class="lvl-1">
+          <a href="#"
+             hx-get="{% url 'site:products:search' %}"
+             hx-vals='{"category": "{{ category.slug }}", "order_by": "{{ current_order_by }}", "page":
+             "1"}'
+             hx-target="#items"
+             hx-swap="outerHTML"
+             class="site-nav hover:underline {% if category.slug == current_category %}
+          text-blue-900 font-bold{% else %}{% endif %}">{{ category.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,25 +1,26 @@
 {% load i18n %}
-<section class="py-5 sm:py-7 bg-blue-100" id="breadcrumb_hx"
+<section class="py-5 sm:py-7 bg-blue-100"
+         id="breadcrumb_hx"
          hx-get="{% url 'site:products:breadcrumb' %}"
-         hx-trigger="get_items from:window" hx-swap="outerHTML"
-         hx-target="#breadcrumb_hx"
->
-  <div class="container max-w-screen-xl mx-auto px-4">
-    <h2 class="text-3xl font-semibold mb-2">{{ current_category.name }}</h2>
-    <ol class="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-3 items-center">
-      <li class="inline-flex items-center">
-        <a class="text-gray-600 hover:text-blue-600" href="{{ request.path }}">{% trans "All items" %}</a>
-        {% if current_category.name %}
-          <i class="ml-3 text-gray-400 fa fa-chevron-right"></i>
-        {% endif %}
-      </li>
-      <li class="inline-flex items-center" aria-current="page">
-        <a class="text-gray-600 hover:text-blue-600"
-           href="{{ request.path }}?category={{ current_category.slug }}&order_by={{ current_order_by }}&page=1">
-          {{ current_category.name }}
-        </a>
-      </li>
-    </ol>
-    <!-- breadcrumbs end -->
-  </div><!-- /.container -->
+         hx-trigger="get_items from:window"
+         hx-swap="outerHTML"
+         hx-target="#breadcrumb_hx">
+  <div class="collection-header">
+    <div class="collection-hero">
+      <div class="collection-hero__image"></div>
+      <div class="collection-hero__title-wrapper container">
+        <h1 class="collection-hero__title font-monospace">Products</h1>
+        <div class="breadcrumbs text-uppercase mt-10 mt-lg-2">
+          <a href="{% url 'site:frontpage:frontpage' %}" title="Back to the home page">{% trans "Home" %}</a>
+          <span>|</span>
+          <span class="{% if not current_category.name %}fw-bold{% endif %}">
+          <a href="{% url 'site:products:list' %}" title="Products">Products</a>
+            {% if current_category.name %}
+              <span>|</span>
+              <span class="fw-bold">{{ current_category.name }}</span>
+            {% endif %}
+        </span></div>
+      </div>
+    </div>
+  </div>
 </section>

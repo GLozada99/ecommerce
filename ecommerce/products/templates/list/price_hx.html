@@ -1,0 +1,16 @@
+{% load i18n %}
+<div class="sidebar_widget filterBox filter-widget">
+  <div class="widget-title"><h2 class="mb-0">Price</h2></div>
+  <form action="#" method="post" class="price-filter filterDD">
+    {% csrf_token %}
+    <div id="slider-range" class="mt-2"></div>
+    <div class="row">
+      <div class="col-6">
+        <p class="no-margin"><label for="amount"></label><input id="amount" type="text"></p>
+      </div>
+      <div class="col-6 text-right margin-25px-top">
+        <button class="btn btn--small rounded">filter</button>
+      </div>
+    </div>
+  </form>
+</div>

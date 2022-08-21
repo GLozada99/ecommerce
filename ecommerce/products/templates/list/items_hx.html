@@ -1,90 +1,99 @@
+{% load humanize %}
 {% load i18n %}
 <div id="items">
   <main class="">
-    {% if products %}
-      <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 {% if products %}grid-cols-1{% endif %} gap-8">
-        {% for product in products %}
-          <div>
-            <article class="shadow-sm rounded bg-white border border-gray-200">
-              <a href="{{ request.path }}{{ product.slug }}" class="block relative p-1">
-                <img src="{{ product.principal_image_list_url }}" class="h-auto w-full"
-                     alt="Product title here">
-              </a>
-              <div class="p-4 border-t border-t-gray-400">
+    <div class="grid-products grid--view-items prd-list">
+      {% for product in products %}
+        <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
+          <div class="product-image">
+            <a href="{{ request.path }}{{ product.slug }}" class="product-img">
+              <img class="primary blur-up lazyload" data-src="{{ product.first_config.picture_list_url }}"
+                   src="{{ product.first_config.picture_list_url }}" alt="image" title="">
 
-                <a href="{{ request.path }}{{ product.slug }}"
-                   class="block text-gray-600 mb-3 hover:text-blue-500 truncate">
-                  {{ product.name }}
-                </a>
-                <p class="font-semibold">${{ product.current_price }}</p>
-                <div>
-                  <a class="px-4 py-2 inline-block text-white text-center bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
-                     href="#">
-                    {% trans "Add to cart" %}
-                  </a>
-                </div>
-              </div>
-            </article>
+              <img class="hover blur-up lazyload" data-src="{{ product.first_config.picture_list_url }}"
+                   src="{{ product.first_config.picture_list_url }}" alt="image" title="">
+            </a>
+            <div class="button-set style0 d-none d-md-block">
+              <ul>
+                <li><a class="btn-icon btn cartIcon pro-addtocart-popup" href="#pro-addtocart-popup"><i
+                    class="icon an an-cart-l"></i> <span class="tooltip-label top">{% trans "Add to Cart" %}</span></a>
+                </li>
+              </ul>
+            </div>
           </div>
-        {% endfor %}
-        {% else %}
-        {% include '../ecommerce/core/templates/not-found.html' with message="" %}
-        {% block not_found %}
-        {% endblock %}
-      </div> <!-- grid .// -->
-    {% endif %}
-  </main>  <!-- col.// -->
-  <nav class="pt-6 flex flex-col items-center">
-    {% if products %}
-      <ul class="pagination-blue pagination pagination-gradient">
-        {% if page_obj.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="First"
-               hx-get="{% url 'site:products:search' %}"
-               hx-vals='{"category": "{{ request.session.current_category }}", "order_by": "{{ current_order_by }}",
-           "page": "1"}'
-               hx-target="#items"
-               hx-swap="outerHTML">
-              <span class="material-icons"><<</span>
-            </a>
-          </li>
-
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous"
-               hx-get="{% url 'site:products:search' %}"
-               hx-vals='{"category": "{{ request.session.current_category }}", "order_by": "{{ current_order_by }}",
+          <div class="product-details text-center">
+            <div class="product-name text-uppercase">
+              <a href="{{ request.path }}{{ product.slug }}">{{ product.name }}</a>
+            </div>
+            <div class="product-price">
+              <span class="price">${{ product.first_config.current_price | intcomma }}</span>
+            </div>
+            <p class="hidden sort-desc">{{ product.first_config.description | truncatewords:50 }}</p>
+            <div class="button-action d-flex">
+              <div class="addtocart-btn">
+                <form class="addtocart" action="#" method="post">
+                  <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
+                      class="icon hidden an an-cart-l"></i>Add to cart</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+  <hr class="clear">
+  <div class="pagination pb-5 pt-3">
+    <ul>
+      {% if page_obj.has_previous %}
+        <li>
+          <a href="#"
+             hx-get="{% url 'site:products:search' %}"
+             hx-target="#items"
+             hx-swap="outerHTML"
+             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
+              "page": "1"}'
+          >
+            <i class="icon align-middle an an-ch-double-left" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#"
+             hx-get="{% url 'site:products:search' %}"
+             hx-target="#items"
+             hx-swap="outerHTML"
+             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.previous_page_number }}"}'
-               hx-target="#items"
-               hx-swap="outerHTML">
-              <span class="material-icons"><</span>
-            </a>
-          </li>
-        {% endif %}
-        <li class="page-item active"><a class="page-link">{{ page_obj.number }}</a></li>
-        {% if page_obj.has_next %}
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next"
-               hx-get="{% url 'site:products:search' %}"
-               hx-vals='{"category": "{{ request.session.current_category }}", "order_by": "{{ current_order_by }}",
+          >
+            <i class="icon align-middle an an-chevron-left" aria-hidden="true"></i>
+          </a>
+        </li>
+      {% endif %}
+      <li class="active px-3">{{ page_obj.number }}</li>
+      {% if page_obj.has_next %}
+        <li>
+          <a href="#"
+             hx-get="{% url 'site:products:search' %}"
+             hx-target="#items"
+             hx-swap="outerHTML"
+             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.next_page_number }}"}'
-               hx-target="#items"
-               hx-swap="outerHTML">
-              <span class="material-icons">></span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Last"
-               hx-get="{% url 'site:products:search' %}"
-               hx-vals='{"category": "{{ request.session.current_category }}", "order_by": "{{ current_order_by }}",
+          >
+            <i class="icon align-middle an an-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#"
+             hx-get="{% url 'site:products:search' %}"
+             hx-target="#items"
+             hx-swap="outerHTML"
+             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.paginator.num_pages }}"}'
-               hx-target="#items"
-               hx-swap="outerHTML">
-              <span class="material-icons">>></span>
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    {% endif %}
-  </nav>
+          >
+            <i class="icon align-middle an an-ch-double-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
 </div>
