@@ -7,15 +7,19 @@ from django.views.generic import ListView
 from django_htmx.http import trigger_client_event
 
 from ecommerce.products.models.models import Category, Product
+from ecommerce.products.services.product import ProductService
 
 
 class ProductListView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
-    paginate_by = 1
+    paginate_by = 6
 
     def get_queryset(self) -> QuerySet:
-        products = super(ProductListView, self).get_queryset()
+        products = ProductService.get_products(
+            super(ProductListView, self).get_queryset(),
+            self.request.session.get('current_order_by'),
+        )
         if category := self.request.session.get('current_category'):
             products = products.filter(category__slug=category)
         return products
@@ -29,12 +33,6 @@ class ProductListView(ListView):
             'order_by', '')
         return context
 
-    def get_ordering(self) -> str | None:
-        order_by = 'name'
-        if current_order_by := self.request.session.get('current_order_by'):
-            order_by = current_order_by
-        return order_by
-
     def get(
             self, request: HttpRequest,
             *args: tuple, **kwargs: dict) -> HttpResponse:
@@ -42,7 +40,6 @@ class ProductListView(ListView):
             'category', '')
         request.session['current_order_by'] = self.request.GET.get(
             'order_by', '')
-        print(request.session.items())
         response = super(ProductListView, self).get(request, *args, **kwargs)
         trigger_client_event(response, 'get_items', {})
         return response

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 17:01+0000\n"
+"POT-Creation-Date: 2022-08-21 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,112 +18,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/settings.py:113
+#: ecommerce/settings.py:114
 msgid "English"
 msgstr "Inglés"
 
-#: ecommerce/settings.py:114
+#: ecommerce/settings.py:115
 msgid "Spanish"
 msgstr "Español"
 
 #: templates/account/email_confirm.html:6
-#: templates/account/email_confirm.html:10
+#: templates/account/password_reset_from_key.html:4
 msgid "Confirm E-mail Address"
 msgstr "Confirma dirección de correo electrónico"
 
 #: templates/account/email_confirm.html:17
-#, python-format
+msgid "Confirm your email"
+msgstr ""
+
+#: templates/account/email_confirm.html:20
+#, fuzzy, python-format
+#| msgid ""
+#| "Please confirm that\n"
+#| "        <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address "
+#| "for user %(user_display)s\n"
+#| "        ."
 msgid ""
 "Please confirm that\n"
-"        <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for "
-"user %(user_display)s\n"
-"        ."
+"                    <a href=\"mailto:%(email)s\">\n"
+"                      <strong>%(email)s</strong>\n"
+"                    </a> is an email address for user\n"
+"                    <strong>\n"
+"                      %(user_display)s.</strong>\n"
+"                  "
 msgstr ""
 "Por favor confirma que\n"
 "        <a href=\"mailto:%(email)s\">%(email)s</a> es un email para usuario "
 "%(user_display)s\n"
 "        ."
 
-#: templates/account/email_confirm.html:26
+#: templates/account/email_confirm.html:35
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templates/account/email_confirm.html:33
-#, python-format
+#: templates/account/email_confirm.html:42
+#, fuzzy, python-format
+#| msgid ""
+#| "This e-mail confirmation link\n"
+#| "      expired or is invalid. Please\n"
+#| "      <a href=\"%(email_url)s\">issue a new e-mail confirmation request</"
+#| "a>."
 msgid ""
-"This e-mail confirmation link\n"
-"      expired or is invalid. Please\n"
-"      <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail\n"
+"                confirmation link\n"
+"                expired or is invalid. Please\n"
+"                <a href=\"%(email_url)s\">issue a new e-mail confirmation "
+"request</a>."
 msgstr ""
 "Este enlace de confirmación\n"
 "      ha expirado o es inválido. Por favor\n"
 "      <a href=\"%(email_url)s\">realiza otra petición de confirmación.</a>."
 
-#: templates/account/login.html:9 templates/account/login.html:50
-msgid "Login"
-msgstr "Iniciar Sesión"
-
-#: templates/account/login.html:24 templates/account/signup.html:24
+#: templates/account/login.html:21 templates/account/login.html:27
+#: templates/account/signup.html:21 templates/account/signup.html:27
 msgid "Username"
 msgstr "Nombre de Usuario"
 
-#: templates/account/login.html:33
-#: templates/account/password_reset_from_key.html:24
-#: templates/account/signup.html:41
+#: templates/account/login.html:34 templates/account/login.html:40
+#: templates/account/password_reset_from_key.html:21
+#: templates/account/signup.html:47 templates/account/signup.html:53
+#: templates/account/signup.html:66
 msgid "Password"
 msgstr "Contraseña"
 
-#: templates/account/login.html:42
+#: templates/account/login.html:51
 msgid "Forgot Password?"
 msgstr "¿Olvidó su Contraseña?"
 
-#: templates/account/login.html:58
-msgid "Sign in with"
-msgstr "Iniciar sesión con"
+#: templates/account/login.html:67
+msgid "NEW"
+msgstr ""
 
-#: templates/account/login.html:78
-msgid "New?"
-msgstr "Eres nuevo?"
+#: templates/account/login.html:69
+msgid ""
+"Registering for this site allows you to access your order status and "
+"history, and\n"
+"                    also keep the\n"
+"                    items added previously to your cart."
+msgstr ""
 
-#: templates/account/login.html:81
+#: templates/account/login.html:73
 msgid "Sign Up!"
 msgstr "¡Regístrate!"
 
-#: templates/account/password_reset.html:9
-#: templates/account/password_reset_from_key.html:8
+#: templates/account/login.html:85
+msgid ""
+"Signup\n"
+"                            Using\n"
+"                            Google"
+msgstr ""
+"Registrate\n"
+"                            Con\n"
+"                            Google"
+#: templates/account/password_reset.html:6
+#: templates/account/password_reset_done.html:4
+#: templates/account/password_reset_from_key_done.html:4
 msgid "Password Reset"
 msgstr "Restablecer Contraseña"
 
-#: templates/account/password_reset.html:23
-msgid "Please, provide your email in order to reset your password."
-msgstr "Por favor, introduce tu email para restablecer tu contraseña."
-
-#: templates/account/password_reset.html:38
-#: templates/account/password_reset_from_key.html:40
-msgid "Reset Password"
+#: templates/account/password_reset.html:18
+#: templates/account/password_reset_from_key.html:16
+msgid "Reset your password"
 msgstr "Restablecer Contraseña"
 
-#: templates/account/password_reset_from_key.html:32
-#: templates/account/signup.html:49
+#: templates/account/password_reset.html:19
+msgid ""
+"Please enter your email address below. You will receive a link to reset "
+"your\n"
+"                password."
+msgstr ""
+"Por favor introduce tu email debajo. Recibirás un enlace para restablecer "
+"tu\n"
+"                contraseña."
+#: templates/account/password_reset_done.html:12
+msgid ""
+"We have e-mailed you. If you have not received it please check your spam\n"
+"              folder. Otherwise, contact us if you do not receive it in a "
+"few minutes."
+msgstr ""
+"Te hemos enviado un email. Si no lo recibes, por favor revisa el la carpeta de\n"
+"              spam. Por favor contactanos de no recibirlo en "
+"unos minutos."
+#: templates/account/password_reset_from_key.html:17
+msgid "Please enter and confirm your new password."
+msgstr "Por favor introduce y confirma tu nueva contraseña"
+
+#: templates/account/password_reset_from_key.html:33
+#: templates/account/signup.html:60
 msgid "Confirm Password"
 msgstr "Confirmar Contraseña"
 
-#: templates/account/signup.html:9
-msgid "Registration"
-msgstr "Registro"
+#: templates/account/password_reset_from_key.html:56
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been\n"
+"                used.  Please request a <a href=\"%(passwd_reset_url)s\">new "
+"password reset</a>."
+msgstr ""
+"Este enlace es inválido.\n"
+"                Por favor solicita un <a href=\"%(passwd_reset_url)s\">nuevo "
+"enlace</a>."
 
-#: templates/account/signup.html:57
-msgid "Sign Up"
-msgstr "Regístrate"
+#: templates/account/password_reset_from_key_done.html:12
+msgid "Your password was reset."
+msgstr "Tu contraseña fue reestablecida"
 
-#: templates/account/signup.html:65
-msgid "Sign Up with"
-msgstr "Regístrate con"
-
-#: templates/account/signup.html:84
+#: templates/account/signup.html:76
 msgid "Already have an account?"
 msgstr "¿Ya tienes una cuenta?"
 
-#: templates/account/signup.html:87
+#: templates/account/signup.html:77
 msgid "Sign In!"
 msgstr "¡Inicia Sesión!"

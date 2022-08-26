@@ -1,85 +1,107 @@
 <head>
   <title>Login</title>
 </head>
-{% extends 'account/base.html' %}
+{% extends 'base.html' %}
 {% load socialaccount %}
 {% block content %}
   {% load i18n %}
-  <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
-    {% trans "Login" %}
-  </label>
-  <form class="login mt-10" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    <div class="mb-6">
-      <ul class="errorlist">
-        {% for key, value in form.errors.items %}
-          <li class="text-red-600">{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div>
-      <input
-          type="text"
-          name="login"
-          placeholder="{% trans "Username" %}"
-          required
-          class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
-    </div>
+  <div class="page-wrapper">
+    <section id="page-content">
+      {% include 'account/fragments/breadcrumb.html' with page_name="Log in" %}
+      <div class="container">
+        <div class="login-register pt-2 pt-lg-5">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+              <div class="inner">
+                <form class="customer-form" method="POST" action="{% url 'account_login' %}">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group">
+                        <label for="username" class="d-none">{% trans "Username" %} <span
+                            class="required">*</span></label>
+                        <input
+                            id="username"
+                            type="text"
+                            name="login"
+                            placeholder="{% trans "Username" %}"
+                            required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group">
+                        <label for="password" class="d-none">{% trans "Password" %} <span
+                            class="required">*</span></label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="{% trans "Password" %}"
+                            required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="text-left col-12 col-sm-12 col-md-12 col-lg-12">
+                      <p class="d-flex-center">
+                        <input type="submit" class="btn rounded me-auto">
+                        <a href="{% url 'account_reset_password' %}">
+                          {% trans "Forgot Password?" %}</a>
+                      </p>
+                    </div>
+                  </div>
 
-    <div class="mt-7">
-      <input
-          type="password"
-          name="password"
-          placeholder="{% trans "Password" %}"
-          required
-          class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
-    </div>
+                </form>
 
-    <div class="mt-7 flex">
+                <div class="row">
 
-      <div class="w-full text-right">
-        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{% url 'account_reset_password' %}">
-          {% trans "Forgot Password?" %}
-        </a>
+                  {% include "account/fragments/errors.html" %}
+                </div>
+              </div>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="inner">
+                <h3 class="h4 text-uppercase">{% trans "NEW" %}?</h3>
+                <div class="text-left col-12 col-sm-12 col-md-12 col-lg-12">
+                  <p>{% blocktrans %}Registering for this site allows you to access your order status and history, and
+                    also keep the
+                    items added previously to your cart.{% endblocktrans %}</p>
+                  <a href="{{ signup_url }}" class=" btn rounded">
+                    {% trans "Sign Up!" %}</a>
+                  <div class="row">
+                    <p class="text-uppercase py-1" style="font-size: 180%;">Or</p>
+                  </div>
+                  <div class="row">
+                    <div class=" col-12 col-sm-12 col-md-12 col-lg-12 ">
+                      <form action="{% provider_login_url 'google' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger form-control rounded text-white "
+                                href="#">
+                          <img
+                              src="https://img.icons8.com/color/16/000000/google-logo.png" class="px-1" alt="">
+                          {% blocktrans %}Signup
+                            Using
+                            Google{% endblocktrans %}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+      <!--End Main Content-->
+      <!--End Container-->
 
-    <div class="mt-7">
-      <button
-          class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-        {% trans "Login" %}
-      </button>
-    </div>
-  </form>
-
-  <div class="flex mt-7 items-center text-center">
-    <hr class="border-gray-300 border-1 w-full rounded-md">
-    <label class="block font-medium text-sm text-gray-600 w-full">
-      {% trans "Sign in with" %}
-    </label>
-    <hr class="border-gray-300 border-1 w-full rounded-md">
+      <!--End Body Container-->
+    </section>
   </div>
-
-
-  <div class="flex mt-7 justify-center w-full">
-    <form action="{% provider_login_url 'google' %}" method="post">
-      {% csrf_token %}
-      <button type="submit"
-              class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-        <i class="fa fa-google pr-2" aria-hidden="true"></i>
-        Google
-      </button>
-    </form>
-
-  </div>
-
-  <div class="mt-7">
-    <div class="flex justify-center items-center">
-      <label class="mr-2">{% trans "New?" %}</label>
-      <a href="{{ signup_url }}"
-         class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-        {% trans "Sign Up!" %}
-      </a>
-    </div>
-  </div>
+  <!--End Page Wrapper-->
 {% endblock %}

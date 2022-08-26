@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 17:01+0000\n"
+"POT-Creation-Date: 2022-08-21 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/products/services/product.py:19
-msgid "Name"
-msgstr "Nombre"
-
-#: ecommerce/products/services/product.py:21
-msgid "Price"
-msgstr "Precio"
-
-#: ecommerce/products/templates/detail/detail.html:10
-#: ecommerce/products/templates/list/breadcrumb_hx.html:11
+#: ecommerce/products/templates/detail.html:10
 msgid "All items"
 msgstr "Todos los productos"
 
-#: ecommerce/products/templates/list/items_hx.html:24
-msgid "Add to cart"
-msgstr "Añadir al carrito"
-
-#: ecommerce/products/templates/list/list.html:12
+#: ecommerce/products/templates/list.html:51
+#: ecommerce/products/templates/list2.html:12
 msgid "Product Categories"
 msgstr "Categorías"
 
-#: ecommerce/products/templates/list/list.html:16
+#: ecommerce/products/templates/list.html:55
+#: ecommerce/products/templates/list/order_by_hx.html:8
+#: ecommerce/products/templates/list2.html:16
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#~ msgid "Filter by"
-#~ msgstr "Filtrar por"
+#: ecommerce/products/templates/list/breadcrumb_hx.html:14
+msgid "Home"
+msgstr "Inicio"
+
+#: ecommerce/products/templates/list/categories_hx.html:8
+#, fuzzy
+#| msgid "Product Categories"
+msgid "Categories"
+msgstr "Categorías"
+
+#: ecommerce/products/templates/list/items_hx.html:19
+msgid "Add to Cart"
+msgstr "Añadir al carrito"
+
+#: ecommerce/products/templates/list/order_by_hx.html:18
+#: ecommerce/products/templates/list/order_by_hx.html:21
+msgid "Alphabetically,"
+msgstr "Alfabéticamente"
+
+#: ecommerce/products/templates/list/order_by_hx.html:24
+#: ecommerce/products/templates/list/order_by_hx.html:27
+msgid "Price"
+msgstr "Precio"
+
+#: ecommerce/products/templates/list/order_by_hx.html:25
+msgid "low to high"
+msgstr "menor a mayor"
+
+#: ecommerce/products/templates/list/order_by_hx.html:28
+msgid "high to low"
+msgstr "mayor a menor"

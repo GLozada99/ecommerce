@@ -1,0 +1,18 @@
+<div class="row">
+  {% if form.errors %}
+    <ul>
+      {% for field in form %}
+        {% for error in field.errors %}
+          <li>
+            <strong>{{ field.name|escape }}</strong> <span class="text-danger">{{ error|escape }}</span>
+          </li>
+        {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+        <li>
+          <strong>{{ field.name|escape }}</strong> <span class="text-danger">{{ error|escape }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
