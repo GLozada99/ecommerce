@@ -1,4 +1,5 @@
 import os
+import uuid
 
 from django.core.files import File
 from django.core.management.base import BaseCommand
@@ -40,7 +41,7 @@ class Command(BaseCommand):
                     )
 
                     for filename in os.listdir(full_subdirectory):
-                        name = filename.split('.')[0]
+                        name, ext = filename.split('.')
                         full_filepath = os.path.join(
                             full_subdirectory, filename
                         )
@@ -53,9 +54,11 @@ class Command(BaseCommand):
                                                           right_digits=2,
                                                           min_value=100),
                         )
+                        print(filename)
                         with open(full_filepath,
                                   'rb') as fil:
-                            configuration.picture.save(name, File(fil))
+                            configuration.picture.save(
+                                "%s.%s" % (uuid.uuid4(), ext), File(fil))
                             configuration.save()
 
             self.stdout.write(self.style.SUCCESS('OK'))

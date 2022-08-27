@@ -27,6 +27,7 @@ class Command(BaseCommand):
                     name=name,
                     slug=slugify(name),
                 )
+                print(name)
                 with open(f, 'rb') as fil:
                     category.icon.save(name, File(fil))
 
