@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     DB_PORT: int
     DB_NAME: str
 
+    AWS_S3_ACCESS_KEY_ID: str
+    AWS_S3_SECRET_ACCESS_KEY: str
+    AWS_STORAGE_BUCKET_NAME: str
+    AWS_QUERYSTRING_AUTH: bool
+    ASW_DEFAULT_ACL: str
+
     EMAIL_HOST: str
     EMAIL_USE_TLS: bool
     EMAIL_PORT: int
