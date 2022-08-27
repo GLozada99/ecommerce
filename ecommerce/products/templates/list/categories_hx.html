@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="sidebar_widget categories filterBox filter-widget"
+<div class="sidebar_widget categories filterBox filter-widget" hx-indicator="#spinner"
      id="categories_hx"
      hx-get="{% url 'site:products:current-category' %}"
      hx-trigger="get_items from:window"

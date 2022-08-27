@@ -1,6 +1,7 @@
 {% load i18n %}
 <li class="filters-sort ms-auto ms-sm-0"
     id="order_by_hx"
+    hx-indicator="#spinner"
     hx-get="{% url 'site:products:order_by' %}"
     hx-trigger="get_items from:window" hx-swap="outerHTML"
     hx-target="#order_by_hx">
