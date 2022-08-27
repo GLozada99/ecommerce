@@ -16,6 +16,7 @@ services:
       - .:/code
     environment:
       - DB_HOST=${HOST_FROM_DOCKER}
+      - DJANGO_DEBUG=False
     ports:
       - 8000:${PORT}
     depends_on:
