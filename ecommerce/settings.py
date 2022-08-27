@@ -131,13 +131,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
+                        env_settings.DJANGO_DEBUG else
+                        'storages.backends.s3boto3.S3Boto3Storage')
+
 THUMBNAILS = {
     'METADATA': {
         'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
     },
     'STORAGE': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
-        # You can also use Amazon S3 or any other Django storage backends
+        'BACKEND': DEFAULT_FILE_STORAGE,
     },
     'SIZES': {
         'small': {
@@ -200,3 +203,9 @@ EMAIL_PORT = env_settings.EMAIL_PORT
 EMAIL_HOST_USER = env_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = env_settings.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = env_settings.EMAIL_HOST_USER
+
+AWS_S3_ACCESS_KEY_ID = env_settings.AWS_S3_ACCESS_KEY_ID
+AWS_S3_SECRET_ACCESS_KEY = env_settings.AWS_S3_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = env_settings.AWS_STORAGE_BUCKET_NAME
+AWS_QUERYSTRING_AUTH = env_settings.AWS_QUERYSTRING_AUTH
+ASW_DEFAULT_ACL = env_settings.ASW_DEFAULT_ACL
