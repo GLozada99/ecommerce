@@ -9,7 +9,7 @@ class ProductConfiguration(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='configurations')
     name = models.TextField()
-    picture = ImageField(upload_to='products/configuration/')
+    picture = ImageField(upload_to='products/configurations/')
     description = models.TextField(blank=True)
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
