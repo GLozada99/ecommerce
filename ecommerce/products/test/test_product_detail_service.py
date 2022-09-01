@@ -1,3 +1,4 @@
+import random
 from unittest.mock import MagicMock, patch
 
 import faker
@@ -87,3 +88,34 @@ class ProductDetailServiceTestCase(TestCase):
             self.assertTrue('url' in data)
         self.assertEqual(len(configuration_data),
                          product.configurations.count())
+
+    @patch('thumbnails.images.Thumbnail.url')
+    def test_get_product_picture_url(
+            self, thumbnail_url_mock: MagicMock) -> None:
+        thumbnail_url_mock.return_value = lambda: faker.Faker().file_name(
+            category='image')
+
+        max_individual_pic_number = 10
+        product = Product.objects.order_by('?').first()
+
+        baker.make(
+            ProductPicture, _quantity=10,
+            product=product,
+        )
+        baker.make(
+            ProductConfiguration, _quantity=4,
+            product=product,
+        )
+
+        service = ProductDetailService(product)
+        thumbnail_data = service.get_product_thumbnails(
+            max_individual_pic_number)
+        rand_thumbnail = random.choice(thumbnail_data)
+        large_pic_url = getattr(product, rand_thumbnail['type']).get(
+            id=rand_thumbnail['id']).picture.thumbnails.large.url
+
+        self.assertEqual(large_pic_url, service.get_product_picture_url(
+                                            rand_thumbnail['type'],
+                                            int(rand_thumbnail['id'])
+                                        )
+                         )
