@@ -166,8 +166,8 @@ THUMBNAILS = {
         },
         'large': {
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 350,
-                 'height': 350},
+                {'PATH': 'thumbnails.processors.resize', 'width': 490,
+                 'height': 700},
             ],
         },
         'watermarked': {
