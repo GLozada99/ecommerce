@@ -28,7 +28,7 @@
             <div class="product-price">
               <span class="price">${{ product.current_price | intcomma }}</span>
             </div>
-            <p class="hidden sort-desc">{{ product.first_config.description | truncatewords:50 }}</p>
+            <p class="hidden sort-desc">{{ product.description | truncatewords:50 }}</p>
             <div class="button-action d-flex">
               <div class="addtocart-btn">
                 <form class="addtocart" action="#" method="post">
