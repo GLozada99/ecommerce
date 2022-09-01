@@ -24,7 +24,7 @@ class ProductDetailService:
     def __init__(self, product: Product):
         self.product = product
 
-    def get_product_configuration(self, id: int) -> ProductConfiguration:
+    def get_product_configuration(self, id: int = 0) -> ProductConfiguration:
         try:
             configuration = self.product.configurations.get(id=id)
         except ProductConfiguration.DoesNotExist:
