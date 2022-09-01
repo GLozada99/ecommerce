@@ -53,6 +53,10 @@ class ProductDetailService:
 
         return general_thumbnail_data + configurations_thumbnail_data
 
+    def get_product_picture_url(self, type_: str, id: int) -> str:
+        return getattr(self.product, type_).get(
+            id=id).picture.thumbnails.large.url
+
     def get_configurations_data(self) -> list[dict[str, str | int]]:
         return [
             {
