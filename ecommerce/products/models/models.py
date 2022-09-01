@@ -19,7 +19,7 @@ class Category(BaseModel):
         return self.name
 
     def picture_url(self) -> str:
-        return self.icon.thumbnails.large.url
+        return self.icon.thumbnails.category_frontpage.url
 
 
 class Product(SafeModel):
