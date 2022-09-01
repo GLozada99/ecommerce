@@ -1,7 +1,6 @@
 from django.db import models
 from thumbnails.fields import ImageField
 
-from ecommerce import settings
 from ecommerce.utils.models import BaseModel, SafeModel
 
 
@@ -34,30 +33,8 @@ class Product(SafeModel):
 
     @property
     def first_config(self) -> BaseModel:
-        return self.configurations.first()
+        return self.configurations.order_by('pk').first()
 
     @property
     def general_description_paragraphs(self) -> list[str]:
         return self.general_description.split('\r\n\r\n')
-
-    def n_small_thumbnails_data(self) -> list[dict[str, str]]:
-        images_product = self.pictures.all()[
-                         :settings.env_settings.SMALL_THUMBNAIL_NUMBER]
-        urls = [
-            {
-                'url': str(image_data.image.thumbnails.small.url),
-                'id': str(image_data.id),
-            }
-            for image_data in images_product
-        ]
-        return urls
-
-    def configuration_data(self) -> list[dict[str, str | int]]:
-        return [
-            {
-                'id': data.id,
-                'name': data.name,
-                'current_price': str(data.current_price),
-                'url': data.picture.thumbnails.small.url,
-            } for data in self.configurations.all()
-        ]
