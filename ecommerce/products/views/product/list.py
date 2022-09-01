@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django_htmx.http import trigger_client_event
 
 from ecommerce.products.models.models import Category, Product
-from ecommerce.products.services.product import ProductService
+from ecommerce.products.services.product import ProductListService
 
 
 class ProductListView(ListView):
@@ -16,7 +16,7 @@ class ProductListView(ListView):
     paginate_by = 6
 
     def get_queryset(self) -> QuerySet:
-        products = ProductService.get_products(
+        products = ProductListService.get_products(
             super(ProductListView, self).get_queryset(),
             self.request.session.get('current_order_by'),
         )
