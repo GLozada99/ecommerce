@@ -2,7 +2,7 @@ from typing import Mapping
 
 from django.views.generic import TemplateView
 
-from ecommerce.products.models.models import Category
+from ecommerce.products.services.category import CategoryService
 
 
 class FrontPageView(TemplateView):
@@ -10,5 +10,5 @@ class FrontPageView(TemplateView):
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(FrontPageView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['categories'] = CategoryService.get_categories()
         return context
