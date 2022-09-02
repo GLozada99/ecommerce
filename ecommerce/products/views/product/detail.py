@@ -9,7 +9,8 @@ from ecommerce.products.services.product import ProductDetailService
 
 
 class ProductDetailView(DetailView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.prefetch_related(
+        'category', 'configurations').all()
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
