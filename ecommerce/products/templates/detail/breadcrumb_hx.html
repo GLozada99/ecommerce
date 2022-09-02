@@ -1,0 +1,24 @@
+{% load i18n %}
+<section class="py-5 sm:py-7 bg-blue-100"
+         id="breadcrumb_hx"
+         hx-get="{% url 'site:products:breadcrumb' %}"
+         hx-trigger="get_items from:window"
+         hx-swap="outerHTML"
+         hx-target="#breadcrumb_hx">
+  <div class="collection-header">
+    <div class="collection-hero">
+      <div class="collection-hero__image"></div>
+      <div class="collection-hero__title-wrapper container">
+        <h1 class="collection-hero__title font-monospace">Products</h1>
+        <div class="breadcrumbs text-uppercase mt-10 mt-lg-2">
+          <a href="{% url 'site:frontpage:frontpage' %}" title="Back to the home page">{% trans "Home" %}</a>
+          <span>|</span>
+          <a href="{% url 'site:products:list' %}" title="Products">Products</a>
+          <span>|</span>
+          <a class="fw-bold" href="{% url 'site:products:list' %}?category={{ product.category.slug }}"
+          >{{ product.category.name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
