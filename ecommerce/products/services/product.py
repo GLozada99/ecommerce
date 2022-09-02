@@ -25,13 +25,27 @@ class ProductListService:
     @classmethod
     def get_context(cls, raw_data: Mapping) -> dict:
         categories = CategoryService.get_categories()
+        current_category = raw_data.get('category', '')
+        current_category_dict = cls.get_current_category(current_category,
+                                                         categories)
         return {
             'categories': categories,
-            'current_category': categories.filter(
-                slug=raw_data.get('category', '')
-            ).values('name', 'slug').first(),
+            'current_category': current_category_dict,
             'current_order_by': raw_data.get('order_by', ''),
         }
+
+    @classmethod
+    def get_current_category(
+            cls,
+            current_category_slug: str,
+            categories: QuerySet | None = None) -> Mapping:
+
+        if not categories:
+            categories = CategoryService.get_categories()
+
+        return (categories.filter(slug=current_category_slug).
+                values('name', 'slug').first()
+                if current_category_slug else {'name': '', 'slug': ''})
 
 
 class ProductDetailService:

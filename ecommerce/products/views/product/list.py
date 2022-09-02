@@ -43,10 +43,11 @@ class ProductListView(ListView):
 
 def category_selection_view(request: HttpRequest) -> \
         HttpResponse:
+    categories = Category.objects.all().order_by('name')
     context = {
-        'categories': Category.objects.all().order_by('name'),
-        'current_category': Category.objects.filter(slug=request.session.get(
-            'current_category')).values('slug').first(),
+        'categories': categories,
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category'), categories),
         'current_order_by': request.session.get(
             'current_order_by')
     }
@@ -55,16 +56,16 @@ def category_selection_view(request: HttpRequest) -> \
 
 def breadcrumb_view(request: HttpRequest) -> HttpResponse:
     context = {
-        'current_category': Category.objects.filter(slug=request.session.get(
-            'current_category')).values('name', 'slug').first()
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category'))
     }
     return render(request, 'list/breadcrumb_hx.html', context)
 
 
 def order_by_view(request: HttpRequest) -> HttpResponse:
     context = {
-        'current_category': request.session.get(
-            'current_category'),
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category')),
         'current_order_by': request.session.get(
             'current_order_by')
     }

@@ -52,7 +52,7 @@
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
-             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
+             hx-vals='{"category": "{{ current_category.slug }}", "order_by": "{{ current_order_by }}",
               "page": "1"}'
           >
             <i class="icon align-middle an an-ch-double-left" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
-             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
+             hx-vals='{"category": "{{ current_category.slug }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.previous_page_number }}"}'
           >
             <i class="icon align-middle an an-chevron-left" aria-hidden="true"></i>
@@ -77,7 +77,7 @@
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
-             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
+             hx-vals='{"category": "{{ current_category.slug }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.next_page_number }}"}'
           >
             <i class="icon align-middle an an-chevron-right" aria-hidden="true"></i>
@@ -88,7 +88,7 @@
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
-             hx-vals='{"category": "{{ current_category }}", "order_by": "{{ current_order_by }}",
+             hx-vals='{"category": "{{ current_category.slug }}", "order_by": "{{ current_order_by }}",
            "page": "{{ page_obj.paginator.num_pages }}"}'
           >
             <i class="icon align-middle an an-ch-double-right" aria-hidden="true"></i>
