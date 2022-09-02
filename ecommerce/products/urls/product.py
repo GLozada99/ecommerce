@@ -21,8 +21,12 @@ urlpatterns = [
          name='breadcrumb'),
     path('order_by/', order_by_view,
          name='order_by'),
-    path('<slug:slug>/', ProductDetailView.as_view(),
+    path('<slug:slug>/', ProductDetailView.as_view(
+        template_name='detail.html'),
          name='detail'),
+    path('<slug:slug>/config', ProductDetailView.as_view(
+        template_name='detail/product.html'),
+         name='detail-config'),
     path('<slug:slug>/<str:type>/<int:id>', selected_picture_view,
          name='detail-picture'),
     path('<slug:slug>/la', ProductDetailView.as_view(
