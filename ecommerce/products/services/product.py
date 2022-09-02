@@ -1,7 +1,10 @@
+from typing import Mapping
+
 from django.db.models import OuterRef, QuerySet, Subquery
 
 from ecommerce.products.models.composite_models import ProductConfiguration
 from ecommerce.products.models.models import Product
+from ecommerce.products.services.category import CategoryService
 
 
 class ProductListService:
@@ -18,6 +21,17 @@ class ProductListService:
     def _get_configurations_subquery() -> QuerySet:
         return ProductConfiguration.objects.filter(
             product=OuterRef('pk')).order_by('pk')
+
+    @classmethod
+    def get_context(cls, raw_data: Mapping) -> dict:
+        categories = CategoryService.get_categories()
+        return {
+            'categories': categories,
+            'current_category': categories.filter(
+                slug=raw_data.get('category', '')
+            ).values('name', 'slug').first(),
+            'current_order_by': raw_data.get('order_by', ''),
+        }
 
 
 class ProductDetailService:

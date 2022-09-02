@@ -26,11 +26,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(ProductListView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['current_category'] = self.request.GET.get(
-            'category', '')
-        context['current_order_by'] = self.request.GET.get(
-            'order_by', '')
+        context |= ProductListService.get_context(self.request.GET)
         return context
 
     def get(
