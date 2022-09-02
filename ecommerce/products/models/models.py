@@ -18,7 +18,7 @@ class Category(BaseModel):
     def __str__(self) -> str:
         return self.name
 
-    def picture_url(self) -> str:
+    def frontpage_picture_url(self) -> str:
         return self.icon.thumbnails.category_frontpage.url
 
 

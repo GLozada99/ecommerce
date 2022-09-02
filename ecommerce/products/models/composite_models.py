@@ -23,12 +23,12 @@ class ProductConfiguration(BaseModel):
         return self.product.name
 
     @property
-    def thumbnail_url(self) -> str:
+    def detail_thumbnail_url(self) -> str:
         return self.picture.thumbnails.small.url
 
     @property
     def list_url(self) -> str:
-        return self.picture.thumbnails.medium.url
+        return self.picture.thumbnails.product_list.url
 
 
 class ProductPicture(BaseModel):
