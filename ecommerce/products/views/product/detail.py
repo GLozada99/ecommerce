@@ -28,4 +28,4 @@ def selected_picture_view(request: HttpRequest, slug: str, type: str,
     context = {
         'current_detail_picture': service.get_product_picture_url(type, id),
     }
-    return render(request, 'detail/product_zoom.html', context)
+    return render(request, 'detail/product_detail_picture.html', context)
