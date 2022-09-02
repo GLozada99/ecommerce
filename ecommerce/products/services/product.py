@@ -55,7 +55,7 @@ class ProductDetailService:
 
     def get_product_picture_url(self, type_: str, id: int) -> str:
         return getattr(self.product, type_).get(
-            id=id).picture.thumbnails.large.url
+            id=id).picture.thumbnails.product_detail.url
 
     def get_config_extra_data(
             self, configuration: ProductConfiguration
