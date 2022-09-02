@@ -160,8 +160,24 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 240,
                  'height': 240},
-                # {'PATH': 'thumbnails.processors.flip',
-                #  'direction': 'horizontal'}
+            ],
+        },
+        'category_frontpage': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 400,
+                 'height': 400},
+            ],
+        },
+        'product_list': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                 'height': 625},
+            ],
+        },
+        'product_detail': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                 'height': 650},
             ],
         },
         'large': {

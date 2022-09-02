@@ -11,7 +11,7 @@
           <a href="{% url 'site:products:list' %}?category={{ category.slug }}" class="collection-grid-link">
             <div class="img">
               <img class="blur-up lazyload"
-                   src="{{ category.picture_url }}" alt="{{ category.name }}"/>
+                   src="{{ category.frontpage_picture_url }}" alt="{{ category.name }}"/>
             </div>
             <div class="details">
               <h3 class="collection-item-title">{{ category.name }}</h3>
