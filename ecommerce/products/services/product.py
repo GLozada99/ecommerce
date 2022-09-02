@@ -24,7 +24,7 @@ class ProductDetailService:
     def __init__(self, product: Product):
         self.product = product
 
-    def get_product_configuration(self, id: int = 0) -> ProductConfiguration:
+    def get_product_configuration(self, id: int) -> ProductConfiguration:
         try:
             configuration = self.product.configurations.get(id=id)
         except ProductConfiguration.DoesNotExist:
@@ -51,11 +51,16 @@ class ProductDetailService:
             for pictures in self.product.pictures.all()[:number]
         ]
 
-        return general_thumbnail_data + configurations_thumbnail_data
+        return configurations_thumbnail_data + general_thumbnail_data
 
     def get_product_picture_url(self, type_: str, id: int) -> str:
         return getattr(self.product, type_).get(
             id=id).picture.thumbnails.large.url
+
+    def get_config_extra_data(
+            self, configuration: ProductConfiguration
+    ) -> dict:
+        return configuration.extra_data.all()
 
     def get_configurations_data(self) -> list[dict[str, str | int]]:
         return [
@@ -66,3 +71,15 @@ class ProductDetailService:
                 'url': data.picture.thumbnails.small.url,
             } for data in self.product.configurations.all()
         ]
+
+    def get_context(self, config_id: int) -> dict:
+        current_configuration = self.get_product_configuration(config_id)
+        return {
+            'thumbnails':  self.get_product_thumbnails(),
+            'current_configuration':  current_configuration,
+            'configurations': self.get_configurations_data(),
+            'current_detail_picture': (current_configuration.picture.
+                                       thumbnails.product_detail.url),
+            'current_extra_data': self.get_config_extra_data(
+                current_configuration),
+        }
