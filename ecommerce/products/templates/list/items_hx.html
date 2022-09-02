@@ -6,12 +6,12 @@
       {% for product in products %}
         <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
           <div class="product-image">
-            <a href="{{ request.path }}{{ product.slug }}" class="product-img">
-              <img class="primary blur-up lazyload" data-src="{{ product.first_config.picture_list_url }}"
-                   src="{{ product.first_config.picture_list_url }}" alt="image" title="">
+            <a href="{% url 'site:products:detail' slug=product.slug %}" class="product-img">
+              <img class="primary blur-up lazyload" data-src="{{ product.first_config.list_url }}"
+                   src="{{ product.first_config.list_url }}" alt="image" title="">
 
-              <img class="hover blur-up lazyload" data-src="{{ product.first_config.picture_list_url }}"
-                   src="{{ product.first_config.picture_list_url }}" alt="image" title="">
+              <img class="hover blur-up lazyload" data-src="{{ product.first_config.list_url }}"
+                   src="{{ product.first_config.list_url }}" alt="image" title="">
             </a>
             <div class="button-set style0 d-none d-md-block">
               <ul>
@@ -23,12 +23,13 @@
           </div>
           <div class="product-details text-center">
             <div class="product-name text-uppercase">
-              <a href="{{ request.path }}{{ product.slug }}">{{ product.name }}</a>
+              <a href="{% url 'site:products:detail' slug=product.slug %}"
+              >{{ product.name }}</a>
             </div>
             <div class="product-price">
               <span class="price">${{ product.current_price | intcomma }}</span>
             </div>
-            <p class="hidden sort-desc">{{ product.description | truncatewords:50 }}</p>
+            <p class="hidden sort-desc">{{ product.first_config.description | truncatewords:50 }}</p>
             <div class="button-action d-flex">
               <div class="addtocart-btn">
                 <form class="addtocart" action="#" method="post">
