@@ -11,22 +11,20 @@ from ecommerce.products.services.product import ProductDetailService
 class ProductDetailView(DetailView):
     queryset = Product.objects.all()
     context_object_name = 'product'
-    template_name = 'detail.html'
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         service = ProductDetailService(self.get_object())
-        context['current_configuration'] = service.get_product_configuration()
-        context['current_detail_picture'] = (self.get_object().
-                                             pictures.first().detail_url)
+        context |= service.get_context(
+            int(self.request.GET.get('config_id', 0))
+        )
         return context
 
 
-def selected_picture_view(request: HttpRequest, slug: str, type_: str,
+def selected_picture_view(request: HttpRequest, slug: str, type: str,
                           id: int) -> HttpResponse:
     service = ProductDetailService(Product.objects.get(slug=slug))
-
     context = {
-        'current_detail_picture': service.get_product_picture_url(type_, id)
+        'current_detail_picture': service.get_product_picture_url(type, id),
     }
     return render(request, 'detail/product_zoom.html', context)
