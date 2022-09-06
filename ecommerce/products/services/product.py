@@ -47,6 +47,11 @@ class ProductListService:
                 values('name', 'slug').first()
                 if current_category_slug else {'name': '', 'slug': ''})
 
+    @classmethod
+    def get_random_products(cls, product_number: int) -> QuerySet:
+        return (cls.get_products(Product.objects.all(), '').
+                order_by('?')[:product_number])
+
 
 class ProductDetailService:
     def __init__(self, product: Product):
