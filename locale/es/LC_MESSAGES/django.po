@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 19:09+0000\n"
+"POT-Creation-Date: 2022-09-06 00:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,7 @@ msgstr ""
 "Registrate\n"
 "                            Con\n"
 "                            Google"
+
 #: templates/account/password_reset.html:6
 #: templates/account/password_reset_done.html:4
 #: templates/account/password_reset_from_key_done.html:4
@@ -139,15 +140,17 @@ msgstr ""
 "Por favor introduce tu email debajo. Recibirás un enlace para restablecer "
 "tu\n"
 "                contraseña."
+
 #: templates/account/password_reset_done.html:12
 msgid ""
 "We have e-mailed you. If you have not received it please check your spam\n"
 "              folder. Otherwise, contact us if you do not receive it in a "
 "few minutes."
 msgstr ""
-"Te hemos enviado un email. Si no lo recibes, por favor revisa el la carpeta de\n"
-"              spam. Por favor contactanos de no recibirlo en "
-"unos minutos."
+"Te hemos enviado un email. Si no lo recibes, por favor revisa el la carpeta "
+"de\n"
+"              spam. Por favor contactanos de no recibirlo en unos minutos."
+
 #: templates/account/password_reset_from_key.html:17
 msgid "Please enter and confirm your new password."
 msgstr "Por favor introduce y confirma tu nueva contraseña"
