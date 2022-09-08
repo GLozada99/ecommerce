@@ -180,6 +180,12 @@ THUMBNAILS = {
                  'height': 650},
             ],
         },
+        'slide': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 1050,
+                 'height': 492},
+            ],
+        },
         'large': {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 490,
