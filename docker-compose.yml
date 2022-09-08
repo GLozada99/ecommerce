@@ -9,6 +9,16 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+  db-dev:
+    image: postgres
+    volumes:
+      - ${DB_PATH}:/var/lib/postgresql/data
+    ports:
+      - ${DB_PORT_DEV}:5432
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
   web:
     build: .
     command: gunicorn ecommerce.wsgi --bind 0.0.0.0:${PORT}
