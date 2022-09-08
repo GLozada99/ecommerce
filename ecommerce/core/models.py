@@ -13,7 +13,7 @@ class User(AbstractUser, BaseModel):
 
 class SlideImage(BaseModel):
     text = models.CharField(max_length=60)
-    icon = ImageField(upload_to='slide/', pregenerated_sizes=['slide'])
+    image = ImageField(upload_to='slide/', pregenerated_sizes=['slide'])
 
     def frontpage_picture_url(self) -> str:
-        return self.icon.thumbnails.slide.url
+        return self.image.thumbnails.slide.url
