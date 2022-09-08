@@ -81,7 +81,7 @@ DATABASES = {
         'USER': f'{env_settings.DB_USER}',
         'PASSWORD': f'{env_settings.DB_PASSWORD}',
         'HOST': f'{env_settings.DB_HOST}',
-        'PORT': f'{env_settings.DB_PORT}',
+        'PORT': f'{env_settings.get_DB_PORT}',
     }
 }
 
@@ -121,7 +121,7 @@ STATIC_URL = "staticfiles/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
-    'st'
+    'static_dir'
 ]
 
 # Media files
