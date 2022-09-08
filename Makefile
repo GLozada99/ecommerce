@@ -12,6 +12,7 @@ logs:
 
 .PHONY: run-dev
 run-dev:
+	$(MAKE) db-start-dev
 	python manage.py runserver
 
 .PHONY: run-prod
@@ -23,13 +24,13 @@ migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 
-.PHONY: db-start
-db-start:
-	docker-compose --env-file ./.env up db -d
+.PHONY: db-start-dev
+db-start-dev:
+	docker-compose --env-file ./.env up db-dev -d --no-recreate
 
-.PHONY: db-stop
-db-stop:
-	docker-compose stop db
+.PHONY: db-stop-dev
+db-stop-dev:
+	docker-compose stop db-dev
 
 .PHONY: stop
 stop:
