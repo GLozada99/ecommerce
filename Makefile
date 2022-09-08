@@ -40,6 +40,7 @@ set-data:
 	$(MAKE) migrate
 	python manage.py createcategories
 	python manage.py createproducts
+	python manage.py createslides
 	DJANGO_SUPERUSER_PASSWORD=$(DJANGO_SUPERUSER_PASSWORD) \
 	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
 	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
