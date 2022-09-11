@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 00:34+0000\n"
+"POT-Creation-Date: 2022-09-11 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,10 @@ msgstr ""
 #: ecommerce/products/templates/list/breadcrumb_hx.html:14
 msgid "Home"
 msgstr "Inicio"
+
+#: ecommerce/products/templates/detail/product_sugestions.html:7
+msgid "You May Also Like"
+msgstr "También te interesarían"
 
 #: ecommerce/products/templates/list/categories_hx.html:8
 #, fuzzy
@@ -59,6 +63,3 @@ msgstr "mayor a menor"
 #: ecommerce/products/templates/list2.html:12
 msgid "Product Categories"
 msgstr "Categorías"
-
-#~ msgid "All items"
-#~ msgstr "Todos los productos"
