@@ -50,7 +50,7 @@ class ProductListService:
     @classmethod
     def get_random_products(cls, product_number: int) -> QuerySet:
         return (cls.get_products(Product.objects.all(), '').
-                order_by('?')[:product_number])
+                    order_by('?')[:product_number])
 
 
 class ProductDetailService:
@@ -105,14 +105,30 @@ class ProductDetailService:
             } for data in self.product.configurations.all()
         ]
 
-    def get_context(self, config_id: int) -> dict:
+    def get_related_products(self, product_limit: int) -> list:
+        products = ProductListService.get_products(
+            self.product.category.product_set.all().exclude(
+                id=self.product.id),
+            '',
+        )
+        product_count = products.count()
+        selected_products = products[:max(product_limit, product_count)]
+        return [
+            {'product': product,
+             'picture_url': (product.first_config.picture.
+                             thumbnails.product_detail_related.url)
+             } for product in selected_products
+        ]
+
+    def get_context(self, config_id: int, product_limit: int) -> dict:
         current_configuration = self.get_product_configuration(config_id)
         return {
-            'thumbnails':  self.get_product_thumbnails(),
-            'current_configuration':  current_configuration,
+            'thumbnails': self.get_product_thumbnails(),
+            'current_configuration': current_configuration,
             'configurations': self.get_configurations_data(),
             'current_detail_picture': (current_configuration.picture.
                                        thumbnails.product_detail.url),
             'current_extra_data': self.get_config_extra_data(
                 current_configuration),
+            'related_products': self.get_related_products(product_limit)
         }
