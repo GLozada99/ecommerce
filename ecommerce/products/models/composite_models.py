@@ -35,7 +35,10 @@ class ProductPicture(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
     picture = ImageField(upload_to='products/general/',
-                         pregenerated_sizes=['small', 'medium', 'large'])
+                         pregenerated_sizes=[
+                             'product_list', 'product_detail',
+                             'product_detail_related',
+                         ])
 
     @property
     def detail_url(self) -> str:
