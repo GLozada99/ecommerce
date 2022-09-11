@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}"/>
-
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+        rel="stylesheet"
+    />
   </head>
 
   <body class="template-index index-demo2 modal-popup-style">
@@ -35,9 +38,9 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script type="text/javascript" src="{% static 'htmx.min.js' %}"></script>
     <script>
-      document.body.addEventListener('htmx:configRequest', (event) => {
-        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-      })
+        document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        })
     </script>
   </body>
 
