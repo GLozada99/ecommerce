@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 section-header style1">
         <div class="section-header-left">
-          <h2>{% trans "Some of our products" %}</h2>
+          <h2>{% blocktrans %}Some of our products{% endblocktrans %}</h2>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
         {% for product in products %}
           <div class="item col-lg-3 col-md-4 col-6">
             <!--Start Product Image-->
-            <div class="product-image">
+            <div class="product-image border border-5 border-dark rounded-9">
               <!--Start Product Image-->
               <a href="{% url 'site:products:detail' slug=product.slug %}" class="product-img">
                 <img class="primary blur-up lazyload" data-src="{{ product.first_config.list_url }}"
