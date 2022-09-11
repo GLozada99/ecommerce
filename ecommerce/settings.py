@@ -180,6 +180,12 @@ THUMBNAILS = {
                  'height': 650},
             ],
         },
+        'product_detail_related': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 250,
+                 'height': 300},
+            ],
+        },
         'slide': {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 1050,
