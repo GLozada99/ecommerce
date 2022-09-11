@@ -81,7 +81,7 @@ DATABASES = {
         'USER': f'{env_settings.DB_USER}',
         'PASSWORD': f'{env_settings.DB_PASSWORD}',
         'HOST': f'{env_settings.DB_HOST}',
-        'PORT': f'{env_settings.DB_PORT}',
+        'PORT': f'{env_settings.get_DB_PORT}',
     }
 }
 
@@ -121,7 +121,7 @@ STATIC_URL = "staticfiles/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
-    'st'
+    'static_dir'
 ]
 
 # Media files
@@ -160,14 +160,42 @@ THUMBNAILS = {
             'PROCESSORS': [
                 {'PATH': 'thumbnails.processors.resize', 'width': 240,
                  'height': 240},
-                # {'PATH': 'thumbnails.processors.flip',
-                #  'direction': 'horizontal'}
+            ],
+        },
+        'category_frontpage': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 400,
+                 'height': 400},
+            ],
+        },
+        'product_list': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                 'height': 625},
+            ],
+        },
+        'product_detail': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                 'height': 650},
+            ],
+        },
+        'product_detail_related': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 250,
+                 'height': 300},
+            ],
+        },
+        'slide': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 1050,
+                 'height': 492},
             ],
         },
         'large': {
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 350,
-                 'height': 350},
+                {'PATH': 'thumbnails.processors.resize', 'width': 490,
+                 'height': 700},
             ],
         },
         'watermarked': {

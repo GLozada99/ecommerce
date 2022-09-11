@@ -26,6 +26,7 @@ django-modeltranslation = "^0.18.4"
 django-htmx = "^1.12.1"
 django-storages = "^1.13.1"
 boto3 = "^1.24.61"
+model-bakery = "^1.7.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

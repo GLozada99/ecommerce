@@ -1,0 +1,46 @@
+{% load humanize %}
+{% load i18n %}
+<section class="section product-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 section-header style1">
+        <div class="section-header-left">
+          <h2>{% trans "Some of our products" %}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="grid-products">
+      <div class="row">
+        {% for product in products %}
+          <div class="item col-lg-3 col-md-4 col-6">
+            <!--Start Product Image-->
+            <div class="product-image border border-5 border-dark rounded-9">
+              <!--Start Product Image-->
+              <a href="{% url 'site:products:detail' slug=product.slug %}" class="product-img">
+                <img class="primary blur-up lazyload" data-src="{{ product.first_config.list_url }}"
+                     src="{{ product.first_config.list_url }}" alt="image" title="">
+
+                <img class="hover blur-up lazyload" data-src="{{ product.first_config.list_url }}"
+                     src="{{ product.first_config.list_url }}" alt="image" title="">
+              </a>
+            </div>
+            <div class="product-details text-center">
+              <div class="product-name text-uppercase">
+                <a href="{% url 'site:products:detail' slug=product.slug %}"
+                >{{ product.name|truncatewords:6 }}</a>
+              </div>
+              <div class="product-price">
+                <span class="price">${{ product.current_price | intcomma }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-12 text-center mt-3">
+          <a href="{% url 'site:products:list' %}" class="btn-primary btn-lg rounded">{% trans "See more" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

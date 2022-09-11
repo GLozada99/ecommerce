@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     DB_PASSWORD: str
     DB_HOST: str
     DB_PORT: int
+    DB_PORT_DEV: int
     DB_NAME: str
 
     AWS_S3_ACCESS_KEY_ID: str
@@ -31,3 +32,7 @@ class Settings(BaseSettings):
     class Config:
         case_sensitive = True
         env_file = '.env'
+
+    @property
+    def get_DB_PORT(self) -> int:
+        return self.DB_PORT_DEV if self.DJANGO_DEBUG else self.DB_PORT

@@ -1,0 +1,37 @@
+{% load humanize %}
+{% load i18n %}
+<section class="section product-slider pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="section-header col-12">
+        <h2 class="text-transform-none">{% blocktrans %}You May Also Like{% endblocktrans %}</h2>
+      </div>
+    </div>
+    <div class="productSlider grid-products">
+      {% for data in related_products %}
+        <div class="item ">
+          <!--Start Product Image-->
+          <div class="product-image border border-5 border-dark rounded-9">
+            <!--Start Product Image-->
+            <a href="{% url 'site:products:detail' slug=data.product.slug %}" class="product-img">
+              <img class="primary blur-up lazyload" data-src="{{ data.picture_url }}"
+                   src="{{ data.picture_url }}" alt="" title="">
+              <img class="hover blur-up lazyload" data-src="{{ data.picture_url }}"
+                   src="{{ data.picture_url }}" alt="" title="">
+            </a>
+
+          </div>
+          <div class="product-details text-center">
+            <div class="product-name text-uppercase">
+              <a href="{% url 'site:products:detail' slug=data.product.slug %}"
+              >{{ data.product.name|truncatewords:6 }}</a>
+            </div>
+            <div class="product-price">
+              <span class="price">${{ data.product.current_price | intcomma }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

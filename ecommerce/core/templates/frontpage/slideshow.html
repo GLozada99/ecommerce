@@ -1,59 +1,30 @@
 {% load static %}
 <section class="slideshow slideshow-wrapper">
   <div class="home-slideshow">
-    <div class="slide">
-      <div class="blur-up lazyload">
-        <img class="blur-up lazyload desktop-hide"
-             data-src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
-             src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
-             alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
-        <img class="blur-up lazyload mobile-hide"
-             data-src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
-             src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
-             alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
-        <div class="container">
-          <div
-              class="slideshow-content slideshow-overlay bottom-middle d-flex justify-content-center
+    {% for slide in slides %}
+      <div class="slide">
+        <div class="blur-up lazyload">
+          <img class="blur-up lazyload desktop-hide"
+               data-src="{{ slide.frontpage_picture_url }}"
+               src="{{ slide.frontpage_picture_url }}"
+               alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
+          <img class="blur-up lazyload mobile-hide"
+               data-src="{{ slide.frontpage_picture_url }}"
+               src="{{ slide.frontpage_picture_url }}"
+               alt="HIGH CONVERTING" title="HIGH CONVERTING"/>
+          <div class="container">
+            <div
+                class="slideshow-content slideshow-overlay bottom-middle d-flex justify-content-center
                   align-items-center">
-            <div class="slideshow-content-in text-center">
-              <div class="wrap-caption animation style1 px-2">
-                <h1 class="h1 mega-title ss-mega-title fs-1 text-capitalize">Some Text Goes Here</h1>
-                <div class="ss-btnWrap mt-3 mt-md-0">
-                  <a class="btn btn-lg border-0 btn-primary" href="#">A button</a>
-                  <a class="btn btn-lg border-0 btn-primary" href="#">Another button</a>
+              <div class="slideshow-content-in text-center">
+                <div class="wrap-caption animation style1 px-2">
+                  <h1 class="h1 mega-title ss-mega-title fs-1 text-capitalize">{{ slide.text }}</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="slide">
-      <div class="blur-up lazyload">
-        <img class="blur-up lazyload desktop-hide"
-             data-src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
-             src="{% static 'assets/images/slideshow/demo2-banner1.jpg' %}"
-             alt="MAKING BRAND VISIBLE"
-             title="MAKING BRAND VISIBLE"/>
-        <img class="blur-up lazyload mobile-hide"
-             data-src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
-             src="{% static 'assets/images/slideshow/demo2-banner1-m.jpg' %}"
-             alt="MAKING BRAND VISIBLE"
-             title="MAKING BRAND VISIBLE"/>
-        <div class="container">
-          <div
-              class="slideshow-content slideshow-overlay bottom-middle container d-flex justify-content-center align-items-center">
-            <div class="slideshow-content-in text-center">
-              <div class="wrap-caption animation style1 whiteText px-2">
-                <h2 class="mega-title ss-mega-title fs-1 text-capitalize">More Text</h2>
-                <div class="ss-btnWrap mt-3 mt-md-0">
-                  <a class="btn btn-lg border-0 btn-primary" href="#">Button</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </section>

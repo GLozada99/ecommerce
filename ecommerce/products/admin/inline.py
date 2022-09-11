@@ -7,7 +7,7 @@ from ecommerce.products.models.composite_models import (ProductConfiguration,
 
 class ImageInline(admin.TabularInline):
     model = ProductPicture
-    extra = 0
+    extra = 1
     min = 1
 
 
@@ -18,5 +18,5 @@ class ExtraDataInline(admin.TabularInline):
 
 class ConfigurationInline(admin.StackedInline):
     model = ProductConfiguration
-    extra = 0
+    extra = 1
     min = 1

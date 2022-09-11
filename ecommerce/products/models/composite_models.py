@@ -9,7 +9,8 @@ class ProductConfiguration(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='configurations')
     name = models.TextField()
-    picture = ImageField(upload_to='products/configurations/')
+    picture = ImageField(upload_to='products/configurations/',
+                         pregenerated_sizes=['small', 'medium', 'large'])
     description = models.TextField(blank=True)
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
@@ -22,22 +23,22 @@ class ProductConfiguration(BaseModel):
         return self.product.name
 
     @property
-    def picture_thumbnail_url(self) -> str:
+    def detail_thumbnail_url(self) -> str:
         return self.picture.thumbnails.small.url
 
     @property
-    def picture_detail_url(self) -> str:
-        return self.picture.thumbnails.large.url
-
-    @property
-    def picture_list_url(self) -> str:
-        return self.picture.thumbnails.medium.url
+    def list_url(self) -> str:
+        return self.picture.thumbnails.product_list.url
 
 
 class ProductPicture(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
-    picture = ImageField(upload_to='products/general/')
+    picture = ImageField(upload_to='products/general/',
+                         pregenerated_sizes=[
+                             'product_list', 'product_detail',
+                             'product_detail_related',
+                         ])
 
     @property
     def detail_url(self) -> str:

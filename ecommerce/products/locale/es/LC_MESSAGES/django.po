@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 19:09+0000\n"
+"POT-Creation-Date: 2022-09-11 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,24 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/products/templates/detail.html:10
-msgid "All items"
-msgstr "Todos los productos"
-
-#: ecommerce/products/templates/list.html:51
-#: ecommerce/products/templates/list2.html:12
-msgid "Product Categories"
-msgstr "Categorías"
-
-#: ecommerce/products/templates/list.html:55
-#: ecommerce/products/templates/list/order_by_hx.html:8
-#: ecommerce/products/templates/list2.html:16
-msgid "Sort by"
-msgstr "Ordenar por"
-
+#: ecommerce/products/templates/detail/breadcrumb_hx.html:14
 #: ecommerce/products/templates/list/breadcrumb_hx.html:14
 msgid "Home"
 msgstr "Inicio"
+
+#: ecommerce/products/templates/detail/product_sugestions.html:7
+msgid "You May Also Like"
+msgstr "También te interesarían"
 
 #: ecommerce/products/templates/list/categories_hx.html:8
 #, fuzzy
@@ -47,20 +37,29 @@ msgstr "Categorías"
 msgid "Add to Cart"
 msgstr "Añadir al carrito"
 
-#: ecommerce/products/templates/list/order_by_hx.html:18
-#: ecommerce/products/templates/list/order_by_hx.html:21
+#: ecommerce/products/templates/list/order_by_hx.html:9
+#: ecommerce/products/templates/list2.html:16
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: ecommerce/products/templates/list/order_by_hx.html:19
+#: ecommerce/products/templates/list/order_by_hx.html:22
 msgid "Alphabetically,"
 msgstr "Alfabéticamente"
 
-#: ecommerce/products/templates/list/order_by_hx.html:24
-#: ecommerce/products/templates/list/order_by_hx.html:27
+#: ecommerce/products/templates/list/order_by_hx.html:25
+#: ecommerce/products/templates/list/order_by_hx.html:28
 msgid "Price"
 msgstr "Precio"
 
-#: ecommerce/products/templates/list/order_by_hx.html:25
+#: ecommerce/products/templates/list/order_by_hx.html:26
 msgid "low to high"
 msgstr "menor a mayor"
 
-#: ecommerce/products/templates/list/order_by_hx.html:28
+#: ecommerce/products/templates/list/order_by_hx.html:29
 msgid "high to low"
 msgstr "mayor a menor"
+
+#: ecommerce/products/templates/list2.html:12
+msgid "Product Categories"
+msgstr "Categorías"

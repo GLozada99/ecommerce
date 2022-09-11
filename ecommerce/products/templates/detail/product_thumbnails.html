@@ -1,0 +1,18 @@
+{% load static %}
+<div class="product-thumb">
+  <div class=" product-tab-left">
+    {% for thumbnail in thumbnails %}
+      <div class="mb-3">
+        <a href="#"
+           hx-get="{% url 'site:products:detail-picture' slug=product.slug id=thumbnail.id type=thumbnail.type %}"
+           hx-target="#picture"
+           hx-swap="outerHTML"
+           data-image="{{ thumbnail.url }}"
+           data-zoom-image="{{ thumbnail.url }}">
+          <img class="blur-up lazyload rounded" data-src="{{ thumbnail.url }}"
+               src="{{ thumbnail.url }}" alt="product"/>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>

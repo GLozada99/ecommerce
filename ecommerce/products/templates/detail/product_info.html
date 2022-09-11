@@ -1,0 +1,74 @@
+{% load humanize %}
+<div class="col-lg-5 col-md-6 col-sm-12 col-12">
+  <!-- Product Info -->
+  <div class="product-single__meta">
+    <h1 class="product-single__title">{{ current_configuration.product.name }}</h1>
+    <div class="product-single__subtitle">{{ current_configuration.name }}</div>
+    <!-- Product Info -->
+    <div class="product-info mb-2">
+      {% if current_configuration.description %}
+        <span>{{ current_configuration.description | truncatewords:100 }}</span>
+      {% else %}
+        <span>{{ current_configuration.product.general_description | truncatewords:100 }}</span>
+      {% endif %}
+    </div>
+    <div class="product-info">
+      {% for data in current_extra_data %}
+        <p class="product-type mt-1">{{ data.name }}: <span>{{ data.value }}</span></p>
+      {% endfor %}
+    </div>
+
+    <!-- End Product Info -->
+    <!-- Product Price -->
+    <div class="product-single__price pb-1">
+      <span class="product-price__sale--single"></span>
+      <span class="product-price__price">${{ current_configuration.current_price | intcomma }}</span>
+    </div>
+    <!-- End Product Price -->
+  </div>
+  <!-- End Product Info -->
+  <!-- Product Form -->
+  <form method="post" action="#" class="product-form hidedropdown">
+    <!-- Swatches Color -->
+    <div class="swatches-image swatch clearfix swatch-0 option1" data-option-index="0">
+      <div class="product-form__item">
+        <label class="label d-flex">Option:<span class="required d-none">*</span><span
+            class="slVariant ms-1 fw-bold">{{ current_configuration.name }}</span></label>
+        <ul class="swatches d-flex-wrap list-unstyled clearfix">
+          {% for config in configurations %}
+            <li data-value="Green" class="swatch-element color available
+                  {% if config.name == current_configuration.name %}active{% endif %}"
+            >
+              <div>
+                <a class="hover:text-blue-600 hover:underline
+                                {% if option.field_name == current_order_by %}text-blue-900 font-bold{% else %}{% endif %}"
+                   href="#"
+                   hx-get="{% url 'site:products:detail-config' slug=product.slug %}"
+                   hx-vals='{"config_id": "{{ config.id }}"}'
+                   hx-target="#product"
+                   hx-swap="outerHTML">
+                  <label class="swatchLbl rounded color xlarge"
+                         style="background-image: url({{ config.url }})"
+                         title="{{ config.name }}"></label>
+                </a>
+              </div>
+              <span class="tooltip-label top">{{ config.name }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <!-- End Swatches Color -->
+    <!-- Product Action -->
+    <div class="product-action w-100 clearfix">
+      <div class="product-form__item--submit">
+        <button type="submit" name="add" class="btn rounded product-form__cart-submit">
+          <span>Add to cart</span></button>
+      </div>
+    </div>
+    <!-- End Product Action -->
+    <!-- Product Info link -->
+    <!-- End Product Info link -->
+  </form>
+  <!-- End Product Info -->
+</div>

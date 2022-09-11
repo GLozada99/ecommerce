@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 19:09+0000\n"
+"POT-Creation-Date: 2022-09-11 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,59 +22,58 @@ msgstr ""
 msgid "Site"
 msgstr "Sitio"
 
-#: ecommerce/core/templates/base/desktop-menu.html:29
+#: ecommerce/core/templates/base/desktop-menu.html:27
 #: ecommerce/core/templates/base/mobile-menu.html:5
 msgid "Home"
 msgstr "Inicio"
 
-#: ecommerce/core/templates/base/desktop-menu.html:30
+#: ecommerce/core/templates/base/desktop-menu.html:28
 #: ecommerce/core/templates/base/mobile-menu.html:6
 msgid "Products"
 msgstr "Productos"
 
-#: ecommerce/core/templates/base/desktop-menu.html:32
+#: ecommerce/core/templates/base/desktop-menu.html:30
 #: ecommerce/core/templates/base/mobile-menu.html:7
 msgid "About Us"
 msgstr "Sobre Nosotros"
 
-#: ecommerce/core/templates/base/desktop-menu.html:33
+#: ecommerce/core/templates/base/desktop-menu.html:31
 #: ecommerce/core/templates/base/footer.html:14
 #: ecommerce/core/templates/base/mobile-menu.html:8
 msgid "Contact Us"
 msgstr "Contactanos"
 
-#: ecommerce/core/templates/base/desktop-menu.html:43
-#: ecommerce/core/templates/base/desktop-menu.html:109
+#: ecommerce/core/templates/base/desktop-menu.html:41
+#: ecommerce/core/templates/base/desktop-menu.html:107
 msgid "Search"
 msgstr "Buscar"
 
-#: ecommerce/core/templates/base/desktop-menu.html:47
+#: ecommerce/core/templates/base/desktop-menu.html:45
 msgid "Account"
 msgstr "Cuenta"
 
-#: ecommerce/core/templates/base/desktop-menu.html:52
+#: ecommerce/core/templates/base/desktop-menu.html:50
 msgid "Profile"
 msgstr "Perfil"
 
-#: ecommerce/core/templates/base/desktop-menu.html:57
+#: ecommerce/core/templates/base/desktop-menu.html:55
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: ecommerce/core/templates/base/desktop-menu.html:62
+#: ecommerce/core/templates/base/desktop-menu.html:60
 #: ecommerce/core/templates/base/mobile-menu.html:10
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-#: ecommerce/core/templates/base/desktop-menu.html:63
+#: ecommerce/core/templates/base/desktop-menu.html:61
 msgid "Sign Up"
 msgstr "Registro"
 
-#: ecommerce/core/templates/base/desktop-menu.html:114
-#, fuzzy
+#: ecommerce/core/templates/base/desktop-menu.html:112
 msgid "All Categories"
 msgstr "Todas las Categories"
 
-#: ecommerce/core/templates/base/desktop-menu.html:125
+#: ecommerce/core/templates/base/desktop-menu.html:123
 msgid "Input name or product category"
 msgstr "Introduzca el nombre de un producto o categoría"
 
@@ -106,6 +105,14 @@ msgstr "Carrito"
 #: ecommerce/core/templates/frontpage/categories.html:5
 msgid "Product Categories"
 msgstr "Categorías de Productos"
+
+#: ecommerce/core/templates/frontpage/products.html:8
+msgid "Some of our products"
+msgstr "Algunos de nuestros productos"
+
+#: ecommerce/core/templates/frontpage/products.html:41
+msgid "See more"
+msgstr "Ver más"
 
 #: ecommerce/core/templates/not-found.html:10
 msgid "Sorry, we couldn't find this page."

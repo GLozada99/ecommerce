@@ -34,13 +34,14 @@ class Command(BaseCommand):
                     product = Product.objects.populate(True).create(
                         name=sub_dir,
                         general_description='\n\r\n\r'.join(
-                            faker.paragraphs(20)
+                            faker.paragraphs(5)
                         ),
                         slug=slugify(sub_dir[:50]),
                         category_id=categories.get(directory)
                     )
 
-                    for filename in os.listdir(full_subdirectory):
+                    for i, filename in enumerate(
+                            os.listdir(full_subdirectory)):
                         name, ext = filename.split('.')
                         full_filepath = os.path.join(
                             full_subdirectory, filename
@@ -49,7 +50,8 @@ class Command(BaseCommand):
                             product=product,
                             name=name,
                             slug=slugify(name[:50]),
-                            description='\n\r\n\r'.join(faker.paragraphs(5)),
+                            description='\n\r\n\r'.join(faker.paragraphs(5))
+                            if i % 2 == 0 else '',
                             current_price=faker.pydecimal(left_digits=5,
                                                           right_digits=2,
                                                           min_value=100),

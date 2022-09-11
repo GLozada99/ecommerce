@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django_htmx.http import trigger_client_event
 
 from ecommerce.products.models.models import Category, Product
-from ecommerce.products.services.product import ProductService
+from ecommerce.products.services.product import ProductListService
 
 
 class ProductListView(ListView):
@@ -16,7 +16,7 @@ class ProductListView(ListView):
     paginate_by = 6
 
     def get_queryset(self) -> QuerySet:
-        products = ProductService.get_products(
+        products = ProductListService.get_products(
             super(ProductListView, self).get_queryset(),
             self.request.session.get('current_order_by'),
         )
@@ -26,11 +26,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
         context = super(ProductListView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['current_category'] = self.request.GET.get(
-            'category', '')
-        context['current_order_by'] = self.request.GET.get(
-            'order_by', '')
+        context |= ProductListService.get_context(self.request.GET)
         return context
 
     def get(
@@ -47,10 +43,11 @@ class ProductListView(ListView):
 
 def category_selection_view(request: HttpRequest) -> \
         HttpResponse:
+    categories = Category.objects.all().order_by('name')
     context = {
-        'categories': Category.objects.all().order_by('name'),
-        'current_category': Category.objects.filter(slug=request.session.get(
-            'current_category')).values('slug').first(),
+        'categories': categories,
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category'), categories),
         'current_order_by': request.session.get(
             'current_order_by')
     }
@@ -59,16 +56,16 @@ def category_selection_view(request: HttpRequest) -> \
 
 def breadcrumb_view(request: HttpRequest) -> HttpResponse:
     context = {
-        'current_category': Category.objects.filter(slug=request.session.get(
-            'current_category')).values('name', 'slug').first()
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category'))
     }
     return render(request, 'list/breadcrumb_hx.html', context)
 
 
 def order_by_view(request: HttpRequest) -> HttpResponse:
     context = {
-        'current_category': request.session.get(
-            'current_category'),
+        'current_category': ProductListService.get_current_category(
+            request.session.get('current_category')),
         'current_order_by': request.session.get(
             'current_order_by')
     }
