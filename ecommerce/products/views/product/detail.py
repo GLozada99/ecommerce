@@ -17,7 +17,8 @@ class ProductDetailView(DetailView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         service = ProductDetailService(self.get_object())
         context |= service.get_context(
-            int(self.request.GET.get('config_id', 0))
+            int(self.request.GET.get('config_id', 0)),
+            product_limit=4,
         )
         return context
 
