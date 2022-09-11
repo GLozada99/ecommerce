@@ -6,7 +6,11 @@
     <div class="product-single__subtitle">{{ current_configuration.name }}</div>
     <!-- Product Info -->
     <div class="product-info mb-2">
-      <span>{{ current_configuration.description | truncatewords:100 }}</span>
+      {% if current_configuration.description %}
+        <span>{{ current_configuration.description | truncatewords:100 }}</span>
+      {% else %}
+        <span>{{ current_configuration.product.general_description | truncatewords:100 }}</span>
+      {% endif %}
     </div>
     <div class="product-info">
       {% for data in current_extra_data %}
