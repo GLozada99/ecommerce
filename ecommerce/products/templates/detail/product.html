@@ -1,11 +1,13 @@
-<div class="product-single" id="product">
-  <div class="row">
-    <div class="col-lg-7 col-md-6 col-sm-12 col-12">
-      <div class="product-details-img thumb-left clearfix d-flex-wrap mb-3 mb-md-0">
-        {% include 'detail/product_thumbnails.html' %}
-        {% include 'detail/product_detail_picture.html' %}
+<section class="container" id="product">
+  <div class="product-single">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12 col-12">
+        <div class="product-details-img thumb-left clearfix d-flex-wrap mb-3 mb-md-0">
+          {% include 'detail/product_thumbnails.html' %}
+          {% include 'detail/product_detail_picture.html' %}
+        </div>
       </div>
+      {% include 'detail/product_info.html' %}
     </div>
-    {% include 'detail/product_info.html' %}
   </div>
-</div>
+</section>

@@ -4,8 +4,7 @@
 {% block content %}
   <section id="page-content">
     {% include 'detail/breadcrumb_hx.html' %}
-    <section class="container">
-      {% include 'detail/product.html' %}
-    </section>
+    {% include 'detail/product.html' %}
+    {% include 'detail/product_sugestions.html' %}
   </section>
 {% endblock %}
