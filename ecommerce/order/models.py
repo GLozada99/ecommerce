@@ -8,7 +8,7 @@ from ecommerce.utils.models import BaseModel
 class Cart(BaseModel):
     products = models.ManyToManyField(ProductConfiguration,
                                       through='CartProducts')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class CartProducts(BaseModel):
