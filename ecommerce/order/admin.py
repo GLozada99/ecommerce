@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from ecommerce.order.models import Cart
+
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['user']
