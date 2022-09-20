@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import Q
 
@@ -25,7 +26,8 @@ class Cart(BaseModel):
 class CartProducts(BaseModel):
     product = models.ForeignKey(ProductConfiguration, on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=1,
+                                   validators=[MinValueValidator(1)])
 
     class Meta:
         constraints = [
