@@ -22,6 +22,9 @@ class Cart(BaseModel):
             )
         ]
 
+    def contains_product(self, product_id: int) -> bool:
+        return self.products.filter(product_id=product_id).exists()
+
 
 class CartProducts(BaseModel):
     product = models.ForeignKey(ProductConfiguration, on_delete=models.CASCADE)
