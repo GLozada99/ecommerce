@@ -11,6 +11,11 @@ urlpatterns = [
                  namespace='products'
                  )
          ),
+    path('cart/',
+         include('ecommerce.order.urls.cart',
+                 namespace='cart'
+                 )
+         ),
 ]
 
 site_urlpatterns = (urlpatterns, 'site')
