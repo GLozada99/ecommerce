@@ -22,6 +22,13 @@ class Cart(BaseModel):
             )
         ]
 
+    @property
+    def cookie_id_str(self) -> str:
+        return str(self.cookie_id) if self.cookie_id else ''
+
+    def __str__(self) -> str:
+        return f'User: {self.user}, cookie: {self.cookie_id}'
+
     def contains_product(self, product_id: int) -> bool:
         return self.products.filter(product_id=product_id).exists()
 
