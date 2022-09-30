@@ -1,9 +1,7 @@
 import uuid
-from typing import Any
 
 from django.core.exceptions import ValidationError
 from django.db.models import F
-from django.db.transaction import atomic
 
 from ecommerce.core.models import User
 from ecommerce.order.models import Cart, CartProducts
@@ -11,64 +9,56 @@ from ecommerce.order.models import Cart, CartProducts
 
 class CartService:
 
-    @classmethod
-    @atomic  # type: ignore
-    def add_to_cart(cls, user: User, cookie_id: uuid.UUID,
-                    product_id: int) -> Any:
-        cart = cls.get_cart(user, cookie_id)
-        cls.add_product(cart, product_id)
+    def __init__(self, user: User, cookie_id: str):
+        self.user = user
+        self.cookie_uuid = uuid.UUID(cookie_id) if cookie_id else uuid.uuid4()
+        self.cart = self._get_cart()
 
-    @classmethod
-    def remove_from_cart(cls, user: User, cookie_id: uuid.UUID,
-                         product_id: int) -> Any:
-        cart = cls.get_cart(user, cookie_id)
-        cls.remove_product(cart, product_id)
+    def _get_cart(self) -> Cart:
+        cookie_cart = Cart.objects.filter(cookie_id=self.cookie_uuid).first()
+        if not self.user.is_authenticated:
+            return self._get_anonymous_cart(cookie_cart)
 
-    @classmethod
-    def get_cart(cls, user: User, cookie_id: uuid.UUID) -> Cart:
-        if user_cart := cls.get_user_cart(user):
+        return self._get_auth_cart(cookie_cart)
+
+    def _get_anonymous_cart(self, cookie_cart: Cart) -> Cart:
+        return (cookie_cart if cookie_cart
+                else Cart.objects.create(cookie_id=self.cookie_uuid))
+
+    def _get_auth_cart(self, cookie_cart: Cart) -> Cart:
+        if user_cart := Cart.objects.filter(user=self.user).first():
             return user_cart
-        elif cookie_cart := cls.get_cookie_cart(cookie_id):
-            return cookie_cart
         else:
-            return (Cart.objects.create(user=user) if user.is_authenticated
-                    else Cart.objects.create(cookie_id=cookie_id))
+            return self._migrate_cart(cookie_cart)
 
-    @staticmethod
-    def get_user_cart(user: User) -> Cart | None:
-        if not user.is_authenticated:
-            return None
+    def _migrate_cart(self, cookie_cart: Cart | None) -> Cart | None:
+        if not cookie_cart:
+            return Cart.objects.create(user=self.user)
 
-        try:
-            return Cart.objects.get(user=user)
-        except Cart.DoesNotExist:
-            return None
+        cookie_cart.cookie_id = None
+        cookie_cart.user = self.user
+        cookie_cart.save()
+        return cookie_cart
 
-    @staticmethod
-    def get_cookie_cart(cookie_id: uuid.UUID) -> Cart | None:
-        try:
-            return Cart.objects.get(cookie_id=cookie_id)
-        except Cart.DoesNotExist:
-            return None
-
-    @classmethod
-    def add_product(cls, cart: Cart, product_id: int) -> None:
-        if not CartProducts.objects.filter(cart=cart,
+    def add_product(self, product_id: int) -> None:
+        if not CartProducts.objects.filter(cart=self.cart,
                                            product_id=product_id).exists():
-            CartProducts.objects.create(cart=cart, product_id=product_id)
+            CartProducts.objects.create(cart=self.cart,
+                                        product_id=product_id)
         else:
-            (CartProducts.objects.filter(cart=cart, product_id=product_id).
+            (CartProducts.objects.filter(cart=self.cart,
+                                         product_id=product_id).
              update(quantity=F('quantity') + 1))
 
-    @classmethod
-    def remove_product(cls, cart: Cart, product_id: int) -> None:
+    def remove_product(self, product_id: int) -> None:
         try:
             cart_product = (CartProducts.objects.get(
-                cart=cart, product_id=product_id))
+                cart=self.cart, product_id=product_id))
             cart_product.quantity -= 1
             cart_product.full_clean()
             cart_product.save()
         except ValidationError:
-            CartProducts.objects.get(cart=cart, product_id=product_id).delete()
+            CartProducts.objects.get(
+                cart=self.cart, product_id=product_id).delete()
         except CartProducts.DoesNotExist:
             pass
