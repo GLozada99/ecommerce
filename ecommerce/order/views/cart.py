@@ -8,7 +8,7 @@ from ecommerce.products.services.product import ProductListService
 
 
 class ManageCartView(TemplateView):
-    template_name = 'base/add-to-cart.html'
+    template_name = 'base/modals/add-to-cart.html'
 
     def post(self, request: HttpRequest,
              *args: Any, **kwargs: Any) -> HttpResponse:
