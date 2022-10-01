@@ -1,6 +1,5 @@
 {% load i18n %}
-<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="
-{% if not post_cart_show %}true{% else %}false{% endif %}">
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,7 +31,7 @@
       </div>
     </div>
   </div>
-  {% if show %}
+  {% if post_cart_show %}
     <script>
         window.setTimeout(function () {
             $('#addToCartModal').modal('show');
