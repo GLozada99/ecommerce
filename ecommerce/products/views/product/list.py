@@ -1,3 +1,5 @@
+from typing import Any, Mapping
+
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -29,11 +31,16 @@ class ProductListView(ListView):
             'category', '')
         request.session['current_order_by'] = self.request.GET.get(
             'order_by', '')
-        self.extra_context |= ProductListService.get_context(self.request.GET)
 
         response = super().get(request, *args, **kwargs)
         trigger_client_event(response, 'get_items', {})
         return response
+
+    def get_context_data(self, **kwargs: Any) -> Mapping:
+        context = super().get_context_data(**kwargs)
+        context |= ProductListService.get_context(self.request.GET)
+
+        return context
 
 
 def category_selection_view(request: HttpRequest) -> \
