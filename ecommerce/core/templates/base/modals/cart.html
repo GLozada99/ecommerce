@@ -17,14 +17,16 @@
           <ul class="clearfix">
             {% for data in products_data %}
               <li class="item d-flex justify-content-center align-items-center">
-                <a class="product-image" href="{% url 'site:products:detail' slug=data.product.slug %}">
+                <a class="product-image"
+                   href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
                   <img class="blur-up lazyload" src="assets/images/products/cart-product-img1.jpg"
                        data-src="assets/images/products/cart-product-img1.jpg" alt="image" title="">
                 </a>
                 <div class="product-details">
-                  <a class="product-title" href="{% url 'site:products:detail' slug=data.product.slug %}">
-                    {{ data.product.product.name|truncatewords:12 }}</a>
-                  <div class="variant-cart">{{ data.product.name }}</div>
+                  <a class="product-title"
+                     href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
+                    {{ data.product.product.name|truncatewords:6 }}</a>
+                  <div class="variant-cart">{{ data.product.name|truncatewords:6 }}</div>
                   <div class="priceRow">
                     <div class="product-price">
                       <span class="money">${{ data.product.current_price }}</span>

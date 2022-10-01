@@ -64,9 +64,13 @@
         </div>
         <!--End Setting Dropdown-->
         <!--Minicart Drawer-->
-        <div class="header-cart iconset">
+        <div class="header-cart iconset"
+             hx-get="{% url 'site:cart:show' %}"
+             hx-target="#minicartModal"
+             hx-swap="outerHTML"
+        >
           <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal"
-             data-bs-target="#minicart-drawer">
+             data-bs-target="">
             <i class="icon an an-cart-l"></i><span
               class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span
               class="tooltip-label">Cart</span>
