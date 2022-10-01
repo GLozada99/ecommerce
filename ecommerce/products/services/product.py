@@ -13,7 +13,10 @@ class ProductListService:
         configurations_subquery = cls._get_configurations_subquery()
         return queryset.annotate(
             current_price=Subquery(
-                configurations_subquery.values('current_price')[:1]
+                configurations_subquery.values('current_price')[:1],
+            ),
+            current_config_id=Subquery(
+                configurations_subquery.values('pk')[:1],
             ),
         ).order_by(order_by if order_by else 'pk')
 
@@ -51,6 +54,11 @@ class ProductListService:
     def get_random_products(cls, product_number: int) -> QuerySet:
         return (cls.get_products(Product.objects.all(), '').
                     order_by('?')[:product_number])
+
+    @classmethod
+    def get_configuration(cls, configuration_id: int) -> Product:
+        return (ProductConfiguration.objects.
+                filter(pk=configuration_id).first())
 
 
 class ProductDetailService:
