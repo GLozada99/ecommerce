@@ -19,7 +19,7 @@ class ManageCartView(TemplateView):
         self.extra_context |= {
             'configuration': (ProductListService.
                               get_configuration(kwargs['product_id'])),
-            'show': True,
+            'post_cart_show': True,
         }
 
         response = super().get(request, *args, **kwargs)
