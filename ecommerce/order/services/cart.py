@@ -1,5 +1,6 @@
 import uuid
 
+from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
 from django.db.models import F
 
@@ -9,7 +10,7 @@ from ecommerce.order.models import Cart, CartProducts
 
 class CartService:
 
-    def __init__(self, user: User, cookie_id: str):
+    def __init__(self, user: User | AnonymousUser, cookie_id: str):
         self.user = user
         self.cookie_uuid = uuid.UUID(cookie_id) if cookie_id else uuid.uuid4()
         self.cart = self._get_cart()
@@ -31,7 +32,7 @@ class CartService:
         else:
             return self._migrate_cart(cookie_cart)
 
-    def _migrate_cart(self, cookie_cart: Cart | None) -> Cart | None:
+    def _migrate_cart(self, cookie_cart: Cart | None) -> Cart:
         if not cookie_cart:
             return Cart.objects.create(user=self.user)
 
