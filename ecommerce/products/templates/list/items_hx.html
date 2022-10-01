@@ -35,11 +35,17 @@
               <p class="hidden sort-desc">{{ product.general_description | truncatewords:50 }}</p>
             {% endif %}
             <div class="button-action d-flex">
-              <div class="addtocart-btn">
-                <form class="addtocart" action="#" method="post">
-                  <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
-                      class="icon hidden an an-cart-l"></i>Add to cart</a>
-                </form>
+              <div class="addtocart-btn"
+                   hx-post="{% url 'site:cart:manage' product_id=product.current_config_id %}"
+                   hx-target="#addToCartModal"
+                   hx-swap="outerHTML"
+              >
+                <button type="button" class="btn pro-addtocart-popup" data-bs-toggle="modal"
+                        data-bs-target="#addToCartModall"
+                >
+                  <i class="icon hidden an an-cart-l"></i>
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
@@ -101,4 +107,5 @@
       {% endif %}
     </ul>
   </div>
+  {% include "base/add-to-cart.html" %}
 </div>
