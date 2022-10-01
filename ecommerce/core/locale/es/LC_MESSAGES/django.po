@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 22:02+0000\n"
+"POT-Creation-Date: 2022-10-01 13:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,26 @@ msgstr ""
 #: ecommerce/core/templates/base.html:10
 msgid "Site"
 msgstr "Sitio"
+
+#: ecommerce/core/templates/base/add-to-cart.html:7
+msgid "Product added successfully."
+msgstr "El producto se añadió de forma exitosa."
+
+#: ecommerce/core/templates/base/add-to-cart.html:27
+#, fuzzy
+#| msgid "Go To Checkout"
+msgid ""
+"Go To\n"
+"            Checkout"
+msgstr "Realizar Orden"
+
+#: ecommerce/core/templates/base/add-to-cart.html:29
+#, fuzzy
+#| msgid "Continue Shopping"
+msgid ""
+"Continue\n"
+"            Shopping"
+msgstr "Continuar Comprando"
 
 #: ecommerce/core/templates/base/desktop-menu.html:27
 #: ecommerce/core/templates/base/mobile-menu.html:5
