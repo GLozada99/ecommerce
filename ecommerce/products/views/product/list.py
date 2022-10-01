@@ -17,7 +17,7 @@ class ProductListView(ListView):
 
     def get_queryset(self) -> QuerySet:
         products = ProductListService.get_products(
-            super(ProductListView, self).get_queryset(),
+            super().get_queryset(),
             self.request.session.get('current_order_by'),
         )
         if category := self.request.session.get('current_category'):
@@ -25,7 +25,7 @@ class ProductListView(ListView):
         return products
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
-        context = super(ProductListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context |= ProductListService.get_context(self.request.GET)
         return context
 
@@ -36,7 +36,7 @@ class ProductListView(ListView):
             'category', '')
         request.session['current_order_by'] = self.request.GET.get(
             'order_by', '')
-        response = super(ProductListView, self).get(request, *args, **kwargs)
+        response = super().get(request, *args, **kwargs)
         trigger_client_event(response, 'get_items', {})
         return response
 

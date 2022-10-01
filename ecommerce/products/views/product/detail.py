@@ -14,7 +14,7 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs: dict) -> Mapping:
-        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         service = ProductDetailService(self.get_object())
         context |= service.get_context(
             int(self.request.GET.get('config_id', 0)),

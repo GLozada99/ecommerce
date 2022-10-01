@@ -16,7 +16,7 @@ class ManageCartView(TemplateView):
                               self.request.COOKIES.get('cookie_id', ''))
         service.add_product(kwargs['product_id'])
 
-        response = super(ManageCartView, self).get(request, *args, **kwargs)
+        response = super().get(request, *args, **kwargs)
         response.set_cookie('cookie_id', service.cart.cookie_id_str)
         return response
 
@@ -26,11 +26,11 @@ class ManageCartView(TemplateView):
                               self.request.COOKIES.get('cookie_id', ''))
         service.remove_product(kwargs['product_id'])
 
-        response = super(ManageCartView, self).get(request, *args, **kwargs)
+        response = super().get(request, *args, **kwargs)
         return response
 
     def get_context_data(self, **kwargs: Any) -> Mapping:
-        context = super(ManageCartView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context |= {
             'configuration': (ProductListService.
                               get_configuration(kwargs['product_id'])),
