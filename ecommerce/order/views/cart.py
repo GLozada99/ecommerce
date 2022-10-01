@@ -1,6 +1,7 @@
 from typing import Any, Mapping
 
 from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from ecommerce.order.services.cart import CartService
@@ -34,7 +35,17 @@ class ManageCartView(TemplateView):
         context |= {
             'configuration': (ProductListService.
                               get_configuration(kwargs['product_id'])),
-            'show': True,
+            'post_cart_show': True,
         }
 
         return context
+
+
+def get_cart_view(request: HttpRequest) -> HttpResponse:
+    service = CartService(request.user,
+                          request.COOKIES.get('cookie_id', ''))
+    context = {
+        'products_data': service.get_product_data(5),
+        'get_cart_show': True,
+    }
+    return render(request, 'base/modals/cart.html', context)
