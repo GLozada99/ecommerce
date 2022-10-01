@@ -2,7 +2,7 @@ import uuid
 
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
-from django.db.models import F
+from django.db.models import F, QuerySet
 
 from ecommerce.core.models import User
 from ecommerce.order.models import Cart, CartProducts
@@ -40,6 +40,11 @@ class CartService:
         cookie_cart.user = self.user
         cookie_cart.save()
         return cookie_cart
+
+    def get_product_data(self, product_limit: int) -> QuerySet:
+        products = CartProducts.objects.filter(cart=self.cart)
+        limit = min(products.count(), product_limit)
+        return products[:limit]
 
     def add_product(self, product_id: int) -> None:
         if not CartProducts.objects.filter(cart=self.cart,
