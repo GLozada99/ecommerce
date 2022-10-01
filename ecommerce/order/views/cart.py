@@ -1,4 +1,4 @@
-from typing import Any, Mapping
+from typing import Any
 
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import TemplateView
@@ -16,6 +16,12 @@ class ManageCartView(TemplateView):
                               self.request.COOKIES.get('cookie_id', ''))
         service.add_product(kwargs['product_id'])
 
+        self.extra_context |= {
+            'configuration': (ProductListService.
+                              get_configuration(kwargs['product_id'])),
+            'show': True,
+        }
+
         response = super().get(request, *args, **kwargs)
         response.set_cookie('cookie_id', service.cart.cookie_id_str)
         return response
@@ -28,13 +34,3 @@ class ManageCartView(TemplateView):
 
         response = super().get(request, *args, **kwargs)
         return response
-
-    def get_context_data(self, **kwargs: Any) -> Mapping:
-        context = super().get_context_data(**kwargs)
-        context |= {
-            'configuration': (ProductListService.
-                              get_configuration(kwargs['product_id'])),
-            'show': True,
-        }
-
-        return context

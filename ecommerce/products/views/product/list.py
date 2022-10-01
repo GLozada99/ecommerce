@@ -1,5 +1,3 @@
-from typing import Mapping
-
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -24,11 +22,6 @@ class ProductListView(ListView):
             products = products.filter(category__slug=category)
         return products
 
-    def get_context_data(self, **kwargs: dict) -> Mapping:
-        context = super().get_context_data(**kwargs)
-        context |= ProductListService.get_context(self.request.GET)
-        return context
-
     def get(
             self, request: HttpRequest,
             *args: tuple, **kwargs: dict) -> HttpResponse:
@@ -36,6 +29,8 @@ class ProductListView(ListView):
             'category', '')
         request.session['current_order_by'] = self.request.GET.get(
             'order_by', '')
+        self.extra_context |= ProductListService.get_context(self.request.GET)
+
         response = super().get(request, *args, **kwargs)
         trigger_client_event(response, 'get_items', {})
         return response
