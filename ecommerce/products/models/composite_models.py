@@ -10,7 +10,8 @@ class ProductConfiguration(BaseModel):
                                 related_name='configurations')
     name = models.TextField()
     picture = ImageField(upload_to='products/configurations/',
-                         pregenerated_sizes=['small', 'medium', 'large'])
+                         pregenerated_sizes=['small', 'medium', 'product_list']
+                         )
     description = models.TextField(blank=True)
     current_price = models.DecimalField(max_digits=9, decimal_places=2)
     slug = models.SlugField()
@@ -25,6 +26,10 @@ class ProductConfiguration(BaseModel):
     @property
     def detail_thumbnail_url(self) -> str:
         return self.picture.thumbnails.small.url
+
+    @property
+    def cart_success_url(self) -> str:
+        return self.picture.thumbnails.medium.url
 
     @property
     def list_url(self) -> str:
