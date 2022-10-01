@@ -141,3 +141,11 @@ msgstr "Disculpa, esta página no se encuentra disponible"
 #: ecommerce/core/templates/not-found.html:13
 msgid "Back to homepage"
 msgstr "Volver al inicio"
+
+#: ecommerce/core/templates/base/modals/cart.html:11
+msgid "Items"
+msgstr "Productos"
+
+#: ecommerce/core/templates/base/modals/cart.html:13
+msgid "Your cart"
+msgstr "Tu carrito"
