@@ -149,3 +149,15 @@ msgstr "Productos"
 #: ecommerce/core/templates/base/modals/cart.html:13
 msgid "Your cart"
 msgstr "Tu carrito"
+
+#: ecommerce/core/templates/base/desktop-menu.html:76
+msgid "Cart"
+msgstr "Carrito"
+
+#: ecommerce/core/templates/base/modals/cart.html:157
+msgid "Proceed to Checkout"
+msgstr "Proceder a la Orden"
+
+#: ecommerce/core/templates/base/modals/cart.html:158
+msgid "View Cart"
+msgstr "Ver carrito"
