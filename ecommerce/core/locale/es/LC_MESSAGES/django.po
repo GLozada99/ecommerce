@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-01 13:39+0000\n"
+"POT-Creation-Date: 2022-10-02 19:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,26 +21,6 @@ msgstr ""
 #: ecommerce/core/templates/base.html:10
 msgid "Site"
 msgstr "Sitio"
-
-#: ecommerce/core/templates/base/add-to-cart.html:7
-msgid "Product added successfully."
-msgstr "El producto se añadió de forma exitosa."
-
-#: ecommerce/core/templates/base/add-to-cart.html:27
-#, fuzzy
-#| msgid "Go To Checkout"
-msgid ""
-"Go To\n"
-"            Checkout"
-msgstr "Realizar Orden"
-
-#: ecommerce/core/templates/base/add-to-cart.html:29
-#, fuzzy
-#| msgid "Continue Shopping"
-msgid ""
-"Continue\n"
-"            Shopping"
-msgstr "Continuar Comprando"
 
 #: ecommerce/core/templates/base/desktop-menu.html:27
 #: ecommerce/core/templates/base/mobile-menu.html:5
@@ -64,7 +44,7 @@ msgid "Contact Us"
 msgstr "Contactanos"
 
 #: ecommerce/core/templates/base/desktop-menu.html:41
-#: ecommerce/core/templates/base/desktop-menu.html:107
+#: ecommerce/core/templates/base/desktop-menu.html:112
 msgid "Search"
 msgstr "Buscar"
 
@@ -89,11 +69,16 @@ msgstr "Iniciar sesión"
 msgid "Sign Up"
 msgstr "Registro"
 
-#: ecommerce/core/templates/base/desktop-menu.html:112
+#: ecommerce/core/templates/base/desktop-menu.html:76
+#: ecommerce/core/templates/base/mobile-menu.html:11
+msgid "Cart"
+msgstr "Carrito"
+
+#: ecommerce/core/templates/base/desktop-menu.html:117
 msgid "All Categories"
 msgstr "Todas las Categories"
 
-#: ecommerce/core/templates/base/desktop-menu.html:123
+#: ecommerce/core/templates/base/desktop-menu.html:128
 msgid "Input name or product category"
 msgstr "Introduzca el nombre de un producto o categoría"
 
@@ -105,22 +90,43 @@ msgstr "Información"
 msgid "Phone"
 msgstr "Teléfono"
 
-#: ecommerce/core/templates/base/minicart.html:10
-#: ecommerce/core/templates/base/minicart.html:24
-msgid "My cart"
-msgstr "Mi carrito"
+#: ecommerce/core/templates/base/modals/add-to-cart.html:6
+msgid "Product added successfully."
+msgstr "El producto se añadió de forma exitosa."
 
-#: ecommerce/core/templates/base/minicart.html:14
-msgid "No Products in the Cart"
-msgstr "No existen productos en el carrito"
+#: ecommerce/core/templates/base/modals/add-to-cart.html:26
+#, fuzzy
+#| msgid "Go To Checkout"
+msgid ""
+"Go To\n"
+"            Checkout"
+msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/minicart.html:16
-msgid "Continue shopping"
-msgstr "Continuar comprando"
+#: ecommerce/core/templates/base/modals/add-to-cart.html:28
+#, fuzzy
+#| msgid "Continue Shopping"
+msgid ""
+"Continue\n"
+"            Shopping"
+msgstr "Continuar Comprando"
 
-#: ecommerce/core/templates/base/mobile-menu.html:11
-msgid "Cart"
-msgstr "Carrito"
+#: ecommerce/core/templates/base/modals/cart.html:11
+msgid "Your cart"
+msgstr "Tu carrito"
+
+#: ecommerce/core/templates/base/modals/cart.html:12
+msgid "Items"
+msgstr "Productos"
+
+#: ecommerce/core/templates/base/modals/cart.html:62
+msgid ""
+"Proceed to\n"
+"            Checkout"
+msgstr "Realizar Orden"
+
+#: ecommerce/core/templates/base/modals/cart.html:64
+msgid "View Cart"
+msgstr "Ver carrito"
 
 #: ecommerce/core/templates/frontpage/categories.html:5
 msgid "Product Categories"
@@ -141,23 +147,3 @@ msgstr "Disculpa, esta página no se encuentra disponible"
 #: ecommerce/core/templates/not-found.html:13
 msgid "Back to homepage"
 msgstr "Volver al inicio"
-
-#: ecommerce/core/templates/base/modals/cart.html:11
-msgid "Items"
-msgstr "Productos"
-
-#: ecommerce/core/templates/base/modals/cart.html:13
-msgid "Your cart"
-msgstr "Tu carrito"
-
-#: ecommerce/core/templates/base/desktop-menu.html:76
-msgid "Cart"
-msgstr "Carrito"
-
-#: ecommerce/core/templates/base/modals/cart.html:157
-msgid "Proceed to Checkout"
-msgstr "Proceder a la Orden"
-
-#: ecommerce/core/templates/base/modals/cart.html:158
-msgid "View Cart"
-msgstr "Ver carrito"
