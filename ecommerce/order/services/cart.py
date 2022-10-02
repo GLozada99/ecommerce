@@ -1,4 +1,5 @@
 import uuid
+from typing import Optional
 
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
@@ -41,9 +42,11 @@ class CartService:
         cookie_cart.save()
         return cookie_cart
 
-    def get_product_data(self, product_limit: int) -> QuerySet:
+    def get_product_data(self, product_limit: int | None) -> QuerySet:
         products = CartProducts.objects.filter(cart=self.cart)
-        limit = min(products.count(), product_limit)
+        count = products.count()
+        limit = (min(products.count(), product_limit)
+                 if product_limit else count)
         return products[:limit]
 
     def add_product(self, product_id: int) -> None:
@@ -68,3 +71,17 @@ class CartService:
                 cart=self.cart, product_id=product_id).delete()
         except CartProducts.DoesNotExist:
             pass
+
+    def delete_product(self, product_id: int) -> None:
+        try:
+            CartProducts.objects.get(
+                cart=self.cart, product_id=product_id).delete()
+        except CartProducts.DoesNotExist:
+            pass
+
+    def get_cart_context(self, product_limit: Optional[int]) -> dict:
+        return {
+            'products_data': self.get_product_data(product_limit),
+            'get_cart_show': True,
+            'total_price': self.cart.calculate_total_price()
+        }
