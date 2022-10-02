@@ -29,9 +29,11 @@ class Cart(BaseModel):
         return str(self.cookie_id) if self.cookie_id else ''
 
     def calculate_total_price(self) -> Decimal:
-        return (CartProducts.objects.filter(cart=self).aggregate(
+        total_price = (CartProducts.objects.filter(cart=self).aggregate(
             total_price=Sum(F('product__current_price') * F('quantity'),
                             output_field=DecimalField()))["total_price"])
+        print(total_price, '11111111111111111111')
+        return total_price if total_price else Decimal(0)
 
     def __str__(self) -> str:
         return f'User: {self.user}, cookie: {self.cookie_id}'
