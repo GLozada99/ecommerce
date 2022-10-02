@@ -1,11 +1,11 @@
 from django.urls import path
 
-from ecommerce.order.views.cart import ManageCartView, get_cart_view
+from ecommerce.order.views.cart import (MiniCartView, add_cart_product_view)
 
 app_name = 'order'
 urlpatterns = [
-    path('manage/<int:product_id>', ManageCartView.as_view(),
+    path('', MiniCartView.as_view(),
          name='manage'),
-    path('', get_cart_view,
-         name='show'),
+    path('add/<int:product_id>', add_cart_product_view,
+         name='add'),
 ]
