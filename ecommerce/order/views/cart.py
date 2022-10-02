@@ -22,13 +22,13 @@ class MiniCartView(TemplateView):
 
     def patch(self, request: HttpRequest,
               *args: Any, **kwargs: Any) -> HttpResponse:
-        response = super().get(request, *args, **kwargs)
         service = CartService(self.request.user,
                               self.request.COOKIES.get('cookie_id', ''))
         action = self.request.GET.get('action', '_')
         product_id = int(self.request.GET.get('product_id', 0))
         self.cart_functions[action](service, product_id)
 
+        response = super().get(request, *args, **kwargs)
         return response
 
     def get_context_data(self, **kwargs: Any) -> Mapping:
