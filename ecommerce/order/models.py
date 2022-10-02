@@ -1,6 +1,8 @@
+from decimal import Decimal
+
 from django.core.validators import MinValueValidator
 from django.db import models
-from django.db.models import Q
+from django.db.models import DecimalField, F, Q, Sum
 
 from ecommerce.core.models import User
 from ecommerce.products.models.composite_models import ProductConfiguration
@@ -25,6 +27,11 @@ class Cart(BaseModel):
     @property
     def cookie_id_str(self) -> str:
         return str(self.cookie_id) if self.cookie_id else ''
+
+    def calculate_total_price(self) -> Decimal:
+        return (CartProducts.objects.filter(cart=self).aggregate(
+            total_price=Sum(F('product__current_price') * F('quantity'),
+                            output_field=DecimalField()))["total_price"])
 
     def __str__(self) -> str:
         return f'User: {self.user}, cookie: {self.cookie_id}'
