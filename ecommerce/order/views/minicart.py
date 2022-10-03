@@ -1,4 +1,4 @@
-from typing import Any, Callable, Mapping
+from typing import Any, Mapping
 
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -11,7 +11,7 @@ from ecommerce.products.services.product import ProductListService
 
 class MiniCartView(TemplateView, CartViewActionMixin):
     template_name = 'base/modals/minicart.html'
-    cart_functions: dict[str, Callable[[CartService, int], None]] = {
+    cart_functions = {
         'delete': lambda service, product_id: service.delete_product(
             product_id),
         '_': lambda _, __: None,

@@ -1,4 +1,4 @@
-from typing import Any, Callable
+from typing import Any
 
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
@@ -13,7 +13,7 @@ class FullCartView(ListView, CartViewActionMixin):
     template_name = 'cart.html'
     context_object_name = 'products_data'
     paginate_by = 6
-    cart_functions: dict[str, Callable[[CartService, int], None]] = {
+    cart_functions = {
         'increase': lambda service, product_id: service.add_product(
             product_id),
         'decrease': lambda service, product_id: service.remove_product(
