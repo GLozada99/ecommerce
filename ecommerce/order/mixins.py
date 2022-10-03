@@ -24,11 +24,3 @@ class CartViewActionMixin:
         context |= service.get_cart_context(product_limit=product_limit)
 
         return context
-
-    def get_full_cart_context(self, context: Mapping) -> Mapping:
-        service = CartService(self.request.user,
-                              self.request.COOKIES.get('cookie_id', ''))
-
-        context |= service.get_full_cart_context()
-
-        return context

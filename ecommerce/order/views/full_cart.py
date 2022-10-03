@@ -1,14 +1,18 @@
-from typing import Any, Callable, Mapping
+from typing import Any, Callable
 
+from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 from ecommerce.order.mixins import CartViewActionMixin
+from ecommerce.order.models import CartProducts
 from ecommerce.order.services.cart import CartService
 
 
-class FullCartView(TemplateView, CartViewActionMixin):
+class FullCartView(ListView, CartViewActionMixin):
     template_name = 'cart.html'
+    context_object_name = 'products_data'
+    paginate_by = 6
     cart_functions: dict[str, Callable[[CartService, int], None]] = {
         'increase': lambda service, product_id: service.add_product(
             product_id),
@@ -25,5 +29,8 @@ class FullCartView(TemplateView, CartViewActionMixin):
         response = super().get(request, *args, **kwargs)
         return response
 
-    def get_context_data(self, **kwargs: Any) -> Mapping:
-        return self.get_full_cart_context(super().get_context_data(**kwargs))
+    def get_queryset(self) -> QuerySet:
+        service = CartService(self.request.user,
+                              self.request.COOKIES.get('cookie_id', ''))
+        return CartProducts.objects.filter(
+            cart=service.cart).select_related('product')

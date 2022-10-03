@@ -85,9 +85,3 @@ class CartService:
             'get_cart_show': True,
             'total_price': self.cart.calculate_total_price()
         }
-
-    def get_full_cart_context(self) -> dict:
-        return {
-            'products_data': self.get_product_data(),
-            'cart': self.cart
-        }
