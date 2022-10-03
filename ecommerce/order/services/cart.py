@@ -42,7 +42,7 @@ class CartService:
         cookie_cart.save()
         return cookie_cart
 
-    def get_product_data(self, product_limit: int | None) -> QuerySet:
+    def get_product_data(self, product_limit: int | None = None) -> QuerySet:
         products = CartProducts.objects.filter(cart=self.cart)
         count = products.count()
         limit = (min(products.count(), product_limit)
@@ -84,4 +84,10 @@ class CartService:
             'products_data': self.get_product_data(product_limit),
             'get_cart_show': True,
             'total_price': self.cart.calculate_total_price()
+        }
+
+    def get_full_cart_context(self) -> dict:
+        return {
+            'products_data': self.get_product_data(),
+            'cart': self.cart
         }

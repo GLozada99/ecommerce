@@ -8,7 +8,7 @@ from ecommerce.order.services.cart import CartService
 
 
 class FullCartView(TemplateView, CartViewActionMixin):
-    template_name = 'cart/items_hx.html'
+    template_name = 'cart.html'
     cart_functions: dict[str, Callable[[CartService, int], None]] = {
         'increase': lambda service, product_id: service.add_product(
             product_id),

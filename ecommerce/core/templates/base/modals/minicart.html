@@ -37,7 +37,7 @@
 
                       <input type="text" name="quantity" value="{{ data.quantity }}" class="qty" disabled>
                       <a href="#" class="remove"
-                         hx-patch="{% url 'site:cart:manage' %}?product_id={{ data.product.id }}&action=delete"
+                         hx-patch="{% url 'site:cart:mini' %}?product_id={{ data.product.id }}&action=delete"
                          hx-target="#minicartModal"
                          hx-swap="outerHTML"
                          data-bs-dismiss="modal"
