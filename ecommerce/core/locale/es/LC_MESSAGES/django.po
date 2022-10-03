@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-02 19:05+0000\n"
+"POT-Creation-Date: 2022-10-03 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,38 +95,36 @@ msgid "Product added successfully."
 msgstr "El producto se añadió de forma exitosa."
 
 #: ecommerce/core/templates/base/modals/add-to-cart.html:26
-#, fuzzy
-#| msgid "Go To Checkout"
-msgid ""
-"Go To\n"
-"            Checkout"
+msgid "Go To Checkout"
 msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/modals/add-to-cart.html:28
-#, fuzzy
-#| msgid "Continue Shopping"
-msgid ""
-"Continue\n"
-"            Shopping"
+#: ecommerce/core/templates/base/modals/add-to-cart.html:27
+msgid "Continue Shopping"
 msgstr "Continuar Comprando"
 
-#: ecommerce/core/templates/base/modals/cart.html:11
+#: ecommerce/core/templates/base/modals/minicart.html:11
 msgid "Your cart"
 msgstr "Tu carrito"
 
-#: ecommerce/core/templates/base/modals/cart.html:12
+#: ecommerce/core/templates/base/modals/minicart.html:12
 msgid "Items"
 msgstr "Productos"
 
-#: ecommerce/core/templates/base/modals/cart.html:62
-msgid ""
-"Proceed to\n"
-"            Checkout"
+#: ecommerce/core/templates/base/modals/minicart.html:63
+msgid "Proceed to Checkout"
 msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/modals/cart.html:64
+#: ecommerce/core/templates/base/modals/minicart.html:67
 msgid "View Cart"
 msgstr "Ver carrito"
+
+#: ecommerce/core/templates/base/modals/minicart.html:72
+msgid ""
+"Only the first 5 products are shown in the minicart, to see all your "
+"products, go to your cart."
+msgstr ""
+"Solo los primeros 5 productos se muestran en el minicarro, para ver todos "
+"tus productos, ve a tu carrito."
 
 #: ecommerce/core/templates/frontpage/categories.html:5
 msgid "Product Categories"

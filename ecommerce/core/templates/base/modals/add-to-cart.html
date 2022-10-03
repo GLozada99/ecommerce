@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="title mb-3 text-success">{% blocktrans %}Product added successfully.{% endblocktrans %}</h4>
+        <h4 class="title mb-3 text-success">{% trans "Product added successfully." %}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -23,10 +23,8 @@
       </div>
       <div class="modal-footer">
         <div class="button-action">
-          <a href="#" class="btn btn-primary view-cart mx-1 rounded">{% blocktrans %}Go To
-            Checkout{% endblocktrans %}</a>
-          <a class="btn btn-secondary rounded" data-bs-dismiss="modal">{% blocktrans %}Continue
-            Shopping{% endblocktrans %}</a>
+          <a href="#" class="btn btn-primary view-cart mx-1 rounded">{% trans "Go To Checkout" %}</a>
+          <a class="btn btn-secondary rounded" data-bs-dismiss="modal">{% trans "Continue Shopping" %}</a>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
           <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
               class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="left"
               title="Close"></i></a>
-          <h4 class="fs-6">{% blocktrans %}Your cart{% endblocktrans %} ({{ products_data.count }}
+          <h4 class="fs-6">{% trans "Your cart" %} ({{ products_data.count }}
             {% trans "Items" %})</h4>
         </div>
         <div class="minicart-content">
@@ -59,12 +59,23 @@
             <span class="product-price">${{ total_price }}</span>
           </div>
           <a href=""
-             class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">{% blocktrans %}Proceed to
-            Checkout{% endblocktrans %}</a>
-          <a href="" class="w-100 btn-primary cart-btn rounded">{% blocktrans %}View Cart{% endblocktrans %}</a>
+             class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">
+            {% trans "Proceed to Checkout" %}
+
+          </a>
+          <a href="" class="w-100 btn-primary cart-btn rounded">
+            {% trans "View Cart" %}
+          </a>
+        </div>
+        <div class="modal-footer">
+          <p>
+            {% trans "Only the first 5 products are shown in the minicart, to see all your products, go to your cart." %}
+          </p>
         </div>
       </div>
+
     </div>
+
   </div>
   <div id="remove-spinner" class="spinner-border text-info htmx-indicator" style="width: 3rem; height: 3rem;"></div>
 

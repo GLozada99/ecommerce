@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-02 19:05+0000\n"
+"POT-Creation-Date: 2022-10-03 19:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,9 +27,12 @@ msgstr "Inicio"
 msgid "You May Also Like"
 msgstr "También te interesarían"
 
+#: ecommerce/products/templates/list/breadcrumb_hx.html:12
+#: ecommerce/products/templates/list/breadcrumb_hx.html:17
+msgid "Products"
+msgstr "Productos"
+
 #: ecommerce/products/templates/list/categories_hx.html:8
-#, fuzzy
-#| msgid "Product Categories"
 msgid "Categories"
 msgstr "Categorías"
 
@@ -38,6 +41,7 @@ msgid "Add to Cart"
 msgstr "Añadir al carrito"
 
 #: ecommerce/products/templates/list/order_by_hx.html:9
+#: ecommerce/products/templates/list/order_by_hx.html:17
 #: ecommerce/products/templates/list2.html:16
 msgid "Sort by"
 msgstr "Ordenar por"
