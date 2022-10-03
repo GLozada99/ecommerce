@@ -9,7 +9,7 @@ from ecommerce.products.services.product import ProductListService
 
 
 class MiniCartView(TemplateView):
-    template_name = 'base/modals/cart.html'
+    template_name = 'base/modals/minicart.html'
     cart_functions: dict[str, Callable[[CartService, int], None]] = {
         'increase': lambda service, product_id: service.add_product(
             product_id),
