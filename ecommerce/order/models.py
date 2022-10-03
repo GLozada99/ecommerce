@@ -32,7 +32,6 @@ class Cart(BaseModel):
         total_price = (CartProducts.objects.filter(cart=self).aggregate(
             total_price=Sum(F('product__current_price') * F('quantity'),
                             output_field=DecimalField()))["total_price"])
-        print(total_price, '11111111111111111111')
         return total_price if total_price else Decimal(0)
 
     def __str__(self) -> str:
@@ -47,6 +46,18 @@ class CartProducts(BaseModel):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1,
                                    validators=[MinValueValidator(1)])
+    final_price = models.DecimalField(max_digits=12, decimal_places=2,
+                                      default=Decimal(0))
+
+    @property
+    def price(self) -> Decimal:
+        return (self.final_price if self.final_price
+                else self.product.current_price)
+
+    @price.setter
+    def price(self, value: Decimal) -> None:
+        if not self.final_price:
+            self.final_price = value
 
     class Meta:
         constraints = [
