@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 from typing import Optional
 
 from django.contrib.auth.models import AnonymousUser
@@ -42,8 +43,16 @@ class CartService:
         cookie_cart.save()
         return cookie_cart
 
+    def calculate_total_price(self, products: QuerySet | None = None) -> \
+            Decimal:
+        if not products:
+            products = self.get_product_data()
+        total_price = sum((data.total for data in products))
+        return total_price if total_price else Decimal(0)
+
     def get_product_data(self, product_limit: int | None = None) -> QuerySet:
-        products = CartProducts.objects.filter(cart=self.cart)
+        products = CartProducts.objects.filter(
+            cart=self.cart).select_related('product')
         count = products.count()
         limit = (min(products.count(), product_limit)
                  if product_limit else count)
@@ -80,8 +89,9 @@ class CartService:
             pass
 
     def get_cart_context(self, product_limit: Optional[int]) -> dict:
+        products_data = self.get_product_data(product_limit)
         return {
-            'products_data': self.get_product_data(product_limit),
+            'products_data': products_data,
             'get_cart_show': True,
-            'total_price': self.cart.calculate_total_price()
+            'total_price': self.calculate_total_price(products_data)
         }
