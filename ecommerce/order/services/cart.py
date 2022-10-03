@@ -1,6 +1,5 @@
 import uuid
 from decimal import Decimal
-from typing import Optional
 
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import ValidationError
@@ -43,21 +42,6 @@ class CartService:
         cookie_cart.save()
         return cookie_cart
 
-    def calculate_total_price(self, products: QuerySet | None = None) -> \
-            Decimal:
-        if not products:
-            products = self.get_product_data()
-        total_price = sum((data.total for data in products))
-        return total_price if total_price else Decimal(0)
-
-    def get_product_data(self, product_limit: int | None = None) -> QuerySet:
-        products = CartProducts.objects.filter(
-            cart=self.cart).select_related('product')
-        count = products.count()
-        limit = (min(products.count(), product_limit)
-                 if product_limit else count)
-        return products[:limit]
-
     def add_product(self, product_id: int) -> None:
         if not CartProducts.objects.filter(cart=self.cart,
                                            product_id=product_id).exists():
@@ -88,10 +72,35 @@ class CartService:
         except CartProducts.DoesNotExist:
             pass
 
-    def get_cart_context(self, product_limit: Optional[int]) -> dict:
-        products_data = self.get_product_data(product_limit)
+
+class CartInfoService:
+
+    @classmethod
+    def get_cart_context(
+            cls, cart: Cart, product_limit: int | None) -> dict:
+        products_data = cls.get_product_data(cart)
         return {
-            'products_data': products_data,
+            'products_data': cls.get_limited_product_data(
+                products_data, product_limit
+            ),
+            'total_price': cls.calculate_total_price(products_data),
             'get_cart_show': True,
-            'total_price': self.calculate_total_price(products_data)
         }
+
+    @staticmethod
+    def get_product_data(cart: Cart) -> QuerySet:
+        return CartProducts.objects.filter(
+            cart=cart).select_related('product', 'product__product')
+
+    @staticmethod
+    def get_limited_product_data(products: QuerySet,
+                                 product_limit: int | None = None) -> QuerySet:
+        count = products.count()
+        limit = (min(products.count(), product_limit)
+                 if product_limit else count)
+        return products[:limit]
+
+    @staticmethod
+    def calculate_total_price(products: QuerySet) -> Decimal:
+        total_price = sum((data.total for data in products))
+        return total_price if total_price else Decimal(0)

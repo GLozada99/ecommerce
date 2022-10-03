@@ -2,7 +2,7 @@ from typing import Callable, Mapping
 
 from django.http import HttpRequest
 
-from ecommerce.order.services.cart import CartService
+from ecommerce.order.services.cart import CartInfoService, CartService
 
 
 class CartViewActionMixin:
@@ -20,7 +20,10 @@ class CartViewActionMixin:
                              product_limit: int) -> Mapping:
         service = CartService(self.request.user,
                               self.request.COOKIES.get('cookie_id', ''))
-
-        context |= service.get_cart_context(product_limit=product_limit)
+        cart = service.cart
+        context |= CartInfoService.get_cart_context(
+            cart,
+            product_limit=product_limit,
+        )
 
         return context

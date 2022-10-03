@@ -5,8 +5,7 @@ from django.http import HttpRequest, HttpResponse
 from django.views.generic import ListView
 
 from ecommerce.order.mixins import CartViewActionMixin
-from ecommerce.order.models import CartProducts
-from ecommerce.order.services.cart import CartService
+from ecommerce.order.services.cart import CartInfoService, CartService
 
 
 class FullCartView(ListView, CartViewActionMixin):
@@ -32,5 +31,4 @@ class FullCartView(ListView, CartViewActionMixin):
     def get_queryset(self) -> QuerySet:
         service = CartService(self.request.user,
                               self.request.COOKIES.get('cookie_id', ''))
-        return CartProducts.objects.filter(
-            cart=service.cart).select_related('product')
+        return CartInfoService.get_product_data(service.cart)
