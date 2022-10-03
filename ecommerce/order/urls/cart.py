@@ -6,7 +6,9 @@ from ecommerce.order.views.minicart import (MiniCartView,
 
 app_name = 'order'
 urlpatterns = [
-    path('full', FullCartView.as_view(),
+    path('', FullCartView.as_view(),
+         name='cart'),
+    path('full', FullCartView.as_view(template_name='cart/items_hx.html'),
          name='full'),
     path('mini', MiniCartView.as_view(),
          name='mini'),
