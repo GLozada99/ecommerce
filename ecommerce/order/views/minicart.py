@@ -34,12 +34,12 @@ def add_cart_product_view(
                           request.COOKIES.get('cookie_id', ''))
     service.add_product(product_id)
 
-    response = HttpResponse()
-    response.set_cookie('cookie_id', service.cart.cookie_id_str)
-
     context = {
         'configuration': (ProductListService.
                           get_configuration(product_id)),
         'post_cart_show': True,
     }
-    return render(request, 'base/modals/add-to-cart.html', context)
+    response = render(request, 'base/modals/add-to-cart.html', context)
+    response.set_cookie('cookie_id', service.cart.cookie_id_str)
+
+    return response
