@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-03 19:09+0000\n"
+"POT-Creation-Date: 2022-10-04 21:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,23 +102,37 @@ msgstr "Realizar Orden"
 msgid "Continue Shopping"
 msgstr "Continuar Comprando"
 
-#: ecommerce/core/templates/base/modals/minicart.html:11
+#: ecommerce/core/templates/base/modals/minicart/empty.html:5
+#: ecommerce/core/templates/base/modals/minicart/not-empty.html:7
 msgid "Your cart"
 msgstr "Tu carrito"
 
-#: ecommerce/core/templates/base/modals/minicart.html:12
+#: ecommerce/core/templates/base/modals/minicart/empty.html:5
+msgid "No"
+msgstr ""
+
+#: ecommerce/core/templates/base/modals/minicart/empty.html:5
+#: ecommerce/core/templates/base/modals/minicart/not-empty.html:8
 msgid "Items"
 msgstr "Productos"
 
-#: ecommerce/core/templates/base/modals/minicart.html:63
+#: ecommerce/core/templates/base/modals/minicart/empty.html:12
+msgid "No products in the cart"
+msgstr "No hay productos en el carrito"
+
+#: ecommerce/core/templates/base/modals/minicart/empty.html:13
+msgid "Start shopping!"
+msgstr "A comprar!"
+
+#: ecommerce/core/templates/base/modals/minicart/not-empty.html:60
 msgid "Proceed to Checkout"
 msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/modals/minicart.html:67
+#: ecommerce/core/templates/base/modals/minicart/not-empty.html:63
 msgid "View Cart"
 msgstr "Ver carrito"
 
-#: ecommerce/core/templates/base/modals/minicart.html:72
+#: ecommerce/core/templates/base/modals/minicart/not-empty.html:68
 msgid ""
 "Only the first 5 products are shown in the minicart, to see all your "
 "products, go to your cart."
