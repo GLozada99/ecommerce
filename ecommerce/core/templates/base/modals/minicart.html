@@ -1,79 +1,12 @@
-{% load i18n %}
-<div class="minicart-right-drawer modal fade right" id="minicartModal" aria-labelledby="addToCartModalLabel"
+<div class="minicart-right-drawer modal fade right" id="minicartModal" aria-labelledby="minicartModalLabel"
      aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div id="addToCartModalLabel" class="block block-cart">
-        <div class="minicart-header">
-          <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
-              class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="left"
-              title="Close"></i></a>
-          <h4 class="fs-6">{% trans "Your cart" %} ({{ products_data.count }}
-            {% trans "Items" %})</h4>
-        </div>
-        <div class="minicart-content">
-          <ul class="clearfix">
-            {% for data in products_data %}
-              <li class="item d-flex justify-content-center align-items-center">
-                <a class="product-image"
-                   href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
-                  <img class="blur-up lazyload" src="{{ data.product.list_url }}"
-                       data-src="{{ data.product.list_url }}" alt="image" title="">
-                </a>
-                <div class="product-details">
-                  <a class="product-title"
-                     href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
-                    {{ data.product.product.name|truncatewords:6 }}</a>
-                  <div class="variant-cart">{{ data.product.name|truncatewords:6 }}</div>
-                  <div class="priceRow">
-                    <div class="product-price">
-                      <span class="money">${{ data.product.current_price }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="qtyDetail text-center">
-                  <div class="wrapQtyBtn">
-                    <div class="qtyField">
-
-                      <input type="text" name="quantity" value="{{ data.quantity }}" class="qty" disabled>
-                      <a href="#" class="remove"
-                         hx-patch="{% url 'site:cart:mini' %}?product_id={{ data.product.id }}&action=delete"
-                         hx-target="#minicartModal"
-                         hx-swap="outerHTML"
-                         data-bs-dismiss="modal"
-                         hx-indicator="remove-spinner"
-                      ><i class="an an-times-r" data-bs-toggle="tooltip"
-                          data-bs-placement="top" title="Remove"></i></a>
-                    </div>
-
-                  </div>
-
-                </div>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="minicart-bottom">
-          <div class="subtotal">
-            <span>Total:</span>
-            <span class="product-price">${{ total_price }}</span>
-          </div>
-          <a href=""
-             class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">
-            {% trans "Proceed to Checkout" %}
-
-          </a>
-          <a href="{% url 'site:cart:cart' %}" class="w-100 btn-primary cart-btn rounded">
-            {% trans "View Cart" %}
-          </a>
-        </div>
-        <div class="modal-footer">
-          <p>
-            {% trans "Only the first 5 products are shown in the minicart, to see all your products, go to your cart." %}
-          </p>
-        </div>
-      </div>
-
+      {% if products_data %}
+        {% include "base/modals/minicart/not-empty.html" %}
+      {% else %}
+        {% include "base/modals/minicart/empty.html" %}
+      {% endif %}
     </div>
 
   </div>
