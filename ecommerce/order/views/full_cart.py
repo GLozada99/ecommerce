@@ -19,6 +19,7 @@ class FullCartView(ListView, CartViewActionMixin):
             product_id),
         'delete': lambda service, product_id: service.delete_product(
             product_id),
+        'delete_all': lambda service, _: service.delete_all(),
         '_': lambda _, __: None,
     }
 

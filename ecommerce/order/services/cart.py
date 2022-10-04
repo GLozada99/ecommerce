@@ -72,6 +72,9 @@ class CartService:
         except CartProducts.DoesNotExist:
             pass
 
+    def delete_all(self) -> None:
+        CartProducts.objects.filter(cart=self.cart).delete()
+
 
 class CartInfoService:
 
