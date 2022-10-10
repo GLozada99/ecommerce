@@ -1,0 +1,13 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 64,
+            "nombre": "Higüey"
+        },
+        {
+            "codigo": 65,
+            "nombre": "San Rafael del Yuma"
+        }
+    ]
+}

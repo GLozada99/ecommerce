@@ -1,0 +1,25 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 28,
+            "nombre": "Dajabón"
+        },
+        {
+            "codigo": 29,
+            "nombre": "El Pino"
+        },
+        {
+            "codigo": 30,
+            "nombre": "Loma de Cabrera"
+        },
+        {
+            "codigo": 31,
+            "nombre": "Partido"
+        },
+        {
+            "codigo": 32,
+            "nombre": "Restauración"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 118,
+            "nombre": "San Juan de la Maguana"
+        },
+        {
+            "codigo": 119,
+            "nombre": "Bohechío"
+        },
+        {
+            "codigo": 120,
+            "nombre": "El Cercado"
+        },
+        {
+            "codigo": 121,
+            "nombre": "Juan de Herrera"
+        },
+        {
+            "codigo": 122,
+            "nombre": "Las Matas de Farfán"
+        },
+        {
+            "codigo": 123,
+            "nombre": "Vallejuelo"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 80,
+            "nombre": "Montecristi"
+        },
+        {
+            "codigo": 81,
+            "nombre": "Castañuela"
+        },
+        {
+            "codigo": 82,
+            "nombre": "Guayubín"
+        },
+        {
+            "codigo": 83,
+            "nombre": "Las Matas de Santa Cruz"
+        },
+        {
+            "codigo": 84,
+            "nombre": "Pepillo Salcedo"
+        },
+        {
+            "codigo": 85,
+            "nombre": "Villa Vásquez"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 33,
+            "nombre": "San Francisco de Macorís"
+        },
+        {
+            "codigo": 34,
+            "nombre": "Arenoso"
+        },
+        {
+            "codigo": 35,
+            "nombre": "Castillo"
+        },
+        {
+            "codigo": 36,
+            "nombre": "Eugenio María de Hostos"
+        },
+        {
+            "codigo": 37,
+            "nombre": "Las Guáranas"
+        },
+        {
+            "codigo": 38,
+            "nombre": "Pimentel"
+        },
+        {
+            "codigo": 39,
+            "nombre": "Villa Riva"
+        }
+    ]
+}

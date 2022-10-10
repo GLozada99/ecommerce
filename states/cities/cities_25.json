@@ -1,0 +1,37 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 107,
+            "nombre": "San Cristóbal"
+        },
+        {
+            "codigo": 108,
+            "nombre": "Bajos de Haina"
+        },
+        {
+            "codigo": 109,
+            "nombre": "Cambita Garabito"
+        },
+        {
+            "codigo": 110,
+            "nombre": "Los Cacaos"
+        },
+        {
+            "codigo": 111,
+            "nombre": "Sabana Grande de Palenque"
+        },
+        {
+            "codigo": 112,
+            "nombre": "San Gregorio de Nigua"
+        },
+        {
+            "codigo": 113,
+            "nombre": "Villa Altagracia"
+        },
+        {
+            "codigo": 114,
+            "nombre": "Yaguate"
+        }
+    ]
+}

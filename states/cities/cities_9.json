@@ -1,0 +1,21 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 48,
+            "nombre": "Moca"
+        },
+        {
+            "codigo": 49,
+            "nombre": "Cayetano Germosén"
+        },
+        {
+            "codigo": 50,
+            "nombre": "Gaspar Hernández"
+        },
+        {
+            "codigo": 51,
+            "nombre": "Jamao al Norte"
+        }
+    ]
+}

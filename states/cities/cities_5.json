@@ -1,0 +1,9 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 1,
+            "nombre": "Distrito Nacional"
+        }
+    ]
+}

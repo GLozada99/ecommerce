@@ -1,0 +1,29 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 58,
+            "nombre": "Jimaní"
+        },
+        {
+            "codigo": 59,
+            "nombre": "Cristóbal"
+        },
+        {
+            "codigo": 60,
+            "nombre": "Duvergé"
+        },
+        {
+            "codigo": 61,
+            "nombre": "La Descubierta"
+        },
+        {
+            "codigo": 62,
+            "nombre": "Mella"
+        },
+        {
+            "codigo": 63,
+            "nombre": "Postrer Río"
+        }
+    ]
+}

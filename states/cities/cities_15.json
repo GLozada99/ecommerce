@@ -1,0 +1,21 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 69,
+            "nombre": "La Concepción de La Vega"
+        },
+        {
+            "codigo": 70,
+            "nombre": "Constanza"
+        },
+        {
+            "codigo": 71,
+            "nombre": "Jarabacoa"
+        },
+        {
+            "codigo": 72,
+            "nombre": "Jima Abajo"
+        }
+    ]
+}

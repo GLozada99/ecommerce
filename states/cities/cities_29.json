@@ -1,0 +1,41 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 134,
+            "nombre": "Santiago"
+        },
+        {
+            "codigo": 135,
+            "nombre": "Bisonó"
+        },
+        {
+            "codigo": 136,
+            "nombre": "Jánico"
+        },
+        {
+            "codigo": 137,
+            "nombre": "Licey al Medio"
+        },
+        {
+            "codigo": 138,
+            "nombre": "Puñal"
+        },
+        {
+            "codigo": 139,
+            "nombre": "Sabana Iglesia"
+        },
+        {
+            "codigo": 140,
+            "nombre": "San José de las Matas"
+        },
+        {
+            "codigo": 141,
+            "nombre": "Tamboril"
+        },
+        {
+            "codigo": 142,
+            "nombre": "Villa González"
+        }
+    ]
+}

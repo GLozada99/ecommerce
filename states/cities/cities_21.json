@@ -1,0 +1,13 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 93,
+            "nombre": "Baní"
+        },
+        {
+            "codigo": 94,
+            "nombre": "Nizao"
+        }
+    ]
+}

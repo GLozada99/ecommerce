@@ -1,0 +1,17 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 143,
+            "nombre": "San Ignacio de Sabaneta"
+        },
+        {
+            "codigo": 144,
+            "nombre": "Los Almácigos"
+        },
+        {
+            "codigo": 145,
+            "nombre": "Monción"
+        }
+    ]
+}

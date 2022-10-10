@@ -1,0 +1,17 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 104,
+            "nombre": "Samaná"
+        },
+        {
+            "codigo": 105,
+            "nombre": "Las Terrenas"
+        },
+        {
+            "codigo": 106,
+            "nombre": "Sánchez"
+        }
+    ]
+}

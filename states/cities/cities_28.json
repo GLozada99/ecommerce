@@ -1,0 +1,29 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 124,
+            "nombre": "San Pedro de Macorís"
+        },
+        {
+            "codigo": 125,
+            "nombre": "Consuelo"
+        },
+        {
+            "codigo": 126,
+            "nombre": "Guayacanes"
+        },
+        {
+            "codigo": 127,
+            "nombre": "Quisqueya"
+        },
+        {
+            "codigo": 128,
+            "nombre": "Ramón Santana"
+        },
+        {
+            "codigo": 129,
+            "nombre": "San José de Los Llanos"
+        }
+    ]
+}

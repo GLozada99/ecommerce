@@ -1,0 +1,41 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 95,
+            "nombre": "Puerto Plata"
+        },
+        {
+            "codigo": 96,
+            "nombre": "Altamira"
+        },
+        {
+            "codigo": 97,
+            "nombre": "Guananico"
+        },
+        {
+            "codigo": 98,
+            "nombre": "Imbert"
+        },
+        {
+            "codigo": 99,
+            "nombre": "Los Hidalgos"
+        },
+        {
+            "codigo": 100,
+            "nombre": "Luperón"
+        },
+        {
+            "codigo": 101,
+            "nombre": "Sosúa"
+        },
+        {
+            "codigo": 102,
+            "nombre": "Villa Isabela"
+        },
+        {
+            "codigo": 103,
+            "nombre": "Villa Montellano"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 91,
+            "nombre": "Pedernales"
+        },
+        {
+            "codigo": 92,
+            "nombre": "Oviedo"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "codigo": 86,
+            "nombre": "Monte Plata"
+        },
+        {
+            "codigo": 87,
+            "nombre": "Bayaguana"
+        },
+        {
+            "codigo": 88,
+            "nombre": "Peralvillo"
+        },
+        {
+            "codigo": 89,
+            "nombre": "Sabana Grande de Boyá"
+        },
+        {
+            "codigo": 90,
+            "nombre": "Yamasá"
+        }
+    ]
+}
