@@ -9,14 +9,14 @@ class Client(SafeModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT,
                                 related_name='client_profile')
     phone = models.CharField(max_length=30, null=True, blank=True)
-    authentication_provider = models.TextField()
 
     def __str__(self) -> str:
-        return f'{self.user}\n{self.authentication_provider}'
+        return f'{self.user}\n{self.phone}'
 
 
 class Address(Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE,
+                               related_name='addresses')
     state = models.CharField(max_length=40)
     city = models.CharField(max_length=40)
     first_line = models.CharField(
