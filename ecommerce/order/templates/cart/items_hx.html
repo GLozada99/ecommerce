@@ -37,7 +37,8 @@
             <td class="cart__meta small--text-left cart-flex-item">
               <div class="list-view-item__title">
                 <a href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
-                  {{ data.product.name|truncatewords:6 }}:{{ data.product.product.name|truncatewords:6 }}
+                  {{ data.product.product.name|truncatewords:8 }}:<br>
+                  {{ data.product.name|truncatewords:8 }}
                 </a>
               </div>
               <div class="cart-price d-md-none">
