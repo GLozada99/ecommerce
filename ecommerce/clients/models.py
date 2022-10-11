@@ -8,10 +8,9 @@ from ecommerce.utils.models import SafeModel
 class Client(SafeModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT,
                                 related_name='client_profile')
-    phone = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.user}\n{self.phone}'
+        return f'{self.user}'
 
 
 class Address(Model):
@@ -28,6 +27,6 @@ class Address(Model):
         verbose_name_plural = 'Addresses'
 
     def __str__(self) -> str:
-        return (f'{self.state}, {self.city}\n'
-                f'{self.first_line}\n'
+        return (f'{self.state}, {self.city}:\n'
+                f'{self.first_line};\n'
                 f'{self.second_line}')

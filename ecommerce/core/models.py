@@ -6,9 +6,10 @@ from ecommerce.utils.models import BaseModel
 
 
 class User(AbstractUser, BaseModel):
+    phone = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}, {self.email}'
+        return f'{self.username}, {self.email}'
 
 
 class SlideImage(BaseModel):
