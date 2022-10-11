@@ -87,7 +87,6 @@ class CartInfoService:
                 products_data, product_limit
             ),
             'total_price': cls.calculate_total_price(products_data),
-            'get_cart_show': True,
         }
 
     @staticmethod

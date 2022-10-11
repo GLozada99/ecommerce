@@ -24,8 +24,10 @@ class MiniCartView(TemplateView, CartViewActionMixin):
         return response
 
     def get_context_data(self, **kwargs: Any) -> Mapping:
-        return self.get_minicart_context(super().get_context_data(**kwargs),
-                                         product_limit=5)
+        return (self.get_cart_context(
+            super().get_context_data(**kwargs), product_limit=5) |
+                {'get_cart_show': True, }
+                )
 
 
 def add_cart_product_view(

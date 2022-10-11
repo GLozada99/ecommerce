@@ -16,8 +16,8 @@ class CartViewActionMixin:
         product_id = int(self.request.GET.get('product_id', 0))
         self.cart_functions[action](service, product_id)
 
-    def get_minicart_context(self, context: Mapping,
-                             product_limit: int) -> Mapping:
+    def get_cart_context(self, context: Mapping,
+                         product_limit: int | None) -> Mapping:
         service = CartService(self.request.user,
                               self.request.COOKIES.get('cookie_id', ''))
         cart = service.cart
