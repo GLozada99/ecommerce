@@ -40,18 +40,10 @@ class CartProducts(BaseModel):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1,
                                    validators=[MinValueValidator(1)])
-    final_price = models.DecimalField(max_digits=12, decimal_places=2,
-                                      default=Decimal(0))
 
     @property
     def price(self) -> Decimal:
-        return (self.final_price if self.final_price
-                else self.product.current_price)
-
-    @price.setter
-    def price(self, value: Decimal) -> None:
-        if not self.final_price:
-            self.final_price = value
+        return self.product.current_price
 
     @property
     def total(self) -> Decimal:
@@ -61,6 +53,6 @@ class CartProducts(BaseModel):
         constraints = [
             models.UniqueConstraint(
                 fields=['product', 'cart'],
-                name='product_card_unique_constraint',
+                name='product_cart_unique_constraint',
             ),
         ]
