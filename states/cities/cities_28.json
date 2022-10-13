@@ -1,29 +1,29 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 124,
-            "nombre": "San Pedro de Macorís"
-        },
-        {
-            "codigo": 125,
-            "nombre": "Consuelo"
-        },
-        {
-            "codigo": 126,
-            "nombre": "Guayacanes"
-        },
-        {
-            "codigo": 127,
-            "nombre": "Quisqueya"
-        },
-        {
-            "codigo": 128,
-            "nombre": "Ramón Santana"
-        },
-        {
-            "codigo": 129,
-            "nombre": "San José de Los Llanos"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 124,
+      "name": "San Pedro de Macorís"
+    },
+    {
+      "id": 125,
+      "name": "Consuelo"
+    },
+    {
+      "id": 126,
+      "name": "Guayacanes"
+    },
+    {
+      "id": 127,
+      "name": "Quisqueya"
+    },
+    {
+      "id": 128,
+      "name": "Ramón Santana"
+    },
+    {
+      "id": 129,
+      "name": "San José de Los Llanos"
+    }
+  ]
 }

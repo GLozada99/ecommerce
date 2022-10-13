@@ -1,33 +1,33 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 33,
-            "nombre": "San Francisco de Macorís"
-        },
-        {
-            "codigo": 34,
-            "nombre": "Arenoso"
-        },
-        {
-            "codigo": 35,
-            "nombre": "Castillo"
-        },
-        {
-            "codigo": 36,
-            "nombre": "Eugenio María de Hostos"
-        },
-        {
-            "codigo": 37,
-            "nombre": "Las Guáranas"
-        },
-        {
-            "codigo": 38,
-            "nombre": "Pimentel"
-        },
-        {
-            "codigo": 39,
-            "nombre": "Villa Riva"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 33,
+      "name": "San Francisco de Macorís"
+    },
+    {
+      "id": 34,
+      "name": "Arenoso"
+    },
+    {
+      "id": 35,
+      "name": "Castillo"
+    },
+    {
+      "id": 36,
+      "name": "Eugenio María de Hostos"
+    },
+    {
+      "id": 37,
+      "name": "Las Guáranas"
+    },
+    {
+      "id": 38,
+      "name": "Pimentel"
+    },
+    {
+      "id": 39,
+      "name": "Villa Riva"
+    }
+  ]
 }

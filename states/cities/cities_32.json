@@ -1,17 +1,17 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 153,
-            "nombre": "Mao"
-        },
-        {
-            "codigo": 154,
-            "nombre": "Esperanza"
-        },
-        {
-            "codigo": 155,
-            "nombre": "Laguna Salada"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 153,
+      "name": "Mao"
+    },
+    {
+      "id": 154,
+      "name": "Esperanza"
+    },
+    {
+      "id": 155,
+      "name": "Laguna Salada"
+    }
+  ]
 }

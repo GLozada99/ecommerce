@@ -1,13 +1,13 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 64,
-            "nombre": "Higüey"
-        },
-        {
-            "codigo": 65,
-            "nombre": "San Rafael del Yuma"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 64,
+      "name": "Higüey"
+    },
+    {
+      "id": 65,
+      "name": "San Rafael del Yuma"
+    }
+  ]
 }

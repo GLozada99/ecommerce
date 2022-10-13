@@ -1,13 +1,13 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 40,
-            "nombre": "El Seibo"
-        },
-        {
-            "codigo": 41,
-            "nombre": "Miches"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 40,
+      "name": "El Seibo"
+    },
+    {
+      "id": 41,
+      "name": "Miches"
+    }
+  ]
 }

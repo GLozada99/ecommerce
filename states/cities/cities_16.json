@@ -1,21 +1,21 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 73,
-            "nombre": "Nagua"
-        },
-        {
-            "codigo": 74,
-            "nombre": "Cabrera"
-        },
-        {
-            "codigo": 75,
-            "nombre": "El Factor"
-        },
-        {
-            "codigo": 76,
-            "nombre": "Río San Juan"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 73,
+      "name": "Nagua"
+    },
+    {
+      "id": 74,
+      "name": "Cabrera"
+    },
+    {
+      "id": 75,
+      "name": "El Factor"
+    },
+    {
+      "id": 76,
+      "name": "Río San Juan"
+    }
+  ]
 }

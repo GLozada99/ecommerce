@@ -1,13 +1,13 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 91,
-            "nombre": "Pedernales"
-        },
-        {
-            "codigo": 92,
-            "nombre": "Oviedo"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 91,
+      "name": "Pedernales"
+    },
+    {
+      "id": 92,
+      "name": "Oviedo"
+    }
+  ]
 }

@@ -1,29 +1,29 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 80,
-            "nombre": "Montecristi"
-        },
-        {
-            "codigo": 81,
-            "nombre": "Castañuela"
-        },
-        {
-            "codigo": 82,
-            "nombre": "Guayubín"
-        },
-        {
-            "codigo": 83,
-            "nombre": "Las Matas de Santa Cruz"
-        },
-        {
-            "codigo": 84,
-            "nombre": "Pepillo Salcedo"
-        },
-        {
-            "codigo": 85,
-            "nombre": "Villa Vásquez"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 80,
+      "name": "Montecristi"
+    },
+    {
+      "id": 81,
+      "name": "Castañuela"
+    },
+    {
+      "id": 82,
+      "name": "Guayubín"
+    },
+    {
+      "id": 83,
+      "name": "Las Matas de Santa Cruz"
+    },
+    {
+      "id": 84,
+      "name": "Pepillo Salcedo"
+    },
+    {
+      "id": 85,
+      "name": "Villa Vásquez"
+    }
+  ]
 }

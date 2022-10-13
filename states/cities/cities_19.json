@@ -1,25 +1,25 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 86,
-            "nombre": "Monte Plata"
-        },
-        {
-            "codigo": 87,
-            "nombre": "Bayaguana"
-        },
-        {
-            "codigo": 88,
-            "nombre": "Peralvillo"
-        },
-        {
-            "codigo": 89,
-            "nombre": "Sabana Grande de Boyá"
-        },
-        {
-            "codigo": 90,
-            "nombre": "Yamasá"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 86,
+      "name": "Monte Plata"
+    },
+    {
+      "id": 87,
+      "name": "Bayaguana"
+    },
+    {
+      "id": 88,
+      "name": "Peralvillo"
+    },
+    {
+      "id": 89,
+      "name": "Sabana Grande de Boyá"
+    },
+    {
+      "id": 90,
+      "name": "Yamasá"
+    }
+  ]
 }

@@ -1,29 +1,29 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 42,
-            "nombre": "Comendador"
-        },
-        {
-            "codigo": 43,
-            "nombre": "Bánica"
-        },
-        {
-            "codigo": 44,
-            "nombre": "El Llano"
-        },
-        {
-            "codigo": 45,
-            "nombre": "Hondo Valle"
-        },
-        {
-            "codigo": 46,
-            "nombre": "Juan Santiago"
-        },
-        {
-            "codigo": 47,
-            "nombre": "Pedro Santana"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 42,
+      "name": "Comendador"
+    },
+    {
+      "id": 43,
+      "name": "Bánica"
+    },
+    {
+      "id": 44,
+      "name": "El Llano"
+    },
+    {
+      "id": 45,
+      "name": "Hondo Valle"
+    },
+    {
+      "id": 46,
+      "name": "Juan Santiago"
+    },
+    {
+      "id": 47,
+      "name": "Pedro Santana"
+    }
+  ]
 }

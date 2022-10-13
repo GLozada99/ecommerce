@@ -1,41 +1,41 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 134,
-            "nombre": "Santiago"
-        },
-        {
-            "codigo": 135,
-            "nombre": "Bisonó"
-        },
-        {
-            "codigo": 136,
-            "nombre": "Jánico"
-        },
-        {
-            "codigo": 137,
-            "nombre": "Licey al Medio"
-        },
-        {
-            "codigo": 138,
-            "nombre": "Puñal"
-        },
-        {
-            "codigo": 139,
-            "nombre": "Sabana Iglesia"
-        },
-        {
-            "codigo": 140,
-            "nombre": "San José de las Matas"
-        },
-        {
-            "codigo": 141,
-            "nombre": "Tamboril"
-        },
-        {
-            "codigo": 142,
-            "nombre": "Villa González"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 134,
+      "name": "Santiago"
+    },
+    {
+      "id": 135,
+      "name": "Bisonó"
+    },
+    {
+      "id": 136,
+      "name": "Jánico"
+    },
+    {
+      "id": 137,
+      "name": "Licey al Medio"
+    },
+    {
+      "id": 138,
+      "name": "Puñal"
+    },
+    {
+      "id": 139,
+      "name": "Sabana Iglesia"
+    },
+    {
+      "id": 140,
+      "name": "San José de las Matas"
+    },
+    {
+      "id": 141,
+      "name": "Tamboril"
+    },
+    {
+      "id": 142,
+      "name": "Villa González"
+    }
+  ]
 }

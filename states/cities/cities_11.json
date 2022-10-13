@@ -1,17 +1,17 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 55,
-            "nombre": "Salcedo"
-        },
-        {
-            "codigo": 56,
-            "nombre": "Tenares"
-        },
-        {
-            "codigo": 57,
-            "nombre": "Villa Tapia"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 55,
+      "name": "Salcedo"
+    },
+    {
+      "id": 56,
+      "name": "Tenares"
+    },
+    {
+      "id": 57,
+      "name": "Villa Tapia"
+    }
+  ]
 }

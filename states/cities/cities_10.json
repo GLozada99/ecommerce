@@ -1,17 +1,17 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 52,
-            "nombre": "Hato Mayor del Rey"
-        },
-        {
-            "codigo": 53,
-            "nombre": "El Valle"
-        },
-        {
-            "codigo": 54,
-            "nombre": "Sabana de la Mar"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 52,
+      "name": "Hato Mayor del Rey"
+    },
+    {
+      "id": 53,
+      "name": "El Valle"
+    },
+    {
+      "id": 54,
+      "name": "Sabana de la Mar"
+    }
+  ]
 }

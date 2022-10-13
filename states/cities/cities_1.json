@@ -1,45 +1,45 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 2,
-            "nombre": "Azua de Compostela"
-        },
-        {
-            "codigo": 3,
-            "nombre": "Estebanía"
-        },
-        {
-            "codigo": 4,
-            "nombre": "Guayabal"
-        },
-        {
-            "codigo": 5,
-            "nombre": "Las Charcas"
-        },
-        {
-            "codigo": 6,
-            "nombre": "Las Yayas de Viajama"
-        },
-        {
-            "codigo": 7,
-            "nombre": "Padre Las Casas"
-        },
-        {
-            "codigo": 8,
-            "nombre": "Peralta"
-        },
-        {
-            "codigo": 9,
-            "nombre": "Pueblo Viejo"
-        },
-        {
-            "codigo": 10,
-            "nombre": "Sabana Yegua"
-        },
-        {
-            "codigo": 11,
-            "nombre": "Tábara Arriba"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 2,
+      "name": "Azua de Compostela"
+    },
+    {
+      "id": 3,
+      "name": "Estebanía"
+    },
+    {
+      "id": 4,
+      "name": "Guayabal"
+    },
+    {
+      "id": 5,
+      "name": "Las Charcas"
+    },
+    {
+      "id": 6,
+      "name": "Las Yayas de Viajama"
+    },
+    {
+      "id": 7,
+      "name": "Padre Las Casas"
+    },
+    {
+      "id": 8,
+      "name": "Peralta"
+    },
+    {
+      "id": 9,
+      "name": "Pueblo Viejo"
+    },
+    {
+      "id": 10,
+      "name": "Sabana Yegua"
+    },
+    {
+      "id": 11,
+      "name": "Tábara Arriba"
+    }
+  ]
 }

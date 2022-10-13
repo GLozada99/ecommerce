@@ -1,25 +1,25 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 12,
-            "nombre": "Neiba"
-        },
-        {
-            "codigo": 13,
-            "nombre": "Galván"
-        },
-        {
-            "codigo": 14,
-            "nombre": "Los Ríos"
-        },
-        {
-            "codigo": 15,
-            "nombre": "Tamayo"
-        },
-        {
-            "codigo": 16,
-            "nombre": "Villa Jaragua"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 12,
+      "name": "Neiba"
+    },
+    {
+      "id": 13,
+      "name": "Galván"
+    },
+    {
+      "id": 14,
+      "name": "Los Ríos"
+    },
+    {
+      "id": 15,
+      "name": "Tamayo"
+    },
+    {
+      "id": 16,
+      "name": "Villa Jaragua"
+    }
+  ]
 }

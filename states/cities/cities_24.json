@@ -1,21 +1,21 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 130,
-            "nombre": "Cotuí"
-        },
-        {
-            "codigo": 131,
-            "nombre": "Cevicos"
-        },
-        {
-            "codigo": 132,
-            "nombre": "Fantino"
-        },
-        {
-            "codigo": 133,
-            "nombre": "La Mata"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 130,
+      "name": "Cotuí"
+    },
+    {
+      "id": 131,
+      "name": "Cevicos"
+    },
+    {
+      "id": 132,
+      "name": "Fantino"
+    },
+    {
+      "id": 133,
+      "name": "La Mata"
+    }
+  ]
 }

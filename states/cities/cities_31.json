@@ -1,33 +1,33 @@
 {
-    "status": 200,
-    "data": [
-        {
-            "codigo": 146,
-            "nombre": "Santo Domingo Este"
-        },
-        {
-            "codigo": 147,
-            "nombre": "Boca Chica"
-        },
-        {
-            "codigo": 148,
-            "nombre": "Los Alcarrizos"
-        },
-        {
-            "codigo": 149,
-            "nombre": "Pedro Brand"
-        },
-        {
-            "codigo": 150,
-            "nombre": "San Antonio de Guerra"
-        },
-        {
-            "codigo": 151,
-            "nombre": "Santo Domingo Norte"
-        },
-        {
-            "codigo": 152,
-            "nombre": "Santo Domingo Oeste"
-        }
-    ]
+  "status": 200,
+  "data": [
+    {
+      "id": 146,
+      "name": "Santo Domingo Este"
+    },
+    {
+      "id": 147,
+      "name": "Boca Chica"
+    },
+    {
+      "id": 148,
+      "name": "Los Alcarrizos"
+    },
+    {
+      "id": 149,
+      "name": "Pedro Brand"
+    },
+    {
+      "id": 150,
+      "name": "San Antonio de Guerra"
+    },
+    {
+      "id": 151,
+      "name": "Santo Domingo Norte"
+    },
+    {
+      "id": 152,
+      "name": "Santo Domingo Oeste"
+    }
+  ]
 }
