@@ -16,6 +16,11 @@ urlpatterns = [
                  namespace='cart'
                  )
          ),
+    path('checkout/',
+         include('ecommerce.order.urls.checkout',
+                 namespace='checkout'
+                 )
+         ),
 ]
 
 site_urlpatterns = (urlpatterns, 'site')

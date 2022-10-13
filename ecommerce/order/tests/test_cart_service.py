@@ -5,7 +5,7 @@ from django.test import TestCase
 from model_bakery import baker
 
 from ecommerce.core.models import User
-from ecommerce.order.models import Cart, CartProducts
+from ecommerce.order.models.cart import Cart, CartProducts
 from ecommerce.order.services.cart import CartService
 from ecommerce.products.models.composite_models import ProductConfiguration
 
