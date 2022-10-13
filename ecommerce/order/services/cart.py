@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import F, QuerySet
 
 from ecommerce.core.models import User
-from ecommerce.order.models import Cart, CartProducts
+from ecommerce.order.models.cart import Cart, CartProducts
 
 
 class CartService:
