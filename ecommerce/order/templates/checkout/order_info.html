@@ -1,13 +1,15 @@
 {% load i18n %}
 <div class="create-ac-content" id="order-form">
   {% load i18n %}
-  <form method="post" action="#">
+  <form method="post" action="{% url "site:checkout:submit" %}">
+    {% csrf_token %}
     <fieldset>
       <h2 class="login-title mb-3">{% trans "Order Information" %}</h2>
       <div class="row">
         <div class="form-group col-md-12 col-lg-12 ">
           <div class="customCheckbox cart_tearm">
-            <input type="checkbox" class="form-check-input" id="delivery" {% if delivery %}checked{% endif %}
+            <input type="checkbox" class="form-check-input" id="delivery" name="delivery"
+                   {% if delivery %}checked{% endif %}
                    hx-get="{% url 'site:checkout:delivery' delivery=delivery %}"
                    hx-target="#order-form"
                    hx-swap="outerHTML"/>
@@ -53,7 +55,7 @@
           {% if delivery %}
             <label for="add_address">{% trans "Add Address" %}</label>
             <button name="add_address" id="add_address"
-                    class="w-100 p-2 btn btn-outline-primary proceed-to-checkout rounded">{% trans "Add address" %}
+                    class="w-100 p-2 btn btn-success proceed-to-checkout rounded">{% trans "Add address" %}
             </button>
           {% endif %}
         </div>
@@ -66,15 +68,21 @@
         <div class="form-group col-md-6 col-lg-6">
           <label for="cellphone">{% trans "Cellphone" %}</label>
           <input type="tel" id="cellphone" name="cellphone" value="{{ phone }}"
+                 placeholder="555-555-5555"
                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
         </div>
       </div>
-
-
       <div class="row">
-        <div class="form-group col-md-12 col-lg-12 col-xl-12 mb-0">
+        <div class="form-group col-md-12 col-lg-12 col-xl-12">
           <label for="notes">{% trans "Order Notes" %}</label>
           <textarea name="notes" id="notes" class="form-control resize-both" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12 col-lg-12 col-xl-12 mb-0">
+          <button name="make_order" id="make_order" type="submit"
+                  class="w-100 p-2 btn btn-primary proceed-to-checkout rounded">{% trans "Make Order" %}
+          </button>
         </div>
       </div>
     </fieldset>
