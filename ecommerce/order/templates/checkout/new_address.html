@@ -1,0 +1,61 @@
+{% load i18n %}
+<div>
+  <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="add-address-modal-label"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="add-address-modal-label">{% trans "Add address" %}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'site:checkout:add-address' %}" method="POST">
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-md-6 col-lg-6">
+                <label for="state">{% trans "State" %}<span class="required-f">*</span></label>
+                <select id="state" name="state"
+                        hx-get="{% url 'site:checkout:get-cities' %}"
+                        hx-target="#cities"
+                        hx-swap="outerHTML"
+                >
+                  <option value="0" selected>{% trans "Select a state" %}</option>
+                  {% for state in states %}
+                    <option value="{{ state.id }}" label="{{ state.name }}"
+                    ></option>
+                  {% endfor %}
+                </select>
+              </div>
+              {% include 'checkout/cities_hx.html' %}
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12 col-lg-12">
+                <label for="first_line">{% trans "First Line" %}<span class="required-f">*</span></label>
+                <input type="text" id="first_line" name="first_line" placeholder="{% trans 'Sector, Street' %}"
+                       required/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12 col-lg-12">
+                <label for="second_line">{% trans "Second Line" %}<span class="required-f">*</span></label>
+                <input type="text" id="second_line" name="second_line"
+                       placeholder="{% trans 'Building, Apartment, Floor, House No.' %}" required/>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+            <button type="submit" class="btn btn-outline-success">{% trans "Add address" %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% if add_address %}
+    <script>
+        window.setTimeout(function () {
+            $('#addAddressModal').modal('show');
+        }, 50)
+    </script>
+  {% endif %}
+</div>
