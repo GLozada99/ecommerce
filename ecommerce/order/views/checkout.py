@@ -1,10 +1,13 @@
 from typing import Any, Mapping
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
 
+from ecommerce.clients.services import AddressService
 from ecommerce.order.mixins import CartViewActionMixin
 from ecommerce.order.services.checkout import CheckoutService
 
@@ -22,20 +25,42 @@ class CheckoutView(LoginRequiredMixin, TemplateView, CartViewActionMixin):
         return context
 
 
-def order_form_view(request: HttpRequest, delivery: int) -> HttpResponse:
+@login_required  # type: ignore
+def order_form_view(request: HttpRequest) -> HttpResponse:
     service = CheckoutService(request)
     context = service.get_checkout_info_context()
-    context['delivery'] = int(not delivery)
-
+    context['delivery'] = int(bool(request.GET.get('delivery')))
     return render(request, 'checkout/order_info.html', context)
 
 
-def add_address_view(request: HttpRequest) -> HttpResponse:
+@login_required  # type: ignore
+def add_address_form_view(request: HttpRequest) -> HttpResponse:
     context = {
-        'states': CheckoutService.get_states(),
-        'cities': CheckoutService.get_cities(
-            int(request.GET.get('state_id', 1))),
+        'states': AddressService.get_states(),
+        'add_address': True,
     }
+    return render(request, 'checkout/new_address.html', context)
 
-    # TODO: Fix template
-    return render(request, 'list/categories_hx.html', context)
+
+@require_POST  # type: ignore
+@login_required  # type: ignore
+def add_address_view(request: HttpRequest) -> HttpResponse:
+    checkout_service = CheckoutService(request)
+    client = checkout_service.get_client_profile()
+    AddressService.add_address(client, request.POST.dict())
+    return redirect('site:checkout:checkout')
+
+
+@login_required  # type: ignore
+def get_cities_view(request: HttpRequest) -> HttpResponse:
+    context = {
+        'cities': AddressService.get_cities(
+            request.GET.dict().get('state', '1')),
+    }
+    return render(request, 'checkout/cities_hx.html', context)
+
+
+@require_POST  # type: ignore
+@login_required  # type: ignore
+def order_submit_view(request: HttpRequest) -> HttpResponse:
+    return HttpResponse()
