@@ -10,7 +10,7 @@
           <div class="customCheckbox cart_tearm">
             <input type="checkbox" class="form-check-input" id="delivery" name="delivery"
                    {% if delivery %}checked{% endif %}
-                   hx-get="{% url 'site:checkout:delivery' delivery=delivery %}"
+                   hx-get="{% url 'site:checkout:delivery' %}"
                    hx-target="#order-form"
                    hx-swap="outerHTML"/>
             <label for="delivery"><strong>{% trans "Delivery" %}?</strong></label>
@@ -54,9 +54,14 @@
         <div class="form-group col-md-3 col-lg-3">
           {% if delivery %}
             <label for="add_address">{% trans "Add Address" %}</label>
-            <button name="add_address" id="add_address"
-                    class="w-100 p-2 btn btn-success proceed-to-checkout rounded">{% trans "Add address" %}
-            </button>
+            <a id="add_address" data-bs-toggle="modal"
+               class="w-100 p-2 btn btn-success rounded"
+               hx-get="{% url 'site:checkout:add-address-form' %}"
+               hx-target="#addAddressModal"
+               hx-swap="outerHTML"
+            >
+              {% trans "Add address" %}
+            </a>
           {% endif %}
         </div>
       </div>
