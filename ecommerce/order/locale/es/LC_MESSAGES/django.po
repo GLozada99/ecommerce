@@ -1,0 +1,150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-20 23:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: ecommerce/order/models/order.py:12
+msgid "Cash on delivery"
+msgstr "Efectivo contra entrega"
+
+#: ecommerce/order/models/order.py:13
+msgid "Card on delivery"
+msgstr "Tarjeta contra entrega"
+
+#: ecommerce/order/models/order.py:14
+msgid "Bank Transfer on delivery"
+msgstr "Transferencia contra entrega"
+
+#: ecommerce/order/models/order.py:15
+msgid "Payment on pick up"
+msgstr "Pago al recoger"
+
+#: ecommerce/order/templates/checkout/cities_hx.html:3
+msgid "City"
+msgstr "Municipio"
+
+#: ecommerce/order/templates/checkout/cities_hx.html:5
+msgid "Select a city"
+msgstr "Seleccione un municipio"
+
+#: ecommerce/order/templates/checkout/items.html:4
+msgid "Your Order"
+msgstr "Tu orden"
+
+#: ecommerce/order/templates/checkout/items.html:9
+#: ecommerce/order/templates/checkout/items.html:39
+msgid "Total"
+msgstr "Total"
+
+#: ecommerce/order/templates/checkout/items.html:13
+msgid "Product"
+msgstr "Product"
+
+#: ecommerce/order/templates/checkout/items.html:14
+msgid "Price"
+msgstr "Precio"
+
+#: ecommerce/order/templates/checkout/items.html:15
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: ecommerce/order/templates/checkout/items.html:16
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: ecommerce/order/templates/checkout/new_address.html:8
+#: ecommerce/order/templates/checkout/new_address.html:48
+#: ecommerce/order/templates/checkout/order_info.html:63
+msgid "Add address"
+msgstr "Añadir una dirección"
+
+#: ecommerce/order/templates/checkout/new_address.html:16
+msgid "State"
+msgstr "Provincia"
+
+#: ecommerce/order/templates/checkout/new_address.html:22
+msgid "Select a state"
+msgstr "Seleccione una provincia"
+
+#: ecommerce/order/templates/checkout/new_address.html:33
+msgid "First Line"
+msgstr "Primera línea"
+
+#: ecommerce/order/templates/checkout/new_address.html:34
+msgid "Sector, Street"
+msgstr "Sector, calle"
+
+#: ecommerce/order/templates/checkout/new_address.html:40
+msgid "Second Line"
+msgstr "Segunda línea"
+
+#: ecommerce/order/templates/checkout/new_address.html:42
+msgid "Building, Apartment, Floor, House No."
+msgstr "Edificio, apartamento, piso, número de casa"
+
+#: ecommerce/order/templates/checkout/new_address.html:47
+msgid "Close"
+msgstr "Cerrar"
+
+#: ecommerce/order/templates/checkout/order_info.html:7
+msgid "Order Information"
+msgstr "Información de la orden"
+
+#: ecommerce/order/templates/checkout/order_info.html:16
+msgid "Delivery"
+msgstr "Entrega"
+
+#: ecommerce/order/templates/checkout/order_info.html:23
+msgid "Payment Type"
+msgstr "Tipo de pago"
+
+#: ecommerce/order/templates/checkout/order_info.html:25
+msgid "Select payment type"
+msgstr "Seleccione un tipo de pago"
+
+#: ecommerce/order/templates/checkout/order_info.html:32
+#: ecommerce/order/templates/checkout/order_info.html:49
+msgid "No delivery"
+msgstr "No entrega"
+
+#: ecommerce/order/templates/checkout/order_info.html:40
+msgid "Address"
+msgstr "Dirección"
+
+#: ecommerce/order/templates/checkout/order_info.html:42
+msgid "Select an address"
+msgstr "Seleccione una dirección"
+
+#: ecommerce/order/templates/checkout/order_info.html:56
+msgid "Add Address"
+msgstr "Añadir dirección"
+
+#: ecommerce/order/templates/checkout/order_info.html:70
+msgid "Email"
+msgstr "Email"
+
+#: ecommerce/order/templates/checkout/order_info.html:74
+msgid "Cellphone"
+msgstr "Teléfono/celular"
+
+#: ecommerce/order/templates/checkout/order_info.html:82
+msgid "Order Notes"
+msgstr "Notas de la orden"
+
+#: ecommerce/order/templates/checkout/order_info.html:89
+msgid "Make Order"
+msgstr "Realizar orden"
