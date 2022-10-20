@@ -55,7 +55,7 @@
       <span>Total:</span>
       <span class="product-price">${{ total_price }}</span>
     </div>
-    <a href=""
+    <a href="{% url 'site:checkout:checkout' %}"
        class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">
       {% trans "Proceed to Checkout" %}
     </a>
