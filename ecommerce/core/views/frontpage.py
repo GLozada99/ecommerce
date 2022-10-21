@@ -2,7 +2,7 @@ from typing import Mapping
 
 from django.views.generic import TemplateView
 
-from ecommerce.core.services import FrontPageService
+from ecommerce.core.services.frontpage import FrontPageService
 
 
 class FrontPageView(TemplateView):
