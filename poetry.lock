@@ -180,6 +180,18 @@ requests = "*"
 requests-oauthlib = ">=0.3.0"
 
 [[package]]
+name = "django-choices"
+version = "1.7.2"
+description = "Sanity for the django choices functionality."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.11"
+six = ">=1.13.0"
+
+[[package]]
 name = "django-extensions"
 version = "3.2.0"
 description = "Extensions for Django"
@@ -756,7 +768,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "6587ea3f0b8b032597a43e900f526495f6c97437bb4f08c15280aaf7baf8d099"
+content-hash = "3f6fe24dd92a6cda12e66b161e33c97d466c4fbe33a72d976ebe814a21fc9d6d"
 
 [metadata.files]
 anyio = [
@@ -899,6 +911,10 @@ django = [
 ]
 django-allauth = [
     {file = "django-allauth-0.51.0.tar.gz", hash = "sha256:ca1622733b6faa591580ccd3984042f12d8c79ade93438212de249b7ffb6f91f"},
+]
+django-choices = [
+    {file = "django-choices-1.7.2.tar.gz", hash = "sha256:e52f1d9fe3afd92611bd2ea313ad8a6ba2a89fdb12d5e518438892b6ae462ee3"},
+    {file = "django_choices-1.7.2-py2.py3-none-any.whl", hash = "sha256:d8dda7e11fa0627d138f98d9a5e8e3124d938bb538e2077cc65c43168bfdde10"},
 ]
 django-extensions = [
     {file = "django-extensions-3.2.0.tar.gz", hash = "sha256:7dc7cd1da50d83b76447a58f5d7e5c8e6cd83f21e9b7e5f97e6b644f4d4e21a6"},

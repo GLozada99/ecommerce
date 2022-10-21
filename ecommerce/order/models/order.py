@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
+from djchoices import ChoiceItem, DjangoChoices
 
 from ecommerce.clients.models import Client
 from ecommerce.core.models import User
@@ -9,31 +10,32 @@ from ecommerce.utils.models import BaseModel
 
 
 class Order(BaseModel):
-    CASH_DELIVERY = _('Cash on delivery')
-    CARD_DELIVERY = _('Card on delivery')
-    BANK_TRANSFER_DELIVERY = _('Bank Transfer on delivery')
-    PICKUP = _('Payment on pick up')
-    PAYMENT_CHOICES = [
-        ('Cash', CASH_DELIVERY),
-        ('Card', CARD_DELIVERY),
-        ('Transfer', BANK_TRANSFER_DELIVERY),
-        ('Pickup', PICKUP)
-    ]
+    class PaymentChoices(DjangoChoices):
+        CASH_DELIVERY = ChoiceItem('Cash', _('Cash on delivery'))
+        CARD_DELIVERY = ChoiceItem('Card', _('Card on delivery'))
+        BANK_TRANSFER_DELIVERY = ChoiceItem(
+            'Transfer', _('Bank Transfer on delivery')
+        )
+        PICKUP = ChoiceItem('Pickup', _('Payment on pick up'))
 
-    payment_type = models.CharField(max_length=8, choices=PAYMENT_CHOICES)
-    employee = models.ForeignKey(User, on_delete=models.PROTECT)
-    client = models.ForeignKey(Client, on_delete=models.PROTECT)
+    payment_type = models.CharField(max_length=8,
+                                    choices=PaymentChoices.choices)
+    employee = models.ForeignKey(User, on_delete=models.PROTECT,
+                                 related_name='orders_to_manage')
+    client = models.ForeignKey(Client, on_delete=models.PROTECT,
+                               related_name='orders')
     products = models.ManyToManyField(ProductConfiguration,
                                       through='OrderProducts')
     completed = models.BooleanField(default=False)
 
     @classmethod
     @property
-    def payment_choices(cls) -> list[str]:
-        return [choice[1] for choice in cls.PAYMENT_CHOICES]
+    def payment_choices(cls) -> list[dict[str, str]]:
+        return [{'value': value, 'label': label} for value, label
+                in cls.PaymentChoices.values.items()]
 
     def needs_delivery(self) -> bool:
-        return self.payment_type != self.PICKUP
+        return self.payment_type != self.PaymentChoices.PICKUP
 
 
 class OrderProducts(BaseModel):
