@@ -21,10 +21,10 @@
         <div class="form-group col-md-9 col-lg-9">
           {% if delivery %}
             <label for="payment">{% trans "Payment Type" %}<span class="required-f">*</span></label>
-            <select id="payment" name="payment">
-              <option value="0" selected>{% trans "Select payment type" %}</option>
+            <select id="payment" name="payment" required>
+              <option value="" selected>{% trans "Select payment type" %}</option>
               {% for type in payment_types %}
-                <option value="{{ type }}" label="{{ type }}"></option>
+                <option value="{{ type.value }}" label="{{ type.label }}"></option>
               {% endfor %}
             </select>
           {% else %}
@@ -38,8 +38,8 @@
         <div class="form-group col-md-9 col-lg-9">
           {% if delivery %}
             <label for="address">{% trans "Address" %}<span class="required-f">*</span></label>
-            <select id="address" name="address">
-              <option value="0" selected>{% trans "Select an address" %}</option>
+            <select id="address" name="address" required>
+              <option value="" selected>{% trans "Select an address" %}</option>
               {% for address in addresses %}
                 <option value="{{ address.id }}" label="{{ address }}"></option>
               {% endfor %}
@@ -79,8 +79,8 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12 col-lg-12 col-xl-12">
-          <label for="notes">{% trans "Order Notes" %}</label>
-          <textarea name="notes" id="notes" class="form-control resize-both" rows="3"></textarea>
+          <label for="info">{% trans "Order Extra Info" %}</label>
+          <textarea name="info" id="info" class="form-control resize-both" rows="3"></textarea>
         </div>
       </div>
       <div class="row">
