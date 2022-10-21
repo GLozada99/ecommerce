@@ -27,6 +27,7 @@ class Order(BaseModel):
     products = models.ManyToManyField(ProductConfiguration,
                                       through='OrderProducts')
     completed = models.BooleanField(default=False)
+    info = models.TextField(null=True, blank=True)
 
     @classmethod
     @property
