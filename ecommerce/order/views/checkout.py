@@ -63,4 +63,7 @@ def get_cities_view(request: HttpRequest) -> HttpResponse:
 @require_POST  # type: ignore
 @login_required  # type: ignore
 def order_submit_view(request: HttpRequest) -> HttpResponse:
-    return HttpResponse()
+    checkout_service = CheckoutService(request)
+    checkout_service.create_order()
+    # TODO: Add order succesfull template and redirect there
+    return redirect('site:checkout:checkout')
