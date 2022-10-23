@@ -1,28 +1,31 @@
 from django.db.transaction import atomic
-from django.http import HttpRequest
 
 from ecommerce.clients.models import Client
 from ecommerce.core.models import User
 from ecommerce.core.services.mail import MailService
+from ecommerce.order.models.cart import Cart
 from ecommerce.order.models.order import Order, OrderProducts
 from ecommerce.order.services.cart import CartInfoService, CartService
 
 
 class CheckoutService:
 
-    def __init__(self, request: HttpRequest):
-        self.request = request
+    def __init__(self, user: User, post_data: dict):
+        self.user = user
+        self.post_data = post_data
+        self.__client = None
 
-    def get_client_profile(self) -> Client:
+    @property
+    def client(self) -> Client:
         try:
-            return self.request.user.client_profile
+            return self.user.client_profile
         except AttributeError:
-            return Client.objects.create(user=self.request.user)
+            return Client.objects.create(user=self.user)
 
     def get_checkout_info_context(self) -> dict:
-        user: User = self.request.user
+        user: User = self.user
         return {
-            'addresses': self.get_client_profile().addresses.all(),
+            'addresses': self.client.addresses.all(),
             'phone': user.phone or '',
             'email': user.email or '',
             'payment_types': Order.payment_choices,
@@ -30,37 +33,42 @@ class CheckoutService:
         }
 
     @atomic  # type: ignore
-    def create_order(self) -> None:
-        # TODO: Breakdown method and use messages if cart is empty (create
-        #  custom exeption)
-        #  Implement mail templates on the simplest way
-        cart_service = CartService(self.request.user, '')
-        post_data = self.request.POST.dict()
-        client = self.get_client_profile()
-        client.user.phone = post_data.get('cellphone')
-        client.user.email = post_data.get('email')
-        data = {
+    def create_order(self, cart_service: CartService) -> None:
+        order_data = self._get_order_data()
+        order = Order.objects.create(**order_data)
+        self._set_order_products(order, cart_service.cart)
+
+        self._set_client_info()
+        cart_service.delete_all()
+        MailService.send_order_mails(order)
+
+    def _get_order_data(self) -> dict:
+        return {
             'employee': self._get_employee(),
-            'client': client,
+            'client': self.client,
             'payment_type': (Order.PaymentChoices.PICKUP
-                             if not post_data.get('delivery') else
+                             if not self.post_data.get('delivery') else
                              Order.PaymentChoices.get_choice(
-                                 post_data.get('payment'))).value,
-            'info': post_data.get('info')
+                                 self.post_data.get('payment'))).value,
+            'info': self.post_data.get('info')
         }
 
-        order = Order.objects.create(**data)
+    @staticmethod
+    def _get_employee() -> User:
+        return User.objects.filter(
+            is_staff=True, is_active=True).order_by('?').first()
+
+    def _set_client_info(self) -> None:
+        self.client.user.phone = self.post_data.get('cellphone')
+        self.client.user.email = self.post_data.get('email')
+        self.client.save()
+
+    @staticmethod
+    def _set_order_products(order: Order, cart: Cart) -> None:
         order_products = [OrderProducts(
             product=cart_product.product,
             order=order,
             quantity=cart_product.quantity,
             price=cart_product.price
-        ) for cart_product in CartInfoService.get_product_data(
-            cart_service.cart)]
+        ) for cart_product in CartInfoService.get_product_data(cart)]
         OrderProducts.objects.bulk_create(order_products)
-        cart_service.delete_all()
-        MailService.send_order_mails(order)
-
-    @staticmethod
-    def _get_employee() -> User:
-        return User.objects.filter(is_staff=True, is_active=True).first()

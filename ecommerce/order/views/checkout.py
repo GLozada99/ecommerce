@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 
 from ecommerce.clients.services import AddressService
 from ecommerce.order.mixins import CartViewActionMixin
+from ecommerce.order.services.cart import CartService
 from ecommerce.order.services.checkout import CheckoutService
 
 
@@ -20,15 +21,16 @@ class CheckoutView(LoginRequiredMixin, TemplateView, CartViewActionMixin):
             super().get_context_data(**kwargs),
             None
         )
-        service = CheckoutService(self.request)
-        context |= service.get_checkout_info_context()
+        checkout_service = CheckoutService(self.request.user,
+                                           self.request.POST.dict())
+        context |= checkout_service.get_checkout_info_context()
         return context
 
 
 @login_required  # type: ignore
 def order_form_view(request: HttpRequest) -> HttpResponse:
-    service = CheckoutService(request)
-    context = service.get_checkout_info_context()
+    checkout_service = CheckoutService(request.user, request.POST.dict())
+    context = checkout_service.get_checkout_info_context()
     context['delivery'] = int(bool(request.GET.get('delivery')))
     return render(request, 'checkout/order_info.html', context)
 
@@ -45,9 +47,8 @@ def add_address_form_view(request: HttpRequest) -> HttpResponse:
 @require_POST  # type: ignore
 @login_required  # type: ignore
 def add_address_view(request: HttpRequest) -> HttpResponse:
-    checkout_service = CheckoutService(request)
-    client = checkout_service.get_client_profile()
-    AddressService.add_address(client, request.POST.dict())
+    checkout_service = CheckoutService(request.user, request.POST.dict())
+    AddressService.add_address(checkout_service.client, request.POST.dict())
     return redirect('site:checkout:checkout')
 
 
@@ -63,7 +64,8 @@ def get_cities_view(request: HttpRequest) -> HttpResponse:
 @require_POST  # type: ignore
 @login_required  # type: ignore
 def order_submit_view(request: HttpRequest) -> HttpResponse:
-    checkout_service = CheckoutService(request)
-    checkout_service.create_order()
+    cart_service = CartService(request.user, '')
+    checkout_service = CheckoutService(request.user, request.POST.dict())
+    checkout_service.create_order(cart_service)
     # TODO: Add order succesfull template and redirect there
     return redirect('site:checkout:checkout')
