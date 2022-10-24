@@ -3,11 +3,17 @@ import uuid
 from django.contrib.auth.models import AnonymousUser
 from django.test import TestCase
 from model_bakery import baker
+from parameterized import parameterized
 
 from ecommerce.core.models import User
 from ecommerce.order.models.cart import Cart, CartProducts
 from ecommerce.order.services.cart import CartService
 from ecommerce.products.models.composite_models import ProductConfiguration
+
+
+def _get_random_cookie_id() -> uuid.UUID:
+    return Cart.objects.filter(
+        cookie_id__isnull=False).order_by('?').first().cookie_id
 
 
 class CartServiceTestCase(TestCase):
@@ -18,34 +24,27 @@ class CartServiceTestCase(TestCase):
         user = User.objects.all().first()
         baker.make(Cart, user=user)
 
-    def test_get_cart_cookie(self) -> None:
-        old_cookie_id = (Cart.objects.filter(cookie_id__isnull=False).
-                         order_by('?').first().cookie_id)
-        service = CartService(AnonymousUser(), str(old_cookie_id))
-        old_cookie_cart = service.cart
-        self.assertEqual(old_cookie_cart.cookie_id, old_cookie_id)
-        self.assertIsNone(old_cookie_cart.user)
-
-        new_cookie_id = uuid.uuid4()
-        service = CartService(AnonymousUser(), str(new_cookie_id))
-        new_cookie_cart = service.cart
-        self.assertEqual(new_cookie_cart.cookie_id, new_cookie_id)
-        self.assertIsNone(new_cookie_cart.user)
-
-    def test_get_cart_user(self) -> None:
-        old_user = User.objects.all().first()
-        self.client.force_login(old_user)
-        service = CartService(old_user, str(uuid.uuid4()))
+    @parameterized.expand([  # type: ignore
+        ("old cookie id", str(_get_random_cookie_id())),
+        ("new cookie id", str(uuid.uuid4())),
+    ])
+    def test_get_cart_anonymous_user(
+            self, _: str, cookie_id: str) -> None:
+        service = CartService(AnonymousUser(), cookie_id)
         cart = service.cart
-        self.assertEqual(cart.user, old_user)
-        self.assertIsNone(cart.cookie_id)
+        self.assertEqual(str(cart.cookie_id), cookie_id)
+        self.assertIsNone(cart.user)
 
-        baker.make(User, _quantity=1)
-        new_user = User.objects.exclude(id=old_user.id).first()
-        self.client.force_login(new_user)
-        service = CartService(new_user, str(uuid.uuid4()))
+    @parameterized.expand([  # type: ignore
+        ("old cookie id", str(_get_random_cookie_id())),
+        ("new cookie id", str(uuid.uuid4())),
+    ])
+    def test_get_cart_user(
+            self, _: str, cookie_id: str) -> None:
+        user = User.objects.all().first()
+        service = CartService(user, cookie_id)
         cart = service.cart
-        self.assertEqual(cart.user, new_user)
+        self.assertEqual(cart.user, user)
         self.assertIsNone(cart.cookie_id)
 
     def test_add_product_to_cart(self) -> None:
@@ -85,3 +84,21 @@ class CartServiceTestCase(TestCase):
         service.remove_product(product.id)
         service.remove_product(product.id)
         self.assertFalse(cart.contains_product(product.id))
+
+    def test_delete_all_products_from_cart(self) -> None:
+        baker.make(ProductConfiguration, _quantity=10)
+
+        products = ProductConfiguration.objects.all().order_by('?')
+        product_1 = products[0]
+        product_2 = products[1]
+
+        cart_user = Cart.objects.all().exclude(user__isnull=True).first().user
+
+        service = CartService(cart_user, str(uuid.uuid4()))
+        cart = service.cart
+
+        service.add_product(product_1.id)
+        service.add_product(product_2.id)
+        service.add_product(product_1.id)
+        service.delete_all()
+        self.assertFalse(cart.has_products)
