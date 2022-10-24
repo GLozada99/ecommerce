@@ -1,4 +1,6 @@
 import uuid
+from functools import partial
+from typing import Callable
 
 from django.contrib.auth.models import AnonymousUser
 from django.test import TestCase
@@ -14,6 +16,30 @@ from ecommerce.products.models.composite_models import ProductConfiguration
 def _get_random_cookie_id() -> uuid.UUID:
     return Cart.objects.filter(
         cookie_id__isnull=False).order_by('?').first().cookie_id
+
+
+def _helper_test_add_product(
+        service: CartService, product_id: int, qty: int) -> None:
+    for _ in range(qty):
+        service.add_product(product_id)
+
+
+def _helper_test_remove_product(
+        service: CartService, product_id: int, qty: int,
+        qty_rem: int) -> None:
+    for _ in range(qty):
+        service.add_product(product_id)
+
+    for _ in range(qty_rem):
+        service.remove_product(product_id)
+
+
+def _helper_test_delete_all_products(
+        service: CartService, product_id: int, qty: int) -> None:
+    for _ in range(qty):
+        service.add_product(product_id)
+
+    service.delete_all()
 
 
 class CartServiceTestCase(TestCase):
@@ -47,7 +73,23 @@ class CartServiceTestCase(TestCase):
         self.assertEqual(cart.user, user)
         self.assertIsNone(cart.cookie_id)
 
-    def test_add_product_to_cart(self) -> None:
+    @parameterized.expand([  # type: ignore
+        ("add product",
+         partial(_helper_test_add_product, qty=5), 5,
+         lambda cart, product_id, qty: CartProducts.objects.get(
+             cart=cart, product_id=product_id).quantity == qty),
+
+        ("remove product",
+         partial(_helper_test_remove_product, qty=5, qty_rem=3), 2,
+         lambda cart, product_id, qty: CartProducts.objects.get(
+             cart=cart, product_id=product_id).quantity == qty),
+
+        ("delete all products",
+         partial(_helper_test_delete_all_products, qty=5), 0,
+         lambda cart, _, __: not cart.has_products)
+    ])
+    def test_manage_cart(self, _: str, helper: Callable, final_qty: int,
+                         true_callable: Callable) -> None:
         baker.make(ProductConfiguration, _quantity=10)
 
         product = ProductConfiguration.objects.all().order_by('?').first()
@@ -56,49 +98,5 @@ class CartServiceTestCase(TestCase):
         service = CartService(cart_user, str(uuid.uuid4()))
         cart = service.cart
 
-        service.add_product(product.id)
-        self.assertTrue(cart.contains_product(product.id))
-
-        service.add_product(product.id)
-        service.add_product(product.id)
-        self.assertEqual(CartProducts.objects.get(
-            cart=cart, product_id=product.id).quantity, 3)
-
-    def test_remove_product_from_cart(self) -> None:
-        baker.make(ProductConfiguration, _quantity=10)
-
-        product = ProductConfiguration.objects.all().order_by('?').first()
-
-        cart_user = Cart.objects.all().exclude(user__isnull=True).first().user
-
-        service = CartService(cart_user, str(uuid.uuid4()))
-        cart = service.cart
-
-        service.add_product(product.id)
-        service.add_product(product.id)
-        service.add_product(product.id)
-        self.assertEqual(CartProducts.objects.get(
-            cart=cart, product_id=product.id).quantity, 3)
-
-        service.remove_product(product.id)
-        service.remove_product(product.id)
-        service.remove_product(product.id)
-        self.assertFalse(cart.contains_product(product.id))
-
-    def test_delete_all_products_from_cart(self) -> None:
-        baker.make(ProductConfiguration, _quantity=10)
-
-        products = ProductConfiguration.objects.all().order_by('?')
-        product_1 = products[0]
-        product_2 = products[1]
-
-        cart_user = Cart.objects.all().exclude(user__isnull=True).first().user
-
-        service = CartService(cart_user, str(uuid.uuid4()))
-        cart = service.cart
-
-        service.add_product(product_1.id)
-        service.add_product(product_2.id)
-        service.add_product(product_1.id)
-        service.delete_all()
-        self.assertFalse(cart.has_products)
+        helper(service, product.id)
+        self.assertTrue(true_callable(cart, product.id, final_qty))
