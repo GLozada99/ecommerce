@@ -421,6 +421,25 @@ signals = ["blinker (>=1.4.0)"]
 signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
 
 [[package]]
+name = "parameterized"
+version = "0.8.1"
+description = "Parameterized testing with any Python test framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["jinja2"]
+
+[[package]]
+name = "parametrized"
+version = "0.1"
+description = "A decorator collection allowing for simple parametrized test case definitions."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pillow"
 version = "9.2.0"
 description = "Python Imaging Library (Fork)"
@@ -768,7 +787,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3f6fe24dd92a6cda12e66b161e33c97d466c4fbe33a72d976ebe814a21fc9d6d"
+content-hash = "b2c3aa10dc38fb5eea799ebe94eaa84c26f315c888d610c165b2e9ddace02b16"
 
 [metadata.files]
 anyio = [
@@ -1012,6 +1031,14 @@ nodeenv = [
 oauthlib = [
     {file = "oauthlib-3.2.0-py3-none-any.whl", hash = "sha256:6db33440354787f9b7f3a6dbd4febf5d0f93758354060e802f6c06cb493022fe"},
     {file = "oauthlib-3.2.0.tar.gz", hash = "sha256:23a8208d75b902797ea29fd31fa80a15ed9dc2c6c16fe73f5d346f83f6fa27a2"},
+]
+parameterized = [
+    {file = "parameterized-0.8.1-py2.py3-none-any.whl", hash = "sha256:9cbb0b69a03e8695d68b3399a8a5825200976536fe1cb79db60ed6a4c8c9efe9"},
+    {file = "parameterized-0.8.1.tar.gz", hash = "sha256:41bbff37d6186430f77f900d777e5bb6a24928a1c46fb1de692f8b52b8833b5c"},
+]
+parametrized = [
+    {file = "parametrized-0.1.tar.gz", hash = "sha256:ad55c4d803715bd921869701757bd3604dfa1deacdee53e835c0a4840ddb102d"},
+    {file = "parametrized-0.1.zip", hash = "sha256:f2d42384fee14ecceb09156a2219415c9a92af998b183092bc7f27ba3fd3c7f5"},
 ]
 pillow = [
     {file = "Pillow-9.2.0-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:a9c9bc489f8ab30906d7a85afac4b4944a572a7432e00698a7239f44a44e6efb"},
