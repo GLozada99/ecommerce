@@ -14,33 +14,19 @@ class CartService:
     def __init__(self, user: User | AnonymousUser, cookie_id: str):
         self.user = user
         self.cookie_uuid = uuid.UUID(cookie_id) if cookie_id else uuid.uuid4()
-        self.cart = self._get_cart()
+        self.__cart: None | Cart = None
 
-    def _get_cart(self) -> Cart:
+    @property
+    def cart(self) -> Cart:
+        if self.__cart:
+            return self.__cart
+
         cookie_cart = Cart.objects.filter(cookie_id=self.cookie_uuid).first()
-        if not self.user.is_authenticated:
-            return self._get_anonymous_cart(cookie_cart)
+        cart = (self._get_auth_cart(cookie_cart) if self.user.is_authenticated
+                else self._get_anonymous_cart(cookie_cart))
 
-        return self._get_auth_cart(cookie_cart)
-
-    def _get_anonymous_cart(self, cookie_cart: Cart) -> Cart:
-        return (cookie_cart if cookie_cart
-                else Cart.objects.create(cookie_id=self.cookie_uuid))
-
-    def _get_auth_cart(self, cookie_cart: Cart) -> Cart:
-        if user_cart := Cart.objects.filter(user=self.user).first():
-            return user_cart
-        else:
-            return self._migrate_cart(cookie_cart)
-
-    def _migrate_cart(self, cookie_cart: Cart | None) -> Cart:
-        if not cookie_cart:
-            return Cart.objects.create(user=self.user)
-
-        cookie_cart.cookie_id = None
-        cookie_cart.user = self.user
-        cookie_cart.save()
-        return cookie_cart
+        self.__cart = cart
+        return cart
 
     def add_product(self, product_id: int) -> None:
         if not CartProducts.objects.filter(cart=self.cart,
@@ -75,6 +61,25 @@ class CartService:
     def delete_all(self) -> None:
         CartProducts.objects.filter(cart=self.cart).delete()
 
+    def _get_anonymous_cart(self, cookie_cart: Cart) -> Cart:
+        return (cookie_cart if cookie_cart
+                else Cart.objects.create(cookie_id=self.cookie_uuid))
+
+    def _get_auth_cart(self, cookie_cart: Cart | None) -> Cart:
+        if user_cart := Cart.objects.filter(user=self.user).first():
+            return user_cart
+        else:
+            return self._migrate_cart(cookie_cart)
+
+    def _migrate_cart(self, cookie_cart: Cart | None) -> Cart:
+        if not cookie_cart:
+            return Cart.objects.create(user=self.user)
+
+        cookie_cart.cookie_id = None
+        cookie_cart.user = self.user
+        cookie_cart.save()
+        return cookie_cart
+
 
 class CartInfoService:
 
@@ -83,10 +88,10 @@ class CartInfoService:
             cls, cart: Cart, product_limit: int | None) -> dict:
         products_data = cls.get_product_data(cart)
         return {
-            'products_data': cls.get_limited_product_data(
+            'products_data': cls._get_limited_product_data(
                 products_data, product_limit
             ),
-            'total_price': cls.calculate_total_price(products_data),
+            'total_price': cls._calculate_total_price(products_data),
         }
 
     @staticmethod
@@ -95,14 +100,15 @@ class CartInfoService:
             cart=cart).select_related('product', 'product__product')
 
     @staticmethod
-    def get_limited_product_data(products: QuerySet,
-                                 product_limit: int | None = None) -> QuerySet:
+    def _get_limited_product_data(products: QuerySet,
+                                  product_limit: int | None = None) -> \
+            QuerySet:
         count = products.count()
         limit = (min(products.count(), product_limit)
                  if product_limit else count)
         return products[:limit]
 
     @staticmethod
-    def calculate_total_price(products: QuerySet) -> Decimal:
+    def _calculate_total_price(products: QuerySet) -> Decimal:
         total_price = sum((data.total for data in products))
         return total_price if total_price else Decimal(0)
