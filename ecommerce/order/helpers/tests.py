@@ -1,5 +1,7 @@
 import uuid
 
+from faker import Faker
+
 from ecommerce.order.models.cart import Cart
 from ecommerce.order.services.cart import CartService
 
@@ -31,3 +33,12 @@ def helper_test_delete_all_products(
         service.add_product(product_id)
 
     service.delete_all()
+
+
+def get_random_post_data() -> dict:
+    faker = Faker()
+    return {
+        'info': faker.paragraphs(1),
+        'cellphone': faker.phone_number(),
+        'email': faker.email(),
+    }
