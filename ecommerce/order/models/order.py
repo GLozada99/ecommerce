@@ -26,6 +26,7 @@ class Order(BaseModel):
                                related_name='orders')
     products = models.ManyToManyField(ProductConfiguration,
                                       through='OrderProducts')
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     completed = models.BooleanField(default=False)
     info = models.TextField(null=True, blank=True)
 
