@@ -23,8 +23,7 @@ class CartServiceTestCase(TestCase):
 
     def setUp(self) -> None:
         baker.make(Cart, cookie_id=uuid.uuid4, _quantity=5)
-        baker.make(User, _quantity=1)
-        user = User.objects.all().first()
+        user = baker.make(User)
         baker.make(Cart, user=user)
 
     @parameterized.expand([  # type: ignore
