@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
@@ -26,7 +28,7 @@ class Order(BaseModel):
                                related_name='orders')
     products = models.ManyToManyField(ProductConfiguration,
                                       through='OrderProducts')
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    total = models.DecimalField(max_digits=12, decimal_places=2)
     completed = models.BooleanField(default=False)
     info = models.TextField(null=True, blank=True)
 
@@ -45,6 +47,10 @@ class OrderProducts(BaseModel):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
     price = models.DecimalField(max_digits=12, decimal_places=2)
+
+    @property
+    def total(self) -> Decimal:
+        return self.quantity * self.price
 
     class Meta:
         constraints = [
