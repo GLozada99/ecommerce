@@ -23,7 +23,8 @@
       </div>
       <div class="modal-footer">
         <div class="button-action">
-          <a href="#" class="btn btn-primary view-cart mx-1 rounded">{% trans "Go To Checkout" %}</a>
+          <a href="{% url 'site:checkout:checkout' %}"
+             class="btn btn-primary view-cart mx-1 rounded">{% trans "Go To Checkout" %}</a>
           <a class="btn btn-secondary rounded" data-bs-dismiss="modal">{% trans "Continue Shopping" %}</a>
         </div>
       </div>
