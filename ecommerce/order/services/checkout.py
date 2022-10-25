@@ -1,9 +1,10 @@
+from django.db.models import QuerySet
 from django.db.transaction import atomic
 
 from ecommerce.clients.models import Client
 from ecommerce.core.models import User
 from ecommerce.core.services.mail import MailService
-from ecommerce.order.models.cart import Cart
+from ecommerce.order.models.cart import Cart, CartProducts
 from ecommerce.order.models.order import Order, OrderProducts
 from ecommerce.order.services.cart import CartInfoService, CartService
 
@@ -13,43 +14,52 @@ class CheckoutService:
     def __init__(self, user: User, post_data: dict):
         self.user = user
         self.post_data = post_data
-        self.__client = None
+        self.__client: None | Client = None
 
     @property
     def client(self) -> Client:
+        if self.__client:
+            return self.__client
+
         try:
-            return self.user.client_profile
+            client = self.user.client_profile
         except AttributeError:
-            return Client.objects.create(user=self.user)
+            client = Client.objects.create(user=self.user)
+
+        self.__client = client
+        return client
 
     def get_checkout_info_context(self) -> dict:
-        user: User = self.user
         return {
             'addresses': self.client.addresses.all(),
-            'phone': user.phone or '',
-            'email': user.email or '',
+            'phone': self.user.phone or '',
+            'email': self.user.email or '',
             'payment_types': Order.payment_choices,
             'delivery': 1,
         }
 
     @atomic  # type: ignore
-    def create_order(self, cart_service: CartService) -> None:
-        order_data = self._get_order_data()
+    def create_order(self, cart_service: CartService) -> Order:
+        order_data = self._get_order_data(
+            CartInfoService.get_product_data(cart_service.cart)
+        )
         order = Order.objects.create(**order_data)
         self._set_order_products(order, cart_service.cart)
 
         self._set_client_info()
         cart_service.delete_all()
         MailService.send_order_mails(order)
+        return order
 
-    def _get_order_data(self) -> dict:
+    def _get_order_data(self,
+                        products: QuerySet[CartProducts]) -> dict:
         return {
             'employee': self._get_employee(),
             'client': self.client,
             'payment_type': (Order.PaymentChoices.PICKUP
                              if not self.post_data.get('delivery') else
-                             Order.PaymentChoices.get_choice(
-                                 self.post_data.get('payment'))).value,
+                             self.post_data.get('payment')),
+            'total': CartInfoService.calculate_total_price(products),
             'info': self.post_data.get('info')
         }
 

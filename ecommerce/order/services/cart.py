@@ -91,7 +91,7 @@ class CartInfoService:
             'products_data': cls._get_limited_product_data(
                 products_data, product_limit
             ),
-            'total_price': cls._calculate_total_price(products_data),
+            'total_price': cls.calculate_total_price(products_data),
         }
 
     @staticmethod
@@ -109,6 +109,6 @@ class CartInfoService:
         return products[:limit]
 
     @staticmethod
-    def _calculate_total_price(products: QuerySet) -> Decimal:
+    def calculate_total_price(products: QuerySet) -> Decimal:
         total_price = sum((data.total for data in products))
         return total_price if total_price else Decimal(0)
