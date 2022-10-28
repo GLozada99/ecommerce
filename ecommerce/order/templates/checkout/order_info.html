@@ -65,13 +65,21 @@
           {% endif %}
         </div>
       </div>
+      {% if not user.first_name or not user.last_name %}
+        <div class="row">
+          <div class="form-group col-md-6 col-lg-6">
+            <label for="first_name">{% trans "First Name" %}<span class="required-f">*</span></label>
+            <input type="text" id="first_name" name="first_name" value="" required/>
+          </div>
+          <div class="form-group col-md-6 col-lg-6">
+            <label for="last_name">{% trans "Last Name" %}<span class="required-f">*</span></label>
+            <input type="text" id="last_name" name="last_name" value="" required/>
+          </div>
+        </div>
+      {% endif %}
       <div class="row">
         <div class="form-group col-md-6 col-lg-6">
-          <label for="email">{% trans "Email" %}<span class="required-f">*</span></label>
-          <input type="email" id="email" name="email" value="{{ email }}" required/>
-        </div>
-        <div class="form-group col-md-6 col-lg-6">
-          <label for="cellphone">{% trans "Cellphone" %}</label>
+          <label for="cellphone">{% trans "Cellphone" %}<span class="required-f">*</span></label>
           <input type="tel" id="cellphone" name="cellphone" value="{{ phone }}"
                  placeholder="555-555-5555"
                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
@@ -85,9 +93,15 @@
       </div>
       <div class="row">
         <div class="form-group col-md-12 col-lg-12 col-xl-12 mb-0">
-          <button name="make_order" id="make_order" type="submit"
-                  class="w-100 p-2 btn btn-primary proceed-to-checkout rounded">{% trans "Make Order" %}
-          </button>
+          {% if products_data %}
+            <button name="make_order" id="make_order" type="submit"
+                    class="w-100 p-2 btn btn-primary proceed-to-checkout rounded">{% trans "Make Order" %}
+            </button>
+          {% else %}
+            <button name="make_order" id="make_order" disabled
+                    class="w-100 p-2 btn btn-primary proceed-to-checkout rounded">{% trans "Empty Cart" %}
+            </button>
+          {% endif %}
         </div>
       </div>
     </fieldset>
