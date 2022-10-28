@@ -1,1 +1,31 @@
-<h1>HOLAAAAAA {{ client }}</h1>
+{% load i18n %}
+<h1>{% trans "Hello" %} {{ order.employee.get_full_name }}</h1>
+<h2>{% trans "This is a mail confirming the order with ID:" %}{{ order.id }}</h2>
+<br>
+<h2>{% trans "These where the items ordered" %}</h2>
+<br>
+<table>
+  <thead>
+  <tr>
+    <th colspan="2" class="text-start">{% trans "Product" %}</th>
+    <th>{% trans "Price" %}</th>
+    <th>{% trans "Quantity" %}</th>
+    <th>{% trans "Subtotal" %}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for entry in products_data %}
+    <td colspan="2">
+      {{ entry.product.product.name|truncatewords:8 }}:<br>
+      {{ entry.product.name|truncatewords:8 }}
+    </td>
+    <td>${{ entry.price }}</td>
+    <td>{{ entry.quantity }}</td>
+    <td>${{ entry.total }}</td>
+  {% endfor %}
+  </tbody>
+</table>
+<h2>"{% trans 'Please contact the client' %} {{ order.client.user.get_full_name }} {% trans 'at' %}
+  {{ order.employee.phone }}
+  {% trans 'to help them continue with the order' %}"
+</h2>
