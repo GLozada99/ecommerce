@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-20 23:37+0000\n"
+"POT-Creation-Date: 2022-10-28 22:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: ecommerce/order/models/order.py:12
+
+#: ecommerce/order/models/order.py:16
 msgid "Cash on delivery"
 msgstr "Efectivo contra entrega"
 
-#: ecommerce/order/models/order.py:13
+#: ecommerce/order/models/order.py:17
 msgid "Card on delivery"
 msgstr "Tarjeta contra entrega"
 
-#: ecommerce/order/models/order.py:14
+#: ecommerce/order/models/order.py:19
 msgid "Bank Transfer on delivery"
 msgstr "Transferencia contra entrega"
 
-#: ecommerce/order/models/order.py:15
+#: ecommerce/order/models/order.py:21
 msgid "Payment on pick up"
 msgstr "Pago al recoger"
 
@@ -67,7 +68,7 @@ msgid "Subtotal"
 msgstr "Subtotal"
 
 #: ecommerce/order/templates/checkout/new_address.html:8
-#: ecommerce/order/templates/checkout/new_address.html:48
+#: ecommerce/order/templates/checkout/new_address.html:49
 #: ecommerce/order/templates/checkout/order_info.html:63
 msgid "Add address"
 msgstr "Añadir una dirección"
@@ -76,27 +77,27 @@ msgstr "Añadir una dirección"
 msgid "State"
 msgstr "Provincia"
 
-#: ecommerce/order/templates/checkout/new_address.html:22
+#: ecommerce/order/templates/checkout/new_address.html:23
 msgid "Select a state"
 msgstr "Seleccione una provincia"
 
-#: ecommerce/order/templates/checkout/new_address.html:33
+#: ecommerce/order/templates/checkout/new_address.html:34
 msgid "First Line"
 msgstr "Primera línea"
 
-#: ecommerce/order/templates/checkout/new_address.html:34
+#: ecommerce/order/templates/checkout/new_address.html:35
 msgid "Sector, Street"
 msgstr "Sector, calle"
 
-#: ecommerce/order/templates/checkout/new_address.html:40
+#: ecommerce/order/templates/checkout/new_address.html:41
 msgid "Second Line"
 msgstr "Segunda línea"
 
-#: ecommerce/order/templates/checkout/new_address.html:42
+#: ecommerce/order/templates/checkout/new_address.html:43
 msgid "Building, Apartment, Floor, House No."
 msgstr "Edificio, apartamento, piso, número de casa"
 
-#: ecommerce/order/templates/checkout/new_address.html:47
+#: ecommerce/order/templates/checkout/new_address.html:48
 msgid "Close"
 msgstr "Cerrar"
 
@@ -133,18 +134,27 @@ msgstr "Seleccione una dirección"
 msgid "Add Address"
 msgstr "Añadir dirección"
 
-#: ecommerce/order/templates/checkout/order_info.html:70
-msgid "Email"
-msgstr "Email"
+#: ecommerce/order/templates/checkout/order_info.html:71
+msgid "First Name"
+msgstr "Nombre"
 
-#: ecommerce/order/templates/checkout/order_info.html:74
+#: ecommerce/order/templates/checkout/order_info.html:75
+msgid "Last Name"
+msgstr "Apellido"
+
+#: ecommerce/order/templates/checkout/order_info.html:82
 msgid "Cellphone"
 msgstr "Teléfono/celular"
 
-#: ecommerce/order/templates/checkout/order_info.html:82
-msgid "Order Notes"
-msgstr "Notas de la orden"
+#: ecommerce/order/templates/checkout/order_info.html:90
+#, fuzzy
+msgid "Order Extra Info"
+msgstr "Información de la orden"
 
-#: ecommerce/order/templates/checkout/order_info.html:89
+#: ecommerce/order/templates/checkout/order_info.html:98
 msgid "Make Order"
 msgstr "Realizar orden"
+
+#: ecommerce/order/templates/checkout/order_info.html:102
+msgid "Empty Cart"
+msgstr "Carrito Vacío"
