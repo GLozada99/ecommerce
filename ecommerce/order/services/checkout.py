@@ -33,7 +33,6 @@ class CheckoutService:
         return {
             'addresses': self.client.addresses.all(),
             'phone': self.user.phone or '',
-            'email': self.user.email or '',
             'payment_types': Order.payment_choices,
             'delivery': 1,
         }
@@ -44,11 +43,10 @@ class CheckoutService:
             CartInfoService.get_product_data(cart_service.cart)
         )
         order = Order.objects.create(**order_data)
-        self._set_order_products(order, cart_service.cart)
-
+        order_products = self._set_order_products(order, cart_service.cart)
         self._set_client_info()
         cart_service.delete_all()
-        MailService.send_order_mails(order)
+        MailService.send_order_mails(order, order_products)
         return order
 
     def _get_order_data(self,
@@ -69,16 +67,20 @@ class CheckoutService:
             is_staff=True, is_active=True).order_by('?').first()
 
     def _set_client_info(self) -> None:
-        self.client.user.phone = self.post_data.get('cellphone')
-        self.client.user.email = self.post_data.get('email')
-        self.client.save()
+        user = self.client.user
+        data = self.post_data
+        user.phone = data.get('cellphone')
+        user.first_name = data.get('first_name', user.first_name)
+        user.last_name = data.get('last_name', user.last_name)
+        self.client.user.save(update_fields=['phone', 'first_name',
+                                             'last_name'])
 
     @staticmethod
-    def _set_order_products(order: Order, cart: Cart) -> None:
+    def _set_order_products(order: Order, cart: Cart) -> OrderProducts:
         order_products = [OrderProducts(
             product=cart_product.product,
             order=order,
             quantity=cart_product.quantity,
             price=cart_product.price
         ) for cart_product in CartInfoService.get_product_data(cart)]
-        OrderProducts.objects.bulk_create(order_products)
+        return OrderProducts.objects.bulk_create(order_products)
