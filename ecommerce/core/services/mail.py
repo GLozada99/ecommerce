@@ -1,16 +1,15 @@
 from django.template.loader import render_to_string
 
-from ecommerce.clients.models import Client
 from ecommerce.core.models import User
-from ecommerce.order.models.order import Order
+from ecommerce.order.models.order import Order, OrderProducts
 
 
 class MailService:
 
     @classmethod
-    def send_order_mails(cls, order: Order) -> None:
-        cls.send_customer_order_email(order.client, order.employee, order.id)
-        cls.send_employee_order_email(order.employee, order.client, order.id)
+    def send_order_mails(cls, order: Order, products: OrderProducts) -> None:
+        cls._send_customer_order_email(order, products)
+        cls._send_employee_order_email(order, products)
 
     @staticmethod
     def send_mail(recipient: User, subject: str,
@@ -19,21 +18,25 @@ class MailService:
         recipient.email_user(subject, message='', html_message=html_message)
 
     @classmethod
-    def send_customer_order_email(
-            cls, client: Client, employee: User, order_id: int) -> None:
-        subject = f'Order with ID {order_id}'
-        context = {
-            'client': client, 'employee': employee,
-        }
-        cls.send_mail(client.user, subject, context,
+    def _send_customer_order_email(
+            cls, order: Order, products: OrderProducts) -> None:
+        subject, context = cls._get_context_subject_order_email(
+            order, products
+        )
+        cls.send_mail(order.client.user, subject, context,
                       'mails/customer_order_email.html')
 
     @classmethod
-    def send_employee_order_email(
-            cls, employee: User, client: Client, order_id: int) -> None:
-        subject = f'Order with ID {order_id}'
-        context = {
-            'client': client, 'employee': employee,
-        }
-        cls.send_mail(client.user, subject, context,
+    def _send_employee_order_email(
+            cls, order: Order, products: OrderProducts) -> None:
+        subject, context = cls._get_context_subject_order_email(
+            order, products
+        )
+        cls.send_mail(order.employee, subject, context,
                       'mails/employee_order_email.html')
+
+    @staticmethod
+    def _get_context_subject_order_email(
+            order: Order, products: OrderProducts) -> tuple[str, dict]:
+        return f'Order with ID {order.id}', {'order': order,
+                                             'products_data': products}
