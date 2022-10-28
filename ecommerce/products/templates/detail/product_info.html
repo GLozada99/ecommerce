@@ -62,13 +62,24 @@
     <!-- Product Action -->
     <div class="product-action w-100 clearfix">
       <div class="product-form__item--submit">
-        <button type="submit" name="add" class="btn rounded product-form__cart-submit">
-          <span>Add to cart</span></button>
+        <div class="addtocart-btn"
+             hx-get="{% url 'site:cart:add' product_id=current_configuration.id %}"
+             hx-target="#addToCartModal"
+             hx-swap="outerHTML"
+        >
+          <button type="button" class="btn pro-addtocart-popup" data-bs-toggle="modal"
+                  data-bs-target=""
+          >
+            <i class="icon hidden an an-cart-l"></i>
+            Add to cart
+          </button>
+        </div>
       </div>
     </div>
     <!-- End Product Action -->
     <!-- Product Info link -->
     <!-- End Product Info link -->
   </form>
-  <!-- End Product Info -->
+  {% include "base/modals/add-to-cart.html" %}
+
 </div>
