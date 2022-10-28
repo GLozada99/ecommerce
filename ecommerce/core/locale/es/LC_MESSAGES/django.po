@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-20 23:37+0000\n"
+"POT-Creation-Date: 2022-10-28 22:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ecommerce/core/models.py:11
+msgid "email address"
+msgstr "correo electrónico"
 
 #: ecommerce/core/templates/base.html:10
 msgid "Site"
@@ -94,11 +98,11 @@ msgstr "Teléfono"
 msgid "Product added successfully."
 msgstr "El producto se añadió de forma exitosa."
 
-#: ecommerce/core/templates/base/modals/add-to-cart.html:26
+#: ecommerce/core/templates/base/modals/add-to-cart.html:27
 msgid "Go To Checkout"
 msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/modals/add-to-cart.html:27
+#: ecommerce/core/templates/base/modals/add-to-cart.html:28
 msgid "Continue Shopping"
 msgstr "Continuar Comprando"
 
@@ -109,7 +113,7 @@ msgstr "Tu carrito"
 
 #: ecommerce/core/templates/base/modals/minicart/empty.html:5
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: ecommerce/core/templates/base/modals/minicart/empty.html:5
 #: ecommerce/core/templates/base/modals/minicart/not-empty.html:8
@@ -151,6 +155,70 @@ msgstr "Algunos de nuestros productos"
 #: ecommerce/core/templates/frontpage/products.html:41
 msgid "See more"
 msgstr "Ver más"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:2
+#: ecommerce/core/templates/mails/employee_order_email.html:2
+msgid "Hello"
+msgstr "Hola"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:3
+#: ecommerce/core/templates/mails/employee_order_email.html:3
+msgid "This is a mail confirming the order with ID: "
+msgstr "Este es un email confirmando la orden con el ID: "
+
+#: ecommerce/core/templates/mails/customer_order_email.html:5
+#: ecommerce/core/templates/mails/employee_order_email.html:5
+msgid "These where the items ordered"
+msgstr "Estos son los artículos pedidos"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:9
+#: ecommerce/core/templates/mails/employee_order_email.html:9
+msgid "Product"
+msgstr "Producto"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:10
+#: ecommerce/core/templates/mails/employee_order_email.html:10
+msgid "Price"
+msgstr "Precio"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:11
+#: ecommerce/core/templates/mails/employee_order_email.html:11
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:12
+#: ecommerce/core/templates/mails/employee_order_email.html:12
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:29
+msgid "Please contact"
+msgstr "Favor contactar a "
+
+#: ecommerce/core/templates/mails/customer_order_email.html:29
+#: ecommerce/core/templates/mails/employee_order_email.html:35
+msgid "at"
+msgstr "al"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:30
+msgid "to get help in continuing with the order"
+msgstr "para obtener ayuda para continuar con la orden"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:32
+msgid "Thank you for choosing us"
+msgstr "Gracias por escogernos"
+
+#: ecommerce/core/templates/mails/employee_order_email.html:30
+msgid "Total"
+msgstr "Total"
+
+#: ecommerce/core/templates/mails/employee_order_email.html:35
+msgid "Please contact the client"
+msgstr "Favor contactar al cliente"
+
+#: ecommerce/core/templates/mails/employee_order_email.html:37
+msgid "to help them continue with the order"
+msgstr "Para ayudarlo a continuar con la order"
 
 #: ecommerce/core/templates/not-found.html:10
 msgid "Sorry, we couldn't find this page."
