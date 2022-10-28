@@ -18,8 +18,9 @@
                         hx-get="{% url 'site:checkout:get-cities' %}"
                         hx-target="#cities"
                         hx-swap="outerHTML"
+                        required
                 >
-                  <option value="0" selected>{% trans "Select a state" %}</option>
+                  <option value="" selected>{% trans "Select a state" %}</option>
                   {% for state in states %}
                     <option value="{{ state.id }}" label="{{ state.name }}"
                     ></option>
