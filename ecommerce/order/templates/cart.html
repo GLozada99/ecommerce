@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <section id="page-content">
+    {% include 'breadcrumbs.html' with general_name="Order" page_name="Cart" %}
+    <div class="container">
+      {% include 'cart/items_hx.html' %}
+    </div>
+  </section>
+{% endblock %}

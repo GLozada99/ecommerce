@@ -1,14 +1,17 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from thumbnails.fields import ImageField
 
 from ecommerce.utils.models import BaseModel
 
 
 class User(AbstractUser, BaseModel):
+    phone = models.CharField(max_length=30, null=True, blank=True)
+    email = models.EmailField(_("email address"), blank=True, unique=True)
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}, {self.email}'
+        return f'{self.username}, {self.email}'
 
 
 class SlideImage(BaseModel):

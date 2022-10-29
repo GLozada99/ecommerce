@@ -1,0 +1,25 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 86,
+      "name": "Monte Plata"
+    },
+    {
+      "id": 87,
+      "name": "Bayaguana"
+    },
+    {
+      "id": 88,
+      "name": "Peralvillo"
+    },
+    {
+      "id": 89,
+      "name": "Sabana Grande de Boyá"
+    },
+    {
+      "id": 90,
+      "name": "Yamasá"
+    }
+  ]
+}

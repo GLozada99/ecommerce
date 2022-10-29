@@ -27,8 +27,8 @@
                   {% trans "Home" %}</a></li>
                 <li class="lvl1 parent bottom-link"><a href="{% url 'site:products:list' %}">{% trans "Products" %}</a>
                 </li>
-                <li class="lvl1 parent bottom-link"><a href="#">{% trans "About Us" %}</a></li>
-                <li class="lvl1 parent bottom-link"><a href="#">{% trans "Contact Us" %}</a></li>
+                {#                <li class="lvl1 parent bottom-link"><a href="#">{% trans "About Us" %}</a></li>#}
+                {#                <li class="lvl1 parent bottom-link"><a href="#">{% trans "Contact Us" %}</a></li>#}
               </ul>
             </nav>
           </div>
@@ -64,12 +64,17 @@
         </div>
         <!--End Setting Dropdown-->
         <!--Minicart Drawer-->
-        <div class="header-cart iconset">
+        <div class="header-cart iconset"
+             hx-get="{% url 'site:cart:mini' %}"
+             hx-target="#minicartModal"
+             hx-swap="outerHTML"
+        >
           <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal"
-             data-bs-target="#minicart-drawer">
-            <i class="icon an an-cart-l"></i><span
-              class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span
-              class="tooltip-label">Cart</span>
+             data-bs-target="">
+            <i class="icon an an-cart-l"></i>
+            <span class="tooltip-label">
+              {% trans "Cart" %}
+            </span>
           </a>
         </div>
         <!--End Minicart Drawer-->

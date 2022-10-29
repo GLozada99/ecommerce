@@ -5,7 +5,7 @@ from ecommerce.clients.models import Address, Client
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('user', 'authentication_provider')
+    list_display = ('user',)
 
 
 @admin.register(Address)

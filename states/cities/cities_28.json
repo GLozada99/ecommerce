@@ -1,0 +1,29 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 124,
+      "name": "San Pedro de Macorís"
+    },
+    {
+      "id": 125,
+      "name": "Consuelo"
+    },
+    {
+      "id": 126,
+      "name": "Guayacanes"
+    },
+    {
+      "id": 127,
+      "name": "Quisqueya"
+    },
+    {
+      "id": 128,
+      "name": "Ramón Santana"
+    },
+    {
+      "id": 129,
+      "name": "San José de Los Llanos"
+    }
+  ]
+}

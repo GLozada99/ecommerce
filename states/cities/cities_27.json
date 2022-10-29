@@ -1,0 +1,29 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 118,
+      "name": "San Juan de la Maguana"
+    },
+    {
+      "id": 119,
+      "name": "Bohechío"
+    },
+    {
+      "id": 120,
+      "name": "El Cercado"
+    },
+    {
+      "id": 121,
+      "name": "Juan de Herrera"
+    },
+    {
+      "id": 122,
+      "name": "Las Matas de Farfán"
+    },
+    {
+      "id": 123,
+      "name": "Vallejuelo"
+    }
+  ]
+}

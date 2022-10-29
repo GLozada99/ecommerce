@@ -29,7 +29,4 @@ urlpatterns = [
          name='detail-config'),
     path('<slug:slug>/<str:type>/<int:id>', selected_picture_view,
          name='detail-picture'),
-    path('<slug:slug>/la', ProductDetailView.as_view(
-        template_name='product-layout1.html'),
-         name='detail2'),
 ]

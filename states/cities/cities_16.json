@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 73,
+      "name": "Nagua"
+    },
+    {
+      "id": 74,
+      "name": "Cabrera"
+    },
+    {
+      "id": 75,
+      "name": "El Factor"
+    },
+    {
+      "id": 76,
+      "name": "Río San Juan"
+    }
+  ]
+}

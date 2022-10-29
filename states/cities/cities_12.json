@@ -1,0 +1,29 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 58,
+      "name": "Jimaní"
+    },
+    {
+      "id": 59,
+      "name": "Cristóbal"
+    },
+    {
+      "id": 60,
+      "name": "Duvergé"
+    },
+    {
+      "id": 61,
+      "name": "La Descubierta"
+    },
+    {
+      "id": 62,
+      "name": "Mella"
+    },
+    {
+      "id": 63,
+      "name": "Postrer Río"
+    }
+  ]
+}

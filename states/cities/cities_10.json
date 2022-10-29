@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 52,
+      "name": "Hato Mayor del Rey"
+    },
+    {
+      "id": 53,
+      "name": "El Valle"
+    },
+    {
+      "id": 54,
+      "name": "Sabana de la Mar"
+    }
+  ]
+}

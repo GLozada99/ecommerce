@@ -1,0 +1,29 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 42,
+      "name": "Comendador"
+    },
+    {
+      "id": 43,
+      "name": "Bánica"
+    },
+    {
+      "id": 44,
+      "name": "El Llano"
+    },
+    {
+      "id": 45,
+      "name": "Hondo Valle"
+    },
+    {
+      "id": 46,
+      "name": "Juan Santiago"
+    },
+    {
+      "id": 47,
+      "name": "Pedro Santana"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="form-group col-md-6 col-lg-6" id="cities">
+  <label for="city">{% trans "City" %}<span class="required-f">*</span></label>
+  <select id="city" name="city" required>
+    <option value="" selected>{% trans "Select a city" %}</option>
+    {% for city in cities %}
+      <option value="{{ city.id }}" label="{{ city.name }}"></option>
+    {% endfor %}
+  </select>
+</div>

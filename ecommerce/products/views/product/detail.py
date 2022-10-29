@@ -1,4 +1,4 @@
-from typing import Mapping
+from typing import Any, Mapping
 
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -13,8 +13,8 @@ class ProductDetailView(DetailView):
         'category', 'configurations').all()
     context_object_name = 'product'
 
-    def get_context_data(self, **kwargs: dict) -> Mapping:
-        context = super(ProductDetailView, self).get_context_data(**kwargs)
+    def get_context_data(self, **kwargs: Any) -> Mapping:
+        context = super().get_context_data(**kwargs)
         service = ProductDetailService(self.get_object())
         context |= service.get_context(
             int(self.request.GET.get('config_id', 0)),

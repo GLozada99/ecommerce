@@ -11,7 +11,7 @@
       {% for data in related_products %}
         <div class="item ">
           <!--Start Product Image-->
-          <div class="product-image border border-5 border-dark rounded-9">
+          <div class="product-image mx-2 mb-2 rounded-5">
             <!--Start Product Image-->
             <a href="{% url 'site:products:detail' slug=data.product.slug %}" class="product-img">
               <img class="primary blur-up lazyload" data-src="{{ data.picture_url }}"
@@ -24,7 +24,7 @@
           <div class="product-details text-center">
             <div class="product-name text-uppercase">
               <a href="{% url 'site:products:detail' slug=data.product.slug %}"
-              >{{ data.product.name|truncatewords:6 }}</a>
+              >{{ data.product.name|truncatewords:10 }}</a>
             </div>
             <div class="product-price">
               <span class="price">${{ data.product.current_price | intcomma }}</span>

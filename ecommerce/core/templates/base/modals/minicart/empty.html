@@ -1,0 +1,15 @@
+{% load i18n %}
+<div id="minicartModalLabel"
+     class="cartEmpty d-flex-justify-center flex-column text-center p-3 text-muted ">
+  <div class="minicart-header d-flex-center justify-content-between w-100">
+    <h4 class="fs-6">{% trans "Your cart" %} ({% trans "No" %} {% trans "Items" %})</h4>
+    <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
+        class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="left"
+        title="Close"></i></a>
+  </div>
+  <div class="cartEmpty-content mt-4">
+    <i class="icon an an-sq-bag fs-1 text-muted"></i>
+    <p class="my-3">{% trans "No products in the cart" %}</p>
+    <a href="{% url 'site:products:list' %}" class="btn btn-primary cart-btn rounded">{% trans "Start shopping!" %}</a>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+{% load i18n %}
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true"
+>
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="title mb-3 text-success">{% trans "Product added successfully." %}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <div class="pro-img mb-3">
+          <img class="blur-up lazyload mw-50 h-50" src="{{ configuration.cart_success_url }}"
+               data-src="{{ configuration.list_url }}" alt="Added to your shopping cart successfully."
+               title="Added to your shopping cart successfully."/>
+        </div>
+        <div class="pro-details">
+          <h5 class="pro-name mb-0">{{ configuration.product.name }}</h5>
+          <p class="sku my-2">{{ configuration.name }}</p>
+          <div class="addcart-total bg-light mt-3 mb-3">
+            Total: <b class="price">${{ configuration.current_price }}</b>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="button-action">
+          <a href="{% url 'site:checkout:checkout' %}"
+             class="btn btn-primary rounded mb-2">{% trans "Go To Checkout" %}</a>
+          <a class="btn btn-secondary rounded" data-bs-dismiss="modal">{% trans "Continue Shopping" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if post_cart_show %}
+    <script>
+        window.setTimeout(function () {
+            $('#addToCartModal').modal('show');
+        }, 50)
+    </script>
+  {% endif %}
+</div>

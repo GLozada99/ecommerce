@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 115,
+      "name": "San José de Ocoa"
+    },
+    {
+      "id": 116,
+      "name": "Rancho Arriba"
+    },
+    {
+      "id": 117,
+      "name": "Sabana Larga"
+    }
+  ]
+}

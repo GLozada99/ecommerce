@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 40,
+      "name": "El Seibo"
+    },
+    {
+      "id": 41,
+      "name": "Miches"
+    }
+  ]
+}

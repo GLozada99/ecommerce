@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 104,
+      "name": "Samaná"
+    },
+    {
+      "id": 105,
+      "name": "Las Terrenas"
+    },
+    {
+      "id": 106,
+      "name": "Sánchez"
+    }
+  ]
+}

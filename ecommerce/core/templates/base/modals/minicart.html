@@ -1,0 +1,22 @@
+<div class="minicart-right-drawer modal fade right" id="minicartModal" aria-labelledby="minicartModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      {% if products_data %}
+        {% include "base/modals/minicart/not-empty.html" %}
+      {% else %}
+        {% include "base/modals/minicart/empty.html" %}
+      {% endif %}
+    </div>
+
+  </div>
+  <div id="remove-spinner" class="spinner-border text-info htmx-indicator" style="width: 3rem; height: 3rem;"></div>
+
+  {% if get_cart_show %}
+    <script>
+        window.setTimeout(function () {
+            $('#minicartModal').modal('show');
+        }, 50)
+    </script>
+  {% endif %}
+</div>

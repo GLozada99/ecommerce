@@ -1,4 +1,4 @@
-from typing import Mapping
+from typing import Any, Mapping
 
 from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
@@ -17,17 +17,12 @@ class ProductListView(ListView):
 
     def get_queryset(self) -> QuerySet:
         products = ProductListService.get_products(
-            super(ProductListView, self).get_queryset(),
+            super().get_queryset(),
             self.request.session.get('current_order_by'),
         )
         if category := self.request.session.get('current_category'):
             products = products.filter(category__slug=category)
         return products
-
-    def get_context_data(self, **kwargs: dict) -> Mapping:
-        context = super(ProductListView, self).get_context_data(**kwargs)
-        context |= ProductListService.get_context(self.request.GET)
-        return context
 
     def get(
             self, request: HttpRequest,
@@ -36,9 +31,16 @@ class ProductListView(ListView):
             'category', '')
         request.session['current_order_by'] = self.request.GET.get(
             'order_by', '')
-        response = super(ProductListView, self).get(request, *args, **kwargs)
+
+        response = super().get(request, *args, **kwargs)
         trigger_client_event(response, 'get_items', {})
         return response
+
+    def get_context_data(self, **kwargs: Any) -> Mapping:
+        context = super().get_context_data(**kwargs)
+        context |= ProductListService.get_context(self.request.GET)
+
+        return context
 
 
 def category_selection_view(request: HttpRequest) -> \

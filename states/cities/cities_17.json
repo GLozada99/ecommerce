@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 77,
+      "name": "Bonao"
+    },
+    {
+      "id": 78,
+      "name": "Maimón"
+    },
+    {
+      "id": 79,
+      "name": "Piedra Blanca"
+    }
+  ]
+}

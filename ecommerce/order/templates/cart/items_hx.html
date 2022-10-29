@@ -1,0 +1,167 @@
+<!--Cart Page-->
+<div class="row" id="cart-items">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+    <div class="cart style1">
+      <table>
+        <thead class="cart__row cart__header small--hide">
+        <tr>
+          <th class="action">&nbsp;</th>
+          <th colspan="2" class="text-start">Product</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in products_data %}
+          <tr class="cart__row border-bottom line1 cart-flex border-top">
+            <td class="cart-delete text-center small--hide">
+              <a href="#"
+                 class="btn btn--secondary cart__remove remove-icon position-static"
+                 title="Remove item"
+                 hx-patch="{% url 'site:cart:full' %}?product_id={{ data.product.id }}&action=delete"
+                 hx-target="#cart-items"
+                 hx-swap="outerHTML"
+              >
+                <i class="icon an an-times-r"></i>
+              </a>
+            </td>
+            <td class="cart__image-wrapper cart-flex-item">
+              <a href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
+                <img class="cart__image blur-up lazyload"
+                     data-src="{{ data.product.list_url }}"
+                     src="{{ data.product.list_url }}"
+                     alt="{{ data.product.product.name }}"
+                     width="80"/></a>
+            </td>
+            <td class="cart__meta small--text-left cart-flex-item">
+              <div class="list-view-item__title">
+                <a href="{% url 'site:products:detail' slug=data.product.product.slug %}?config_id={{ data.product.id }}">
+                  {{ data.product.product.name|truncatewords:8 }}:<br>
+                  {{ data.product.name|truncatewords:8 }}
+                </a>
+              </div>
+              <div class="cart-price d-md-none">
+                <span class="money fw-500">${{ data.total }}</span>
+              </div>
+            </td>
+            <td class="cart__price-wrapper cart-flex-item text-center small--hide">
+              <span class="money">${{ data.price }}</span>
+            </td>
+            <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
+              <div class="cart__qty d-flex justify-content-end justify-content-md-center">
+                <div class="qtyField">
+                  <a class="qtyBtn minus" href=""
+                     hx-patch="{% url 'site:cart:full' %}?product_id={{ data.product.id }}&action=decrease"
+                     hx-target="#cart-items"
+                     hx-swap="outerHTML"
+                  >
+                    <i class="icon an an-minus-r" aria-hidden="true"></i>
+                  </a>
+                  <label>
+                    <input class="cart__qty-input qty" type="text" name="updates[]" disabled
+                           value="{{ data.quantity }}"
+                           pattern="[0-9]*"/>
+                  </label>
+                  <a class="qtyBtn plus" href=""
+                     hx-patch="{% url 'site:cart:full' %}?product_id={{ data.product.id }}&action=increase"
+                     hx-target="#cart-items"
+                     hx-swap="outerHTML"
+                  >
+                    <i class="icon an an-plus-r"></i></a>
+                </div>
+              </div>
+              <a href="#" title="Remove"
+                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
+            </td>
+            <td class="cart-price cart-flex-item text-center small--hide">
+              <span class="money fw-500">${{ data.total }}</span>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4" class="text-start pt-3">
+            <a href="{% url 'site:products:list' %}"
+               class="btn btn--link d-inline-flex align-items-center btn--small p-0 cart-continue">
+              <i class="me-1 icon an an-angle-left-l"></i>
+              <span class="text-decoration-underline">Proceed to Checkout</span>
+            </a>
+          </td>
+          <td colspan="1" class="text-center pt-3">
+            <a
+                class="btn btn--link d-inline-flex align-items-center btn--small p-0 cart-continue"
+                hx-patch="{% url 'site:cart:full' %}?action=delete_all"
+                hx-target="#cart-items"
+                hx-swap="outerHTML"
+            >
+              <i class="me-1 icon an an-times-r"></i>
+              <span class="ms-1 text-decoration-underline">
+                  Clear Shoping Cart
+                </span>
+            </a>
+          </td>
+          <td colspan="1" class="text-center pt-3">
+            <a href="{% url 'site:checkout:checkout' %}"
+               class="btn btn--link d-inline-flex align-items-center btn--small p-0 cart-continue">
+              <span class="text-decoration-underline">Proceed to Checkout</span>
+              <i class="me-1 icon an an-angle-right-l"></i>
+            </a>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+      <hr class="clear">
+      <div class="pagination pb-5 pt-3">
+        <ul>
+          {% if page_obj.has_previous %}
+            <li>
+              <a href="#"
+                 hx-get="{% url 'site:cart:full' %}"
+                 hx-target="#cart-items"
+                 hx-swap="outerHTML"
+                 hx-vals='{"page": "1"}'
+              >
+                <i class="icon align-middle an an-ch-double-left" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                 hx-get="{% url 'site:cart:full' %}"
+                 hx-target="#cart-items"
+                 hx-swap="outerHTML"
+                 hx-vals='{"page": "{{ page_obj.previous_page_number }}"}'
+              >
+                <i class="icon align-middle an an-chevron-left" aria-hidden="true"></i>
+              </a>
+            </li>
+          {% endif %}
+          <li class="active px-3">{{ page_obj.number }}</li>
+          {% if page_obj.has_next %}
+            <li>
+              <a href="#"
+                 hx-get="{% url 'site:cart:full' %}"
+                 hx-target="#cart-items"
+                 hx-swap="outerHTML"
+                 hx-vals='{"page": "{{ page_obj.next_page_number }}"}'
+              >
+                <i class="icon align-middle an an-chevron-right" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                 hx-get="{% url 'site:cart:full' %}"
+                 hx-target="#cart-items"
+                 hx-swap="outerHTML"
+                 hx-vals='{"page": "{{ page_obj.paginator.num_pages }}"}'
+              >
+                <i class="icon align-middle an an-ch-double-right" aria-hidden="true"></i>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

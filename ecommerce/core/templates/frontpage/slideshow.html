@@ -2,7 +2,7 @@
 <section class="slideshow slideshow-wrapper">
   <div class="home-slideshow">
     {% for slide in slides %}
-      <div class="slide">
+      <div class="slide" style="max-height: 30%; width: 80%">
         <div class="blur-up lazyload">
           <img class="blur-up lazyload desktop-hide"
                data-src="{{ slide.frontpage_picture_url }}"

@@ -9,12 +9,12 @@
     <div class="collection-hero">
       <div class="collection-hero__image"></div>
       <div class="collection-hero__title-wrapper container">
-        <h1 class="collection-hero__title font-monospace">Products</h1>
+        <h1 class="collection-hero__title font-monospace">{% trans "Products" %}</h1>
         <div class="breadcrumbs text-uppercase mt-10 mt-lg-2">
           <a href="{% url 'site:frontpage:frontpage' %}" title="Back to the home page">{% trans "Home" %}</a>
           <span>|</span>
           <span class="{% if not current_category.name %}fw-bold{% endif %}">
-          <a href="{% url 'site:products:list' %}" title="Products">Products</a>
+          <a href="{% url 'site:products:list' %}" title="Products">{% trans "Products" %}</a>
             {% if current_category.name %}
               <span>|</span>
               <span class="fw-bold">{{ current_category.name }}</span>

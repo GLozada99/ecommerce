@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 22:02+0000\n"
+"POT-Creation-Date: 2022-10-28 22:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,12 +36,7 @@ msgid "Confirm your email"
 msgstr "Confirmar tu email"
 
 #: templates/account/email_confirm.html:20
-#, fuzzy, python-format
-#| msgid ""
-#| "Please confirm that\n"
-#| "        <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address "
-#| "for user %(user_display)s\n"
-#| "        ."
+#, python-format
 msgid ""
 "Please confirm that\n"
 "                    <a href=\"mailto:%(email)s\">\n"
@@ -61,12 +56,7 @@ msgid "Confirm"
 msgstr "Confirmar"
 
 #: templates/account/email_confirm.html:42
-#, fuzzy, python-format
-#| msgid ""
-#| "This e-mail confirmation link\n"
-#| "      expired or is invalid. Please\n"
-#| "      <a href=\"%(email_url)s\">issue a new e-mail confirmation request</"
-#| "a>."
+#, python-format
 msgid ""
 "This e-mail\n"
 "                confirmation link\n"

@@ -1,0 +1,41 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 95,
+      "name": "Puerto Plata"
+    },
+    {
+      "id": 96,
+      "name": "Altamira"
+    },
+    {
+      "id": 97,
+      "name": "Guananico"
+    },
+    {
+      "id": 98,
+      "name": "Imbert"
+    },
+    {
+      "id": 99,
+      "name": "Los Hidalgos"
+    },
+    {
+      "id": 100,
+      "name": "Luperón"
+    },
+    {
+      "id": 101,
+      "name": "Sosúa"
+    },
+    {
+      "id": 102,
+      "name": "Villa Isabela"
+    },
+    {
+      "id": 103,
+      "name": "Villa Montellano"
+    }
+  ]
+}

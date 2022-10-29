@@ -1,0 +1,49 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 17,
+      "name": "Barahona"
+    },
+    {
+      "id": 18,
+      "name": "Cabral"
+    },
+    {
+      "id": 19,
+      "name": "El Peñón"
+    },
+    {
+      "id": 20,
+      "name": "Enriquillo"
+    },
+    {
+      "id": 21,
+      "name": "Fundación"
+    },
+    {
+      "id": 22,
+      "name": "Jaquimeyes"
+    },
+    {
+      "id": 23,
+      "name": "La Ciénaga"
+    },
+    {
+      "id": 24,
+      "name": "Las Salinas"
+    },
+    {
+      "id": 25,
+      "name": "Paraíso"
+    },
+    {
+      "id": 26,
+      "name": "Polo"
+    },
+    {
+      "id": 27,
+      "name": "Vicente Noble"
+    }
+  ]
+}

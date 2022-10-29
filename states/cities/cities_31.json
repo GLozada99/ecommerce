@@ -1,0 +1,33 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 146,
+      "name": "Santo Domingo Este"
+    },
+    {
+      "id": 147,
+      "name": "Boca Chica"
+    },
+    {
+      "id": 148,
+      "name": "Los Alcarrizos"
+    },
+    {
+      "id": 149,
+      "name": "Pedro Brand"
+    },
+    {
+      "id": 150,
+      "name": "San Antonio de Guerra"
+    },
+    {
+      "id": 151,
+      "name": "Santo Domingo Norte"
+    },
+    {
+      "id": 152,
+      "name": "Santo Domingo Oeste"
+    }
+  ]
+}

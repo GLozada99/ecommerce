@@ -1,0 +1,41 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 134,
+      "name": "Santiago"
+    },
+    {
+      "id": 135,
+      "name": "Bisonó"
+    },
+    {
+      "id": 136,
+      "name": "Jánico"
+    },
+    {
+      "id": 137,
+      "name": "Licey al Medio"
+    },
+    {
+      "id": 138,
+      "name": "Puñal"
+    },
+    {
+      "id": 139,
+      "name": "Sabana Iglesia"
+    },
+    {
+      "id": 140,
+      "name": "San José de las Matas"
+    },
+    {
+      "id": 141,
+      "name": "Tamboril"
+    },
+    {
+      "id": 142,
+      "name": "Villa González"
+    }
+  ]
+}
