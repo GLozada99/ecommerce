@@ -26,11 +26,11 @@ migrate:
 	python manage.py migrate
 
 .PHONY: db-start
-db-start-dev:
+db-start:
 	docker-compose --env-file ./.env up -d --no-recreate db
 
 .PHONY: db-stop
-db-stop-dev:
+db-stop:
 	docker-compose stop db
 
 .PHONY: db-start-dev
