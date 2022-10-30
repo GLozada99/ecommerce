@@ -20,6 +20,10 @@ run-prod:
 	$(MAKE) db-start
 	docker-compose --env-file ./.env up -d web
 
+.PHONY: run
+run:
+	gunicorn ecommerce.wsgi --bind 0.0.0.0:8000 --daemon
+
 .PHONY: migrate
 migrate:
 	python manage.py makemigrations
