@@ -131,9 +131,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
-                        env_settings.DJANGO_DEBUG else
-                        'storages.backends.s3boto3.S3Boto3Storage')
+# DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
+#                         env_settings.DJANGO_DEBUG else
+#                         'storages.backends.s3boto3.S3Boto3Storage')
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 THUMBNAILS = {
     'METADATA': {
