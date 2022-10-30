@@ -132,6 +132,5 @@ dmypy.json
 .database
 mediafiles
 .vscode
-pics
 st
 .redis
