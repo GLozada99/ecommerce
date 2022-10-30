@@ -17,16 +17,25 @@ run-dev:
 
 .PHONY: run-prod
 run-prod:
-	docker-compose --env-file ./.env up web -d
+	$(MAKE) db-start
+	docker-compose --env-file ./.env up -d web
 
 .PHONY: migrate
 migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 
+.PHONY: db-start
+db-start-dev:
+	docker-compose --env-file ./.env up -d --no-recreate db
+
+.PHONY: db-stop
+db-stop-dev:
+	docker-compose stop db
+
 .PHONY: db-start-dev
 db-start-dev:
-	docker-compose --env-file ./.env up db-dev -d --no-recreate
+	docker-compose --env-file ./.env up -d --no-recreate db-dev
 
 .PHONY: db-stop-dev
 db-stop-dev:
