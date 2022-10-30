@@ -1,7 +1,9 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import include, path
 
+from ecommerce import settings
 from ecommerce.site_urls import site_urlpatterns
 
 urlpatterns = [
