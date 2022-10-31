@@ -22,10 +22,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <div class="button-action">
+        <div class="row">
           <a href="{% url 'site:checkout:checkout' %}"
-             class="btn btn-primary rounded mb-2">{% trans "Go To Checkout" %}</a>
-          <a class="btn btn-secondary rounded" data-bs-dismiss="modal">{% trans "Continue Shopping" %}</a>
+             class="btn btn-primary rounded mb-2 btn-block">{% trans "Go To Checkout" %}</a>
+          <a class="btn btn-secondary rounded mb-2 btn-block"
+             data-bs-dismiss="modal">{% trans "Continue Shopping" %}</a>
         </div>
       </div>
     </div>
