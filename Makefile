@@ -23,7 +23,7 @@ run-prod:
 .PHONY: run
 run:
 	pkill gunicorn
-	gunicorn ecommerce.wsgi --bind 0.0.0.0:8000 --daemon
+	authbind gunicorn ecommerce.wsgi --bind 0.0.0.0:$(PORT) --daemon
 
 .PHONY: migrate
 migrate:
