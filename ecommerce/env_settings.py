@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     DJANGO_SECRET_KEY: str
     DJANGO_DEBUG: bool = False
     DJANGO_ALLOWED_HOSTS: list = Field(default=['localhost'])
+    DJANGO_CSRF_TRUSTED_ORIGINS: list = Field(default=['localhost'])
 
     DB_ENGINE: str
     DB_USER: str

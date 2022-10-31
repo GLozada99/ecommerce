@@ -11,6 +11,7 @@ env_settings = Settings()
 SECRET_KEY = env_settings.DJANGO_SECRET_KEY
 DEBUG = env_settings.DJANGO_DEBUG
 ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = env_settings.DJANGO_CSRF_TRUSTED_ORIGINS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
