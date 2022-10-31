@@ -30,9 +30,11 @@
               <span class="price">${{ product.current_price | intcomma }}</span>
             </div>
             {% if product.first_config.description %}
-              <p class="hidden sort-desc">{{ product.first_config.description | truncatewords:50 }}</p>
+              <p class="hidden sort-desc"
+                 style="text-align: justify;">{{ product.first_config.description | truncatewords:50 }}</p>
             {% else %}
-              <p class="hidden sort-desc">{{ product.general_description | truncatewords:50 }}</p>
+              <p class="hidden sort-desc"
+                 style="text-align: justify;">{{ product.general_description | truncatewords:50 }}</p>
             {% endif %}
             <div class="button-action d-flex">
               <div class="addtocart-btn"
