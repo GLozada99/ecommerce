@@ -30,9 +30,11 @@
               <span class="price">${{ product.current_price | intcomma }}</span>
             </div>
             {% if product.first_config.description %}
-              <p class="hidden sort-desc">{{ product.first_config.description | truncatewords:50 }}</p>
+              <p class="hidden sort-desc"
+                 style="text-align: justify;">{{ product.first_config.description | truncatewords:50 }}</p>
             {% else %}
-              <p class="hidden sort-desc">{{ product.general_description | truncatewords:50 }}</p>
+              <p class="hidden sort-desc"
+                 style="text-align: justify;">{{ product.general_description | truncatewords:50 }}</p>
             {% endif %}
             <div class="button-action d-flex">
               <div class="addtocart-btn"
@@ -58,7 +60,7 @@
     <ul>
       {% if page_obj.has_previous %}
         <li>
-          <a href="#"
+          <a href="#mainStart"
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
@@ -69,7 +71,7 @@
           </a>
         </li>
         <li>
-          <a href="#"
+          <a href="#mainStart"
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
@@ -83,7 +85,7 @@
       <li class="active px-3">{{ page_obj.number }}</li>
       {% if page_obj.has_next %}
         <li>
-          <a href="#"
+          <a href="#mainStart"
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"
@@ -94,7 +96,7 @@
           </a>
         </li>
         <li>
-          <a href="#"
+          <a href="#mainStart"
              hx-get="{% url 'site:products:search' %}"
              hx-target="#items"
              hx-swap="outerHTML"

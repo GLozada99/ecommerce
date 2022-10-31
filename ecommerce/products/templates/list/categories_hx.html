@@ -10,7 +10,7 @@
     <ul class="clearfix sidebar_categories mb-0">
       {% for category in categories %}
         <li class="lvl-1">
-          <a href=""
+          <a href="#mainStart"
              hx-get="{% url 'site:products:search' %}"
              hx-vals='{"category": "{{ category.slug }}", "order_by": "{{ current_order_by }}", "page":
              "1"}'

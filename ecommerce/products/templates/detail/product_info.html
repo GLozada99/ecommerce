@@ -5,7 +5,7 @@
     <h1 class="product-single__title">{{ current_configuration.product.name }}</h1>
     <div class="product-single__subtitle">{{ current_configuration.name }}</div>
     <!-- Product Info -->
-    <div class="product-info mb-2">
+    <div class="product-info mb-2" style="text-align: justify;">
       {% if current_configuration.description %}
         <span>{{ current_configuration.description | truncatewords:100 }}</span>
       {% else %}
