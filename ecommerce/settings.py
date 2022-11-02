@@ -12,6 +12,7 @@ SECRET_KEY = env_settings.DJANGO_SECRET_KEY
 DEBUG = env_settings.DJANGO_DEBUG
 ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 CSRF_TRUSTED_ORIGINS = env_settings.DJANGO_CSRF_TRUSTED_ORIGINS
+ADMINS = [('Gustavo', 'gu.lozada9@gmail.com')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,7 +125,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
     'static_dir'
 ]
-
+COMPRESS_ENABLED = False
 # Media files
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
@@ -132,10 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
-#                         env_settings.DJANGO_DEBUG else
-#                         'storages.backends.s3boto3.S3Boto3Storage')
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
+                        not env_settings.S3_STORAGE else
+                        'storages.backends.s3boto3.S3Boto3Storage')
 
 THUMBNAILS = {
     'METADATA': {
