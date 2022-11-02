@@ -12,6 +12,7 @@ SECRET_KEY = env_settings.DJANGO_SECRET_KEY
 DEBUG = env_settings.DJANGO_DEBUG
 ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 CSRF_TRUSTED_ORIGINS = env_settings.DJANGO_CSRF_TRUSTED_ORIGINS
+ADMINS = [('Gustavo', 'gu.lozada9@gmail.com')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,7 +125,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
     'static_dir'
 ]
-
+COMPRESS_ENABLED = False
 # Media files
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
@@ -132,10 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
-#                         env_settings.DJANGO_DEBUG else
-#                         'storages.backends.s3boto3.S3Boto3Storage')
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
+                        not env_settings.S3_STORAGE else
+                        'storages.backends.s3boto3.S3Boto3Storage')
 
 THUMBNAILS = {
     'METADATA': {
@@ -146,9 +146,13 @@ THUMBNAILS = {
     },
     'SIZES': {
         'small': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 100,
-                 'height': 100},
+                {
+                    'PATH':
+                        'thumbnails.processors.resize',
+                    'width': 100,
+                    'height': 100},
             ],
             'POST_PROCESSORS': [
                 {
@@ -159,50 +163,66 @@ THUMBNAILS = {
             ],
         },
         'medium': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 240,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 240,
                  'height': 240},
             ],
         },
         'category_frontpage': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 400,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 400,
                  'height': 400},
             ],
         },
         'product_list': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 500,
                  'height': 625},
             ],
         },
         'product_detail': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 500,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 500,
                  'height': 650},
             ],
         },
         'product_detail_related': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 250,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 250,
                  'height': 300},
             ],
         },
         'slide': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 1050,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 1050,
                  'height': 492},
             ],
         },
         'large': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 490,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 490,
                  'height': 700},
             ],
         },
         'watermarked': {
+            'FORMAT': 'webp',
             'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 20,
+                {'PATH': 'thumbnails.processors.resize',
+                 'width': 20,
                  'height': 20},
                 {'PATH': 'thumbnails.processors.add_watermark',
                  'watermark_path': 'watermark.png'}
@@ -226,6 +246,8 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/site/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/site/'
 ACCOUNT_SESSION_REMEMBER = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 EMAIL_HOST = env_settings.EMAIL_HOST
 EMAIL_USE_TLS = env_settings.EMAIL_USE_TLS

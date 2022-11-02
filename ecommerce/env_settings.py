@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     AWS_STORAGE_BUCKET_NAME: str
     AWS_QUERYSTRING_AUTH: bool
     ASW_DEFAULT_ACL: str
+    S3_STORAGE: bool = False
 
     EMAIL_HOST: str
     EMAIL_USE_TLS: bool

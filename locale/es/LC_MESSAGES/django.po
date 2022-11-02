@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 22:17+0000\n"
+"POT-Creation-Date: 2022-11-02 16:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/settings.py:114
+#: ecommerce/settings.py:115
 msgid "English"
 msgstr "Inglés"
 
-#: ecommerce/settings.py:115
+#: ecommerce/settings.py:116
 msgid "Spanish"
 msgstr "Español"
 
@@ -95,7 +95,7 @@ msgid ""
 "                    also keep the\n"
 "                    items added previously to your cart."
 msgstr ""
-"Registrarse a este sitio te permite acceder al estado de tu orden ehistoria, "
+"Registrarse a este sitio te permite acceder al estado de tu orden e historia, "
 "y\n"
 "                    también mantener en tu carrito los\n"
 "                    artículos previamente añadidos."
@@ -103,6 +103,10 @@ msgstr ""
 #: templates/account/login.html:73
 msgid "Sign Up!"
 msgstr "¡Regístrate!"
+
+#: templates/account/login.html:75
+msgid "Or"
+msgstr "O"
 
 #: templates/account/login.html:85
 msgid ""
@@ -167,7 +171,7 @@ msgstr ""
 
 #: templates/account/password_reset_from_key_done.html:12
 msgid "Your password was reset."
-msgstr "Tu contraseña fue reestablecida"
+msgstr "Tu contraseña fue restablecida"
 
 #: templates/account/signup.html:76
 msgid "Already have an account?"
