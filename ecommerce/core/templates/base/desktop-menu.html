@@ -82,7 +82,7 @@
         </div>
         <div id="settingsBox">
           <div class="language-picker">
-            <label class="ttl" for="language">SELECT LANGUAGE</label>
+            <label class="ttl" for="language">{% blocktrans %}SELECT LANGUAGE{% endblocktrans %}</label>
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 22:17+0000\n"
+"POT-Creation-Date: 2022-11-02 16:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,17 +35,6 @@ msgstr "Inicio"
 #: ecommerce/core/templates/base/mobile-menu.html:6
 msgid "Products"
 msgstr "Productos"
-
-#: ecommerce/core/templates/base/desktop-menu.html:30
-#: ecommerce/core/templates/base/mobile-menu.html:7
-msgid "About Us"
-msgstr "Sobre Nosotros"
-
-#: ecommerce/core/templates/base/desktop-menu.html:31
-#: ecommerce/core/templates/base/footer.html:14
-#: ecommerce/core/templates/base/mobile-menu.html:8
-msgid "Contact Us"
-msgstr "Contactanos"
 
 #: ecommerce/core/templates/base/desktop-menu.html:41
 #: ecommerce/core/templates/base/desktop-menu.html:112
@@ -78,6 +67,10 @@ msgstr "Registro"
 msgid "Cart"
 msgstr "Carrito"
 
+#: ecommerce/core/templates/base/desktop-menu.html:85
+msgid "SELECT LANGUAGE"
+msgstr "SELECCIONE LENGUAJE"
+
 #: ecommerce/core/templates/base/desktop-menu.html:117
 msgid "All Categories"
 msgstr "Todas las Categories"
@@ -90,11 +83,15 @@ msgstr "Introduzca el nombre de un producto o categoría"
 msgid "Information"
 msgstr "Información"
 
+#: ecommerce/core/templates/base/footer.html:14
+msgid "Contact Us"
+msgstr "Contactanos"
+
 #: ecommerce/core/templates/base/footer.html:16
 msgid "Phone"
 msgstr "Teléfono"
 
-#: ecommerce/core/templates/base/modals/add-to-cart.html:6
+#: ecommerce/core/templates/base/modals/add-to-cart.html:7
 msgid "Product added successfully."
 msgstr "El producto se añadió de forma exitosa."
 
@@ -102,7 +99,7 @@ msgstr "El producto se añadió de forma exitosa."
 msgid "Go To Checkout"
 msgstr "Realizar Orden"
 
-#: ecommerce/core/templates/base/modals/add-to-cart.html:28
+#: ecommerce/core/templates/base/modals/add-to-cart.html:29
 msgid "Continue Shopping"
 msgstr "Continuar Comprando"
 
@@ -191,26 +188,27 @@ msgstr "Cantidad"
 msgid "Subtotal"
 msgstr "Subtotal"
 
-#: ecommerce/core/templates/mails/customer_order_email.html:29
+#: ecommerce/core/templates/mails/customer_order_email.html:30
+#: ecommerce/core/templates/mails/employee_order_email.html:30
+msgid "Total"
+msgstr "Total"
+
+#: ecommerce/core/templates/mails/customer_order_email.html:35
 msgid "Please contact"
 msgstr "Favor contactar a "
 
-#: ecommerce/core/templates/mails/customer_order_email.html:29
+#: ecommerce/core/templates/mails/customer_order_email.html:35
 #: ecommerce/core/templates/mails/employee_order_email.html:35
 msgid "at"
 msgstr "al"
 
-#: ecommerce/core/templates/mails/customer_order_email.html:30
+#: ecommerce/core/templates/mails/customer_order_email.html:36
 msgid "to get help in continuing with the order"
 msgstr "para obtener ayuda para continuar con la orden"
 
-#: ecommerce/core/templates/mails/customer_order_email.html:32
+#: ecommerce/core/templates/mails/customer_order_email.html:38
 msgid "Thank you for choosing us"
 msgstr "Gracias por escogernos"
-
-#: ecommerce/core/templates/mails/employee_order_email.html:30
-msgid "Total"
-msgstr "Total"
 
 #: ecommerce/core/templates/mails/employee_order_email.html:35
 msgid "Please contact the client"
@@ -227,3 +225,6 @@ msgstr "Disculpa, esta página no se encuentra disponible"
 #: ecommerce/core/templates/not-found.html:13
 msgid "Back to homepage"
 msgstr "Volver al inicio"
+
+#~ msgid "About Us"
+#~ msgstr "Sobre Nosotros"
