@@ -2,8 +2,8 @@
 <section class="slideshow slideshow-wrapper">
   <div class="home-slideshow">
     {% for slide in slides %}
-      <div class="slide" style="max-height: 30%; width: 80%">
-        <div class="blur-up lazyload">
+      <div class="slide">
+        <div class="blur-up lazyload ratio ratio-21x9">
           <img class="blur-up lazyload desktop-hide"
                data-src="{{ slide.frontpage_picture_url }}"
                src="{{ slide.frontpage_picture_url }}"
@@ -18,7 +18,9 @@
                   align-items-center">
               <div class="slideshow-content-in text-center">
                 <div class="wrap-caption animation style1 px-2">
-                  <h1 class="h1 mega-title ss-mega-title fs-1 text-capitalize">{{ slide.text }}</h1>
+                  <p class="display-1 text-center mega-title ss-mega-title fs-1 text-capitalize">
+                    <strong>{{ slide.text }}</strong>
+                  </p>
                 </div>
               </div>
             </div>
