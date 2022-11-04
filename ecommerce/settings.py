@@ -12,7 +12,7 @@ SECRET_KEY = env_settings.DJANGO_SECRET_KEY
 DEBUG = env_settings.DJANGO_DEBUG
 ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 CSRF_TRUSTED_ORIGINS = env_settings.DJANGO_CSRF_TRUSTED_ORIGINS
-ADMINS = [('Gustavo', 'gu.lozada9@gmail.com')]
+ADMINS = [('Admin', email) for email in env_settings.DJANGO_ADMINS_EMAILS]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

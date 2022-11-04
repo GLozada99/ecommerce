@@ -60,6 +60,7 @@ set-data:
 	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
 	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
 	python manage.py createsuperuser --no-input
+	python manage.py addgoogleauth
 
 .PHONY: reset-db
 reset-db:

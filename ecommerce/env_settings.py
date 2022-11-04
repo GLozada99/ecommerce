@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     DJANGO_DEBUG: bool = False
     DJANGO_ALLOWED_HOSTS: list = Field(default=['localhost'])
     DJANGO_CSRF_TRUSTED_ORIGINS: list = Field(default=['localhost'])
+    DJANGO_ADMINS_EMAILS: list = Field(default=[])
 
     DB_ENGINE: str
     DB_USER: str
@@ -28,6 +29,11 @@ class Settings(BaseSettings):
     EMAIL_PORT: int
     EMAIL_HOST_USER: str
     EMAIL_HOST_PASSWORD: str
+
+    SITE_NAME: str
+    SITE_DOMAIN: str
+    SITE_GOOGLE_ID: str
+    SITE_GOOGLE_SECRET: str
 
     SMALL_THUMBNAIL_NUMBER: int
 
