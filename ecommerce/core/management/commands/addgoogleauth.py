@@ -12,15 +12,17 @@ class Command(BaseCommand):
 
     @transaction.atomic  # type: ignore
     def handle(self, *args: tuple, **kwargs: dict) -> None:
-        if SocialApp.objects.filter(provider='google').exists():
+        if Site.objects.filter(domain=env_settings.SITE_DOMAIN).exists():
             self.stdout.write(self.style.SUCCESS('Google auth already '
                                                  'implemented.'))
             return
-        site = Site(domain=env_settings.SITE_DOMAIN,
-                    name=env_settings.SITE_NAME)
+        site = Site.objects.first()
+        site.name = env_settings.SITE_NAME
+        site.domain = env_settings.SITE_DOMAIN
         site.save()
         app = SocialApp(provider='google', name='Google',
                         client_id=env_settings.SITE_GOOGLE_ID,
                         secret=env_settings.SITE_GOOGLE_SECRET)
+
         app.save()
         app.sites.add(site)
