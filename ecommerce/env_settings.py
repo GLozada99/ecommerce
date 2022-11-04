@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     DJANGO_DEBUG: bool = False
     DJANGO_ALLOWED_HOSTS: list = Field(default=['localhost'])
     DJANGO_CSRF_TRUSTED_ORIGINS: list = Field(default=['localhost'])
+    DJANGO_ADMINS_EMAILS: list = Field(default=[])
 
     DB_ENGINE: str
     DB_USER: str
