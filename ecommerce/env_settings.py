@@ -29,6 +29,11 @@ class Settings(BaseSettings):
     EMAIL_HOST_USER: str
     EMAIL_HOST_PASSWORD: str
 
+    SITE_NAME: str
+    SITE_DOMAIN: str
+    SITE_GOOGLE_ID: str
+    SITE_GOOGLE_SECRET: str
+
     SMALL_THUMBNAIL_NUMBER: int
 
     class Config:
