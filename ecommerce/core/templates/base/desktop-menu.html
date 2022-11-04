@@ -47,7 +47,7 @@
         <div id="userLinks">
           <ul class="user-links">
             {% if user.is_authenticated %}
-              <li><a href="#">{% trans "Profile" %}</a></li>
+              {#              <li><a href="#">{% trans "Profile" %}</a></li>#}
               <li>
                 <form method="post" action="{% url 'account_logout' %}">
                   {% csrf_token %}
