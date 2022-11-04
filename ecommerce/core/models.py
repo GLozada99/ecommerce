@@ -17,6 +17,7 @@ class User(AbstractUser, BaseModel):
 class SlideImage(BaseModel):
     text = models.CharField(max_length=60)
     image = ImageField(upload_to='slide/', pregenerated_sizes=['slide'])
+    show = models.BooleanField(default=False)
 
     def frontpage_picture_url(self) -> str:
         return self.image.thumbnails.slide.url
