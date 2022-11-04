@@ -18,7 +18,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
-if settings.env_settings.S3_STORAGE:
+if not settings.env_settings.S3_STORAGE:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL,
