@@ -7,7 +7,7 @@ from ecommerce.settings import env_settings
 
 
 class Command(BaseCommand):
-    help = ('A command to populate the slide_image table.\n'
+    help = ('A command to change default site and add google social auth.\n'
             'This command does not need parameters')
 
     @transaction.atomic  # type: ignore
@@ -26,3 +26,4 @@ class Command(BaseCommand):
 
         app.save()
         app.sites.add(site)
+        self.stdout.write(self.style.SUCCESS('Google auth implemented'))

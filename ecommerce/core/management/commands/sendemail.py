@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand, CommandParser
 
 
 class Command(BaseCommand):
-    help = ('A command to populate the slide_image table.\n'
+    help = ('A command to test if email configuration is correct.\n'
             'This command does not need parameters')
 
     def add_arguments(self, parser: CommandParser) -> None:
