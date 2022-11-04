@@ -7,7 +7,7 @@
     {#    <li class="lvl1 bottom-link"><a href="#">{% trans "About Us" %}</a></li>#}
     {#    <li class="lvl1 bottom-link"><a href="#">{% trans "Contact Us" %}</a></li>#}
     <li class="acLink"></li>
-    <li class="lvl1 bottom-link"><a href="#">{% trans "Log in" %}</a></li>
-    <li class="lvl1 bottom-link"><a href="#">{% trans "Cart" %}</a></li>
+    <li class="lvl1 bottom-link"><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
+    <li class=" lvl1 bottom-link"><a href="{% url 'site:cart:cart' %}">{% trans "Cart" %}</a></li>
   </ul>
 </div>
