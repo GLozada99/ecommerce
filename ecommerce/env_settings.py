@@ -36,6 +36,7 @@ class Settings(BaseSettings):
     SITE_GOOGLE_SECRET: str
 
     SMALL_THUMBNAIL_NUMBER: int
+    LOG_FILE: str
 
     class Config:
         case_sensitive = True
