@@ -8,7 +8,6 @@ from ecommerce.core.models import SlideImage
 
 
 class Command(BaseCommand):
-
     help = ('A command to populate the slide_image table.\n'
             'This command does not need parameters')
 
@@ -19,11 +18,13 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS('SlideImages already exist.'))
         else:
             path = './pics/slide_images'
-            for filename in os.listdir(path):
+            for i, filename in enumerate(os.listdir(path), 1):
                 f = os.path.join(path, filename)
                 name = filename.split('.')[0]
                 slide = SlideImage.objects.create(
                     text=name,
+                    show=True,
+                    order=i,
                 )
                 print(name)
                 with open(f, 'rb') as fil:
