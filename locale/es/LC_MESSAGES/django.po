@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 16:03+0000\n"
+"POT-Creation-Date: 2022-11-05 16:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/settings.py:115
+#: ecommerce/settings.py:119
 msgid "English"
 msgstr "Inglés"
 
-#: ecommerce/settings.py:116
+#: ecommerce/settings.py:120
 msgid "Spanish"
 msgstr "Español"
 
@@ -95,8 +95,8 @@ msgid ""
 "                    also keep the\n"
 "                    items added previously to your cart."
 msgstr ""
-"Registrarse a este sitio te permite acceder al estado de tu orden e historia, "
-"y\n"
+"Registrarse a este sitio te permite acceder al estado de tu orden e "
+"historia, y\n"
 "                    también mantener en tu carrito los\n"
 "                    artículos previamente añadidos."
 
