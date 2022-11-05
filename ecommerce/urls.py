@@ -8,12 +8,12 @@ from ecommerce.site_urls import site_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('site/',
+    path('',
          include(
              site_urlpatterns,
              namespace='site'),
          ),
-    path('', lambda req: redirect('site:frontpage:frontpage')),
+    path('site/', lambda req: redirect('site:frontpage:frontpage')),
     path('accounts/', include('allauth.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
