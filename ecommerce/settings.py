@@ -14,6 +14,9 @@ ALLOWED_HOSTS = env_settings.DJANGO_ALLOWED_HOSTS
 CSRF_TRUSTED_ORIGINS = env_settings.DJANGO_CSRF_TRUSTED_ORIGINS
 ADMINS = [('Admin', email) for email in env_settings.DJANGO_ADMINS_EMAILS]
 
+AUTH_USER_MODEL = 'core.User'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -106,19 +109,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Localization
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
-
 LANGUAGES = [
     ('en-us', gettext_lazy('English')),
     ('es', gettext_lazy('Spanish')),
 ]
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('en-us', 'es')
 
-# Static files (CSS, JavaScript, Images)
+# Static files
 STATIC_URL = "staticfiles/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -126,17 +129,14 @@ STATICFILES_DIRS = [
     'static_dir'
 ]
 COMPRESS_ENABLED = False
+
 # Media files
 MEDIA_URL = "mediafiles/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 DEFAULT_FILE_STORAGE = ('django.core.files.storage.FileSystemStorage' if
                         not env_settings.S3_STORAGE else
                         'storages.backends.s3boto3.S3Boto3Storage')
-
+# Thumbnails
 THUMBNAILS = {
     'METADATA': {
         'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
@@ -231,17 +231,11 @@ THUMBNAILS = {
     }
 }
 
-AUTH_USER_MODEL = 'core.User'
-
+# Allauth
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-# Allauth settings
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/site/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/site/'
@@ -249,6 +243,7 @@ ACCOUNT_SESSION_REMEMBER = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
+# Email
 EMAIL_HOST = env_settings.EMAIL_HOST
 EMAIL_USE_TLS = env_settings.EMAIL_USE_TLS
 EMAIL_PORT = env_settings.EMAIL_PORT
@@ -256,8 +251,59 @@ EMAIL_HOST_USER = env_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = env_settings.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = env_settings.EMAIL_HOST_USER
 
+# AWS
 AWS_S3_ACCESS_KEY_ID = env_settings.AWS_S3_ACCESS_KEY_ID
 AWS_S3_SECRET_ACCESS_KEY = env_settings.AWS_S3_SECRET_ACCESS_KEY
 AWS_STORAGE_BUCKET_NAME = env_settings.AWS_STORAGE_BUCKET_NAME
 AWS_QUERYSTRING_AUTH = env_settings.AWS_QUERYSTRING_AUTH
 ASW_DEFAULT_ACL = env_settings.ASW_DEFAULT_ACL
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} '
+                      '{message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': f'{env_settings.LOG_FILE}',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
