@@ -24,7 +24,7 @@ handler404 = 'ecommerce.core.views.errors.error_404_view'
 handler500 = 'ecommerce.core.views.errors.error_500_view'
 
 if not settings.env_settings.S3_STORAGE:
-    urlpatterns += re_path(r'^media/(?P<path>.*)$', serve,
+    urlpatterns += re_path(r'^mediafiles/(?P<path>.*)$', serve,
                            {'document_root': settings.MEDIA_ROOT}),
     urlpatterns += re_path(r'^static/(?P<path>.*)$', serve,
                            {'document_root': settings.STATIC_ROOT}),
