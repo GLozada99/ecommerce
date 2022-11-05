@@ -9,7 +9,7 @@ class FrontPageService:
 
     @staticmethod
     def get_slides(slide_limit: int) -> QuerySet:
-        slides = SlideImage.objects.all().order_by('-pk')
+        slides = SlideImage.objects.filter(show=True).order_by('-pk')
         slide_total = slides.count()
         return slides[:min(slide_limit, slide_total)]
 

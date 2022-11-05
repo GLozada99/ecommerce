@@ -8,7 +8,6 @@ from ecommerce.core.models import SlideImage
 
 
 class Command(BaseCommand):
-
     help = ('A command to populate the slide_image table.\n'
             'This command does not need parameters')
 
@@ -24,6 +23,7 @@ class Command(BaseCommand):
                 name = filename.split('.')[0]
                 slide = SlideImage.objects.create(
                     text=name,
+                    show=True,
                 )
                 print(name)
                 with open(f, 'rb') as fil:
