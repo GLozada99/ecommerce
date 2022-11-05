@@ -1,7 +1,7 @@
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
 
 from ecommerce import settings
 from ecommerce.site_urls import site_urlpatterns
@@ -18,8 +18,13 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
+handler400 = 'ecommerce.core.views.errors.error_400_view'
+handler403 = 'ecommerce.core.views.errors.error_403_view'
+handler404 = 'ecommerce.core.views.errors.error_404_view'
+handler500 = 'ecommerce.core.views.errors.error_500_view'
+
 if not settings.env_settings.S3_STORAGE:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL,
-                          document_root=settings.STATIC_ROOT)
+    urlpatterns += re_path(r'^media/(?P<path>.*)$', serve,
+                           {'document_root': settings.MEDIA_ROOT}),
+    urlpatterns += re_path(r'^static/(?P<path>.*)$', serve,
+                           {'document_root': settings.STATIC_ROOT}),
