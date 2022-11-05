@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-05 16:00+0000\n"
+"POT-Creation-Date: 2022-11-05 17:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ecommerce/clients/models.py:14
+msgid "Client"
+msgstr "Cliente"
+
+#: ecommerce/clients/models.py:15
+msgid "Clients"
+msgstr "Clientes"
+
+#: ecommerce/clients/models.py:24
+msgid "state"
+msgstr "provincia"
+
+#: ecommerce/clients/models.py:25
+msgid "city"
+msgstr "ciudad"
+
+#: ecommerce/clients/models.py:27
+msgid "first line"
+msgstr "primera línea"
+
+#: ecommerce/clients/models.py:32
+msgid "second line"
+msgstr "segunda línea"
+
+#: ecommerce/clients/models.py:38
+msgid "Address"
+msgstr "Direccion"
+
+#: ecommerce/clients/models.py:39
+msgid "Addresses"
+msgstr "Direcciones"
 
 #: ecommerce/settings.py:119
 msgid "English"

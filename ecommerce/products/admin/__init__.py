@@ -1,1 +1,1 @@
-from .admin import CategoryAdmin, ProductAdmin, TypeProductAdmin
+from .admin import CategoryAdmin, ProductAdmin, ProductConfigurationAdmin

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-05 16:00+0000\n"
+"POT-Creation-Date: 2022-11-05 17:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ecommerce/core/models.py:11
+#: ecommerce/core/models.py:10
+#, fuzzy
+#| msgid "Phone"
+msgid "phone"
+msgstr "Teléfono"
+
+#: ecommerce/core/models.py:12
 msgid "email address"
 msgstr "correo electrónico"
+
+#: ecommerce/core/models.py:18
+msgid "User"
+msgstr "Usuario"
+
+#: ecommerce/core/models.py:19
+msgid "Users"
+msgstr "Usuarios"
+
+#: ecommerce/core/models.py:23
+msgid "text"
+msgstr "texto"
+
+#: ecommerce/core/models.py:24
+msgid "image"
+msgstr "imagen"
+
+#: ecommerce/core/models.py:26
+msgid "show"
+msgstr "mostrar"
+
+#: ecommerce/core/models.py:27
+msgid "order"
+msgstr "orden"
+
+#: ecommerce/core/models.py:33
+msgid "Slide Image"
+msgstr "Imagen de Carrusel"
+
+#: ecommerce/core/models.py:34
+msgid "Slide Images"
+msgstr "Imágenes de Carrusel"
 
 #: ecommerce/core/templates/base.html:10
 msgid "Site"
@@ -140,9 +178,8 @@ msgstr ""
 "tus productos, ve a tu carrito."
 
 #: ecommerce/core/templates/error.html:30
-#, fuzzy
-#| msgid "Back to homepage"
-msgid "Go to Homepage"
+#: ecommerce/core/templates/not-found.html:13
+msgid "Back to homepage"
 msgstr "Volver al inicio"
 
 #: ecommerce/core/templates/frontpage/categories.html:5
@@ -226,17 +263,13 @@ msgstr "Para ayudarlo a continuar con la order"
 msgid "Sorry, we couldn't find this page."
 msgstr "Disculpa, esta página no se encuentra disponible"
 
-#: ecommerce/core/templates/not-found.html:13
-msgid "Back to homepage"
-msgstr "Volver al inicio"
-
 #: ecommerce/core/views/errors.py:7
 msgid "Error"
 msgstr "Error"
 
 #: ecommerce/core/views/errors.py:15
-msgid "400 - PETICIÓN ERRÓNEA"
-msgstr ""
+msgid "400 - BAD REQUEST"
+msgstr "400 - PETICIÓN ERRÓNEA"
 
 #: ecommerce/core/views/errors.py:16
 msgid "The request made may have some incorrect data."
@@ -266,4 +299,6 @@ msgstr "500 - ERROR INTERNO"
 msgid ""
 "There's been an error processing your request, try again later or contact "
 "the administrators."
-msgstr "Hay un problema al procesar su petición, inténtelo más tarde o contacte a los administradores."
+msgstr ""
+"Hay un problema al procesar su petición, inténtelo más tarde o contacte a "
+"los administradores."

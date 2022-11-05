@@ -5,8 +5,7 @@ from django.core.management.base import BaseCommand, CommandParser
 
 
 class Command(BaseCommand):
-    help = ('A command to test if email configuration is correct.\n'
-            'This command does not need parameters')
+    help = 'A command to test if email configuration is correct.\n'
 
     def add_arguments(self, parser: CommandParser) -> None:
         parser.add_argument('emails', nargs='+', type=str)
