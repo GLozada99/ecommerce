@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <div id="page-content">
+    <div class="collection-header">
+      <div class="collection-hero">
+        <div class="collection-hero__image"></div>
+        <div class="collection-hero__title-wrapper container">
+          <h2 class="collection-hero__title">{{ page_name }}</h2>
+          <div class="breadcrumbs text-uppercase mt-1 mt-lg-2">
+            <a href="{% url 'site:frontpage:frontpage' %}"
+               title="Back to the home page">{% trans "Home" %}</a><span>|</span><span
+              class="fw-bold">{{ page_name }}</span></div>
+        </div>
+      </div>
+    </div>
+    <!--End Collection Banner-->
+
+    <!--Main Content-->
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="error-content py-4">
+            <img src="{% static 'assets/images/error-404.jpg' %}" alt="error-404"/>
+            <div class="page-title"><h1>{{ page_title }}</h1></div>
+            <p>{{ message }}</p>
+            <p>
+              <a href="{% url 'site:frontpage:frontpage' %}"
+                 class="btn btn-outline-primary rounded text-capitalize mb-2 me-2">{% trans "Go to Homepage" %}</a>
+              <a href="{% url 'site:products:list' %}"
+                 class="btn rounded mb-2 text-capitalize">{% trans "Continue shopping" %}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
