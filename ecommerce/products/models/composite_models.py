@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from thumbnails.fields import ImageField
 
 from ecommerce.products.models.models import Product
@@ -8,13 +9,19 @@ from ecommerce.utils.models import BaseModel
 class ProductConfiguration(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='configurations')
-    name = models.TextField()
-    picture = ImageField(upload_to='products/configurations/',
+    name = models.TextField(_('name'))
+    picture = ImageField(_('picture'),
+                         upload_to='products/configurations/',
                          pregenerated_sizes=['small', 'medium', 'product_list']
                          )
-    description = models.TextField(blank=True)
-    current_price = models.DecimalField(max_digits=9, decimal_places=2)
+    description = models.TextField(_('description'), blank=True)
+    current_price = models.DecimalField(_('current price'),
+                                        max_digits=9, decimal_places=2)
     slug = models.SlugField()
+
+    class Meta:
+        verbose_name = _('Product Configuration')
+        verbose_name_plural = _('Product Configurations')
 
     def __str__(self) -> str:
         return f'{self.product}\n{self.name}'
@@ -39,11 +46,16 @@ class ProductConfiguration(BaseModel):
 class ProductPicture(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='pictures')
-    picture = ImageField(upload_to='products/general/',
+    picture = ImageField(_('picture'),
+                         upload_to='products/general/',
                          pregenerated_sizes=[
                              'product_list', 'product_detail',
                              'product_detail_related',
                          ])
+
+    class Meta:
+        verbose_name = _('Product Picture')
+        verbose_name_plural = _('Product Pictures')
 
     @property
     def detail_url(self) -> str:
