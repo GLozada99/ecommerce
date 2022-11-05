@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-05 16:00+0000\n"
+"POT-Creation-Date: 2022-11-05 17:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ecommerce/products/models/composite_models.py:12
+#: ecommerce/products/models/models.py:9 ecommerce/products/models/models.py:28
+msgid "name"
+msgstr "nombre"
+
+#: ecommerce/products/models/composite_models.py:13
+#: ecommerce/products/models/composite_models.py:49
+msgid "picture"
+msgstr "foto"
+
+#: ecommerce/products/models/composite_models.py:17
+msgid "description"
+msgstr "descripción"
+
+#: ecommerce/products/models/composite_models.py:18
+msgid "current price"
+msgstr "precio actual"
+
+#: ecommerce/products/models/composite_models.py:23
+#, fuzzy
+msgid "Product Configuration"
+msgstr "Configuración de Producto"
+
+#: ecommerce/products/models/composite_models.py:24
+#, fuzzy
+#| msgid "Product Categories"
+msgid "Product Configurations"
+msgstr "Configuraciones de Producto"
+
+#: ecommerce/products/models/composite_models.py:57
+msgid "Product Picture"
+msgstr "Foto de Producto"
+
+#: ecommerce/products/models/composite_models.py:58
+msgid "Product Pictures"
+msgstr "Fotos de Productos"
+
+#: ecommerce/products/models/models.py:10
+msgid "icon"
+msgstr "icono"
+
+#: ecommerce/products/models/models.py:17
+msgid "Category"
+msgstr "Categoría"
+
+#: ecommerce/products/models/models.py:18
+#: ecommerce/products/templates/list/categories_hx.html:8
+msgid "Categories"
+msgstr "Categorías"
+
+#: ecommerce/products/models/models.py:29
+msgid "general description"
+msgstr "descripción general"
+
+#: ecommerce/products/models/models.py:37
+#, fuzzy
+msgid "Product"
+msgstr "Producto"
+
+#: ecommerce/products/models/models.py:38
+#: ecommerce/products/templates/list/breadcrumb_hx.html:12
+#: ecommerce/products/templates/list/breadcrumb_hx.html:17
+msgid "Products"
+msgstr "Productos"
+
 #: ecommerce/products/templates/detail/breadcrumb_hx.html:14
 #: ecommerce/products/templates/list/breadcrumb_hx.html:14
 msgid "Home"
@@ -26,15 +91,6 @@ msgstr "Inicio"
 #: ecommerce/products/templates/detail/product_sugestions.html:7
 msgid "You May Also Like"
 msgstr "También te interesarían"
-
-#: ecommerce/products/templates/list/breadcrumb_hx.html:12
-#: ecommerce/products/templates/list/breadcrumb_hx.html:17
-msgid "Products"
-msgstr "Productos"
-
-#: ecommerce/products/templates/list/categories_hx.html:8
-msgid "Categories"
-msgstr "Categorías"
 
 #: ecommerce/products/templates/list/items_hx.html:19
 msgid "Add to Cart"

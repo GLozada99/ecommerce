@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from ecommerce.products.admin.inline import (ConfigurationInline,
-                                             ExtraDataInline, ImageInline, )
+                                             ImageInline, )
 from ecommerce.products.models.composite_models import ProductConfiguration
 from ecommerce.products.models.models import Category, Product
 
@@ -20,6 +20,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProductConfiguration)
-class TypeProductAdmin(admin.ModelAdmin):
+class ProductConfigurationAdmin(admin.ModelAdmin):
     list_display = ('name', 'product', 'current_price')
-    inlines = [ExtraDataInline]
