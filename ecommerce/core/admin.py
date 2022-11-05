@@ -21,4 +21,5 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(SlideImage)
 class SlideImageAdmin(admin.ModelAdmin):
-    list_display = ('text', 'image', 'show')
+    list_display = ('order', 'text', 'image', 'show')
+    ordering = ('order',)
