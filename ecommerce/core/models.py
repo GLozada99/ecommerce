@@ -9,7 +9,7 @@ from ecommerce.utils.models import BaseModel
 class User(AbstractUser, BaseModel):
     phone = models.CharField(_("phone"), max_length=30, null=True,
                              blank=True)
-    email = models.EmailField(_("email address"), blank=True)
+    email = models.EmailField(_("email address"))
 
     def __str__(self) -> str:
         return f'{self.username}, {self.email}'
