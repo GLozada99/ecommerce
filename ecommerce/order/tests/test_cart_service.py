@@ -27,24 +27,25 @@ class CartServiceTestCase(TestCase):
         baker.make(Cart, user=user)
 
     @parameterized.expand([  # type: ignore
-        ("old cookie id", str(get_random_cookie_id())),
-        ("new cookie id", str(uuid.uuid4())),
+        ("old cookie id", lambda: str(get_random_cookie_id())),
+        ("new cookie id", lambda: str(uuid.uuid4())),
     ])
     def test_get_cart_anonymous_user(
-            self, _: str, cookie_id: str) -> None:
+            self, _: str, get_cookie_id: Callable) -> None:
+        cookie_id = get_cookie_id()
         service = CartService(AnonymousUser(), cookie_id)
         cart = service.cart
         self.assertEqual(str(cart.cookie_id), cookie_id)
         self.assertIsNone(cart.user)
 
     @parameterized.expand([  # type: ignore
-        ("old cookie id", str(get_random_cookie_id())),
-        ("new cookie id", str(uuid.uuid4())),
+        ("old cookie id", lambda: str(get_random_cookie_id())),
+        ("new cookie id", lambda: str(uuid.uuid4())),
     ])
     def test_get_cart_user(
-            self, _: str, cookie_id: str) -> None:
+            self, _: str, get_cookie_id: Callable) -> None:
         user = User.objects.all().first()
-        service = CartService(user, cookie_id)
+        service = CartService(user, get_cookie_id())
         cart = service.cart
         self.assertEqual(cart.user, user)
         self.assertIsNone(cart.cookie_id)
