@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <section id="page-content">
+    {% trans "Order" as gname %}
+    {% trans "Success" as pname %}
+    {% include 'breadcrumbs.html' with general_name=gname page_name=pname %}
+    <div class="container">
+      <div class="checkout-success-content py-2">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="checkout-scard card border-0 rounded">
+              <div class="card-body text-center">
+                <p class="card-icon"><i class="icon an an-shield-check fs-1"></i></p>
+                <h4 class="card-title">{% trans "Thank you for your order" %}!</h4>
+                <p class="card-text mb-1">{% blocktrans %}One of our representatives will contact
+                  you to continue with the final part of the order.{% endblocktrans %}</p>
+                <p class="card-text mb-1">{% blocktrans %}You will receive a confirmation email with details of
+                  your order and a cellphone number to call one of our representatives in case they don't call you in
+                  the next minutes.{% endblocktrans %}</p>
+                <p class="card-text mb-0">{% blocktrans %}Order date:{% endblocktrans %} {% now "jS F Y H:i" %}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
