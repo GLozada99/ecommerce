@@ -67,5 +67,4 @@ def order_submit_view(request: HttpRequest) -> HttpResponse:
     cart_service = CartService(request.user, '')
     checkout_service = CheckoutService(request.user, request.POST.dict())
     checkout_service.create_order(cart_service)
-    # TODO: Add order succesfull template and redirect there
-    return redirect('site:checkout:checkout')
+    return redirect('site:checkout:success')
