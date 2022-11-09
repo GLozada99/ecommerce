@@ -36,7 +36,7 @@ class Order(BaseModel):
     @property
     def payment_choices(cls) -> list[dict[str, str]]:
         return [{'value': value, 'label': label} for value, label
-                in cls.PaymentChoices.values.items()]
+                in cls.PaymentChoices.values.items()][:-1]
 
     def needs_delivery(self) -> bool:
         return self.payment_type != self.PaymentChoices.PICKUP
