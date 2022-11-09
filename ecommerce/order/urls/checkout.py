@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
 from ecommerce.order.views.checkout import (CheckoutView,
                                             add_address_form_view,
@@ -20,4 +21,7 @@ urlpatterns = [
          name='get-cities'),
     path('submit', order_submit_view,
          name='submit'),
+    path('success',
+         TemplateView.as_view(template_name='checkout-success.html'),
+         name='success')
 ]
