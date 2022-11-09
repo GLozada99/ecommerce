@@ -3,7 +3,9 @@
 {% load i18n %}
 {% block content %}
   <section id="page-content">
-    {% include 'breadcrumbs.html' with general_name="Order" page_name="Cart" %}
+    {% trans "Order" as gname %}
+    {% trans "Cart" as pname %}
+    {% include 'breadcrumbs.html' with general_name=gname page_name=pname %}
     <div class="container">
       {% include 'cart/items_hx.html' %}
     </div>

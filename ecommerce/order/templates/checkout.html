@@ -3,7 +3,9 @@
 {% load i18n %}
 {% block content %}
   <section id="page-content">
-    {% include 'breadcrumbs.html' with general_name="Order" page_name="Checkout" %}
+    {% trans "Order" as gname %}
+    {% trans "Checkout" as pname %}
+    {% include 'breadcrumbs.html' with general_name=gname page_name=pname %}
     <div class="container">
       <div class="row billing-fields">
         <div class="col-lg-6 col-md-12 col-sm-12">
