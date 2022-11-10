@@ -52,8 +52,9 @@ class ProductListService:
 
     @classmethod
     def get_random_products(cls, product_number: int) -> QuerySet:
-        return (cls.get_products(Product.objects.all(), '').
-                    order_by('?')[:product_number])
+        return (cls.get_products(
+            Product.objects.all(), '').order_by('?')[:product_number]
+        )
 
     @classmethod
     def get_configuration(cls, configuration_id: int) -> Product:

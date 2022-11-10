@@ -29,7 +29,6 @@ class CheckoutServiceTestCase(TestCase):
 
         self.assertIs(context['addresses'].model, Address)
         self.assertIsInstance(context['phone'], str)
-        self.assertIsInstance(context['email'], str)
         self.assertIsInstance(context['payment_types'], list)
         self.assertIsInstance(context['delivery'], int)
 

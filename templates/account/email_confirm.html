@@ -8,7 +8,9 @@
 {% block content %}
   <div class="page-wrapper">
     <section id="page-content">
-      {% include 'breadcrumbs.html' with general_name="Accounts" page_name="Confirm Email" %}
+      {% trans "Accounts" as gname %}
+      {% trans "Confirm Email" as pname %}
+      {% include 'breadcrumbs.html' with general_name=gname page_name=pname %}
       <div class="container">
         <div class="row">
           <div class="box col-12 col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">

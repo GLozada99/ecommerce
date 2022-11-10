@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-05 17:22+0000\n"
+"POT-Creation-Date: 2022-11-09 16:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,85 @@ msgstr "Transferencia contra entrega"
 msgid "Payment on pick up"
 msgstr "Pago al recoger"
 
+#: ecommerce/order/templates/cart.html:6
+#: ecommerce/order/templates/checkout-success.html:6
+#: ecommerce/order/templates/checkout.html:6
+msgid "Order"
+msgstr "Tu orden"
+
+#: ecommerce/order/templates/cart.html:7
+msgid "Cart"
+msgstr "Carrito"
+
+#: ecommerce/order/templates/cart/items_hx.html:10
+#: ecommerce/order/templates/checkout/items.html:13
+msgid "Product"
+msgstr "Product"
+
+#: ecommerce/order/templates/cart/items_hx.html:11
+#: ecommerce/order/templates/checkout/items.html:14
+msgid "Price"
+msgstr "Precio"
+
+#: ecommerce/order/templates/cart/items_hx.html:12
+#: ecommerce/order/templates/checkout/items.html:15
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: ecommerce/order/templates/cart/items_hx.html:13
+#: ecommerce/order/templates/checkout/items.html:9
+#: ecommerce/order/templates/checkout/items.html:39
+msgid "Total"
+msgstr "Total"
+
+#: ecommerce/order/templates/cart/items_hx.html:76
+msgid "Remove"
+msgstr "Remover"
+
+#: ecommerce/order/templates/cart/items_hx.html:90
+#: ecommerce/order/templates/cart/items_hx.html:109
+msgid "Proceed to Checkout"
+msgstr "Realizar Order"
+
+#: ecommerce/order/templates/cart/items_hx.html:102
+msgid "Clear Shoping Cart"
+msgstr "Limpiar carrito"
+
+#: ecommerce/order/templates/checkout-success.html:7
+msgid "Success"
+msgstr "Éxito"
+
+#: ecommerce/order/templates/checkout-success.html:16
+msgid "Thank you for your order"
+msgstr "Gracias por tu orden"
+
+#: ecommerce/order/templates/checkout-success.html:17
+msgid ""
+"One of our representatives will contact\n"
+"                  you to continue with the final part of the order."
+msgstr ""
+"Uno de nuestros representantes te contactará para continuar con la parte "
+"final de la orden"
+
+#: ecommerce/order/templates/checkout-success.html:19
+msgid ""
+"You will receive a confirmation email with details of\n"
+"                  your order and a cellphone number to call one of our "
+"representatives in case they don't call you in\n"
+"                  the next minutes."
+msgstr ""
+"Recibirás un correo de confirmación con detalles de tu orden y un número "
+"telefónico para llamar a uno de nuestros representantes en caso de que ellos "
+"no te llamen en los próximos minutos."
+
+#: ecommerce/order/templates/checkout-success.html:22
+msgid "Order date:"
+msgstr "Fecha de la orden"
+
+#: ecommerce/order/templates/checkout.html:7
+msgid "Checkout"
+msgstr "Ordenar"
+
 #: ecommerce/order/templates/checkout/cities_hx.html:3
 msgid "City"
 msgstr "Municipio"
@@ -45,23 +124,6 @@ msgstr "Seleccione un municipio"
 #: ecommerce/order/templates/checkout/items.html:4
 msgid "Your Order"
 msgstr "Tu orden"
-
-#: ecommerce/order/templates/checkout/items.html:9
-#: ecommerce/order/templates/checkout/items.html:39
-msgid "Total"
-msgstr "Total"
-
-#: ecommerce/order/templates/checkout/items.html:13
-msgid "Product"
-msgstr "Product"
-
-#: ecommerce/order/templates/checkout/items.html:14
-msgid "Price"
-msgstr "Precio"
-
-#: ecommerce/order/templates/checkout/items.html:15
-msgid "Quantity"
-msgstr "Cantidad"
 
 #: ecommerce/order/templates/checkout/items.html:16
 msgid "Subtotal"

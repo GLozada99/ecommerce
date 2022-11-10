@@ -1,3 +1,4 @@
+{% load i18n %}
 <!--Cart Page-->
 <div class="row" id="cart-items">
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
@@ -6,10 +7,10 @@
         <thead class="cart__row cart__header small--hide">
         <tr>
           <th class="action">&nbsp;</th>
-          <th colspan="2" class="text-start">Product</th>
-          <th class="text-center">Price</th>
-          <th class="text-center">Quantity</th>
-          <th class="text-center">Total</th>
+          <th colspan="2" class="text-start">{% trans "Product" %}</th>
+          <th class="text-center">{% trans "Price" %}</th>
+          <th class="text-center">{% trans "Quantity" %}</th>
+          <th class="text-center">{% trans "Total" %}</th>
         </tr>
         </thead>
         <tbody>
@@ -72,7 +73,7 @@
                 </div>
               </div>
               <a href="#" title="Remove"
-                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
+                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">{% trans "Remove" %}</a>
             </td>
             <td class="cart-price cart-flex-item text-center small--hide">
               <span class="money fw-500">${{ data.total }}</span>
@@ -86,7 +87,7 @@
             <a href="{% url 'site:products:list' %}"
                class="btn btn--link d-inline-flex align-items-center btn--small p-0 cart-continue">
               <i class="me-1 icon an an-angle-left-l"></i>
-              <span class="text-decoration-underline">Proceed to Checkout</span>
+              <span class="text-decoration-underline">{% trans "Proceed to Checkout" %}</span>
             </a>
           </td>
           <td colspan="1" class="text-center pt-3">
@@ -98,14 +99,14 @@
             >
               <i class="me-1 icon an an-times-r"></i>
               <span class="ms-1 text-decoration-underline">
-                  Clear Shoping Cart
+                  {% trans "Clear Shoping Cart" %}
                 </span>
             </a>
           </td>
           <td colspan="1" class="text-center pt-3">
             <a href="{% url 'site:checkout:checkout' %}"
                class="btn btn--link d-inline-flex align-items-center btn--small p-0 cart-continue">
-              <span class="text-decoration-underline">Proceed to Checkout</span>
+              <span class="text-decoration-underline">{% trans "Proceed to Checkout" %}</span>
               <i class="me-1 icon an an-angle-right-l"></i>
             </a>
           </td>

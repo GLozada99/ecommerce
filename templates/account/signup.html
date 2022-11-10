@@ -7,7 +7,9 @@
   {% load i18n %}
   <div class="page-wrapper">
     <section id="page-content">
-      {% include 'breadcrumbs.html' with general_name="Accounts" page_name="Sign Up" %}
+      {% trans "Accounts" as gname %}
+      {% trans "Sign Up" as pname %}
+      {% include 'breadcrumbs.html' with general_name=gname page_name=pname %}
       <div class="container">
         <div class="login-register pt-2 pt-lg-5">
           <div class="row justify-content-center">
