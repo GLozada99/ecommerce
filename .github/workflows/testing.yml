@@ -1,0 +1,36 @@
+name: Testing CI
+on:
+  pull_request:
+    branches: [ dev, main ]
+    paths:
+      - '.'
+      - '.github/workflows/testing.yml'
+  jobs:
+    CI:
+      runs-on: ubuntu-latest
+      env:
+        PYTHON_VERSION: 3.9
+      steps:
+        - name: Checkout The Repository
+          uses: actions/checkout@v2
+          with:
+            ref: ${{ github.head_ref }}
+        - name: Setup Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: "${{ env.PYTHON_VERSION }}"
+        - name: Install Poetry
+          uses: snok/install-poetry@v1
+        - name: Configure Poetry and Install Dependencies
+          run: |
+            poetry config --local
+            poetry install --no-interaction --no-root
+          working-directory: .
+        - name: Lint With flake8
+          run: |
+            poetry run flake8 --show-source --statistics
+          working-directory: .
+        - name: Test
+          working-directory: .
+          run: |
+            poetry run python manage.py test -b
