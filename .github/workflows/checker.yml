@@ -10,6 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON_VERSION: "3.10"
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: dbname
+      DJANGO_SECRET_KEY: szaffeads-324-sdg-325werfg-43t
+    services:
+      postgres_main:
+        image: postgres:12
+        env:
+          POSTGRES_USER: ${{ env.DB_USER }}
+          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
+          POSTGRES_DB: ${{ env.DB_NAME }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
     steps:
       - name: Checkout The Repository
         uses: actions/checkout@v2
@@ -34,3 +52,33 @@ jobs:
         working-directory: .
         run: |
           poetry run mypy .
+      - name: Testing
+        working-directory: .
+        env:
+          DJANGO_SECRET_KEY: ${{ env.DJANGO_SECRET_KEY }}
+          DB_USERNAME: ${{ env.DB_USER }}
+          DB_PASSWORD: ${{ env.DB_PASSWORD }}
+          DB_DATABASE: ${{ env.DB_NAME }}
+          DB_HOST: localhost
+          DB_ENGINE: postgresql
+          DB_PORT: 5432
+          DB_PORT_DEV: 5432
+          AWS_S3_ACCESS_KEY_ID: "not needed"
+          AWS_S3_SECRET_ACCESS_ID: "not needed"
+          AWS_STORAGE_BUCKET_NAME: "not needed"
+          AWS_QUERYSTRING_AUTH: "True"
+          ASW_DEFAULT_ACL: "not needed"
+          EMAIL_HOST: "not needed"
+          EMAIL_USE_TLS: "True"
+          EMAIL_PORT: 5439
+          EMAIL_HOST_USER: "not needed"
+          EMAIL_HOST_PASSWORD: "not needed"
+          SITE_NAME: "not needed"
+          SITE_DOMAIN: "not needed"
+          SITE_GOOGLE_ID: "not needed"
+          SITE_GOOGLE_SECRET: "not needed"
+          SMALL_THUMBNAIL_NUMBER: "not needed"
+          LOG_FILE: "not needed"
+
+        run: |
+          poetry run python manage.py test -b
