@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-09 16:12+0000\n"
+"POT-Creation-Date: 2022-11-11 13:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,9 +228,7 @@ msgstr ""
 msgid "Your password was reset."
 msgstr "Tu contraseña fue restablecida"
 
-#: templates/account/signup.html:11
-#, fuzzy
-#| msgid "Sign Up!"
+#: templates/account/signup.html:11 templates/socialaccount/signup.html:28
 msgid "Sign Up"
 msgstr "¡Regístrate!"
 
@@ -241,3 +239,15 @@ msgstr "¿Ya tienes una cuenta?"
 #: templates/account/signup.html:79
 msgid "Sign In!"
 msgstr "¡Inicia Sesión!"
+
+#: templates/socialaccount/signup.html:16
+#, python-format
+msgid ""
+"You are about to use\n"
+"                  your %(provider_name)s account to login to\n"
+"                  %(site_name)s. As a final step, please complete the "
+"following form:"
+msgstr ""
+"Estás a punto de utilizar\n"
+"tu cuenta de %(provider_name)s para iniciar sesión en\n"
+"%(site_name)s. Como paso final, por favor completa el siguiente formulario"
