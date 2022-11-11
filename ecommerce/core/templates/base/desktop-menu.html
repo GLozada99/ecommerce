@@ -7,15 +7,18 @@
         <button type="button"
                 class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open me-3 d-lg-none"><i
             class="icon an an-times-l"></i><i class="icon an an-bars-l"></i></button>
-        <div class="logo">
-          <a href="{% url 'site:frontpage:frontpage' %}">
-            <img class="logo-img mh-100"
-                 src="{% static 'brand.jpg' %}"
-                 alt="Casa Nelson"
-                 title="Casa Nelson"
-                 width="100"/>
-            <span class="logo-txt d-none">Optimal</span>
-          </a>
+        <div class="row align-items-center no-gutters">
+          <div class="logo col-6">
+            <a href="{% url 'site:frontpage:frontpage' %}">
+              <img class="logo-img mh-100"
+                   src="{% static 'brand.jpg' %}"
+                   alt="Casa Nelson"
+                   title="Casa Nelson"
+                   width="100"/>
+              <span class="logo-txt d-none">Casa Nelson</span>
+            </a>
+          </div>
+          <div class="text-primary fw-bold align-middle col-6 px-1 text-uppercase ">Casa Nelson</div>
         </div>
       </div>
       <div class="col-1 col-sm-1 col-md-1 col-lg-6 align-self-center d-menu-col">

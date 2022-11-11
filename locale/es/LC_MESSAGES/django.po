@@ -251,3 +251,7 @@ msgstr ""
 "Estás a punto de utilizar\n"
 "tu cuenta de %(provider_name)s para iniciar sesión en\n"
 "%(site_name)s. Como paso final, por favor completa el siguiente formulario"
+
+#: ecommerce/core/templates/base/mobile-menu.html:3
+msgid "Close Menu"
+msgstr "Cerrar Menú"
