@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 13:27+0000\n"
+"POT-Creation-Date: 2022-11-11 19:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,13 +118,41 @@ msgstr "Introduzca el nombre de un producto o categoría"
 msgid "Information"
 msgstr "Información"
 
-#: ecommerce/core/templates/base/footer.html:14
+#: ecommerce/core/templates/base/footer.html:19
 msgid "Contact Us"
 msgstr "Contactanos"
 
-#: ecommerce/core/templates/base/footer.html:16
+#: ecommerce/core/templates/base/footer.html:21
+msgid ""
+"\n"
+"              Separación St #28, San Felipe de Puerto Plata, Puerto Plata, "
+"Dominican Republic 57000.\n"
+"            "
+msgstr ""
+"\n Calle Separación #28, San Felipe de Puerto Plata, Puerto Plata, República Dominicana 57000.\n"
+"            "
+
+#: ecommerce/core/templates/base/footer.html:25
 msgid "Phone"
 msgstr "Teléfono"
+
+#: ecommerce/core/templates/base/footer.html:48
+msgid ""
+"\n"
+"            2022 Casa Nelson. Rights Reserved.\n"
+"          "
+msgstr ""
+"\n 2022 Casa Nelson. Todos los derechos reservados.\n"
+"          "
+
+#: ecommerce/core/templates/base/footer.html:53
+msgid ""
+"\n"
+"              Developed by Gustavo Lozada (+18297753800).\n"
+"            "
+msgstr ""
+"\n Desarrollado por Gustavo Lozada (+18297753800).\n"
+"            "
 
 #: ecommerce/core/templates/base/modals/add-to-cart.html:7
 msgid "Product added successfully."

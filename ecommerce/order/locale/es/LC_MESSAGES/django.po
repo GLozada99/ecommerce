@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 13:27+0000\n"
+"POT-Creation-Date: 2022-11-11 19:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,17 +34,17 @@ msgstr "Transferencia contra entrega"
 msgid "Payment on pick up"
 msgstr "Pago al recoger"
 
-#: ecommerce/order/models/order.py:36 ecommerce/order/templates/cart.html:6
+#: ecommerce/order/models/order.py:39 ecommerce/order/templates/cart.html:6
 #: ecommerce/order/templates/checkout-success.html:6
 #: ecommerce/order/templates/checkout.html:6
 msgid "Order"
 msgstr "Tu orden"
 
-#: ecommerce/order/models/order.py:37
+#: ecommerce/order/models/order.py:40
 msgid "Orders"
 msgstr "Orden"
 
-#: ecommerce/order/models/order.py:60 ecommerce/order/models/order.py:61
+#: ecommerce/order/models/order.py:63 ecommerce/order/models/order.py:64
 msgid "Order Products"
 msgstr "Productos de Orden"
 
