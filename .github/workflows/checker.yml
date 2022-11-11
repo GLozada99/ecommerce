@@ -3,8 +3,8 @@ on:
   pull_request:
     branches: [ dev, main ]
     paths:
-      - '.'
-      - '.github/workflows/checker.yml'
+      - './ecommerce/**'
+      - './.github/workflows/checker.yml'
 jobs:
   CI:
     runs-on: ubuntu-latest
