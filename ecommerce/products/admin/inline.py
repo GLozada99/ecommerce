@@ -20,3 +20,4 @@ class ConfigurationInline(admin.StackedInline):
     model = ProductConfiguration
     extra = 1
     min = 1
+    prepopulated_fields = {'slug': ('name',)}

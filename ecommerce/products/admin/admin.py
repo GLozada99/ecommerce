@@ -25,6 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(ProductConfiguration)
 class ProductConfigurationAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     list_display = ('id', 'name', 'link_to_product', 'current_price')
 
     search_fields = ('product__id',)
