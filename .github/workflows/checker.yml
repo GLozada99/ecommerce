@@ -7,10 +7,6 @@ on:
     paths:
       - 'ecommerce/**'
       - '.github/workflows/checker.yml'
-  push:
-    paths:
-      - 'ecommerce/**'
-      - '.github/workflows/checker.yml'
 jobs:
   CI:
     runs-on: ubuntu-latest
