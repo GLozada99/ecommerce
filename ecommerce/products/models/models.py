@@ -38,7 +38,7 @@ class Product(SafeModel):
         verbose_name_plural = _("Products")
 
     def __str__(self) -> str:
-        return f'{self.name}, {self.category}'
+        return f'{self.id} - {self.name}'
 
     @property
     def first_config(self) -> BaseModel:

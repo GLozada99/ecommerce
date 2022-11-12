@@ -32,6 +32,13 @@ class Order(BaseModel):
     completed = models.BooleanField(default=False)
     info = models.TextField(null=True, blank=True)
 
+    def __str__(self) -> str:
+        return f'{self.id}'
+
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
+
     @classmethod
     @property
     def payment_choices(cls) -> list[dict[str, str]]:
@@ -53,6 +60,8 @@ class OrderProducts(BaseModel):
         return self.quantity * self.price
 
     class Meta:
+        verbose_name = _('Order Products')
+        verbose_name_plural = _('Order Products')
         constraints = [
             models.UniqueConstraint(
                 fields=['product', 'order'],
