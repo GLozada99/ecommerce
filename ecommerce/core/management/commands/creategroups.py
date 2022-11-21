@@ -3,6 +3,7 @@ from typing import Any, Type
 from django.contrib.auth.models import Group, Permission
 from django.core.management.base import BaseCommand
 
+from ecommerce import settings
 from ecommerce.clients.models import Client
 from ecommerce.core.models import SlideImage, User
 from ecommerce.order.models.order import Order, OrderProducts
@@ -12,7 +13,7 @@ from ecommerce.products.models.models import Category, Product
 from ecommerce.utils.models import BaseModel
 
 GROUPS_PERMISSIONS: dict[str, dict[Type[BaseModel], list[str]]] = {
-    'employees': {
+    settings.GROUPS_EMPLOYEE: {
         Client: ['view'],
         SlideImage: ['add', 'change', 'delete', 'view'],
         Category: ['add', 'change', 'delete', 'view'],
@@ -22,7 +23,7 @@ GROUPS_PERMISSIONS: dict[str, dict[Type[BaseModel], list[str]]] = {
         Order: ['view'],
         OrderProducts: ['view'],
     },
-    'admins': {
+    settings.GROUPS_ADMIN: {
         User: ['add', 'change', 'delete', 'view'],
         Client: ['add', 'change', 'delete', 'view'],
         SlideImage: ['add', 'change', 'delete', 'view'],
