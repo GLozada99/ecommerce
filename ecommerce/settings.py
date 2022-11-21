@@ -305,3 +305,6 @@ LOGGING = {
         },
     }
 }
+
+GROUPS_EMPLOYEE = 'EMPLOYEE'
+GROUPS_ADMIN = 'ADMIN'
