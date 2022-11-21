@@ -1,9 +1,11 @@
 from django.db.models import QuerySet
 from django.db.transaction import atomic
 
+from ecommerce import settings
 from ecommerce.clients.models import Client
 from ecommerce.core.models import User
 from ecommerce.core.services.mail import MailService
+from ecommerce.order.exceptions import NoEmployeeAvailableException
 from ecommerce.order.models.cart import Cart, CartProducts
 from ecommerce.order.models.order import Order, OrderProducts
 from ecommerce.order.services.cart import CartInfoService, CartService
@@ -63,8 +65,12 @@ class CheckoutService:
 
     @staticmethod
     def _get_employee() -> User:
-        return User.objects.filter(
-            is_staff=True, is_active=True).order_by('?').first()
+        if user := (User.objects.filter(
+                groups__name=settings.GROUPS_EMPLOYEE, is_staff=True,
+                is_active=True).order_by('?').first()):
+            return user
+        else:
+            raise NoEmployeeAvailableException
 
     def _set_client_info(self) -> None:
         user = self.client.user
