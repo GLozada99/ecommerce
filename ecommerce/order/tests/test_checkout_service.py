@@ -1,12 +1,16 @@
 import uuid
 from decimal import Decimal
 
+from django.contrib.auth.models import Group
+from django.core.management import call_command
 from django.test import TestCase
 from model_bakery import baker
 from parameterized import parameterized
 
+from ecommerce import settings
 from ecommerce.clients.models import Address
 from ecommerce.core.models import User
+from ecommerce.order.exceptions import NoEmployeeAvailableException
 from ecommerce.order.helpers.tests import get_random_post_data
 from ecommerce.order.models.cart import Cart, CartProducts
 from ecommerce.order.models.order import Order, OrderProducts
@@ -17,9 +21,11 @@ from ecommerce.order.services.checkout import CheckoutService
 class CheckoutServiceTestCase(TestCase):
 
     def setUp(self) -> None:
+        call_command('creategroups')
         baker.make(Cart, cookie_id=uuid.uuid4, _quantity=5)
+        baker.make(User, is_staff=True, groups=Group.objects.filter(
+            name=settings.GROUPS_EMPLOYEE))
         user = baker.make(User)
-        baker.make(User, is_staff=True)
         baker.make(Cart, user=user)
 
     def test_get_checkout_context(self) -> None:
@@ -31,6 +37,21 @@ class CheckoutServiceTestCase(TestCase):
         self.assertIsInstance(context['phone'], str)
         self.assertIsInstance(context['payment_types'], list)
         self.assertIsInstance(context['delivery'], int)
+
+    def test_exception_if_no_user_employee(self) -> None:
+        employee = User.objects.get(is_staff=True)
+        employee.delete()
+
+        user = User.objects.filter(is_staff=False).order_by('?').first()
+        cart = Cart.objects.filter(user=user).order_by('?').first()
+        baker.make(CartProducts, cart=cart, _quantity=10)
+
+        post_data = get_random_post_data()
+        service = CheckoutService(user, post_data)
+        self.assertRaises(
+            NoEmployeeAvailableException,
+            lambda: service.create_order(CartService(user, ''))
+        )
 
     @parameterized.expand([  # type: ignore
         ("pickup", {}, Order.PaymentChoices.PICKUP),
