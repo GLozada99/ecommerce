@@ -7,6 +7,7 @@
   <thead>
   <tr>
     <th colspan="2" class="text-start">{% trans "Product" %}</th>
+    <th>{% trans "Store ID" %}</th>
     <th>{% trans "Price" %}</th>
     <th>{% trans "Quantity" %}</th>
     <th>{% trans "Subtotal" %}</th>
@@ -19,6 +20,7 @@
         {{ entry.product.product.name|truncatewords:8 }}:<br>
         {{ entry.product.name|truncatewords:8 }}
       </td>
+      <td class="text-center">{{ entry.product.store_id }}</td>
       <td class="text-center">${{ entry.price }}</td>
       <td class="text-center">{{ entry.quantity }}</td>
       <td class="text-center">${{ entry.total }}</td>
@@ -33,6 +35,6 @@
   </tfoot>
 </table>
 <h2>"{% trans 'Please contact the client' %} {{ order.client.user.get_full_name }} {% trans 'at' %}
-  {{ order.employee.phone }}
+  {{ order.client.user.phone }}
   {% trans 'to help them continue with the order' %}"
 </h2>
