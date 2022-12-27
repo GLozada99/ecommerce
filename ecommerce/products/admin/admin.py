@@ -18,7 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('id', 'name', 'category')
+    list_display = ('id', 'name', 'category', )
     search_fields = ('category__name',)
     inlines = [ImageInline, ConfigurationInline]
 
@@ -26,9 +26,9 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(ProductConfiguration)
 class ProductConfigurationAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('id', 'name', 'link_to_product', 'current_price')
+    list_display = ('id', 'name', 'link_to_product', 'current_price', 'store_id')
 
-    search_fields = ('product__id',)
+    search_fields = ('product__id', 'store_id')
 
     def link_to_product(self, obj: ProductConfiguration) -> SafeString:
         link = reverse("admin:products_product_change", args=[obj.product_id])
