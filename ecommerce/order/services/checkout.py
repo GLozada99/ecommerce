@@ -63,8 +63,12 @@ class CheckoutService:
 
     @staticmethod
     def _get_employee() -> User:
-        return User.objects.filter(
-            is_staff=True, is_active=True).order_by('?').first()
+        if employee := (
+                User.objects.filter(
+                is_staff=True, is_active=True, groups__name='employees')
+                .order_by('?').first()):
+            return employee
+        raise User.DoesNotExist("No employee available to take order")
 
     def _set_client_info(self) -> None:
         user = self.client.user
