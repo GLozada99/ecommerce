@@ -1,6 +1,9 @@
 import uuid
 from decimal import Decimal
+from os import devnull
 
+from django.contrib.auth.models import Group
+from django.core.management import call_command
 from django.test import TestCase
 from model_bakery import baker
 from parameterized import parameterized
@@ -48,6 +51,10 @@ class CheckoutServiceTestCase(TestCase):
         cart = Cart.objects.filter(user=user).order_by('?').first()
         baker.make(CartProducts, cart=cart, _quantity=10)
 
+        call_command('creategroups', stdout=open(devnull, 'w'))
+        employee = baker.make(User, is_staff=True)
+        employee.groups.add(Group.objects.get(name='employees'))
+
         post_data = get_random_post_data() | extra_post_data
         service = CheckoutService(user, post_data)
         order = service.create_order(CartService(user, ''))
@@ -70,6 +77,10 @@ class CheckoutServiceTestCase(TestCase):
             cp = baker.make(CartProducts, cart=cart, quantity=quantity,
                             product__current_price=price)
             ids.append(cp.product.id)
+
+        call_command('creategroups', stdout=open(devnull, 'w'))
+        employee = baker.make(User, is_staff=True)
+        employee.groups.add(Group.objects.get(name='employees'))
 
         post_data = get_random_post_data()
         service = CheckoutService(user, post_data)
