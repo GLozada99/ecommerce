@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 19:53+0000\n"
+"POT-Creation-Date: 2022-12-27 22:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ecommerce/products/models/composite_models.py:12
-#: ecommerce/products/models/models.py:9 ecommerce/products/models/models.py:28
+#: ecommerce/products/models/models.py:9 ecommerce/products/models/models.py:29
 msgid "name"
 msgstr "nombre"
 
@@ -66,16 +66,20 @@ msgstr "Categoría"
 msgid "Categories"
 msgstr "Categorías"
 
-#: ecommerce/products/models/models.py:29
+#: ecommerce/products/models/models.py:28
+msgid "store id"
+msgstr "id de tienda"
+
+#: ecommerce/products/models/models.py:30
 msgid "general description"
 msgstr "descripción general"
 
-#: ecommerce/products/models/models.py:37
+#: ecommerce/products/models/models.py:38
 #, fuzzy
 msgid "Product"
 msgstr "Producto"
 
-#: ecommerce/products/models/models.py:38
+#: ecommerce/products/models/models.py:39
 #: ecommerce/products/templates/list/breadcrumb_hx.html:12
 #: ecommerce/products/templates/list/breadcrumb_hx.html:17
 msgid "Products"

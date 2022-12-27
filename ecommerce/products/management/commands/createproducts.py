@@ -47,6 +47,7 @@ class Command(BaseCommand):
                             full_subdirectory, filename
                         )
                         configuration = ProductConfiguration(
+                            store_id=faker.isbn13(),
                             product=product,
                             name=name,
                             slug=slugify(name[:50]),

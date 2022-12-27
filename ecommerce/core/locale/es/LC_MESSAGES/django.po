@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 19:53+0000\n"
+"POT-Creation-Date: 2022-12-27 22:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,53 +64,53 @@ msgstr "Imágenes de Carrusel"
 msgid "Site"
 msgstr "Sitio"
 
-#: ecommerce/core/templates/base/desktop-menu.html:27
+#: ecommerce/core/templates/base/desktop-menu.html:30
 #: ecommerce/core/templates/base/mobile-menu.html:5
 #: ecommerce/core/templates/error.html:13
 msgid "Home"
 msgstr "Inicio"
 
-#: ecommerce/core/templates/base/desktop-menu.html:28
+#: ecommerce/core/templates/base/desktop-menu.html:31
 #: ecommerce/core/templates/base/mobile-menu.html:6
 msgid "Products"
 msgstr "Productos"
 
-#: ecommerce/core/templates/base/desktop-menu.html:41
-#: ecommerce/core/templates/base/desktop-menu.html:112
+#: ecommerce/core/templates/base/desktop-menu.html:44
+#: ecommerce/core/templates/base/desktop-menu.html:115
 msgid "Search"
 msgstr "Buscar"
 
-#: ecommerce/core/templates/base/desktop-menu.html:45
+#: ecommerce/core/templates/base/desktop-menu.html:48
 msgid "Account"
 msgstr "Cuenta"
 
-#: ecommerce/core/templates/base/desktop-menu.html:55
+#: ecommerce/core/templates/base/desktop-menu.html:58
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: ecommerce/core/templates/base/desktop-menu.html:60
+#: ecommerce/core/templates/base/desktop-menu.html:63
 #: ecommerce/core/templates/base/mobile-menu.html:10
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-#: ecommerce/core/templates/base/desktop-menu.html:61
+#: ecommerce/core/templates/base/desktop-menu.html:64
 msgid "Sign Up"
 msgstr "Registro"
 
-#: ecommerce/core/templates/base/desktop-menu.html:76
+#: ecommerce/core/templates/base/desktop-menu.html:79
 #: ecommerce/core/templates/base/mobile-menu.html:11
 msgid "Cart"
 msgstr "Carrito"
 
-#: ecommerce/core/templates/base/desktop-menu.html:85
+#: ecommerce/core/templates/base/desktop-menu.html:88
 msgid "SELECT LANGUAGE"
 msgstr "SELECCIONE LENGUAJE"
 
-#: ecommerce/core/templates/base/desktop-menu.html:117
+#: ecommerce/core/templates/base/desktop-menu.html:120
 msgid "All Categories"
 msgstr "Todas las Categories"
 
-#: ecommerce/core/templates/base/desktop-menu.html:128
+#: ecommerce/core/templates/base/desktop-menu.html:131
 msgid "Input name or product category"
 msgstr "Introduzca el nombre de un producto o categoría"
 
@@ -118,41 +118,69 @@ msgstr "Introduzca el nombre de un producto o categoría"
 msgid "Information"
 msgstr "Información"
 
-#: ecommerce/core/templates/base/footer.html:19
+#: ecommerce/core/templates/base/footer.html:10
+msgid ""
+"\n"
+"                  Casa Nelson is a department store established on February "
+"1967,\n"
+"                  its mission is based in offering quality products at "
+"competitive prices.\n"
+"                  'Quality as a No. 1' is out motto, and we have delivered "
+"and will continue to deliver on that,\n"
+"                  improving every day. Call or visit any time, we'll always "
+"be here for you.\n"
+"              "
+msgstr ""
+"\n"
+"Somos una tienda por departamento fundada en febrero de 1967, nuestra misión "
+"y ejercicio comercial está basamentado en ofrecer articulos de calidad a "
+"precios competitivo, calidad No. 1 es nuestro Norte. hemos servido y "
+"seguiremos haciendolo cada dia mejor. Llamanos o visitanos, siempre "
+"estaremos para ti."
+
+#: ecommerce/core/templates/base/footer.html:21
 msgid "Contact Us"
 msgstr "Contactanos"
 
-#: ecommerce/core/templates/base/footer.html:21
+#: ecommerce/core/templates/base/footer.html:23
 msgid ""
 "\n"
 "              Separación St #28, San Felipe de Puerto Plata, Puerto Plata, "
 "Dominican Republic 57000.\n"
 "            "
 msgstr ""
-"\n Calle Separación #28, San Felipe de Puerto Plata, Puerto Plata, República Dominicana 57000.\n"
+"\n"
+" Calle Separación #28, San Felipe de Puerto Plata, Puerto Plata, República "
+"Dominicana 57000.\n"
 "            "
 
-#: ecommerce/core/templates/base/footer.html:25
+#: ecommerce/core/templates/base/footer.html:27
 msgid "Phone"
 msgstr "Teléfono"
 
-#: ecommerce/core/templates/base/footer.html:48
+#: ecommerce/core/templates/base/footer.html:50
 msgid ""
 "\n"
 "            2022 Casa Nelson. Rights Reserved.\n"
 "          "
 msgstr ""
-"\n 2022 Casa Nelson. Todos los derechos reservados.\n"
+"\n"
+" 2022 Casa Nelson. Todos los derechos reservados.\n"
 "          "
 
-#: ecommerce/core/templates/base/footer.html:53
+#: ecommerce/core/templates/base/footer.html:55
 msgid ""
 "\n"
 "              Developed by Gustavo Lozada (+18297753800).\n"
 "            "
 msgstr ""
-"\n Desarrollado por Gustavo Lozada (+18297753800).\n"
+"\n"
+" Desarrollado por Gustavo Lozada (+18297753800).\n"
 "            "
+
+#: ecommerce/core/templates/base/mobile-menu.html:3
+msgid "Close Menu"
+msgstr ""
 
 #: ecommerce/core/templates/base/modals/add-to-cart.html:7
 msgid "Product added successfully."

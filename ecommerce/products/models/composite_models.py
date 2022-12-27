@@ -7,6 +7,7 @@ from ecommerce.utils.models import BaseModel
 
 
 class ProductConfiguration(BaseModel):
+    store_id = models.CharField(_('store id'), max_length=255, blank=True)
     product = models.ForeignKey(Product, on_delete=models.PROTECT,
                                 related_name='configurations')
     name = models.TextField(_('name'))
