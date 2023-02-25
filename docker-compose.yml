@@ -13,7 +13,7 @@ services:
   db-dev:
     image: postgres
     volumes:
-      - ${DB_PATH}:/var/lib/postgresql/data
+      - ${DB_PATH_DEV}:/var/lib/postgresql/data
     ports:
       - ${DB_PORT_DEV}:5432
     environment:
