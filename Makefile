@@ -12,12 +12,10 @@ logs:
 
 .PHONY: run-dev
 run-dev:
-	$(MAKE) db-start-dev
 	python manage.py runserver
 
 .PHONY: run-prod
 run-prod:
-	$(MAKE) db-start
 	docker-compose --env-file ./.env up -d web
 
 .PHONY: run
@@ -32,7 +30,7 @@ migrate:
 
 .PHONY: db-start
 db-start:
-	docker-compose --env-file ./.env up -d --no-recreate db
+	docker-compose --env-file ./.env up -d db
 
 .PHONY: db-stop
 db-stop:
@@ -40,7 +38,7 @@ db-stop:
 
 .PHONY: db-start-dev
 db-start-dev:
-	docker-compose --env-file ./.env up -d --no-recreate db-dev
+	docker-compose --env-file ./.env up -d db-dev
 
 .PHONY: db-stop-dev
 db-stop-dev:
