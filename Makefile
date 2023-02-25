@@ -10,20 +10,6 @@ build:
 logs:
 	docker-compose logs
 
-.PHONY: run-dev
-run-dev:
-	poetry run python manage.py runserver
-
-.PHONY: run
-run:
-	poetry run pkill gunicorn || true
-	poetry run authbind gunicorn ecommerce.wsgi --bind 0.0.0.0:$(PORT) --daemon
-
-.PHONY: migrate
-migrate:
-	poetry run python manage.py makemigrations
-	poetry run python manage.py migrate
-
 .PHONY: db-start
 db-start:
 	docker-compose --env-file ./.env up -d db
@@ -43,6 +29,20 @@ db-stop-dev:
 .PHONY: stop
 stop:
 	docker-compose stop
+
+.PHONY: runserver
+runserver:
+	poetry run python manage.py runserver
+
+.PHONY: run
+run:
+	poetry run pkill gunicorn || true
+	poetry run authbind gunicorn ecommerce.wsgi --bind 0.0.0.0:$(PORT) --daemon
+
+.PHONY: migrate
+migrate:
+	poetry run python manage.py makemigrations
+	poetry run python manage.py migrate
 
 .PHONY: set-data
 set-data:

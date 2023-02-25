@@ -10,7 +10,7 @@
         <div class="row align-items-center no-gutters">
           <div class="logo col-6">
             <a href="{% url 'site:frontpage:frontpage' %}">
-              <img class="logo-img mh-100"
+              <img class="logo-img  mh-100 h-75 "
                    src="{% static 'brand.jpg' %}"
                    alt="Casa Nelson"
                    title="Casa Nelson"
@@ -18,7 +18,13 @@
               <span class="logo-txt d-none">Casa Nelson</span>
             </a>
           </div>
-          <div class="text-primary fw-bold align-middle col-6 px-1 text-uppercase ">Casa Nelson</div>
+          <div class="logo col-2">
+          </div>
+          <div class="logo col-4">
+              <a href="{% url 'site:frontpage:frontpage' %}">
+                <div class="text-primary fw-bold align-middle text-uppercase ">Casa Nelson</div>
+              </a>
+          </div>
         </div>
       </div>
       <div class="col-1 col-sm-1 col-md-1 col-lg-6 align-self-center d-menu-col">
@@ -40,8 +46,8 @@
       <div
           class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center icons-col text-right d-flex justify-content-end">
         <!--Search-->
-        <div class="site-search iconset"><i class="icon an an-search-l"></i><span
-            class="tooltip-label">{% trans "Search" %}</span></div>
+{#        <div class="site-search iconset"><i class="icon an an-search-l"></i><span#}
+{#            class="tooltip-label">{% trans "Search" %}</span></div>#}
         <!--End Search-->
         <!--Setting Dropdown-->
         <div class="user-link iconset"><i class="icon an an-user-2"></i><span class="tooltip-label">
