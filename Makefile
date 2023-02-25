@@ -12,7 +12,7 @@ logs:
 
 .PHONY: run-dev
 run-dev:
-	python manage.py runserver
+	poetry run python manage.py runserver
 
 .PHONY: run-prod
 run-prod:
@@ -20,13 +20,13 @@ run-prod:
 
 .PHONY: run
 run:
-	pkill gunicorn || true
-	authbind gunicorn ecommerce.wsgi --bind 0.0.0.0:$(PORT) --daemon
+	poetry run pkill gunicorn || true
+	poetry run authbind gunicorn ecommerce.wsgi --bind 0.0.0.0:$(PORT) --daemon
 
 .PHONY: migrate
 migrate:
-	python manage.py makemigrations
-	python manage.py migrate
+	poetry run python manage.py makemigrations
+	poetry run python manage.py migrate
 
 .PHONY: db-start
 db-start:
@@ -51,15 +51,15 @@ stop:
 .PHONY: set-data
 set-data:
 	$(MAKE) migrate
-	python manage.py createcategories
-	python manage.py createproducts
-	python manage.py createslides
+	poetry run python manage.py createcategories
+	poetry run python manage.py createproducts
+	poetry run python manage.py createslides
 	DJANGO_SUPERUSER_PASSWORD=$(DJANGO_SUPERUSER_PASSWORD) \
 	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
 	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
-	python manage.py createsuperuser --no-input
-	python manage.py addgoogleauth
-	python manage.py creategroups
+	poetry run python manage.py createsuperuser --no-input
+	poetry run python manage.py addgoogleauth
+	poetry run python manage.py creategroups
 
 .PHONY: set-data-light
 set-data-light:
@@ -67,16 +67,16 @@ set-data-light:
 	DJANGO_SUPERUSER_PASSWORD=$(DJANGO_SUPERUSER_PASSWORD) \
 	DJANGO_SUPERUSER_USERNAME=$(DJANGO_SUPERUSER_USERNAME) \
 	DJANGO_SUPERUSER_EMAIL=$(DJANGO_SUPERUSER_EMAIL) \
-	python manage.py createsuperuser --no-input
-	python manage.py addgoogleauth
-	python manage.py creategroups
+	poetry run python manage.py createsuperuser --no-input
+	poetry run python manage.py addgoogleauth
+	poetry run python manage.py creategroups
 
 .PHONY: reset-db
 reset-db:
-	python manage.py reset_db --noinput
+	poetry run python manage.py reset_db --noinput
 	$(MAKE) set-data
 
 .PHONY: reset-db-light
 reset-db-light:
-	python manage.py reset_db --noinput
+	poetry run python manage.py reset_db --noinput
 	$(MAKE) set-data-light
