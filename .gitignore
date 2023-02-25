@@ -134,3 +134,5 @@ mediafiles
 .vscode
 st
 .redis
+data_dev
+data
