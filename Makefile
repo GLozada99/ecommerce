@@ -14,10 +14,6 @@ logs:
 run-dev:
 	poetry run python manage.py runserver
 
-.PHONY: run-prod
-run-prod:
-	docker-compose --env-file ./.env up -d web
-
 .PHONY: run
 run:
 	poetry run pkill gunicorn || true

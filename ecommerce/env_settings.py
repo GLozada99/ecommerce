@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     DJANGO_CSRF_TRUSTED_ORIGINS: list = Field(default=['http://localhost'])
     DJANGO_ADMINS_EMAILS: list = Field(default=[])
 
+    ENV: str = 'DEV'
+
     DB_ENGINE: str
     DB_USER: str
     DB_PASSWORD: str
@@ -44,4 +46,4 @@ class Settings(BaseSettings):
 
     @property
     def get_DB_PORT(self) -> int:
-        return self.DB_PORT_DEV if self.DJANGO_DEBUG else self.DB_PORT
+        return self.DB_PORT_DEV if self.ENV == 'DEV' else self.DB_PORT
